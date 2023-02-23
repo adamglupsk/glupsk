@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10vh 15vh 10vh 10vh;
+    background-color: rgb(240, 240, 240);
+    display: flex;
+
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    /* white-space: nowrap; */
+}
+
+.kort {
+    padding: 2vw 2vw 10vw 2vw;
+    margin: auto;
+    align-self: center;
+    background-color: white;
+    display: block-flex;
+    width: 30vw;
+}
+
+a
