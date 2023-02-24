@@ -3,6 +3,7 @@ body {
     margin: 10vw 10vw 10vw 10vw;
     background-color: rgb(240, 240, 240);
     display: flex;
+    gap: 5vw;
 
 }
 
@@ -13,8 +14,8 @@ h1 {
 
 .kort {
     padding: 2vw 2vw 10vw 2vw;
-    margin: auto;
-    align-self: center;
+    /* margin: auto; */
+    /* align-self: center; */
     background-color: white;
     display: block-flex;
     width: 30vw;
