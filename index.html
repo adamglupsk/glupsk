@@ -11,43 +11,70 @@
    
    body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(240, 240, 240);
-    margin-top: 10vh;
+    background-color: rgb(255, 255, 255);
     display: flex;
-    gap: 5vw;
     flex-wrap: wrap;
+    white-space: wrap;
+    /* color: white; */
 
 }
 
-h1 {
-    font-family: Helvetica, sans-serif;
-    font-size: 8vw;
-    /* white-space: nowrap; */
+p {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    /* padding-top: 0; */
+    /* background-color: blue; */
+    font-family: Baskerville-Italic;
+    font-size: 5vw;
+    /* line-height: 1.1; */
 }
 
-iframe {
-    width: fit-content;
+a{
+    text-decoration: none;
+    /* padding-left: 5vw; */
+}
+
+img{
+    width:100%;
     object-fit: cover;
-    overflow: hidden;
+
 }
 
 .fit {
-    width: 110%;
-    height: 110%;
-    object-fit: fill;
-    position: relative;
+    top:0;
+    width: 100%;
+    object-fit: cover;
+    
+}
+
+.projects {
+    gap: 1vw;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+    display: flex;
+    width: 90vw;
+    flex-flow: wrap;
+}
+
+.divider{
+    width: 85vw;
+    border-bottom: 1px black solid;
+    height: 0px;
+    margin: auto;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 .kort {
-    padding: 2vw 2vw 5vw 2vw;
-    margin: auto;
+    margin: 1vh auto;
     align-self: center;
-    background-color: white;
     display: flex;
     border: 1px black solid;
-    border-radius: 1vw;
-    /* background-image: linear-gradient(rgb(236, 236, 236), white); */
-    /* color: greenyellow; */
-    box-shadow: 0px 5vh 10vh;
+    /* border-radius: 2vw; */
+    /* color: white; */
+    box-shadow: 0px 1vh 5vh rgba(0, 0, 0, 0.019);
+    flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .square {
@@ -56,52 +83,101 @@ iframe {
 }
 
 .full {
-    width: 91vw;
+    width: 85.5vw;
+    height: fit-content;
+}
+.bs {
+    width: 85.5vw;
+    display: flex;
+    flex-flow: column;
+    height: fit-content;
 }
 .square:hover, .full:hover {
-    transform:scale(1.1)
+    transform:scale(1.1);
+    transition-duration: 0.1s;
+    transition-timing-function: ease;
 }
 
-/* @media (max-width: 800px) {
 
-    body {
-        flex-wrap: wrap;
-        background-color: rgb(255, 128, 223);
-    }
 
-    } 
+
+@media (min-width: 1000px) {
+    body{
+        transform-origin: top;
+transform: scale(0.8)    }
+}
+
+    
     @media (max-width: 600px) {
 
         body {
             flex-wrap: wrap;
-            background-color: rgb(49, 49, 210);
+            /* background-color: rgb(0, 0, 0); */
         }
         .kort {
-            width: 70vw;
-            height: 70vw;
+            width: 90vw;
+            height: 90vw;
         }
-        } */
 
-
+        .full{
+            height: 90vw;
+        }
+        
+        p{
+            font-size:8vw;
+        }
+        .bs{
+            font-size: 10%;
+            height: 85vw;
+        }
+        .square:hover, .full:hover{
+            transform: scale(1);
+        }
+        }
+        
 
     </style>
 </head>
 <body>
 
 
-<div class="kort full"></div>
+<div class="kort full"> <p>Hello, visitor! Welcome to my website. Here are a few projects of mine for you to look at. I enjoy illustration, 3D-modelling, photography, web and print based graphic design. Lately, I'm also enjoying <a href="https://open.spotify.com/playlist/477WLisWnK7aYmn3hW27w2?si=ee767dbf4fdc4290">this playlist</a>…</p></div>
+<!-- <div class="divider"></div> -->
+<div class="projects">
+    <div class="kort square"> <img src="sss-2.gif" alt=""></div>
+    <div class="kort square"><iframe class="fit" title="vimeo-player" src="https://player.vimeo.com/video/792419622?h=f02df8f587"frameborder="0" ></iframe>
+</div>
+<div class="kort square">
+    <img src="mark.png" alt="">
+</div>
 
 <div class="kort square">
-    <!-- <h1>Adam Arinbjarnarson</h1> -->
-    <!-- <a href="mailto:adaari@icloud.com">adaari@icloud.com</a> -->
+    <img src="fot.png" alt="">
 </div>
-
-<div class="kort square"><iframe class="fit" title="vimeo-player" src="https://player.vimeo.com/video/792419622?h=f02df8f587"frameborder="0" ></iframe>
+<div class="kort square">
+    <img src="rodeo1.png" alt="">
 </div>
-<div class="kort square"></div>
-<div class="kort square"></div>
-<div class="kort square"></div>
-<div class="kort square"></div>
+<div class="kort square">
+    <img src="luftslott-1.gif" alt="">
+</div>
+<!-- <div class="kort square"> <img src="embrace.png" alt=""></div> -->
+<!-- <div class="kort square"> <img src="embrace.png" alt=""></div> -->
+<!-- <div class="kort square"></div> -->
+<!-- <div class="kort square"></div> -->
 
+<!-- <div class="kort square">
+    <p>Adam Arinbjarnarson</p>
+    <a href="mailto:adaari@icloud.com">adaari@icloud.com</a>
+</div> -->
+
+<div class="kort bs">
+    <p>… and my name is Adam Arinbjarnarson. I study visual communication at Beckmans College of Design (Stockholm, Sweden).
+    </p>
+        <!-- <div class="divider"></div> -->
+       <p style="text-align: right;"> email me! <span style="font-family: 'Times New Roman', Times, serif;">→</span> <a href="mailto:adaari@icloud.com">adaari@icloud.com</a></p>
+    
+    
+</div>
+</div>
 </body>
 </html>
