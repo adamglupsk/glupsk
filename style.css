@@ -4,34 +4,46 @@ body {
     background-color: rgb(240, 240, 240);
     display: flex;
     gap: 5vw;
+    flex-wrap: wrap;
 
 }
 
 h1 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     /* white-space: nowrap; */
 }
 
 .kort {
-    padding: 2vw 2vw 10vw 2vw;
+    padding: 2vw 2vw 5vw 2vw;
     /* margin: auto; */
     /* align-self: center; */
     background-color: white;
     display: block-flex;
     width: 30vw;
     border: 1px black solid;
-    border-radius: 1vw;
+    /* border-radius: 1vw; */
+    white-space: wrap;
 }
 
 a
 
-@media (max-width: 100px) {
+@media (max-width: 800px) {
 
     body {
         margin:0;
+        flex-wrap: wrap;
+
     }
     .kort {
           width: 90vw;
-          background-color: aqua;
     }
     }
+
+    @media (max-width: 1000px) {
+
+        body {
+            flex-wrap: wrap;
+    
+        }
+    
+        }
