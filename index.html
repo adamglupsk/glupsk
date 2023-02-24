@@ -55,6 +55,7 @@ img:hover{
     position: absolute;
     align-self: center;
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 1vw;
     border: 1px solid black;
     animation: blink 0.1s linear 1;
@@ -174,7 +175,7 @@ transform: scale(0.8)    }
 
 
 <div class="kort square">
-    <div class="title" style="filter:brightness(1.5)">orionteatern 40 years (print, type & 3d)</div>
+    <div class="title" style="-webkit-backdrop-filter:brightness(1.5); filter:brightness(1.5)">orionteatern 40 years (print, type & 3d)</div>
 
     <iframe class="fit" title="vimeo-player" src="https://player.vimeo.com/video/792419622?h=f02df8f587"frameborder="0" ></iframe>
 </div>
@@ -198,7 +199,7 @@ transform: scale(0.8)    }
 </div>
 
 <div class="kort square">
-    <div class="title" style="backdrop-filter: brightness(2) contrast(0.7) blur(2vw)">'blinda' portrait (photography & post)</div>
+    <div class="title" style="-webkit-backdrop-filter: brightness(2) contrast(0.7) blur(2vw); backdrop-filter: brightness(2) contrast(0.7) blur(2vw)">'blinda' portrait (photography & post)</div>
 
     <img src="ffot.png" alt="">
 </div>
