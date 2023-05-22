@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Arinbjarnarson</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+   
+   body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-wrap: wrap;
+    white-space: wrap;
+    /* color: white; */
+
+}
+
+p {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    /* padding-top: 0; */
+    /* background-color: blue; */
+    font-family: Baskerville-Italic;
+    font-size: 5vw;
+    /* line-height: 1.1; */
+}
+
+a{
+    text-decoration: none;
+    /* padding-left: 5vw; */
+}
+
+img{
+    width:100%;
+    object-fit: cover;
+    position: relative;
+    z-index: -1;
+}
+
+img:hover{
+    z-index: ;
+}
+@keyframes blink {
+    0% {transform:scale(0)}
+    90% {transform:scale(1.1)}
+    100% {transform:scale(1)}
+}
+
+.title{
+    /* z-index: 2; */
+    position: absolute;
+    align-self: center;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1vw;
+    border: 1px solid black;
+    animation: blink 0.1s linear 1;
+}
+.fit {
+    top:0;
+    width: 100%;
+    object-fit: cover;
+    
+}
+
+.projects {
+    gap: 1vw;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+    display: flex;
+    width: 90vw;
+    flex-flow: wrap;
+}
+
+.divider{
+    width: 85vw;
+    border-bottom: 1px black solid;
+    height: 0px;
+    margin: auto;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+.kort {
+    margin: 1vh auto;
+    align-self: center;
+    justify-content: center;
+    display: flex;
+    border: 1px black solid;
+    /* border-radius: 2vw; */
+    /* color: white; */
+    box-shadow: 0px 1vh 5vh rgba(0, 0, 0, 0.019);
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.square {
+    width: 40vw;
+    height: 40vw;
+}
+
+.full {
+    width: 85.5vw;
+    height: fit-content;
+}
+.bs {
+    width: 85.5vw;
+    display: flex;
+    flex-flow: column;
+    height: fit-content;
+}
+.square:hover, .full:hover {
+    transform:scale(1.1);
+    transition-duration: 0.1s;
+    transition-timing-function: ease;
+}
+
+
+
+
+@media (min-width: 1000px) {
+    body{
+        transform-origin: top;
+transform: scale(0.8)    }
+}
+
+    
+    @media (max-width: 600px) {
+
+        body {
+            flex-wrap: wrap;
+            /* background-color: rgb(0, 0, 0); */
+        }
+        .kort {
+            width: 90vw;
+            height: 90vw;
+        }
+
+        .full{
+            height: 92vw;
+        }
+        
+        p{
+            font-size:8vw;
+        }
+        .bs{
+            font-size: 10%;
+            height: 95vw;
+            margin-bottom: 8vh;
+        }
+        .square:hover, .full:hover{
+            transform: scale(1);
+        }
+        }
+        
+
+    </style>
+</head>
+<body>
+
+
+<div class="kort full"> <p>Hello, visitor! Welcome to my website. Here are some of my recent projects. I enjoy working with images, 3D-modelling, web & print based graphic design. I also enjoy coffee and most recently, listening to <a href="https://open.spotify.com/playlist/477WLisWnK7aYmn3hW27w2?si=ee767dbf4fdc4290">this playlist</a>…</p></div>
+<!-- <div class="divider"></div> -->
+<div class="projects">
+    <div class="kort square">
+        
+        <div class="title">identity.rodeo (web & 3d)</div>
+        
+        <img src="sss-2.gif" alt="">
+    </div>
+
+
+<div class="kort square">
+    <div class="title" style="-webkit-backdrop-filter:brightness(1.5) blur(20px); filter:brightness(1.5)">orionteatern 40 years (print, type & 3d)</div>
+
+    <iframe class="fit" title="vimeo-player" src="https://player.vimeo.com/video/792419622?h=f02df8f587"frameborder="0" ></iframe>
+</div>
+
+<div class="kort square">
+    <div class="title">'blinda' portrait (photography & post)</div>
+
+    <img src="mark.png" alt="">
+</div>
+
+<div class="kort square">
+    <div class="title">identity.rodeo (motion & web)</div>
+
+    <img src="rodeo.gif" alt="">
+</div>
+
+<div class="kort square">
+    <div class="title">luftslott (visual identity, editorial, & motion)</div>
+
+    <img src="luftslott-1.gif" alt="">
+</div>
+
+<div class="kort square">
+    <div class="title" style="-webkit-backdrop-filter: brightness(2) contrast(0.7) blur(2vw); backdrop-filter: brightness(2) contrast(0.7) blur(2vw)">'blinda' portrait (photography & post)</div>
+
+    <img src="ffot.png" alt="">
+</div>
+<!-- <div class="kort square"> <img src="embrace.png" alt=""></div> -->
+<!-- <div class="kort square"> <img src="embrace.png" alt=""></div> -->
+<!-- <div class="kort square"></div> -->
+<!-- <div class="kort square"></div> -->
+
+<!-- <div class="kort square">
+    <p>Adam Arinbjarnarson</p>
+    <a href="mailto:adaari@icloud.com">adaari@icloud.com</a>
+</div> -->
+
+<div class="kort bs">
+    <p>… and my name is Adam Arinbjarnarson. I study visual communication at Beckmans College of Design (Stockholm, Sweden).
+    </p>
+        <!-- <div class="divider"></div> -->
+       <p style="text-align: right;"> email me! <span style="font-family: 'Times New Roman', Times, serif;">→</span> <a href="mailto:adaari@icloud.com">adaari@icloud.com</a></p>
+    
+    
+</div>
+</div>
+</body>
+</html>
