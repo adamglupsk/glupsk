@@ -11,10 +11,10 @@
    
    body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    flex-wrap: wrap;
-    white-space: wrap;
+    /* background-color: rgb(255, 255, 255); */
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* white-space: wrap; */
     /* color: white; */
 
 }
@@ -59,6 +59,7 @@ img:hover{
     padding: 1vw;
     border: 1px solid black;
     animation: blink 0.1s linear 1;
+    display: none;
 }
 .fit {
     top:0;
@@ -68,13 +69,14 @@ img:hover{
 }
 
 .projects {
-    gap: 1vw;
+    column-gap: 2vw;
     align-items: center;
     align-content: center;
-    margin: auto;
+    margin: 1vw auto;
     display: flex;
-    width: 90vw;
     flex-flow: wrap;
+    width: 87%;
+
 }
 
 .divider{
@@ -86,21 +88,24 @@ img:hover{
     margin-bottom: 2vh;
 }
 .kort {
-    margin: 1vh auto;
+    margin: 1vw auto;
     align-self: center;
     justify-content: center;
     display: flex;
     border: 1px black solid;
     /* border-radius: 2vw; */
     /* color: white; */
-    box-shadow: 0px 1vh 5vh rgba(0, 0, 0, 0.019);
+    box-shadow: 0px 1vh 5vh rgba(225, 255, 0, 0.203);
     flex-wrap: wrap;
     overflow: hidden;
 }
 
 .square {
-    width: 40vw;
-    height: 40vw;
+    width: 200px;
+    flex: 1;
+    /* justify-self: stretch; */
+    /* align-self: stretch; */
+    height: 20em;
 }
 
 .full {
@@ -125,15 +130,22 @@ img:hover{
 @media (min-width: 1000px) {
     body{
         transform-origin: top;
-transform: scale(0.8)    }
+transform: scale(0.5);
+margin-bottom: -100vh; }
 }
 
     
     @media (max-width: 600px) {
 
         body {
-            flex-wrap: wrap;
+            /* flex-wrap: wrap; */
             /* background-color: rgb(0, 0, 0); */
+        }
+
+        .projects{
+            width: 100vw;
+            display: inline-block;
+            flex-wrap: wrap;
         }
         .kort {
             width: 90vw;
