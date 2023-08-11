@@ -1,238 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adam Arinbjarnarson</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://use.typekit.net/ovn7jba.css">
+<style>
 
-    <style>
-   
-   body {
-    font-family: Arial, Helvetica, sans-serif;
-    /* background-color: rgb(255, 255, 255); */
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* white-space: wrap; */
-    /* color: white; */
-
+@keyframes wait{
+    0% {
+        opacity: 0;
+        line-height: 0;
+    }
+    100% {
+        opacity: 1;
+        line-height: 1.12;
+    }
 }
 
-p {
-    padding-left: 5vw;
-    padding-right: 5vw;
-    /* padding-top: 0; */
-    /* background-color: blue; */
-    font-family: Baskerville-Italic;
-    font-size: 5vw;
-    /* line-height: 1.1; */
-}
-
-a{
-    text-decoration: none;
-    /* padding-left: 5vw; */
-}
-
-img{
-    width:100%;
-    object-fit: cover;
-    position: relative;
-    z-index: -1;
-}
-
-img:hover{
-    z-index: ;
-}
-@keyframes blink {
-    0% {transform:scale(0)}
-    90% {transform:scale(1.1)}
-    100% {transform:scale(1)}
-}
-
-.title{
-    /* z-index: 2; */
-    position: absolute;
-    align-self: center;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 1vw;
-    border: 1px solid black;
-    animation: blink 0.1s linear 1;
-    display: none;
-}
-.fit {
-    top:0;
-    width: 100%;
-    object-fit: cover;
-    
-}
-
-.projects {
-    column-gap: 2vw;
-    align-items: center;
-    align-content: center;
-    margin: 1vw auto;
-    display: flex;
-    flex-flow: wrap;
-    width: 87%;
-
-}
-
-.divider{
-    width: 85vw;
-    border-bottom: 1px black solid;
-    height: 0px;
-    margin: auto;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-}
-.kort {
-    margin: 1vw auto;
-    align-self: center;
-    justify-content: center;
-    display: flex;
-    border: 1px black solid;
-    /* border-radius: 2vw; */
-    /* color: white; */
-    box-shadow: 0px 1vh 5vh rgba(225, 255, 0, 0.203);
-    flex-wrap: wrap;
+    a{
+        color: rgb(255, 255, 255);
+    }
+  body {
+    margin: 0;
     overflow: hidden;
-}
+    color: white;
+    background-color: rgb(255, 255, 255);
+  }
 
-.square {
-    width: 200px;
-    flex: 1;
-    /* justify-self: stretch; */
-    /* align-self: stretch; */
-    height: 20em;
-}
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('scan0.gif')center/cover no-repeat;
+    z-index: -1;
+    /* transform: scale(-1); */
+  }
 
-.full {
-    width: 85.5vw;
-    height: fit-content;
-}
-.bs {
-    width: 85.5vw;
+  .foreground {
+    position: fixed;
     display: flex;
-    flex-flow: column;
-    height: fit-content;
-}
-.square:hover, .full:hover {
-    transform:scale(1.1);
-    transition-duration: 0.1s;
-    transition-timing-function: ease;
-}
-
-
-
-
-@media (min-width: 1000px) {
-    body{
-        transform-origin: top;
-transform: scale(0.5);
-margin-bottom: -100vh; }
-}
-
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 2vh 0vw 0vw 0vw;
+    position: absolute  ;
+    z-index: 2;
+    text-shadow: 0px 2px 3px rgb(0, 0, 0);
     
-    @media (max-width: 600px) {
+  }
 
-        body {
-            /* flex-wrap: wrap; */
-            /* background-color: rgb(0, 0, 0); */
-        }
+  .title {
+    z-index: -2;
+    /* padding-top: 10vh; */
+    text-align: center;
+    font-size: 20vh;
+    font-family: "nimbus-sans-condensed", sans-serif;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.495);
+    line-height: 0.6;
+    color: rgb(255, 255, 255)
+  }
 
-        .projects{
-            width: 100vw;
-            display: inline-block;
-            flex-wrap: wrap;
-        }
-        .kort {
-            width: 90vw;
-            height: 90vw;
-        }
+  .title:hover {
+    color:black;
+  }
 
-        .full{
-            height: 92vw;
-        }
-        
-        p{
-            font-size:8vw;
-        }
-        .bs{
-            font-size: 10%;
-            height: 95vw;
-            margin-bottom: 8vh;
-        }
-        .square:hover, .full:hover{
-            transform: scale(1);
-        }
-        }
-        
+  .foreground > div {
+    
+    flex: 1 1 calc(25% - 10px);
+    /* background-color: rgba(154, 154, 154, 0.995); */
+    /* border: 1px solid #ddd; */
+    text-align: left;
+    max-width: 11vw;
 
-    </style>
+    /* box-shadow: 0 2px 10px rgb(0, 0, 0); */
+    /* border-radius: 2vh; */
+    overflow: auto;
+    padding-left: 2vw;
+    padding-bottom: 3vh;
+    animation: wait 1s;
+    
+  }
+  .foreground > div:hover{
+    color: rgb(0, 0, 0);
+    }
+
+  .corner{
+position: absolute;
+bottom: 2vh;
+right: 10px;
+font-size: medium;
+z-index: 4;
+text-shadow: 0px 2px 5px rgb(0, 0, 0);
+
+  }
+</style>
 </head>
 <body>
-
-
-<div class="kort full"> <p>Hello, visitor! Welcome to my website. Here are some of my recent projects. I enjoy working with images, 3D-modelling, web & print based graphic design. I also enjoy coffee and most recently, listening to <a href="https://open.spotify.com/playlist/477WLisWnK7aYmn3hW27w2?si=ee767dbf4fdc4290">this playlist</a>…</p></div>
-<!-- <div class="divider"></div> -->
-<div class="projects">
-    <div class="kort square">
-        
-        <div class="title">identity.rodeo (web & 3d)</div>
-        
-        <img src="sss-2.gif" alt="">
-    </div>
-
-
-<div class="kort square">
-    <div class="title" style="-webkit-backdrop-filter:brightness(1.5) blur(20px); filter:brightness(1.5)">orionteatern 40 years (print, type & 3d)</div>
-
-    <iframe class="fit" title="vimeo-player" src="https://player.vimeo.com/video/792419622?h=f02df8f587"frameborder="0" ></iframe>
-</div>
-
-<div class="kort square">
-    <div class="title">'blinda' portrait (photography & post)</div>
-
-    <img src="mark.png" alt="">
-</div>
-
-<div class="kort square">
-    <div class="title">identity.rodeo (motion & web)</div>
-
-    <img src="rodeo.gif" alt="">
-</div>
-
-<div class="kort square">
-    <div class="title">luftslott (visual identity, editorial, & motion)</div>
-
-    <img src="luftslott-1.gif" alt="">
-</div>
-
-<div class="kort square">
-    <div class="title" style="-webkit-backdrop-filter: brightness(2) contrast(0.7) blur(2vw); backdrop-filter: brightness(2) contrast(0.7) blur(2vw)">'blinda' portrait (photography & post)</div>
-
-    <img src="ffot.png" alt="">
-</div>
-<!-- <div class="kort square"> <img src="embrace.png" alt=""></div> -->
-<!-- <div class="kort square"> <img src="embrace.png" alt=""></div> -->
-<!-- <div class="kort square"></div> -->
-<!-- <div class="kort square"></div> -->
-
-<!-- <div class="kort square">
-    <p>Adam Arinbjarnarson</p>
-    <a href="mailto:adaari@icloud.com">adaari@icloud.com</a>
-</div> -->
-
-<div class="kort bs">
-    <p>… and my name is Adam Arinbjarnarson. I study visual communication at Beckmans College of Design (Stockholm, Sweden).
-    </p>
-        <!-- <div class="divider"></div> -->
-       <p style="text-align: right;"> email me! <span style="font-family: 'Times New Roman', Times, serif;">→</span> <a href="mailto:adaari@icloud.com">adaari@icloud.com</a></p>
     
-    
+  <div class="background"></div>
+  <div class="foreground">
+    <div>The Head Hurts but the Heart Knows the Truth</div>
+    <div>Lars Mogensen, Martin Wicklin, Lill Lindfors</div>
+    <div>Scener ur ett äktenskap and why swedish in the 70's sounds beautiful</div>
+    <div>Red wine, or why I can't drink it</div>
+    <div>Ambient music</div>
+    <div>Times and how amazing a default font it is.</div>
+    <div>Liv Ullman, rosy cheeks</div>
+    <div>X-men comics and why I can't find the issues I owned as a child</div>
+    <div>Brown Noise, What Måns is looking at</div>
+    <div>Jack in Stockholm, Jack in Löa</div>
+    <div>Why the straight version always looks better?</div>
+    <div>BMI is apparently useful after all?</div>
+    <div>Copenhagen Metro stairs</div>
+    <div>Is no one gay in Göteborg?</div>
+    <div>Projection mapping?</div>
+    <div>Graphic design is not a valid profession </div>
+    <div>GPT 4.0 $20/month? </div>
+    <div>How do I start vlogging?</div>
+    <div>Silk screen printing methods, charcoal and markers.</div>
+    <div>A.G. Cook - <a href="https://soundcloud.com/dismagazine/a-g-cook-personal-computer?si=14a5fe18bb6a431bbd2535ff6bbdf45e&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">Personal Computer Mix</a></div>
+    <div>Perfume Genius, Perfume – Britney Spears </div>
+    <div>Religious symbols, symmetry, iconography </div>
+    <div>Impulse control, or having none</div>
+    <div>Binge, gluttony, sugar and alcohol</div>
+    <div>Ironic visual communication is dreadful</div>
+    <div>Affirmations aren't interesting</div>
+
+
 </div>
-</div>
+  <div class="title">WHAT <br> IS <br>ADAM<br> THINKING <br>ABOUT <br> RIGHT <br> NOW <br>?</div>
+  <div class="corner">Last thought documented at 00:44 12.08.23 </div>
 </body>
 </html>
