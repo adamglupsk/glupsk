@@ -128,10 +128,21 @@ padding: 1vw;
     /* font-size: 10vw;  */
   }
 }
+
+.gradient {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(white,white, white,black);
+  mix-blend-mode: multiply;
+  /* opacity: 0.5; */
+}
 </style>
 </head>
 <body>
-    
+    <div class="gradient"></div>
   <div class="background"></div>
   <div class="foreground">
     <div> <a href="https://open.spotify.com/album/3g16U5C8SE3xYybOaqF94x?si=i7ZVnjU8SCiIgBvc5rgBsQ"> The Head Hurts but the Heart Knows the Truth</a></div>
