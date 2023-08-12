@@ -33,6 +33,7 @@
     width: 100%;
     height: 100%;
     background: url('scan0.gif')center/cover no-repeat;
+    background-color: black;
     z-index: -1;
     /* transform: scale(-1); */
   }
@@ -87,21 +88,25 @@ right: 10px;
 font-size: medium;
 z-index: 4;
 text-shadow: 0px 2px 5px rgb(0, 0, 0);
+/* background-color: rgba(0, 0, 0, 0.293); */
+text-shadow: 0px 0px 25px black, 0px 0px 25px black, 0px 0px 10px black;
+padding: 1vw;
 
   }
 
   @media only screen and (max-width: 600px) {
     .foreground{
-      padding: 5vw;
+      padding: 8vh 5vw 5vw 5vw;
     }
   .foreground > div {
     flex: 1 1 calc(40% - 1vw);
-    text-shadow: 0px 4px 8px rgb(0, 0, 0);
+    text-shadow: 0px 1px 10px rgb(0, 0, 0), 0px 4px 10px rgb(0, 0, 0);
     /* background-color: rgb(255, 88, 42); */
   }
   .title {
-    color: rgb(193, 193, 193);
-    text-shadow: 0px 2px 5px rgb(0, 0, 0);
+    color: rgb(237, 237, 237);
+    text-shadow: 0px 2px 5px rgb(4, 4, 4),;
+    /* font-size: 10vw;  */
   }
 }
 </style>
@@ -136,10 +141,13 @@ text-shadow: 0px 2px 5px rgb(0, 0, 0);
     <div>Binge, gluttony, sugar and alcohol</div>
     <div>Ironic visual communication is dreadful</div>
     <div>Affirmations aren't interesting</div>
+    <div>Tiffany and Maja</div>
+    <div>What jobs are nice?</div>
+    <div>Where are the interesting design studios in Stockholm?</div>
 
 
 </div>
   <div class="title">WHAT <br> IS <br>ADAM<br> THINKING <br>ABOUT <br> RIGHT <br> NOW <br>?</div>
-  <div class="corner">Last thought documented at 00:44 12.08.23 </div>
+  <div class="corner">Thought at 12:05 12.08.23 </div>
 </body>
 </html>
