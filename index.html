@@ -38,11 +38,11 @@
   }
 
   .foreground {
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 2vh 0vw 0vw 0vw;
+    padding: 2vh 2vw 0vw 0vw;
     position: absolute  ;
     z-index: 2;
     text-shadow: 0px 2px 3px rgb(0, 0, 0);
@@ -66,15 +66,11 @@
 
   .foreground > div {
     
-    flex: 1 1 calc(25% - 10px);
+    flex: 1 1 calc(10% - 10px);
     /* background-color: rgba(154, 154, 154, 0.995); */
     /* border: 1px solid #ddd; */
     text-align: left;
-    max-width: 11vw;
-
-    /* box-shadow: 0 2px 10px rgb(0, 0, 0); */
-    /* border-radius: 2vh; */
-    overflow: auto;
+    /* max-width: 11vw; */
     padding-left: 2vw;
     padding-bottom: 3vh;
     animation: wait 1s;
@@ -95,9 +91,17 @@ text-shadow: 0px 2px 5px rgb(0, 0, 0);
   }
 
   @media only screen and (max-width: 600px) {
-  body {
-   color: rgb(255, 0, 242);
-   flex: 1 1 calc(50% - 10px);
+    .foreground{
+      padding: 5vw;
+    }
+  .foreground > div {
+    flex: 1 1 calc(40% - 1vw);
+    text-shadow: 0px 4px 8px rgb(0, 0, 0);
+    /* background-color: rgb(255, 88, 42); */
+  }
+  .title {
+    color: rgb(193, 193, 193);
+    text-shadow: 0px 2px 5px rgb(0, 0, 0);
   }
 }
 </style>
@@ -106,22 +110,22 @@ text-shadow: 0px 2px 5px rgb(0, 0, 0);
     
   <div class="background"></div>
   <div class="foreground">
-    <div>The Head Hurts but the Heart Knows the Truth</div>
+    <div> <a href="https://open.spotify.com/album/3g16U5C8SE3xYybOaqF94x?si=i7ZVnjU8SCiIgBvc5rgBsQ"> The Head Hurts but the Heart Knows the Truth</a></div>
     <div>Lars Mogensen, Martin Wicklin, Lill Lindfors</div>
     <div>Scener ur ett äktenskap and why swedish in the 70's sounds beautiful</div>
     <div>Red wine, or why I can't drink it</div>
-    <div>Ambient music</div>
+    <div>Boring ambient music</div>
     <div>Times and how amazing a default font it is.</div>
     <div>Liv Ullman, rosy cheeks</div>
-    <div>X-men comics and why I can't find the issues I owned as a child</div>
-    <div>Brown Noise, What Måns is looking at</div>
+    <div>X-men comic books, why I can't find the issues I owned as a child</div>
+    <div>Brown Noise <br> What catches Måns' eye? </div>
     <div>Jack in Stockholm, Jack in Löa</div>
     <div>Why the straight version always looks better?</div>
     <div>BMI is apparently useful after all?</div>
-    <div>Copenhagen Metro stairs</div>
-    <div>Is no one gay in Göteborg?</div>
+    <div>Copenhagen Metro many stairs</div>
+    <div>Are there no gay men in Göteborg?</div>
     <div>Projection mapping?</div>
-    <div>Graphic design is not a valid profession </div>
+    <div>Graphic design is not a profession </div>
     <div>GPT 4.0 $20/month? </div>
     <div>How do I start vlogging?</div>
     <div>Silk screen printing methods, charcoal and markers.</div>
