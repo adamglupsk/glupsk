@@ -140,23 +140,42 @@ padding: 1vw;
   mix-blend-mode: multiply;
   /* opacity: 0.5; */
 }
-.sticker{
+.sticker> div{
     position: absolute;
-    width: 20%;
-    height: 6%;
+    width: 20vh;
+    height: 9vh;
     z-index: 7;
-    background:url(thought.png) no-repeat;
     background-size: contain;
     /* background-color: blue; */
-    bottom: 20vh;
-    right: 5vw;
-    transform: rotate(-8deg);
   }
+
+ .one {    background:url(thought.png) no-repeat;
+  bottom: 20vh;
+    right: 5vw;
+    transform: rotate(
+      8deg);
+}
+ .two {    background:url(unique.png) no-repeat;
+  bottom: 40vh;
+    left: 10vw;
+    transform: rotate(-8deg);
+}
+.three {
+  background:url(real.png) no-repeat;
+  top: 30vh;
+    right: 2vw;
+    transform: rotate(45deg);
+}
     
 </style>
 </head>
 <body>
-  <div class="sticker"></div>
+  <div class="sticker">
+<div class="one"></div>
+<div class="two"></div>
+<div class="three"></div>
+
+  </div>
     <div class="gradient"></div>
   <div class="background"></div>
   <div class="foreground">
