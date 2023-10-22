@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #animation-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* .plane {
+            position:absolute;
+            z-index: 1;
+        } */
+        .head{
+            padding: 4vw 4vw 0vw 4vw;
+            font-size: 12vw;
+            font-family: Helvetica, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -1vw;
+            line-height: 90%;
+            margin: 0;
+        }
+        .hr{
+            text-align: right;
+            /* color: rgb(219, 26, 0); */
+        }
+
+        .sec{
+            /* text-indent: 2rem;       */
+            padding-left: 25vw;
+         }
+
+        .yellow-div {
+            position: absolute;
+            background-color: yellow;
+            width: 7rem;
+            height: 7em;
+            padding: 1rem;
+            line-height: 140%;
+            box-shadow: 0rem 0.3rem 0.2rem rgba(0, 0, 0, 0.553);
+            z-index: 2;
+            transform: rotate(0.5deg);
+        }
+        .pi {
+            position: absolute;
+            background-color: yellow;
+            bottom: 1rem;
+            right: 1rem;
+            /* 2rem är padding! för att testa bild! */
+            width: 7rem;
+            height: 7em;
+            padding: 1rem;
+            line-height: 140%;
+            box-shadow: 0rem 0.3rem 0.2rem rgba(0, 0, 0, 0.553);
+            z-index: 4;
+            overflow: scroll;
+            line-break: anywhere;
+            /* transform: rotate(1deg); */
+        }
+        img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            mix-blend-mode: multiply;
+            filter:  sepia(0%) saturate(2000%) hue-rotate(0deg);
+
+            }
+        .full{
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right 0;
+            background-color: rgb(4, 192, 167);
+            mix-blend-mode: multiply;
+            z-index: 4;
+        }
+span{
+    /* color:red; */
+    font-family: helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: -0.03rem;
+}
+        
+    </style>
+    <title>Animation Layer</title>
+</head>
+<body>
+    <div id="animation-layer"></div>
+    <div class="plane">
+        <!-- <div class="full"></div> -->
+    <div class="head">TYDA <br>Sverige</div>
+    <div class="head hr">Svensk <br>Identitet <br> Historia</div>
+    <div class="head sec">VI <br>DEM</div>
+    <div class="head hr">kultur <br>grund <br> själ </div>
+    <div class="head">förstå <br>folkhemmet</div>
+    <div class="pi">
+        <!-- <img src="https://www.color-meanings.com/wp-content/uploads/Black-and-white-paint-swirl-1024x683.jpeg" alt=""> -->
+        <!-- Detta är <span>tyda</span>.  <br> -->
+        Kring varje beståndsdel finns oändliga tolkningsmöjligheter och konnotationer.
+    </div>
+</div>
+    <script>
+        // Define an array of sentences to choose from.
+        const sentences = [
+            "Detta handlar om folkhemmet.",
+            "Välkommen till Tyda",
+            "Är det förbjudet?",
+            "Vem?",
+            "Patina, rost",
+            "Adam Arinbjarnarson",
+            "Maja Ringsäter",
+            "Måns Horning",
+            "Beckmans designhögskola",
+            "Vandalorum",
+            "Per Albin Hansson",
+            "Sophia Wood",
+            "Oscar Guermouche",
+            "Sverige",
+            "Svensk",
+            "Nysta",
+            "Förstå",
+            "SD",
+            "Nationalromantik",
+            "Lotta Lundgren",
+            "Varför älskar svenskar Palmemordet?",
+            "Vart fan ligger folkhemmet?",
+            // Add more sentences here
+        ];
+
+        // Function to create a random yellow div with text.
+        function createRandomYellowDiv() {
+            const div = document.createElement("div");
+            div.classList.add("yellow-div");
+            div.style.left = `${Math.random() * (window.innerWidth - 200)}px`; // Adjusted for 10rem square
+            div.style.top = `${Math.random() * (window.innerHeight - 200)}px`; // Adjusted for 10rem square
+            // div.textContent = sentences[Math.floor(Math.random() * sentences.length)]; // Random sentence
+            document.getElementById("animation-layer").appendChild(div);
+        
+            // Remove the div after a certain time.
+            setTimeout(() => {
+                div.remove();
+            }, 10000); // Adjust the time (in milliseconds) as needed
+        }
+
+        // Function to create yellow divs at regular intervals.
+        function createYellowDivsAtIntervals() {
+            setInterval(createRandomYellowDiv, 800); // Adjust the interval (in milliseconds) as needed
+        }
+
+        // Start the animation.
+        createYellowDivsAtIntervals();
+    </script>
+</body>
+</html>
