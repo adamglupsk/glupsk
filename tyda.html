@@ -13,11 +13,11 @@
             pointer-events: none;
         }
 
-        .plane {
+        /* .plane {
             position:absolute;
             width: 100vw;
             z-index: 1;
-        }
+        } */
         .head{
             padding: 4vw 4vw 0vw 4vw;
             font-size: 12vw;
@@ -150,12 +150,12 @@ span{
             // Remove the div after a certain time.
             setTimeout(() => {
                 div.remove();
-            }, 10000); // Adjust the time (in milliseconds) as needed
+            }, 1500); // Adjust the time (in milliseconds) as needed
         }
 
         // Function to create yellow divs at regular intervals.
         function createYellowDivsAtIntervals() {
-            setInterval(createRandomYellowDiv, 800); // Adjust the interval (in milliseconds) as needed
+            setInterval(createRandomYellowDiv, 400); // Adjust the interval (in milliseconds) as needed
         }
 
         // Start the animation.
