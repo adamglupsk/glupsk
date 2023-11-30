@@ -6,30 +6,117 @@
 <link rel="stylesheet" href="https://use.typekit.net/ovn7jba.css">
 <style>
 body{
-  font-size: 8.5vw;
+  font-size: 8.2vw;
   font-family: Helvetica, sans-serif;
   text-align: right;
-  /* padding: 2vw; */
-  /* margin: 0px; */
+  padding: 2vw;
+  margin: 0px;
   display: flex;
-  align-items: top;
+  align-items: center;
   justify-content: center;
   
 }
 .text {
-  top: 0;
-  position: absolute;
+  /* top: 0; */
+  /* position: absolute; */
   /* color: red; */
-  width: 97;
-  height: 100vmax;
+  width: 80vmax;
+  /* height: 100vmax; */
+  /* background-color: blue; */
+  /* align-self: center; */
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
 span {
-  -webkit-text-decoration: underline solid;
   text-decoration: underline solid;
+  }
+  /* PETERS WEBSAVER-KOD FRÅN GLITCH */
+ html.idle #overlay {
+    opacity:1;
+      /* backdrop-filter: blur(100px); */
+    /* transition: opacity 1s ease-in-out; */
+    padding: 0;
+    bottom:0;
+    left:0;
+    opacity:1;
+    /* width: 100vw; */
+    /* pointer-events:none; */
+    /* position: fixed; */
+    overflow-y: hidden;
+    overflow-x: hidden;
+  } 
+    
+  #overlay {
+    padding: 0;
+    bottom:0;
+    left:0;
+    opacity:0;
+    pointer-events:none;
+    position:fixed;
+    right:0;
+    top:0;
+    transition:opacity .2s ease-in-out;
+    z-index:2;
+    /* width: 100vw; */
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  #overlay::-webkit-scrollbar {
+  display: none;
 }
+html.idle #overlay::-webkit-scrollbar {
+  display: none;
+}
+.ramen::-webkit-scrollbar {
+  display: none;
+}
+
+  .ramen {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+  width: 100vw;
+  height: 100vh;
+  border:0;
+  overflow-y: hidden;
+    overflow-x: hidden;
+}
+  
 </style>
 </head>
 <body>
+  <script>
+    (function() {
+        const interval = 0;
+        const timeout = 1;
+        let idleCounter = 0;
+        window.onload = document.onmousemove = document.onkeypress = function() {
+          idleCounter = 0;
+          document.documentElement.classList.remove('idle');
+        };
+        window.setInterval(function() {
+          if (++idleCounter >= timeout) {
+            document.documentElement.classList.add('idle');
+            idleCounter = 0;
+          }
+        }, interval);
+      })();
+      
+      
+      function visaSvar() {
+        event.preventDefault();
+        const allaSvar = ["index.html","websave.html"];
+        const randomSvar = allaSvar[getRandomInt(allaSvar.length)];
+        location.assign(randomSvar);
+      }
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
+      </script>
+  <div id="overlay"><iframe src="websave.html" class="ramen"></iframe></div>
+    </div>
   <div class="text">
   portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio <span>adam</span> portfolio portfolio portfolio portfolio portfolio <span>arinbjarnarson</span> portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio portfolio</div>
 </body>
