@@ -98,12 +98,21 @@ span{
 <body>
     <div id="animation-layer"></div>
     <div class="plane">
-        <!-- <div class="full"></div> -->
     <div class="head">TYDA <br>Sverige</div>
-    <div class="head hr">Svensk <br>Identitet <br> Historia</div>
+    <di v class="head hr">Svensk <br>Identitet <br> Historia</div>
     <div class="head sec">VI <br>DEM</div>
     <div class="head hr">kultur <br>grund <br> själ </div>
     <div class="head">förstå <br>folkhemmet</div>
+        <div class="head">TYDA <br>Sverige</div>
+        <div class="head hr">Svensk <br>Identitet <br> Historia</div>
+        <div class="head sec">VI <br>DEM</div>
+        <div class="head hr">kultur <br>grund <br> själ </div>
+        <div class="head">förstå <br>folkhemmet</div>
+            <div class="head">TYDA <br>Sverige</div>
+            <div class="head hr">Svensk <br>Identitet <br> Historia</div>
+            <div class="head sec">VI <br>DEM</div>
+            <div class="head hr">kultur <br>grund <br> själ </div>
+            <div class="head">förstå <br>folkhemmet</div>
     <div class="pi">
         <!-- <img src="https://www.color-meanings.com/wp-content/uploads/Black-and-white-paint-swirl-1024x683.jpeg" alt=""> -->
         <!-- Detta är <span>tyda</span>.  <br> -->
@@ -160,6 +169,24 @@ span{
 
         // Start the animation.
         createYellowDivsAtIntervals();
+
+         // Funktion för att upprepa .head-elementen vid scroll
+    function addMoreHeads() {
+        const container = document.getElementById('animation-layer');
+        const headElements = container.querySelectorAll('.head');
+
+        headElements.forEach((head) => {
+            const clone = head.cloneNode(true);
+            container.appendChild(clone);
+        });
+    }
+
+    // Lägg till en "scroll" -lyssnare för att anropa addMoreHeads när användaren når botten av sidan
+    window.addEventListener('scroll', function() {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            addMoreHeads();
+        }
+    });
     </script>
 </body>
 </html>
