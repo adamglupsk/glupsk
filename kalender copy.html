@@ -58,7 +58,7 @@
     position: absolute;
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 4px;
     padding: 2vw 2vw 2vw 2vw;
     position: absolute  ;
     z-index: 2;
@@ -70,21 +70,23 @@
   .title {
     z-index: 3;
     text-align: center;
-    font-size: 20vh;
+    font-size: 15vh;
     font-family: "nimbus-sans-condensed", sans-serif;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.337);
     line-height: 0.6;
     color: rgb(255, 255, 255);
     position: fixed;
+    -webkit-text-stroke: 1px black;
+    padding-bottom: 20vh;
 right:0;
 left:0;    
 align-self: center;   
  /* animation: blink 10s infinite step-end; */
   }
-
+/* 
   .title:hover {
     color:red;
-  }
+  } */
   a:hover {
     color: blue;
   }
@@ -96,13 +98,14 @@ align-self: center;
     /* border: 1px solid #ddd; */
     text-align: left;
     /* max-width: 11vw; */
-    padding: 0vw 3vh 3vh 0vh;
+    padding: 0.5vw 3vh 3vh 0.5vh;
     animation: wait linear 0.7s forwards;
     font-family: arial;    
+    box-shadow: 0px -10px 15px#00000014;
+    /* border-top:1px black solid; */
+
   }
-  .foreground > div:hover{
-    color: rgb(255, 0, 0);
-    }
+ 
 
   .corner{
 position: fixed;
@@ -136,25 +139,25 @@ font-family: arial;
     opacity: 0;
   }
 
- .one {    background:url(thought.png) no-repeat;
+ .one {    background:url(pen.png) no-repeat;
   bottom: 10vh;
     right: 5vw;
     transform: rotate(
       8deg);
-      animation: wait 1s 18s forwards step-end;
+      animation: wait 1s 3s forwards step-end;
 }
- .two {    background:url(unique.png) no-repeat;
+ .two {    background:url(druva.png) no-repeat;
   bottom: 40vh;
     left: 10vw;
     transform: rotate(-8deg);
-    animation: wait 1s 20s forwards step-end;
+    animation: wait 1s 1s forwards step-end;
 }
 .three {
-  background:url(real.png) no-repeat;
+  background:url(mygga.png) no-repeat;
   top: 15vh;
     left: 60vw;
     transform: rotate(45deg);
-    animation: wait 1s 30s forwards step-end;
+    animation: wait 1s 2s forwards step-end;
 }
 @media only screen and (min-width: 1000px) {
     body{
@@ -172,19 +175,26 @@ max-width: 70vw;
 }
 @media only screen and (max-width: 600px) {
     .foreground{  
-        flex: 1 2 calc(30% - 1vw);
+        flex: 1 1 calc(10% - 1vw);
 
     }
   .foreground > div {
     padding: 2vh;
+    hyphens: auto;
     font-family: arial;
     /* text-shadow: 0px 1px 10px rgb(0, 0, 0), 0px 4px 10px rgb(0, 0, 0); */
     /* background-color: rgb(255, 88, 42); */
   }
   .title {
-    color: rgb(237, 237, 237);
+    color: rgb(255, 255, 255);
     text-shadow: 0px 100px 5px rgb(4, 4, 4),;
-    font-size: 40vw; 
+    font-size: 30vw;
+    /* top: 20vh; */
+    left: 0vh;
+    position: fixed;
+    right: 0px;
+    transform-origin: center;
+    transform:rotate(90deg);
   }
   .sticker> div{
     position: absolute;
@@ -209,50 +219,45 @@ max-width: 70vw;
     <div class="gradient"></div>
   <!-- <div class="background"></div> -->
   <div class="foreground">
-    <div> <a href="https://open.spotify.com/album/3g16U5C8SE3xYybOaqF94x?si=i7ZVnjU8SCiIgBvc5rgBsQ"> The Head Hurts but the Heart Knows the Truth</a></div>
-    <div>Lars Mogensen, Martin Wicklin, Lill Lindfors</div>
-    <div>Scener ur ett äktenskap and why swedish in the 70's sounds beautiful</div>
-    <div>Red wine, or why I can't drink it</div>
-    <div>Boring ambient music</div>
-    <div>Times and how amazing a default font it is.</div>
-    <div>Liv Ullman, rosy cheeks</div>
-    <div>X-men comic books, why I can't find the issues I owned as a child</div>
-    <div>Brown Noise, <br> What catches Måns' eye? </div>
-    <div>Jack in Stockholm, Jack in Löa</div>
+    <div>Hello Visitor</div>
+    <div>Adam Arinbjarnarson</div>
+    <div>Beckmans College of Design, Stockholm</div>
+    <div>Graphic designer</div>
+    <div>(Listen) <a href="https://open.spotify.com/playlist/4IEmGoScXYik4Tmjrnys7r?si=c5ed60908bd44013">This Playlist: Övning</a></div>
+    <div>Neue Haas…?</div>
+    <div style="background:url(krona.png) no-repeat; background-size: cover; font-size: large;">Collecting, magazine</div>
+    <div>3D Artist, I suppose</div>
+    <div>Brown Noise, <br> What catches my eye? </div>
+    <div>Amsterdam asthetic</div>
     <div>Why the straight version always looks better?</div>
-    <div>BMI is apparently useful after all?</div>
+    <div> <a href="https://open.spotify.com/album/3g16U5C8SE3xYybOaqF94x?si=i7ZVnjU8SCiIgBvc5rgBsQ"> The Head Hurts but the Heart Knows the Truth</a></div>
+    <div><i>Quick apply</i> in InDesign</div>
     <div>Copenhagen Metro / its many stairs</div>
-    <div>Are there no gay men in Göteborg?</div>
-    <div>Projection mapping?</div>
-    <div>Graphic design is not a profession </div>
-    <div>GPT 4.0 $20/month? </div>
-    <div>How do I start vlogging?</div>
+    <div></div>
+    <div>Resolume Arena</div>
+    <div>Call me +46707871567</div>
+    <div>GPT 3.5 i getting dumb</div>
+    <div>The genre is<i> not</i> dead.</div>
     <div>Silk screen printing methods, charcoal and markers.</div>
     <div>A.G. Cook - <a href="https://soundcloud.com/dismagazine/a-g-cook-personal-computer?si=14a5fe18bb6a431bbd2535ff6bbdf45e&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">Personal Computer Mix</a></div>
-    <div>Perfume Genius, Perfume – Britney Spears </div>
+    <div>Vegyn, Fever Ray – The Knife </div>
     <div>Religious symbols, symmetry, iconography </div>
     <div>Impulse control, or having none</div>
-    <div>Binge, gluttony, sugar and alcohol</div>
-    <div>Ironic visual communication is dreadful</div>
-    <div>Affirmations aren't interesting</div>
+    <div>Eric Hu <br>branding…?</div>
+    <div>Why?</div>
     <div>Tiffany and Maja</div>
     <div>What jobs are nice?</div>
     <div>Where are the interesting design studios in Stockholm?</div>
     <div>Noname and the new album's cover</div>
     <div>Who likes a mockup?</div>
-    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
-    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
-    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
-    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
-    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
-    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
+    <div>Blender 4.0; Shift+A</div>
     <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
     <div>Noname and the new album's cover</div>
     <div>Who likes a mockup?</div>
     
 
 </div>
-  <!-- <div class="title">WHAT <br> IS <br>ADAM<br> THINKING <br>ABOUT <br> RIGHT <br> NOW <br>?</div> -->
-  <div class="corner">Thought at 12:05 12.08.23 </div>
+  <div class="title">THINKING <br>/ <br> WORKING </div>
+  <div class="corner"><a href="http://instagram.com/adamglupsk">@adamglupsk</a> </div>
 </body>
 </html>
