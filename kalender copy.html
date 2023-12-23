@@ -36,12 +36,11 @@
 }
 
     a{
-        /* color: #694747; */
+        color: #ff00ea;
     }
   body {
     margin: 0;
     color: black;
-    background-color: white;
   }
 
   .background {
@@ -64,9 +63,8 @@
     position: absolute  ;
     z-index: 2;
     text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.287);
-        /* overflow: hidden; */
+        overflow-x: hidden;
 
-    
   }
 
   .title {
@@ -158,7 +156,20 @@ font-family: arial;
     transform: rotate(45deg);
     animation: wait 1s 30s forwards step-end;
 }
+@media only screen and (min-width: 1000px) {
+    body{
+        display: flex;
+        justify-content: center;
+    }
+.foreground {
+flex: auto;   
+max-width: 70vw;
+    align-self: center;
+    justify-content: center;
+    position: relative;
 
+    }
+}
 @media only screen and (max-width: 600px) {
     .foreground{  
         flex: 1 2 calc(30% - 1vw);
@@ -230,7 +241,15 @@ font-family: arial;
     <div>Noname and the new album's cover</div>
     <div>Who likes a mockup?</div>
     <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
-
+    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
+    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
+    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
+    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
+    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
+    <div>Alex G - Dsu, <br> Four Tet - Sixteen Oceans <br> Frou Frou - Details </div>
+    <div>Noname and the new album's cover</div>
+    <div>Who likes a mockup?</div>
+    
 
 </div>
   <!-- <div class="title">WHAT <br> IS <br>ADAM<br> THINKING <br>ABOUT <br> RIGHT <br> NOW <br>?</div> -->

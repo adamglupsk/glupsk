@@ -158,7 +158,20 @@ font-family: arial;
     transform: rotate(45deg);
     animation: wait 1s 30s forwards step-end;
 }
+@media only screen and (min-width: 1000px) {
+    body{
+        display: flex;
+        justify-content: center;
+    }
+.foreground {
+flex: auto;   
+max-width: 70vw;
+    align-self: center;
+    justify-content: center;
+    position: relative;
 
+    }
+}
 @media only screen and (max-width: 600px) {
     .foreground{  
         flex: 1 2 calc(30% - 1vw);
