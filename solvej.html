@@ -9,15 +9,20 @@
 
 
     <style>
-        @keyframes wait{
+        @keyframes opacity{
     0% {
         opacity: 0;
-        transform:scaleY(0%);
+        /* transform:scaleY(0%); */
     }
     100% {
         opacity: 1;
-        transform:scaleY(100%);
+        /* transform:scaleY(100%); */
     }
+}
+
+@keyframes stroke {
+    0%{-webkit-text-stroke-width: 10px;}
+    100%{-webkit-text-stroke-width: 0.75px;}
 }
         @keyframes scale {
             0%{
@@ -64,8 +69,10 @@
     top: calc(5vw + 7vh);
     z-index: -100;
     transform-origin: top;
+    opacity: 0;
+    /* transform: scaleY(0%); */
     /* animation: snurr 2s infinite linear; */
-    /* animation: scale 1s 0s reverse; */
+    animation: opacity 1s 0s forwards;
 }
 
 #list{
@@ -78,8 +85,6 @@
     transform-origin: top;
     transform: scaleY(0);
     animation: scale 1s 1s reverse forwards;
-    /* padding-bottom: 10vh; */
-    /* background-blend-mode: difference; */
 }
 ul, ol, p{
     line-height: 110%;
@@ -93,8 +98,12 @@ ul, ol, p{
 p{
     text-transform: lowercase;
     text-align: right;
+    align-self: right;
+    justify-self: right;
     letter-spacing: 90%;
     color: rgb(13, 151, 0);
+    /* width: fit-content; */
+    /* border: 1rem rgb(13, 151, 0) solid; */
 }
 
 
@@ -192,6 +201,6 @@ background-image: url(fana.png);
         
         
     </div>
-    <!-- <div class="bild ett"></div> -->
+    <div class="bild ett"></div>
 </body>
 </html>
