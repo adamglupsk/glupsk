@@ -63,10 +63,10 @@
     color:rgb(251, 255, 0);
     /* text-shadow:rgb(0, 0, 0) 0px 0px 10px; */
     position: fixed;
-    margin-top: -10vh;
+    /* margin-top: -20vw; */
     left: 0;
     right: 0;
-    top: calc(5vw + 7vh);
+    top: 8vw;
     z-index: -100;
     transform-origin: top;
     opacity: 0;
@@ -87,12 +87,12 @@
     animation: scale 1s 1s reverse forwards;
 }
 ul, ol, p{
-    line-height: 110%;
-    font-size: 1.7rem;
+    line-height: 118%;
+    font-size: 1.8rem;
     margin: 0;
     padding: 0;
-    text-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
-
+    text-shadow: 0px 10px 15px rgba(0, 0, 0, 0.239);
+    
 }
 
 p{
@@ -100,15 +100,15 @@ p{
     text-align: right;
     align-self: right;
     justify-self: right;
-    letter-spacing: 90%;
-    color: rgb(13, 151, 0);
+    letter-spacing: 95%;
+    color: rgb(0, 151, 30);
+    /* font-weight: 500; */
     /* width: fit-content; */
-    /* border: 1rem rgb(13, 151, 0) solid; */
 }
 
 
 .bild{
-    position: absolute;
+    position: fixed;
     bottom: calc(20vw + 20vh);
     right: 20vw;
     width: 25vh;
@@ -122,53 +122,58 @@ p{
 }
 
 .ett{
-    z-index: 200;
-background-image: url(druva.png);
+    z-index: 100;
+background-image: url(enkrona.png);
+}
+.crowns{
+width: 100vw;
+
 }
 
-@media only screen and (min-width: 1000px){
+@media only screen and (min-width: 800px){
     body{
         
-        background-color: rgb(141, 141, 141);
+        background-color: rgb(255, 255, 255);
         /* -webkit-overflow-scrolling: touch; */
     }
     .list{
         max-width: 200px;}
         
  #top{
-    color:rgb(255, 0, 0);
+    /* color:rgb(255, 0, 0); */
     /* text-shadow:rgb(0, 0, 0) 0px 0px 10px; */
-    position: absolute;
-    /* margin-top: -10vh; */
-    left: 60vw;
-    right: 0vw;
-    top: calc(0vw + 0vh);
+    position: fixed;
+    margin-top: -28vw;
+    left: 70vh;
+    right: 0;
+    top: 0;
+    bottom: 20vw;
     z-index: -100;
-    transform-origin: top;
+    transform-origin: bottom;
     opacity: 0;
-    /* transform: scaleY(0%); */
-    /* animation: snurr 2s infinite linear; */
-    animation: opacity 1s 0s forwards;
 }
-p{
-    color: rgb(0, 225, 255);
-    -webkit-text-stroke: black 1px;
+h1{
+    font-size: 30vw;
+    letter-spacing: 80%;
 }
-    ul, ol, p{
+ul, ol, p{
     line-height: 110%;
     font-size: 4vw;
+    /* color: white; */
+}
+p{
+    /* color: rgb(255, 255, 0); */
+    /* -webkit-text-stroke: black 1px; */
 }
 }
 @media only screen and (max-width: 800px){
     body {
         /* background-image: linear-gradient(rgb(247, 247, 247), white, rgb(246, 255, 0)); */
-        /* background-color: rgb(255, 255, 0); */
+        /* background-color: rgb(255, 180, 255); */
         -webkit-overflow-scrolling: touch;
-        
-
  }
     ul, ol, p{
-    line-height: 110%;
+    line-height: 120%;
     font-size: 8vw;
 
 }
@@ -231,6 +236,7 @@ p{
         
         
     </div>
-    <div class="bild ett"></div>
+    <div class="crowns"></div>
+    <div class="bild ett">hej</div>
 </body>
 </html>
