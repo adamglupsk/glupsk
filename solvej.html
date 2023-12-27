@@ -38,7 +38,7 @@
         body{
             padding: 0px;
             margin: 0;
-            /* height: 120vh; */
+            height: 120vh;
             background-color: rgb(255, 255, 255);
             overflow: scroll;
             -webkit-overflow-scrolling: touch;
@@ -60,7 +60,7 @@
     height: 1rem;    
 } */
 #top{
-    color:rgb(255, 255, 255);
+    color:rgb(251, 255, 0);
     /* text-shadow:rgb(0, 0, 0) 0px 0px 10px; */
     position: fixed;
     margin-top: -10vh;
@@ -126,6 +126,39 @@ p{
 background-image: url(druva.png);
 }
 
+@media only screen and (min-width: 1000px){
+    body{
+        
+        background-color: rgb(141, 141, 141);
+        /* -webkit-overflow-scrolling: touch; */
+    }
+    .list{
+        max-width: 200px;}
+        
+ #top{
+    color:rgb(255, 0, 0);
+    /* text-shadow:rgb(0, 0, 0) 0px 0px 10px; */
+    position: absolute;
+    /* margin-top: -10vh; */
+    left: 60vw;
+    right: 0vw;
+    top: calc(0vw + 0vh);
+    z-index: -100;
+    transform-origin: top;
+    opacity: 0;
+    /* transform: scaleY(0%); */
+    /* animation: snurr 2s infinite linear; */
+    animation: opacity 1s 0s forwards;
+}
+p{
+    color: rgb(0, 225, 255);
+    -webkit-text-stroke: black 1px;
+}
+    ul, ol, p{
+    line-height: 110%;
+    font-size: 4vw;
+}
+}
 @media only screen and (max-width: 800px){
     body {
         /* background-image: linear-gradient(rgb(247, 247, 247), white, rgb(246, 255, 0)); */
@@ -175,7 +208,7 @@ background-image: url(druva.png);
         
         <p>äta, dricka</p>
         
-            <ol><a href="www.instagram.com/kiosko_import"></a>kiosko import (bar+mat)</ul>
+            <ol>kiosko import (bar+mat)</ul>
                 <ul>nobes (öl+kålpudding)</ul>
                 <ul>möllans kaffebar (mmmm)</ul>
                 <ul>farina (bröd/bakelser)</ul>
