@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Malmö</title>
+    <link rel="stylesheet" href="https://use.typekit.net/ovn7jba.css">
+    <link rel="stylesheet" href="https://use.typekit.net/mlc7org.css">
+
+
+    <style>
+        @keyframes wait{
+    0% {
+        opacity: 0;
+        transform:scale(0%);
+    }
+    100% {
+        opacity: 1;
+        transform:scale(100%);
+    }
+}
+        @keyframes scale {
+            0%{
+                transform:scaleY(100%);}
+            100%{
+                transform:scaleY(0%);}
+            }
+
+            @keyframes snurr {
+                to{transform: rotate(360deg);}
+            }
+
+        body{
+            padding: 0px;
+            margin: 0;
+            height: 100vh;
+            background-color: rgb(249, 249, 249);
+ }
+    h1{
+        font-size: calc(13vh + 18vw);
+        font-family: "neue-haas-grotesk-display", sans-serif;
+        font-weight: 500;
+        transform: rotate(90deg);
+        font-style: normal;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+        line-height: 71.5%;
+        /* -webkit-text-stroke: rgb(0, 0, 0) 1px; */
+}
+
+/* img{
+    display: inline-block;
+    height: 1rem;    
+} */
+#top{
+    color:rgb(0, 225, 255);
+    /* text-shadow:rgb(255, 0, 0) 0px 0px 20px; */
+    position: fixed;
+    margin-top: -5vh;
+    left: 0;
+    right: 0;
+    top: calc(5vw + 7vh);
+    z-index: -100;
+    transform-origin: top;
+    /* animation: snurr 2s infinite linear; */
+    /* animation: scale 2s 2s forwards; */
+}
+
+#list{
+    color:rgb(0, 0, 0);
+    position:relative;
+    font-family: "neue-haas-grotesk-display", sans-serif;
+    font-weight: 500;
+    z-index: 2;
+    padding: calc(1vh + 1.5vw);
+    transform-origin: top;
+    transform: scaleY(0);
+    animation: scale 1s 1s reverse forwards;
+    /* background-blend-mode: difference; */
+}
+ul, ol, p{
+    line-height: 110%;
+    font-size: 1.7rem;
+    margin: 0;
+    padding: 0;
+    /* text-shadow: 0px 2px 30px rgba(0, 0, 0, 0.387); */
+
+}
+
+p{
+    text-transform: lowercase;
+    text-align: right;
+    letter-spacing: 90%;
+    color: magenta;
+}
+.bild{
+    position: absolute;
+    bottom: calc(20vw + 20vh);
+    right: 20vw;
+    width: 25vh;
+    height: 35vw;
+    /* background-color: blue; */
+    background-size:contain;
+    background-repeat: no-repeat;
+    transform-origin: center;
+    transform: scale(0%);
+    animation: wait 0.4s 30s forwards;
+}
+
+.ett{
+    z-index: 200;
+background-image: url(fana.png);
+}
+
+/* span{
+font-style: italic;
+font-weight: 400;
+font-size: 3rem;
+} */
+
+    </style>
+</head>
+<body>
+    <div id="top">
+         <h1>Malmö <br>solvej</h1>
+    </div>
+    <div id="list">
+        <!--
+1. saltimporten (Lunch)
+2. riket (vin & Otrolig mat)
+3. inkonst (techno-klubb & konst)
+4. ruths (frukost, lunch & middag)
+4. scandwich (stora mackor)
+5. form & design-center
+6. galleri redan (konst)
+7. moderna museet
+8. brogatan (bar)
+9. spegeln bio (bistro)
+10. intiman (teater)
+11. lilith performance studio (konst)
+12. rex (biljard & öl)
+13. jesusbaren (Kafé)
+14. rau (restaurant)
+15. ava vinbar
+16. jord (cafe med gröt/mackor)
+17. öresundsbron (till köpenhamn)
+-->
+        <ul>solvej i malmö</ul>
+        <ul style="margin-bottom: 3vh;"></ul>
+        
+        
+        
+        <p>äta, dricka</p>
+        
+            <ol>kiosko (krog)</ul>
+                <ul>paloma (precis nyöppnat!)</ul>
+                <ul>nobes (öl+kålpudding)</ul>
+                <ul>möllans kaffebar (mmmm)</ul>
+                <ul>rau (asiatiskt vego)</ul>
+                <ul>brogatan (mat+bar)</ul>
+                <ul>shawarmaspecialisten (min favorit)</ul>
+                <ul>oppopoppa (pizza+öl)</ul>
+                <ol>riket (mysig lyx)</ul>
+                <ul>ruths (frukost middag)</ul>
+                <ul>di penco (italienskt)</ul>
+        <ul>aster (äta finare)</ul>
+        <ul>bise (mat+bar)</ul>
+        <ul>ava vinbar (nice!)</ul>
+        <p style="margin-bottom: 3vh;">(undvik)</ul>
+            <ul>västra hamnen (blåsigt)</ul>
+            <ul>liket cocktailbar (fritidsgård)</ul>
+            <ul>lilla torg (dåligt utbud)</ul>
+            <ul style="margin-bottom: 3vh;">plan b (trust me)</ul>
+        
+        
+    </div>
+    <!-- <div class="bild ett"></div> -->
+</body>
+</html>
