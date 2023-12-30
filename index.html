@@ -6,8 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://use.typekit.net/ovn7jba.css">
 <style>
+
+  @keyframes rotate{
+    0% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(-10deg);
+    }
+  }
 body{
-  font-size: 1.1rem;
+  font-size: 3.3vw;
   line-height: 115%;
   text-align: left;
   padding: 2vw;
@@ -15,6 +24,8 @@ body{
   display: flex;
   /* align-items: center; */
   justify-content: center;
+  font-family: neue-haas-grotesk-display, sans-serif;
+  font-weight: 500;
   
 }
 .message{
@@ -38,18 +49,11 @@ body{
   /* color: red; */
 }
 .text {
-  /* border: solid rgb(0, 0, 0); */
   box-shadow: rgba(0, 0, 0, 0.283) 0px 2px 5px;
   overflow: scroll;
    background-color: white;;
-  /* top: 0; */
-  /* position: absolute; */
-  /* color: red; */
-  width: 16rem;
-  height: 9.5rem;
-  /* height: 100vmax; */
-  /* background-color: blue; */
-  /* align-self: center; */
+  width: 50vw;
+  height: 30vw;
   align-items: center;
   justify-content: center;
   z-index: 9;
@@ -57,6 +61,7 @@ body{
   transform:rotate(-3deg);
   position: fixed;
   top: 20vh;
+  animation: rotate 10s alternate infinite;
 }
 span {
   color: red;
@@ -114,6 +119,18 @@ html.idle #overlay::-webkit-scrollbar {
     overflow-x: hidden;
 }
   
+  @media screen 
+  and (max-width: 600px) {
+    .text {
+      margin-top: 5vh;
+      width: 75vw;
+      height: 45vw;
+      font-size: 4.5vw;
+      line-height: 125%;
+    }
+  }
+    
+  
 </style>
 </head>
 <body>
@@ -151,7 +168,7 @@ html.idle #overlay::-webkit-scrollbar {
     adam arinbjarnarson
     <br>graphic designer/image maker
     <ul></ul>
-    <p style="position: fixed; bottom:1rem;"> +46707871567
+    <p style="position: fixed; bottom: 1rem;"> +46707871567
     <br><a href="mailto:name@email.com" style="color:black; text-decoration: none;">adaari@icloud.com</a></p>
 
     <div class="u"><a href="https://www.instagram.com/adamglupsk">@adamglupsk</a>
