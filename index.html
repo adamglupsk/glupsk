@@ -16,10 +16,13 @@
     }
   }
 body{
-  font-size: 3.3vw;
+
+  overflow: hidden;
   line-height: 115%;
+  font-size: 3.5vmin;
+
   text-align: left;
-  padding: 2vw;
+  padding: 0vw;
   margin: 0px;
   display: flex;
   /* align-items: center; */
@@ -29,38 +32,49 @@ body{
   
 }
 .message{
-  position:fixed;
-  bottom: 20px;
+  position: fixed;
+  bottom: 4vmin;
+  right: 4vmin;
+  text-align: right;
+  line-height: 125%;
+
+}
+a:visited{
+  color: blue;
 }
 .u{
-  /* font-family: Arial, Helvetica, sans-serif; */
   line-height: 150%;
   position: fixed;
-  bottom: 0.6rem;
-
+  left: 2vmin;
+  bottom: 2vmin;
+  color:red;
 
 }
 .uh{
-  /* font-family: Arial, Helvetica, sans-serif; */
   line-height: 150%;
   position: fixed;
-  bottom: 0.6rem;
-  right: 0.6rem;
-  /* color: red; */
+  bottom: 2vmin;
+  right: 3vmin;
+  color:red;
+}
+p{
+  position: absolute;
+  bottom: 4vmin;
 }
 .text {
   box-shadow: rgba(0, 0, 0, 0.283) 0px 2px 5px;
   overflow: scroll;
-   background-color: white;;
-  width: 50vw;
-  height: 30vw;
+  background-color: white;
+  width: 60vmin;
+  height: 40vmin;
+  
   align-items: center;
   justify-content: center;
   z-index: 9;
-  padding: 0.7rem 0.5rem 0.5rem 0.6rem;
+  padding: 2vmin;
   transform:rotate(-3deg);
   position: fixed;
-  top: 20vh;
+  top: 18vmax;
   animation: rotate 10s alternate infinite;
 }
 span {
@@ -121,13 +135,31 @@ html.idle #overlay::-webkit-scrollbar {
   
   @media screen 
   and (max-width: 600px) {
+
+    @keyframes rotate2{
+      0%{
+        rotate: 0 1 0 0deg;
+      }
+      100%{
+        rotate: 0 1 0 180deg;
+      }
+    }
+    body{
+      font-size: 4.5vmin;
+
+      /* background-color: rgb(151, 151, 151); */
+    }
     .text {
       margin-top: 5vh;
       width: 75vw;
-      height: 45vw;
-      font-size: 4.5vw;
-      line-height: 125%;
+      height:48vw;
+      line-height: 135%;  
     }
+  .rotate{
+    display: flex;
+    animation: rotate2 1s infinite alternate linear;    /* transform: rotate(-90deg); */
+  }
+
   }
     
   
@@ -162,22 +194,31 @@ html.idle #overlay::-webkit-scrollbar {
         return Math.floor(Math.random() * max);
       }
       </script> -->
-  <div id="overlay"><iframe src="websave.html" class="ramen"></iframe></div>
+  <div id="overlay"><iframe src="floaters.html" class="ramen"></iframe></div>
     </div>
   <div class="text">
     adam arinbjarnarson
     <br>graphic designer/image maker
     <ul></ul>
-    <p style="position: fixed; bottom: 1rem;"> +46707871567
+    <p> +46707871567
     <br><a href="mailto:name@email.com" style="color:black; text-decoration: none;">adaari@icloud.com</a></p>
 
     <div class="u"><a href="https://www.instagram.com/adamglupsk">@adamglupsk</a>
         
       </div>
-      <div class="uh"><a style="color:rgb(8, 0, 255);" href="https://www.instagram.com/babyglupsk">sandlåda</a>
+    
+      <!-- <div class="uh"><a href="https://www.instagram.com/babyglupsk">sandlåda</a></div> -->
         
       </div>
+      </div>
+  <div class="message"> 
+          <!-- <a href="floaters.html">projects</a> -->
+    <br> <a href="posters.html">poster shuffle</a>
+    <br> <a href="solvej.html">guide to malmö</a>
+    <br> <a href="thinking">…thinking?</a>
+    <!-- <br> <a href="https://www.instagram.com/adamglupsk">instagram</a> -->
+    <br> <a href="https://www.instagram.com/babyglupsk">sandbox</a>
+    <br> <a href="https://open.spotify.com/user/adaari98?si=9bd9555669044115">spotify</a>
   </div>
-  <!-- <div class="message"> <i></i>portfolio on request</div> -->
 </body>
 </html>
