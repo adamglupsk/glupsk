@@ -41,3 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Save the updated displayed images list to local storage
     localStorage.setItem("displayedImages", JSON.stringify(displayedImages));
 });
+
+function refreshPage(){
+    window.location.reload();
+}
