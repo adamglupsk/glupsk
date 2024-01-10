@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playlists</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    @keyframes slidedown{
+        0%{transform: translateY(-100%);}
+        100%{transform: translateY(0%);}
+    }
+    @keyframes slidedown2{
+        0%{transform: translateY(0);}
+        100%{transform: translateY(100%);}
+    }
+    @keyframes opacity{
+        0%{opacity: 0;}
+        35%{opacity: 1;}
+        65%{opacity: 0;}
+        100%{opacity: 0;}
+    }
+@font-face{
+            font-family: 'Ivar Text', sans-serif;
+            src: url('IvarText-Regular.otf');
+        }
+
+        body{
+            font-family: 'Ivar Text', sans-serif;
+            font-weight: 400;
+            max-width: 96vw;
+
+        }
+
+        h1, p{
+            margin:2vw;  }
+        
+
+        h1{
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: 90%;  
+        }
+        p{
+            font-size: 3.5vmin;  
+            line-height: 115%;
+                   }
+        
+        
+        
+        
+    .container{
+        /* transform: translateY(-100%); */
+        /* animation: slidedown 1s 2s forwards; */
+        margin: auto;
+        border: solid black 1px;
+        width: fit-content;
+        /* box-shadow: 1vw 1vw 7vw 1vw rgba(0, 0, 0, 0.874); */
+        max-height: 90vh;
+        max-width: 100vw; 
+        }
+    .grid{
+        margin: auto;
+        margin-top: 10vmin;
+        display: grid;
+        height: 100%;
+        width: 100%;
+        grid-template-rows: repeat(12, calc(95vmin/4));
+        grid-template-columns: repeat(4, calc(95vmin/4));
+        grid-auto-flow: column;
+        justify-items: center;
+        align-items: center;
+        
+        }
+        
+       
+        .grid > div > img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .collecting{
+        grid-area: 1 / 1 / 2 / 3;
+        /* background-color: magenta; */
+    }
+
+    .vol{
+       grid-area: 1 / 4 / 1 / 6;
+        /* background-color: lime; */
+    }
+    .c{
+        grid-row-end: span 1;
+        grid-column-end: span 1;
+        grid-area: 4 / 3;
+        /* background-color: cyan; */}
+        
+    .about{
+        grid-area: 4 / 1 / 4 / 2;
+        /* background-color: yellow; */
+    }
+    
+    .playlists{
+        grid-area: 4 / 4 / 5 / 5;
+        /* background-color: cyan; */
+    }
+
+    .bread{
+            font-size: 6vw;
+            hyphens: auto;
+            line-height: 125%;
+            padding: 0vw 2vw 2vw 2vw;
+            /* background-color: red; */
+            grid-column-start: 2;
+            grid-column-end: span 3;
+            grid-row: 7;
+        }
+    .bread-img{
+        grid-area: 7 / 1 / 7 / 1;
+        /* background-color: red; */
+        background: url(objects/14.png)no-repeat center/76%;
+        animation: rotation 10s linear infinite;
+
+    }
+    @keyframes rotation{
+            0%{transform: rotate(0deg);}
+            100%{transform: rotate(360deg);}
+        }
+    .top{
+        pointer-events: none;
+        animation: slidedown 1s, slidedown2 1s 5s linear forwards;
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        place-items: center;
+
+    }
+    .top > img{
+        justify-self: center;
+        animation: rotation 0.05s linear infinite;
+        max-width: 70vw;
+        max-height: 70vw;
+        object-fit: cover;
+        margin-bottom: 10vh;
+    }
+    .bild{
+        z-index: 50;
+        background: no-repeat center/76%;
+        grid-column-end: span 1;
+        grid-row-end: span 1;
+        /* opacity: 0; */
+        /* animation: opacity 2.4s 10 step-end forwards; */
+
+    }
+    .b1{
+        background-image: url(objects/1.png);
+        grid-area: 4 / 3;
+        animation-delay: 1s;
+    }
+    .b2{
+        background-image: url(objects/2.png);
+        grid-area: 3 / 3;
+        animation-delay: 2s;
+
+    }
+    .b3{
+        background-image: url(objects/3.png);
+        grid-area: 2 / 3;
+        animation-delay: 3s;
+
+    }
+    .b4{
+        background-image: url(objects/4.png);
+        grid-area: 3 / 2;
+        animation-delay: 4s;
+    }
+    .b5{
+        background-image: url(objects/5.png);
+        grid-area: 5 / 2;
+        animation-delay: 5s;
+    }
+    .b6{
+        background-image: url(objects/6.png);
+        grid-area: 3 / 4;
+        animation-delay: 6s;
+    }  
+    .grid > div{
+            width: 100%;
+            height: 100%;
+            /* overflow: hidden; */
+            /* background-color: white; */
+            /* border:  1px solid black;  */
+            /* box-shadow: 1vw 1vw 7vw 1vw rgba(0, 0, 0, 0.874); */
+        }
+</style>
+
+</head>
+<body>
+    <!-- <div class="top">
+        <img src="cd.png" alt="">
+    </div> -->
+    <div class="container">
+        <div class="grid">
+            <div class="collecting"><h1>collecting<br>music</h1></div>
+            <!-- <div><img src="pen.png" alt=""></div> -->
+            <div class="vol"> <h1>vol. 1</h1></div>
+            <div  class="bild b1" style=""></div>            
+            <div  class="bild b2"></div>            
+            <div  class="bild b3"></div>            
+            <div  class="bild b4"></div>            
+            <div  class="bild b5"></div>            
+            <div  class="bild b6"></div>
+            <div  class="bild b6"></div>
+            
+            
+            <div class="playlists"> <p>Playlists <br> algorithms, <br>statistics, <br>memories.</p></div>
+            <div class="about"> <p>About <br> collecting, <br>collectors, <br>collections.</p></div>
+            <div class="c"><p>(c)Collecting <br> 2024</p></div>
+            <div class="bread-img"></div>
+            <div class="bread"> <div class="bread">Collecting is a magazine for any collector, whether it's one of records, memories, mp3-files, stamps or bottles of sauvignon blanc. </div></div>
+   </div>
+</div>
+
+
+</body>
+</html>

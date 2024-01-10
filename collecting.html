@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Collecting</title>
     <style>
         @font-face{
             font-family: 'Ivar Text', sans-serif;
@@ -23,10 +23,12 @@
         }
 
         h1{
-            font-size: 10vmin;
+            position: absolute;
+            z-index: -1;
+            font-size: 4vmin;
             font-weight: 400;
             margin: 0;
-            padding: 0;
+            padding: 30vh 0vw 0vw 10vw;
             text-transform: uppercase;
             line-height: 90%;
         }
@@ -38,7 +40,7 @@
         .container{
             display: flex;
         }
-        container > p, div{
+        .container > p, div{
             flex-grow: 1;
             flex-shrink: 1;        }
 
@@ -53,12 +55,57 @@
         p{
             font-size: 1.25rem;
         }
+@keyframes rotation{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+
+@keyframes slide{
+    0%{transform: translateX(0vw);}
+    100%{transform: translateX(-50vw);}
+}
+
+        #grid{
+            display: flex;
+            flex-wrap: wrap;
+        }
+         /* #grid > img{
+            width: 14vw;
+            height: 15vw;
+            object-fit: contain;
+            margin: 0.9vw;
+            animation: rotation 60s linear infinite;
+        } */
+         #grid > #image-container{
+            max-width: 14vw;
+            max-height: 15vw;
+            /* background-color: red; */
+            /* object-fit: cover; */
+            background-size: contain;
+            margin: 0.9vw;
+            /* animation: rotation 60s linear infinite; */
+        }
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* animation: rotation 60s linear infinite; */
+}
+
+
+.slide{
+    animation: slide 0.2s linear reverse forwards;
+}
     </style>
 </head>
 <body>
-    <h1>Collecting</h1>
+    <h1 class="slide">collecting <br> music</h1>
+    <!-- <h1>Collecting</h1>
     <h1 class="one">music</h1>
-    <!-- <h1>vol. 1</h1> -->
+    <h1>vol. 1</h1>
     <div class="container">
         <div class="image"></div>
         <p>Using your parents’ stationary computer to burn
@@ -100,7 +147,52 @@
             of individual songs. The artists’ control of how
             their music is consumed must be at an all time
             low. We play their albums on shuffl e, sped up
-            or in snippets.</p>
-    </div>
+            or in snippets.</p> 
+    </div>-->
+    <div id="grid">
+        <!-- <div>
+        <img src="pen.png" alt="">
+        <img src="druva.png" alt="">
+        <img src="ladd.png" alt="">
+        <img src="mygga.png" alt="">
+        <img src="druva.png" alt="">
+        <img src="ladd.png" alt="">
+        <img src="mygga.png" alt="">
+        <img src="enkrona.png" alt="">
+        <img src="pen.png" alt="">
+        <img src="ladd.png" alt="">
+        <img src="pen.png" alt="">
+        <img src="druva.png" alt="">
+        <img src="ladd.png" alt="">
+        <img src="mygga.png" alt="">
+        <img src="druva.png" alt="">
+        <img src="ladd.png" alt="">
+        <img src="mygga.png" alt="">
+        <img src="enkrona.png" alt="">
+        <img src="pen.png" alt="">
+        <img src="ladd.png" alt="">
+        <img src="pen.png" alt="">
+        <img src="druva.png" alt="">
+        <img src="ladd.png" alt="">
+        <img src="mygga.png" alt="">
+        <img src="druva.png" alt="">
+        <img src="ladd.png" alt="">
+        <img src="mygga.png" alt="">
+        <img src="enkrona.png" alt="">
+        <img src="pen.png" alt="">
+        <img src="ladd.png" alt="">
+        <img src="pen.png" alt="">
+        <img src="druva.png" alt="">
+        <img src="fana.png" alt="">
+        <img src="mygga.png" alt="">
+        <img src="druva.png" alt="">
+        <img src="ladd.png" alt="">
+        <img src="mygga.png" alt="">
+        <img src="enkrona.png" alt="">
+        <img src="pen.png" alt="">
+        <img src="ladd.png" alt=""> </div>
+    </div> -->
+    <div id="image-container"></div>
+    <script src="collecting-script.js"></script>
 </body>
 </html>
