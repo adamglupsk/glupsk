@@ -23,28 +23,29 @@
         100%{opacity: 0;}
     }
 @font-face{
-            font-family: 'Ivar Text', sans-serif;
-            src: url('IvarText-Regular.otf');
+            font-family: 'Ivar Text';
+            src: url('font/IvarText-Regular.woff') format('woff');
         }
 
         body{
             font-family: 'Ivar Text', sans-serif;
+            font-style: normal;
             font-weight: 400;
-            max-width: 96vw;
-
         }
 
         h1, p{
-            margin:2vw;  }
+            margin: 2vw;  }
         
 
         h1{
             font-weight: 400;
             text-transform: uppercase;
             line-height: 90%;  
+            line-break: loose;
+            font-size: 6vmin;
         }
         p{
-            font-size: 3vmin;  
+            font-size: 2vmin;  
             line-height: 115%;
                    }
         
@@ -52,7 +53,7 @@
         
         
     .container{
-        transform: translateY(-300%);
+        transform: translateY(-400%);
         animation: slidedown 0.8s 3.2s forwards;
         margin: auto;
         width: fit-content;
@@ -63,11 +64,11 @@
         }
     .grid{
         margin: auto;
-        /* margin-top: 10vmin; */
+        margin-top: 5vmin;
         display: grid;
         height: 100%;
         width: 100%;
-        grid-template-rows: repeat(12, calc(95vmin/4));
+        grid-template-rows: repeat(20, calc(95vmin/4));
         grid-template-columns: repeat(4, calc(95vmin/4));
         grid-auto-flow: column;
         justify-items: center;
@@ -91,14 +92,25 @@
        grid-area: 1 / 4;
         /* background-color: lime; */
     }
-    .c{
+    .jan{
         grid-row-end: span 1;
         grid-column-end: span 1;
-        grid-area: 4 / 3;
+        grid-area: 4 / 1;
+        /* background-color: cyan; */}
+        
+    .n{
+        grid-area: 20 / 1;
+        grid-row-end: span 1;
+        grid-column-end: span 2;
+        /* background-color: cyan; */}
+    .i{
+        grid-area: 7 / 2;
+        grid-row-end: span 1;
+        grid-column-end: span 2;
         /* background-color: cyan; */}
         
     .about{
-        grid-area: 4 / 1 / 4 / 2;
+        grid-area: 7 / 1;
         /* background-color: yellow; */
     }
     
@@ -115,10 +127,10 @@
             /* background-color: red; */
             grid-column-start: 2;
             grid-column-end: span 3;
-            grid-row: 7;
+            grid-row: 8;
         }
     .bread-img{
-        grid-area: 7 / 1 / 7 / 1;
+        grid-area: 8 / 1;
         /* background-color: red; */
         background: url(objects/14.png)no-repeat center/76%;
         animation: rotation 10s linear infinite;
@@ -142,6 +154,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        /* background-color: grey; */
+        /* mix-blend-mode: multiply; */
 
     }
     .top > img{
@@ -150,7 +164,7 @@
         max-width: 70vmin;
         max-height: 70vmin;
         object-fit: cover;
-        margin-bottom: 10vh;
+        margin-bottom: 5vh;
     }
     .bild{
         z-index: 50;
@@ -167,8 +181,8 @@
         animation-delay: 1s;
     }
     .b2{
-        background-image: url(objects/2.png);
-        grid-area: 3 / 3;
+        background-image: url(objects/12.png);
+        grid-area: 1 / 2;
         animation-delay: 2s;
 
     }
@@ -202,7 +216,7 @@
             /* box-shadow: 1vw 1vw 7vw 1vw rgba(0, 0, 0, 0.874); */
         }
         span{
-            transform:skewX(-20deg);
+            transform:skew(-20deg);
         }
         
 </style>
@@ -228,9 +242,11 @@
             
             <div class="playlists"> <p>Playlists <br> algorithms, <br>statistics, <br>memories.</p></div>
             <div class="about"> <p>About <br> collecting, <br>collectors, <br>collections.</p></div>
-            <div class="c"><p>January <br> 2024</p></div>
+            <div class="jan"><p>January <br> 2024</p></div>
+            <div class="i"><p>Thanks <br> Stefania Malmsten <br>Göran Söderström <br>Ulrika Hellberg</p></div>
+            <div class="n"><p>Editors <br>Adam Arinbjarnarson<br>Elvin Odelholm<br> Solvej Jansson</p></div>
             <div class="bread-img"></div>
-            <div class="bread"> <div class="bread">Collecting is a magazine for any collector, whether it's one of vinyl records,  mp3-files, stamps or bottles of sauvignon blanc. </div></div>
+            <div class="bread"> <div class="bread"> Collecting is a magazine for the collector, whether it's one of vinyl records,  mp3-files, post cards or bottles of sauvignon blanc. </div></div>
    </div>
 </div>
 
