@@ -47,7 +47,7 @@
             margin-bottom: 2vmin;
         }
         p{
-            font-size: 2.6vmin;  
+            font-size: 2.9vmin;  
             line-height: 115%;
                    }
         
@@ -168,7 +168,7 @@
     }
     .bild{
         z-index: 50;
-        background: no-repeat center/76%;
+        background: no-repeat center/70%;
         grid-column-end: span 1;
         grid-row-end: span 1;
         opacity: 0;
@@ -283,15 +283,17 @@
         .references-title{
             grid-area: 16 / 1 / 18 / 3;
         }
-        .references-list{
+        .references-list, .references-list > p{
             grid-area: 16 / 3 / 18 / 5;
+            line-height: 180%; font-size: 3.5vmin;
         }
-        .references-list-pil{
+        .references-list-pil, .references-list-pil > p{
             grid-area: 15 / 3 / 18 / 5;
-        }
+            font-size: 2.5vmin;
+            line-height: 180%;        }
         .link-img-1{
         grid-area: 11 / 3;
-        background: url(objects/9.png)no-repeat center/76%;
+        background: url(objects/9.png)no-repeat center/70%;
     }
         .link-1{
         grid-area: 12 / 3;
@@ -299,14 +301,14 @@
 
     .link-img-2{
         grid-area: 11 / 4;
-        background: url(objects/13.png)no-repeat center/90%;
+        background: url(objects/13.png)no-repeat center/80%;
     }
     .link-2{
         grid-area: 12 / 4 / 13 / 6;
     }
     .link-img-3{
         grid-area: 13 / 4;
-        background: url(objects/16.png)no-repeat center/65%;
+        background: url(objects/16.png)no-repeat center/58%;
     }
     .link-3{
         grid-area: 14 / 4;
@@ -320,7 +322,7 @@
     .pil{
         /* animation: blink 1s infinite alternate-reverse step-end; */
         font-family: 'Arial';
-        font-size: 2vmin;
+        font-size: 2.7vmin;
         text-align: right;
         padding-top: 5vmin;
         padding-right: 1vmin;    
@@ -368,8 +370,8 @@ a{
             <div class="thanks"><p>Thanks <br> Stefania Malmsten<br>Ulrika Hellberg<br>Filip Rensfelt<br>Göran Söderström</p></div>
             <div class="n"><p>Editors <br>Adam Arinbjarnarson<br>Elvin Odelholm<br> Solvej Jansson</p></div>
             <div class="bread-img"></div>
-            <div class="bread"> <div class="bread" style="padding-right: 3vh;"> Collecting is a magazine for the collector, whether it's one of vinyl records,  mp3-files, post cards or bottles of sauvignon blanc. <br> Collecting Vol. 1 focuses on the personal aspects of music consumption and collecting. Welcome to this online extension and happy listening. </div></div>
-            <div class="playlist-title"><h1>playlists</h1> <div class="bread" style="padding-right: 3vh;">Liston to the playlists covered or mentioned in the issue. Each playlist and its curation is personal and belongs to the creators.</div></div>
+            <div class="bread"> <div class="bread" style="padding-right: 4vh; padding-top: 1vh;"> Collecting is a magazine collectors, whether it's of vinyl records,  mp3-files, postcards or bottles of sauvignon blanc.<br> The first isue, Vol. 1 focuses on the personal aspects of music consumption and collecting. Welcome to this online extension and happy listening. </div></div>
+            <div class="playlist-title"><h1>playlists</h1> <div class="bread" style="padding-right: 3vh;">Liston to the playlists covered and mentioned in the issue. Each playlist and its curation is personal and belongs to the creators.</div></div>
             <div class="link-img-1"></div>
             <div class="link-1"><a href="https://open.spotify.com/playlist/74plGub0GJdmYMxmSnPOA0?si=75b23a791f2d49aa"><p>Tamar <br>Nobody likes to talk about dead babies</p> <div class="pil">(&#x2197;&#xfe0e;)</div></a></div>
             <div class="link-img-2"></div>
@@ -380,8 +382,8 @@ a{
                 <div class="pil">(&#x2197;&#xfe0e;)</div>
             </a></div>
             <div class="references-title"><h1>Resources</h1> <div class="bread" style="padding-right: 3vh;">Tools, essays and resources used in the making of the issue.</div></div>
-            <div class="references-list"> <p style="line-height: 170%;"> <a href="https://everynoise.com">Every Noise at Once </a> <br><a href="https://www.chosic.com/spotify-playlist-search-tool-by-song-or-artist/">Chosic Playlist Finder</a> <br><a href="https://www.diva-portal.org/smash/get/diva2:535713/FULLTEXT01.pdf"> "Show me your playlist…" </a><br><a href="https://voyant-tools.org">Voyant Tools</a> <br><a href="https://lettersfromsweden.se">Letters from Sweden</a><br><a href="https://www.newspaperclub.com">Newspaper Club</a> <br><a href="https://www.google.com/images">Image Search</a></p></div>
-            <div class="references-list"> <p style="line-height: 170%; text-align: right;"> (&#x2197;&#xfe0e;) <br>(&#x2197;&#xfe0e;)<br>(&#x2197;&#xfe0e;)<br>(&#x2197;&#xfe0e;)<br>(&#x2197;&#xfe0e;)<br>(&#x2197;&#xfe0e;)<br>(&#x2197;&#xfe0e;)</p></div>
+            <div class="references-list"> <p> <a href="https://everynoise.com">Every Noise at Once </a> <br><a href="https://www.chosic.com/spotify-playlist-search-tool-by-song-or-artist/">Chosic Playlist Finder</a> <br><a href="https://www.diva-portal.org/smash/get/diva2:535713/FULLTEXT01.pdf"> "Show me your playlist…" </a><br><a href="https://voyant-tools.org">Voyant Tools</a> <br><a href="https://lettersfromsweden.se">Letters from Sweden</a><br><a href="https://www.newspaperclub.com">Newspaper Club</a> <br><a href="https://www.google.com/images">Image Search</a></p></div>
+            <div class="references-list"> <p style="text-align: right; "> (&#x2197;&#xfe0e;) <br>(&#x2197;&#xfe0e;)<br>(&#x2197;&#xfe0e;)<br>&#x2197;&#xfe0e;<br>(&#x2197;&#xfe0e;)<br>(&#x2197;&#xfe0e;)<br>(&#x2197;&#xfe0e;)</p></div>
    </div>
 </div>
 
