@@ -32,10 +32,11 @@
             font-family: 'Ivar Text', sans-serif;
             font-style: normal;
             font-weight: 400;
+            background-color: rgb(245, 243, 241);
         }
 
         h1, p{
-            margin: 2vw;  }
+            margin: 2vmin 2vmin 0vmin 2vmin;  }
         
 
         h1{
@@ -44,6 +45,7 @@
             line-height: 90%;  
             line-break: loose;
             font-size: 6vmin;
+            margin-bottom: 2vmin;
         }
         p{
             font-size: 2.6vmin;  
@@ -54,8 +56,8 @@
         
         
     .container{
-        transform: translateY(-400%);
-        animation: slidedown 0.8s 3.2s forwards;
+        /* transform: translateY(-400%); */
+        /* animation: slidedown 0.8s 3.2s forwards; */
         margin: auto;
         width: fit-content;
         /* border: solid black 1px; */
@@ -120,15 +122,15 @@
         /* background-color: cyan; */
     }
     .online{
-        grid-area: 7 / 3;
+        grid-area: 7 / 4;
         /* background-color: cyan; */
     }
 
     .bread{
-            font-size: 4vw;
+            font-size: 4vmin;
             hyphens: auto;
             line-height: 125%;
-            padding: 0vw 2vw 2vw 2vw;
+            padding: 0vmin 2vmin 2vmin 2vmin;
             /* background-color: red; */
             grid-column-start: 2;
             grid-column-end: span 3;
@@ -186,15 +188,38 @@
         animation-delay: 1s;
     }
     .b2{
-        background-image: url(objects/12.png);
+        background-image: url(objects/17.png);
         grid-area: 1 / 2;
         animation-delay: 2s;
 
+    }
+    .b20{
+        background-image: url(objects/20.png);
+        grid-area: 7 / 3;
+        animation-delay: 4s;
+    }
+    .b21{
+        background-image: url(objects/15.png);
+        grid-area: 3 / 2;
+        animation-delay: 0.4s;
     }
     .b22{
         background-image: url(objects/11.png);
         grid-area: 2 / 1;
         animation-delay: 0s;
+
+    }
+    .b23{
+        background-image: url(objects/21.png);
+        grid-area: 12 / 1 / 14 / 3;
+        animation-delay: 0s;
+        /* animation-duration: 0ms; */
+        /* background-color: red; */
+    }
+    .b22{
+        background-image: url(objects/22.png);
+        grid-area: 15 / 2;
+        animation-delay: 1s;
 
     }
     .b3{
@@ -225,7 +250,7 @@
     }  
 
     .b7{
-        background-image: url(objects/12.png);
+        background-image: url(objects/17.png);
         grid-area: 8 / 4;
         animation-delay: 0.1s;
     }
@@ -280,7 +305,7 @@
         background: url(objects/13.png)no-repeat center/90%;
     }
     .link-2{
-        grid-area: 12 / 4;
+        grid-area: 12 / 4 / 13 / 6;
     }
     .link-img-3{
         grid-area: 13 / 4;
@@ -298,13 +323,16 @@
     .pil{
         /* animation: blink 1s infinite alternate-reverse step-end; */
         font-family: 'Arial';
-        position: relative;
         font-size: 1.4vh;
-text-align: right;
-padding: 1vh;    }
+        text-align: right;
+        padding-top: 5vmin;    
+}
 a{
     text-decoration: none;
     color: black;
+}
+img{
+    filter:saturate(0.8) brightness(1.2);
 }
 </style>
 
@@ -319,7 +347,11 @@ a{
             <div class="vol"> <h1>vol. 1</h1></div>
             <div  class="bild b1"></div>            
             <div  class="bild b2"></div>            
+            <div  class="bild b20"></div>            
+            <div  class="bild b21"></div>            
             <div  class="bild b22"></div>            
+            <div  class="bild b22"></div>            
+            <div  class="bild b23"></div>
             <div  class="bild b3"></div>            
             <div  class="bild b4"></div>            
             <div  class="bild b5"></div>            
@@ -332,7 +364,7 @@ a{
             
             
             <div class="playlists"> <p>Playlists <br> algorithms, <br>statistics, <br>memories.</p></div>
-            <div class="online"> <p>Web <br> collection</p></div>
+            <div class="online"> <p>Online <br> edition</p></div>
             <div class="about"> <p>About <br> collecting, <br>collectors, <br>collections.</p></div>
             <div class="jan"><p>January <br> 2024</p></div>
             <div class="thanks"><p>Thanks <br> Stefania Malmsten <br>Göran Söderström <br>Ulrika Hellberg</p></div>
@@ -343,7 +375,7 @@ a{
             <div class="link-img-1"></div>
             <div class="link-1"><a href="https://open.spotify.com/playlist/74plGub0GJdmYMxmSnPOA0?si=75b23a791f2d49aa"><p>Tamar <br>Nobody likes to talk about dead babies</p> <div class="pil">(&#x2197;&#xfe0e;)</div></a></div>
             <div class="link-img-2"></div>
-            <div class="link-2"><p><a href="https://open.spotify.com/playlist/0d7NE8UMtcs6jZ72Uky5MU?si=e75690b2aa854d18">Jack <br>30</p><br><br> <div class="pil">(&#x2197;&#xfe0e;)</div></a></div>
+            <div class="link-2"><p><a href="https://open.spotify.com/playlist/0d7NE8UMtcs6jZ72Uky5MU?si=e75690b2aa854d18">Jack<br>30</p><br><br><div class="pil" style="padding-top: 7vmin;">(&#x2197;&#xfe0e;)</div></a></div>
             <div class="link-img-3"></div>
             <div class="link-3"><p><a href="https://open.spotify.com/playlist/0QUWiCniBNwaDbjtHDBeTI?si=64ba4c8f076a4082">Tiffany <br>Trickster</p><br><br<br> <div class="pil">(&#x2197;&#xfe0e;)</div></a></div>
             <div class="references-title"><h1>Resources</h1> <div class="bread" style="padding-right: 3vh;">Tools, essays and resources used in the making of the issue.</div></div>
