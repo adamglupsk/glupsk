@@ -10,10 +10,10 @@
 
   @keyframes rotate{
     0% {
-      transform: rotate(10deg);
+      transform: rotate(0deg);
     }
     100% {
-      transform: rotate(-10deg);
+      transform: rotate(-360deg);
     }
   }
 body{
@@ -37,9 +37,16 @@ body{
   bottom: 4vmin;
   right: 4vmin;
   text-align: right;
-  line-height: 125%;
-
+  line-height: 135%;
 }
+.message-right{
+  position: fixed;
+  bottom: 4vmin;
+  left: 4vmin;
+  text-align: left;
+  line-height: 135%;
+}
+
 a:visited{
   color: blue;
 }
@@ -76,7 +83,7 @@ p{
   transform:rotate(-3deg);
   position: fixed;
   top: 18vmax;
-  animation: rotate 10s alternate infinite;
+  animation: rotate 60s linear infinite;
 }
 span {
   color: red;
@@ -136,7 +143,7 @@ html.idle #overlay::-webkit-scrollbar {
 }
   
   @media screen 
-  and (max-width: 600px) {
+  and (max-width: 700px) {
 
     @keyframes rotate2{
       0%{
@@ -147,19 +154,19 @@ html.idle #overlay::-webkit-scrollbar {
       }
     }
     body{
-      font-size: 4.75vmin;
+      font-size: 5.5vmin;
 
       /* background-color: rgb(151, 151, 151); */
     }
     .text {
       margin-top: 5vh;
-      width: 75vw;
-      height:48vw;
+      width: 80vw;
+      height:50vw;
       line-height: 135%;  
     }
   .rotate{
     display: flex;
-    animation: rotate2 1s infinite alternate linear;    /* transform: rotate(-90deg); */
+    animation: rotate2 1s infinite alternate linear;
   }
 
   }
@@ -215,12 +222,19 @@ html.idle #overlay::-webkit-scrollbar {
       </div>
   <div class="message"> 
           <!-- <a href="floaters.html">projects</a> -->
-    <br> <a href="posters.html">poster shuffle</a>
-    <br> <a href="solvej.html">guide to malmö</a>
+    <br> <a href="posters.html">posters</a>
+    <br> <a href="solvej.html">guide: malmö</a>
     <br> <a href="thinking.html">…thinking?</a>
     <!-- <br> <a href="https://www.instagram.com/adamglupsk">instagram</a> -->
-    <br> <a href="https://www.instagram.com/babyglupsk">sandbox</a>
-    <br> <a href="https://open.spotify.com/user/adaari98?si=9bd9555669044115">spotify</a>
+    <br> <a href="https://www.instagram.com/babyglupsk">@babyglupsk</a>
+    <!-- <br> <a href="https://open.spotify.com/user/adaari98?si=9bd9555669044115">spotify</a> -->
+  </div>
+  <div class="message-right"> 
+    <br> links:
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
 </body>
 </html>
