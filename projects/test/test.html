@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        @keyframes hello{
+            00%{
+                transform: scaleY(0);
+
+            }
+            100%{
+                transform: scaleY(1);
+            }
+        }
+        .page > *{
+            animation: hello 0.5s ease-in-out forwards;
+            transform-origin: top;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: Times;
+            font-style: normal;
+            font-size: x-large;
+            /* background: rgb(0, 0, 0); */
+            /* color: white; */
+        }
+
+        .page{
+            padding: 10px 0px 0px 15vw;
+            margin: auto;
+            max-width: 800px;
+        }
+
+        @keyframes grid{
+            0%{
+                grid-template-rows: repeat(8, 0vw);
+            }
+            100%{
+                grid-template-rows: repeat(8, 60vw);
+            }
+        }
+        .container{
+            display: grid;
+            grid-template-rows: repeat(8, 60vw);
+            grid-template-columns: repeat(auto-fit, minmax(350px, 2fr));
+            animation: grid 1s ease-in-out for;
+            
+        }
+        .container >     div,    p, .bild, .title > div{
+            border-bottom: 1px solid black;
+            padding: 10px;
+            margin: 10px 20px 10px 0px;
+            /* border-radius: 10px; */
+        }
+
+        @media (min-width: 00px){
+            .container{
+                grid-template-rows: repeat(8, 50vw);
+                grid-auto-rows: repeat(8, 30vw);
+            }
+        }
+
+        @media (max-width: 700px){
+            /* .video{
+                height:90vw;
+               }  */
+        }
+        .title{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+            height: 150px;
+        }
+
+        p, h1, h2, h3, h4, h5, h6{
+            font-style: normal;
+            font-weight: 200;
+            margin: 5px;
+        }
+        .bild{
+            background: url(gif.gif) center top no-repeat;
+            background-size: cover;
+            padding: 10px;
+            margin: 10px;
+        }
+        .video{
+            background: url(1.mp4) center top no-repeat;
+            background-size: cover;
+            padding: 10px;
+            margin: 10px;
+
+        }
+
+        @keyframes slideshow{
+            30%{
+                background: url(p1.jpg) center/100% no-repeat;
+            }
+            60%{
+                background: url(p2.jpg) center/100% no-repeat;
+            }
+            100%{
+                background: url(p3.jpg) center/100% no-repeat;
+            }
+        }
+
+        .slideshow{
+            background-size: cover;
+            padding: 10px;
+            margin: 10px;
+            animation: slideshow 10s infinite step-start;
+        }
+
+        .menu{
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            width: 8vh;
+            border-right: 1px solid;
+            line-break:manual;
+            /* background-color: blue; */
+        }
+        .menu-left{
+            right: 0;
+            left: 0;
+            text-align: left;
+            min-width: 500%;
+            transform: rotate(90deg);
+            transform-origin: 3% 140%;
+        }
+        .menu-right{
+            : 0;
+            left: 0;
+            text-align: right;
+            width: 100%;
+            height: ;
+            transform: rotate(90deg);
+            transform-origin: 10% 140%;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-left">Adam Arinbjarnason</div>
+        <div class="menu-right"></div>
+    </div>
+    <div class="page">
+        <div class="title"><h1>Opinion</h1><div>Projection<br>2023</div>
+</div>
+        <div class="container">
+        
+        <!-- <div class="bild" style="background-image: url(bak.png); background-size: contain;"></div> -->
+        <div>This work is about public opinion, and it's lack of reason.  It was made during 'Konst reklam konst', a three week course with professor Måns Wrange. Thank you Aida Chehregoza for tutoring. </div>
+        <div class="video"></div>
+        <div class="slideshow"></div>
+        <div>In making <i>Opinion</i> I used words that sound and feel like parts of opinionated statements</div>
+        <!-- <div class="bild"></div> -->
+        <!-- <div class="bild" style="background-image: url(fram.png);"></div> -->
+        
+
+    </div>
+    </div>
+</body>
