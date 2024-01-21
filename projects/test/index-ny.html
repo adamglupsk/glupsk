@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="project-test.css">
+    <style>
+
+        @keyframes slide-left{
+            0%{
+                transform: translateX(-100vh);
+            }
+            100%{
+                transform: translateX(0vh);
+            }
+        }
+        @keyframes slide-up{
+            0%{
+                transform: translateY(100vw);
+            }
+            100%{
+                transform: translateY(0vh);
+            }
+        }
+        .columns{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 60px);
+            grid-auto-columns: 60px;
+            grid-auto-rows: min-content;
+            margin-left: 60px;
+            max-height: 100vh;
+            overflow: hidden;
+
+        }
+        .columns > div{
+            border-right: 1px solid black;
+            height: 100vh;
+            position: relative;
+            transform: translateX(-100vw);
+            animation: slide-left 0.8s linear forwards;
+            background-color: light-grey;
+            /* overflow: scroll; */
+        }
+
+        .columns > div > p, .columns  > img{
+            writing-mode: vertical-rl;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            margin-top: 50%;
+            margin-left: 30%;
+            animation: slide-left 0.7s ease;
+
+            /* transform: translate(-50%, -50%); */
+        }
+
+        .top{
+            position: fixed;
+            inset:0;
+            width: 100vw;
+            /* background: rgb(246, 255, 0); */
+            z-index: -100;
+        }
+        img{
+            position: relative;
+            /* z-index: -200; */
+            width: 100%;
+            height: 20%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu" style>
+        <div class="menu-left">Adam Arinbjarnason</div>
+        <div class="menu-right"> <a href="https://www.arinbjarnarson.se">Index</a> &#160;&#160;&#160;<a href="https://www.arinbjarnarson.se">Links</a></div>
+    </div>
+    <div class="top"></div>
+    <div class="columns">
+        <div style="animation-delay: 0.9s;" ><p style="margin-top: 23vh; text-decoration: underline 1px;">Collecting Music</p> <p style="position:relative; z-index: -1;">Editorial</p></div>
+        <div style="animation-delay: 0.8s;"></div>
+        <div style="animation-delay: 0.7s; padding-top: 200px;"><p>Opinion</p> </div>
+        <div style="animation-delay: 0.6s;"></div>
+        <div style="animation-delay: 0.5s;"></div>
+        <div style="animation-delay: 0.4s;"></div>
+        <div style="animation-delay: 0.3s;"></div>
+        <div style="animation-delay: 0.2s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+</div>
+<div class="columns" style="position: fixed; inset:0; z-index: 200;">
+    <div style="animation-delay: 0.9s;" ></div>
+    
+    <div style="animation-delay: 0.8s;"></div>
+    <div style="animation-delay: 0.7s;"></div>
+    <div style="animation-delay: 0.6s;"></div>
+    <div style="animation-delay: 0.5s;"><p>helloooO!!!!</p></div>
+    <div style="animation-delay: 0.4s;"></div>
+    <div style="animation-delay: 0.3s;"></div>
+    <div style="animation-delay: 0.2s;"></div>
+    <img src="p1.jpg" alt="" style="overflow: visible; height: 50vh; margin-top: 20vh;">
+    <div style="animation-delay: 0.1s;"></div>
+    <img src="p4.jpg" alt="" style="overflow: visible; height: 50vh; margin-top: 40vh;">
+    <div style="animation-delay: 0.1s;"></div>
+    <div style="animation-delay: 0.1s;"></div>
+    <div style="animation-delay: 0.1s;"></div>
+    <div style="animation-delay: 0.1s;"></div>
+    <div style="animation-delay: 0.1s;"></div>
+
+</div>
+</body>
+</html>
