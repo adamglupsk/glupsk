@@ -57,7 +57,14 @@
         .title{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(175px, 2fr));
-            height: 150px;
+            height: 80px;
+            max-width: 95.5%;
+            align-items: first baseline;
+        }
+        @media (min-width: 850px){
+            .title{
+max-width: 97.5%;            }
+            
         }
 
         p, h1, h2, h3, h4, h5, h6{
