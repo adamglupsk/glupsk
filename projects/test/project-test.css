@@ -17,7 +17,7 @@
             font-family: Times, serif;
             font-style: normal;
             font-size: x-large;
-            background: linear-gradient(black -100px, white 20px);
+            /* background: linear-gradient(black -100px, white 20px); */
             /* background: rgb(0, 0, 0); */
             /* color: white; */
         }

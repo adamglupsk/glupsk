@@ -37,12 +37,35 @@
         .columns > div{
             border-right: 1px solid black;
             height: 100vh;
+            overflow: hidden;
             position: relative;
             transform: translateX(-100vw);
             animation: slide-left 0.8s linear forwards;
             background-color: light-grey;
             /* overflow: scroll; */
         }
+
+        .fr{
+            /* background-color: red; */
+            transition: width 0.2s linear;
+            width: 60px;
+            background-color: white;
+            position: relative;
+            z-index: 1000;
+            
+        }
+        .fr:hover{
+            background-color: white;
+            position: relative;
+            z-index: 1000;
+            width: calc(60px*8);
+            transition: width 1s linear;
+        }
+        iframe{
+        width: calc(60px*8);
+        
+
+                }
 
         .columns > div > p, .columns  > img, .columns > div > a{
             writing-mode: vertical-rl;
@@ -76,11 +99,7 @@
             border-radius: 3px solid black !important;
             /* background-color: blue; */
         }
-        a{
-            /* color:red */
-            /* text-decoration: underline 1px; */
-            /* font-style: italic; */
-        }
+        
     </style>
 </head>
 <body>
@@ -94,12 +113,12 @@
         <div style="animation-delay: 0.9s;" ><p style="margin-top: 23vh;">Collecting Music</p> 
             <!-- <p style="position:relative; z-index: -1;">Editorial</p> -->
         </div>
-        <div style="animation-delay: 0.7s; padding-top: 60vh;"><a href="test.html">Opinion</a> </div>
-        <div style="animation-delay: 0.8s;"></div>
+        <div style="animation-delay: 0.7s; padding-top: 30vh;"><a href="test.html">Opinion</a></div>
+        <div class="fr" style="animation-delay: 0.8s;"><iframe src="test.html" frameborder="0" style="height: 100vh;"></iframe></div>
         <div style="animation-delay: 0.6s;"></div>
         <div style="animation-delay: 0.5s;"></div>
         <div style="animation-delay: 0.4s;"></div>
-        <div style="animation-delay: 0.3s;"></div>
+        <div  style="animation-delay: 0.3s;"></div>
         <div style="animation-delay: 0.2s;"></div>
         <div style="animation-delay: 0.1s;"></div>
         <div style="animation-delay: 0.1s;"></div>
@@ -109,7 +128,7 @@
         <div style="animation-delay: 0.1s;"></div>
         <div style="animation-delay: 0.1s;"></div>
 </div>
-<div class="columns none" style="position: absolute; inset:0; z-index: 1000;">
+<div class="columns none" style="position: absolute; inset:0; z-index: 500;">
     <div style="animation-delay: 0.9s;" ></div>
     
     <div style="animation-delay: 0.8s;"></div>
