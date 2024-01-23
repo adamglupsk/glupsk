@@ -10,7 +10,7 @@ animation: slide 1s forwards;
             position: fixed;
             padding: 20px 0px 0px 20px;
             border-right: 1px black solid;
-            /* background: white; */
+            background: white;
             z-index: 100;
             left: 0;
             right: 0;
@@ -21,7 +21,9 @@ animation: slide 1s forwards;
             font-size: x-large;
             
         }
-
+.menu-left:hover{
+    text-decoration: underline 1px;
+}
     .menu-left{
         margin: auto;
         text-align: left;

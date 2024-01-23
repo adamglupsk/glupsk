@@ -16,11 +16,13 @@ document.getElementById('Close').addEventListener('click', function () {
 
         // Log a message to the console when resetting the width
         console.log('Width reset to original');
-    }, 0); // 1000 milliseconds = 1 second (adjust as needed)
+    }, 200); // 1000 milliseconds = 1 second (adjust as needed)
 });
 
-// Add event listener to handle hover effect after resetting the width
-frDiv.addEventListener('mouseover', function () {
-    // Reset the inline style to allow :hover to work again
-    this.style.width = '';
-});
+// Add delayed event listener to handle hover effect after resetting the width
+setTimeout(function () {
+    frDiv.addEventListener('mouseover', function () {
+        // Reset the inline style to allow :hover to work again
+        this.style.width = '';
+    });
+}, 6000); // 500 milliseconds delay (adjust as needed)
