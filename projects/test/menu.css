@@ -35,7 +35,7 @@ animation: slide 1s forwards;
     }
     .menu-right{
         position: absolute;
-        bottom: 7vh;
+        bottom: 6vh;
         text-orientation: sideways-left;
         writing-mode:vertical-lr;
             width: 100%;

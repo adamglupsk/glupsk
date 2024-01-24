@@ -14,7 +14,7 @@
         body{
             padding: 0;
             margin: 0;
-            font-family: Times, serif;
+            font-family: 'Times New Roman', serif;
             font-style: normal;
             font-size: x-large;
             /* background: linear-gradient(black -100px, white 20px); */
@@ -40,16 +40,24 @@
                 display: inline;
                 
             }
-            .container > *{
+            /* .container > *{
                 min-height: 50vw;
-            }
+            } */
             .container > .video, .slideshow{
-                height: 80vw;
+                height: calc(80vw - 30px);
+                max-width: calc(90vw - 50px);
             }
             .title{
                 border-bottom: 1px solid;
                 height: max-content;
                 padding: 2% 0% 3% 0%;
+            }
+        }
+        @media screen and (max-width: 400px)
+        {
+            .container > .video, .slideshow{
+                max-height: calc(70vw - 40px);
+            
             }
         }
         .container >     div,    p, .bild, .title > div{
@@ -68,7 +76,7 @@
             border-bottom: 1px solid black;
         }
         h1{
-            font-size: 2.25em;
+            font-size: 1.9em;
             line-height: 90%;
         }
         @media (min-width: 850px){
@@ -92,6 +100,7 @@ max-width: 97.5%;            }
         .video{
             background: url(1.jpg) center top no-repeat;
             overflow: hidden;
+            pointer-events: none;
             /* background-size: contain; */
         }
         .big{
@@ -115,7 +124,7 @@ grid-row: span 2;      }
         }
         @keyframes opinion-slideshow{
             30%{
-                background-image: url(opinion-slideshow-1.jpg);
+                background-image: url(opinion-slideshow-p1.jpg);
             }
             60%{
                 background-image: url(opinion-slideshow-p2.jpg);

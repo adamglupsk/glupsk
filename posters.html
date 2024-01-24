@@ -1,64 +1,42 @@
-<!-- FILEPATH -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.typekit.net/mlc7org.css">
+    <link rel="stylesheet" href="projects/test/menu.css">
     <link rel="stylesheet" href="posters-style.css">
+    <style>
+        a{
+            color: blue;
+        }
+    </style>
 
     <title>Posters</title>
 
 
 </head>
 <body>
+    <div class="menu " style="margin-top: -3.3dvh; margin-left: -5px;">
+        <div class="menu-left">
+            <a style="color: black; margin-bottom: -1px;" href="index.html">Adam Arinbjarnars</a><div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 50%; ">o</div>n</div>
+        <div class="menu-right">Graphic designer <div style="display: inline-block; animation: rotation 20s 10s linear infinite; transform-origin: 40%;">/</div> Image maker&nbsp&nbsp <a href="index.html">Index</a></div>
+    
+    </div>
     <div class="kropp">
-    <!-- <h1>arinbjarnarson.se</h1> -->
-    <!-- <div id="poster"></div> -->
+       <div style="margin: auto; background: white; width: min-content;">
     <div id="image-container"></div>
 
-                          <!-- gammalt script -->
-    <!-- <script>
-        var arrayImg = new Array();
-        arrayImg[0] = "1.jpg";
-        arrayImg[1] = "2.jpg";
-        arrayImg[2] = "3.jpg";
-        arrayImg[3] = "4.jpg";
-        arrayImg[4] = "5.jpg";
-        arrayImg[5] = "6.jpg";
-        arrayImg[6] = "7.jpg";
-        arrayImg[7] = "8.jpg";
-        arrayImg[8] = "9.jpg";
-        arrayImg[9] = "10.jpg";
-        arrayImg[10] = "11.jpg";
-        arrayImg[11] = "12.jpg";
-        arrayImg[12] = "13.jpg";
-        arrayImg[13] = "14.jpg";
-        arrayImg[14] = "15.jpg";
-        
-        getRandomImage(arrayImg, "");
-        
-        function getRandomImage(imgAr, path) {
-            path = path || 'posters/'; // default path here
-            var num = Math.floor( Math.random() * imgAr.length );
-            var img = imgAr[ num ];
-            var imgStr = '<img src="' + path + img + '" alt = "">';
-            var posterDiv = document.getElementById("poster");
-            posterDiv.innerHTML = imgStr;
-        }
-        function refreshPage(){
-    window.location.reload();
-} 
-        </script> -->
-
-                          <!-- nytt script! -->
-<script src="posters-script.js"></script>
-<div class="header right">I like making posters. <br>
-            <button type="submit" onClick="refreshPage()">See more &#x21BB;</button> 
-                </div>
-
-        <div class="header left"><a href="https://www.arinbjarnarson.se">arinbjarnarson.se</a></div>
-        
+    <div style="font-size: larger; margin-top: 20px; margin-bottom: 30px; text-align: end;">I like making posters, sometimes for fun, <br> sometimes for work.<br>
+        <button type="submit" onClick="refreshPage()">Refresh for more.</button> 
     </div>
+    <!-- <div class="header right">I like making posters. <br>
+        <button type="submit" onClick="refreshPage()">Refresh for more &#x21BB;</button> 
+    </div> -->
+    
+    <!-- <div class="header left"><a href="https://www.arinbjarnarson.se">arinbjarnarson.se</a></div> -->
+    <!-- &#x21BB; -->
+</div>
+<script src="posters-script.js"></script>
 </body>
 </html>
