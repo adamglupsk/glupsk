@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opinion</title>
+    <title>About</title>
 <link rel="stylesheet" href="project.css">
 <link rel="stylesheet" href="menu.css">
 <style>
@@ -16,24 +16,63 @@
         }
     
     }
+    body{
+        background-image: linear-gradient(white 75%, yellow);
+    }
+.big{
+    width: 92%;
+    
+height:fit-content;
+display: flex;
+overflow: hidden;
+grid-column: span 1 !important;
+
+/* z-index: 1000; */
+/* position: absolute; */
+}
+.big > img {
+    width: 30%;
+
+
+}
+
+.container{
+    display: inline;
+}
+@media screen and (max-width: 750px){
+            
+            .container > *{
+                min-height: initial;
+            }
+        }
+a{
+    color: blue;
+}
+
 </style>
     </head>
 <body>
-    <div class="menu" style="background:yellow">
-        <div class="menu-left">Adam Arinbjarnars<div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 100%; ">o</div>n</div>
+    <div class="menu">
+        <div class="menu-left">Adam Arinbjarnars<div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 50%; ">o</div>n</div>
         <div class="menu-right">Graphic designer <div style="display: inline-block; animation: rotation 20s 20s linear infinite; transform-origin: 40%; ">/</div> Image maker</div>
     
     </div>
     <div class="page">
-        <div class="title"><h1>Adam Arinbjarnarson</h1>
+        <div class="title" style="height: fit-content;"><h1>Adam <br>Arinbjarnars<div style="display: inline-block; animation: rotation 10s linear infinite; transform-origin: 58% 60%;">o</div>n</h1>
 </div>
         <div class="container">
-        
-        <!-- <div class="bild" style="background-image: url(bak.png); background-size: contain;"></div> -->
-        
-        <div>In making <i>Opinion</i> I collected words that sound and feel like parts of opinionated statements: words like <i>Should</i> and pl <br><br>I'm asking: "what makes an opinion?". </div>
-        <!-- <div class="bild"></div> -->
-        <!-- <div class="bild" style="background-image: url(fram.png);"></div> -->
+            
+            <div style="font-size: x-large;">Graphic designer <br>Image maker<br> Blender user <br>Keyframe placer<br>Art director</div>
+            <div>Graduate 2025<br>Visual communication, BFA <br> <i>Beckmans College of Design</i> <br> Stockholm, Sweden</div>
+            <div><i>Contact <br></i><a href="https://instagram.com/adamglupsk">@adamglupsk</a>
+                <br><a href="mailto:adaari@icloud.com">adaari@icloud.com</a>
+                <br><a href="tel:+46707871567">+46707871567</a>
+            </div>
+            <div class="big">
+            <div style="margin:auto;">
+            <img src="me.png" alt="">
+            </div>
+        </div>
         
 
     </div>

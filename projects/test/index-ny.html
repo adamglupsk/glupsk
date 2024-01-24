@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="menu.css">
     <script defer src="script.js"></script>
     <style>
 /* body{
@@ -33,7 +33,7 @@
             grid-template-columns: repeat(auto-fit, 60px);
             grid-auto-columns: 60px;
             grid-auto-rows: min-content;
-            margin-left: 60px;
+            /* margin-left: 60px; */
             max-height: 100vh;
             overflow: hidden;
 
@@ -51,18 +51,17 @@
         }
      
 
-        .fr{
+        .fr, .fr2{
             /* background-color: red; */
             transition: width 0.5s linear;
             width: 60px;
             background-color: white;
             position: relative;
             z-index: 1500;
-            transform: translateZ(0); /* Force GPU acceleration */
 
             
         }
-        .fr:hover{
+        .fr2:hover, .fr:hover{
             background-color: white;
             position: relative;
             z-index: 2000;
@@ -77,11 +76,15 @@
             .fr:hover{
                 width: calc(60px*15);
             }
-            
-
             iframe{
        min-width: calc(60px*15);
                 }
+            .fr2:hover, .fr2:hover > iframe{
+                width: calc(60px*8);
+                max-width: calc(60px*8);
+            }
+
+            
             }     
         
             iframe{
@@ -161,7 +164,7 @@
     </style>
 </head>
 <body>
-    <div class="menu" style="left:initial; background-color: white; border-left: 1px solid black;">
+    <!-- <div class="menu" style="left:initial; background-color: white; border-left: 1px solid black;">
         
         <div class="menu-left" >
             +46707871567
@@ -169,22 +172,24 @@
         <div class="menu-right" >
             adaari@icloud.com
         </div>
-    </div>
-    <div class="menu" style>
+    </div> -->
+    <!-- <div class="menu">
         <div class="menu-left">Adam Arinbjarnars<div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 100%; ">o</div>n</div>
         <div class="menu-right">Graphic designer <div style="display: inline-block; animation: rotation 20s 20s linear infinite; transform-origin: 40%; ">/</div> Image maker</div>
     
-    </div>
+    </div> -->
     <div class="block"></div>
     <div class="top"></div>
     <div class="columns">
+        <div class="fr2" style="animation-delay: 0.8s; border-right: 1px solid black; z-index: 4000;"><iframe src="about.html" frameborder="0" style="height: 100vh;"></iframe><button id="Close">(Close)</button></div>
         <div style="animation-delay: 1s;"><p><i>Selected works:</i></p></div>
         <div class="fr" style="animation-delay: 0.9s; border-right: 1px solid black; z-index: 3000;">
-            <div class="menu" style="background:white;">
+            <!-- <div class="menu" style="background:white;">
                 <div class="menu-left">Tyd<div style="display: inline-block; animation: rotation 50s 10s linear infinite; transform-origin: 100%; ">a</div></div>
                 <div class="menu-right">Graphic Identity</div>
-            </div>
-            <iframe src="tyda.html" frameborder="x0" style="height: 100vh;"></iframe><button id="Close">(Close)</button></div>
+            </div> -->
+            <iframe src="tyda.html" frameborder="x0" style="height: 100vh;"></iframe><button id="Close">(Close)</button>
+        </div>
 
             
         <div class="fr" style="animation-delay: 0.8s; border-right: 1px solid black;"><iframe src="magazine.html" frameborder="0" style="height: 100vh;"></iframe><button id="Close">(Close)</button></div>
@@ -193,9 +198,9 @@
         <div style="animation-delay: 0.6s;"></div>
         <div style="animation-delay: 0.5s;"></div>
         <div style="animation-delay: 0.4s;"><p><i>Links</i></p></div>
-        <div  style="animation-delay: 0.3s;"><a href="https://www.arinbjarnarson.se/solvej">Guide to Malm<div style="display: inline-block; animation: rotation 10s linear infinite; transform-origin: 40%; margin-top: -0px">ö</div></a> <p style="position: absolute; bottom: 20px; left: 10px; z-index: 2000;">For visitors</p></div>
-        <div style="animation-delay: 0.2s;"><a href="https://www.instagram.com/babyglupsk">@babyglupsk</a><p style="position: absolute; bottom: 25px; left: 10px; z-index: 2000;">Visual diary</p></div>
-        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.3s;"><a href="https://www.instagram.com/babyglupsk">@babyglupsk</a><p style="position: absolute; bottom: 25px; left: 10px; z-index: 2000;">Visual diary</p></div>
+        <div style="animation-delay: 0.2s;"><a href="https://www.arinbjarnarson.se/posters">Posters</a><p style="position: absolute; bottom: 25px; left: 10px; z-index: 2000;">Image shuffler</p></div>
+        <div  style="animation-delay: 0.1s;"><a href="https://www.arinbjarnarson.se/solvej">Guide to Malm<div style="display: inline-block; animation: rotation 10s linear infinite; transform-origin: 40%; margin-top: -0px">ö</div></a> <p style="position: absolute; bottom: 20px; left: 10px; z-index: 2000;">For visitors</p></div>
         <div style="animation-delay: 0.1s;"></div>
         <div style="animation-delay: 0.1s;"></div>
         <div style="animation-delay: 0.1s;"></div>
