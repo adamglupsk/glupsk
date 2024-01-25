@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="menu.css">
     <script defer src="script.js"></script>
     <style>
-/* body{
-    overflow: hidden;
-    left:0;
-} */
+ body{
+    border-top: 1px solid black ;
+
+} 
         @keyframes slide-left{
             0%{
                 transform: translateX(-100vh);
@@ -79,13 +79,18 @@
             iframe{
        min-width: calc(60px*15);
                 }
-            .fr2:hover, .fr2:hover > iframe{
-                width: calc(60px*8);
-                max-width: calc(60px*8);
-            }
+        }
 
+        @media screen and (min-width: 1200px){
             
-            }     
+            .fr2:hover{
+                width: calc(60px*8);
+            }
+            
+            .fr2:hover > iframe{
+                min-width: calc(60px*8);
+            }
+        }
         
             iframe{
         width: calc(60px*8);
@@ -181,7 +186,9 @@
     <div class="block"></div>
     <div class="top"></div>
     <div class="columns">
-        <div class="fr2" style="animation-delay: 0.8s; border-right: 1px solid black; z-index: 4000;"><iframe src="about.html" frameborder="0" style="height: 100vh;"></iframe><button id="Close">(Close)</button></div>
+
+        <div class="fr2" style="animation-delay: 0.8s; border-right: 1px solid black; z-index: 4000;"><iframe src="about.html" frameborder="0" style="height: 100vh; max-width: calc(60px * 8) !important;"></iframe><button id="Close">(Close)</button></div>
+
         <div style="animation-delay: 1s;"><p><i>Selected projects:</i></p></div>
         <div class="fr" style="animation-delay: 0.9s; border-right: 1px solid black; z-index: 3000;">
             <!-- <div class="menu" style="background:white;">

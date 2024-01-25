@@ -19,6 +19,8 @@ animation: slide 1s forwards;
             font-family: Times, serif;
             font-style: normal;
             font-size: x-large;
+            border-left: 1px solid rgba(0, 0, 0, 0);
+
             
         }
 .menu-left:hover{
