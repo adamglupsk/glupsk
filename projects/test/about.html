@@ -16,9 +16,9 @@
         }
     
     }
-    /* body{
+    body{
         background-image: linear-gradient(white 60%, yellow);
-    } */
+    }
 .big{
     width: 92%;  
     height:fit-content;
@@ -49,13 +49,18 @@
 a{
     color: blue;
 }
+.page{
+    font-size: 1.4rem;
+}
+#titleContainer{
+   color:inherit;}
 
 </style>
     </head>
 <body>
     <div class="menu">
         <div class="menu-left index">Adam Arinbjarnars<div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 50%; ">o</div>n</div>
-        <div class="menu-right index">Graphic designer <div style="display: inline-block; animation: rotation 20s 5s linear infinite; transform-origin: 40%; ">/</div> Image maker</div>
+        <div class="menu-right index"><a href="index.html">Index</a></div>
         <div class="menu-left">Adam Arinbjarnars<div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 50%; ">o</div>n</div>
         <div class="menu-right">Graphic designer <div style="display: inline-block; animation: rotation 20s 20s linear infinite; transform-origin: 40%; ">/</div> Image maker</div>
     
@@ -65,8 +70,42 @@ a{
 </div>
         <div class="container">
             
-            <div style="font-size: x-large;">Graphic designer <br>Image maker<br> Blender user <br>Keyframe placer<br>Art director</div>
-            <div>Graduate 2025<br>Visual communication, BFA <br> <i>Beckmans College of Design</i> <br> Stockholm, Sweden</div>
+            <div id="titleContainer">Graphic designer <br></div>
+            <script>
+                const additionalTitles = [
+                    "Blender user",
+                    "Art director",
+                    "InDesign user",
+                    "Phone caller",
+                    "Cinema 4D user",
+                    "E-mailer",
+                    "Photoshop brusher",
+                    "Pencil shader",
+                    "Artist",
+                    "Illustrator",
+                    "Motion designer",
+                    "Solution finder",
+                    "Image maker",
+
+                ];
+            
+                function addTitles() {
+                    const titleContainer = document.getElementById('titleContainer');
+                    const randomTitle = additionalTitles.pop();
+            
+                    if (randomTitle) {
+                        
+                        titleContainer.innerHTML += randomTitle + "<br>";
+                    }
+            
+                    if (additionalTitles.length > 1) {
+                        setTimeout(addTitles, 10000);
+                    }
+                }
+            
+                addTitles();
+            </script>
+            <div>Graduating 2025<br>Visual communication, BFA <br> <i>Beckmans College of Design</i> <br> Stockholm, Sweden</div>
             <div><i>Contact <br></i><a href="https://instagram.com/adamglupsk">@adamglupsk</a>
                 <br><a href="mailto:adaari@icloud.com">adaari@icloud.com</a>
                 <br><a href="tel:+46707871567">+46707871567</a>
