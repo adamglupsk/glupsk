@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home 2</title>
+    <title>Adam Arinbjarnarson</title>
     <link rel="stylesheet" href="project.css">
     <link rel="stylesheet" href="menu.css">
     <style>
@@ -29,18 +29,20 @@
         }
         .rows{
             display: grid;
-            grid-template-rows: repeat(auto-fit, 50px);
+            grid-template-rows: repeat(auto-fit, 70px);
             grid-auto-rows: 50px;
             /* height: 100dvh; */
-            margin-left: 60px;
+            /* margin-left: 60px; */
             /* overflow: scroll; */
         }
         .rows > div{
             background-size: cover;
-            font-size: 1.3rem;
+            font-size: 1.7rem;
             transform: translateY(-200vh);
             animation: slide-down 1.5s linear forwards;
             border-bottom: 1px solid black;
+            padding-left: 10px;
+
         }
         a{
             text-decoration: none;
@@ -50,29 +52,75 @@
             color: blue;
             text-decoration: underline 1px blue;
         }
+
+        .padding, .mobile-top > *{
+            padding: 10px 10px 10px 10px;
+            margin: 10px;
+        }
+        .mobile-top{
+            transform: translateY(-200vh);
+            animation: slide-down 1.5s linear forwards;
+            height: 50vh;
+        }
+        #titleContainer{
+            font-size: 1.4rem;
+        }
     </style>
 </head>
 <body>
-    <div class="menu" style="pointer-events: none; height: 100dvh;">
+    <!-- <div class="menu" style="pointer-events: none; height: 100dvh;">
         <div class="menu-left">Adam Arinbjarnars<div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 100%; ">o</div>n</div>
         <div class="menu-right">Graphic designer <div style="display: inline-block; animation: rotation 20s 20s linear infinite; transform-origin: 40%; ">/</div> Image maker</div>
-    
+     -->
+     <div class="mobile-top" style="animation-delay: 0.6s;">
+        <h1>Adam Arinbjarnarson</h1>
+        <div id="titleContainer" class="padding"></div>
+        <script>
+            // Array of titles
+            const titlesArray = [
+                "Blender user",
+                "Art director",
+                "InDesign user",
+                "Phone caller",
+                "Cinema 4D user",
+                "E-mailer",
+                "Photoshop brusher",
+                "Pencil shader",
+                "Artist",
+                "Illustrator",
+                "Motion designer",
+                "Solution finder",
+                "Grid maker",
+                "Paper folder",
+                "Small talker",
+                "Google searcher",
+                "Image prompter",
+                "Music listener",
+            ];
+        
+            function changeTitle() {
+                const titleContainer = document.getElementById('titleContainer');
+                const randomTitle = titlesArray[Math.floor(Math.random() * titlesArray.length)];
+        
+                titleContainer.innerHTML = 'Graphic designer' + "<br>" + 'Image maker' + "<br>" + randomTitle ;
+        
+                setTimeout(changeTitle, 500);
+            }
+        
+            changeTitle();
+        </script>
+     </div>
     </div>    <div class="rows">
        
         <div style="animation-delay: 0.5s;"><p><i>Selected projects:</i></p></div>
-        <div style="animation-delay: 0.4s;"> <p><a href="opinion.html">Opinion</a></p></div>
+        <div style="animation-delay: 0.4s;"> <p><a href="tyda.html">Tyda</a></p></div>
         <div style="animation-delay: 0.3s;"> <p><a href="magazine.html">Collecting Music</a></p></div>
-        <div style="animation-delay: 0.2s;"> <p><a href="tyda.html">Tyda</a></p></div>
+        <div style="animation-delay: 0.2s;"> <p><a href="opinion.html"><i>Opinion</i> </a></p></div>
         <div style="animation-delay: 0.1s;"> <p><a href="about.html">About</a></p></div>
         <div> <p></p></div>
         <div> <p></p></div>
-        <div> <p></p></div>
-        <div> <p></p></div>
-        <div> <p></p></div>
-        <div><p><i>Links:</i></p></div>
-        <div class="link"> <p><a href="https://instagram.com/babyglupsk">Visual diary: instagram</a></p></div>
-        <div class="link"> <p><a href="https://arinbjarnarson.se/posters.html">Posters</a></p></div>
-        <div class="link"> <p><a href="https://instagram.com/solvej.html">Guide to Malmö</a></p></div>
+        <div><p><a href="links.html">Hyperlinks</a></p></div>
+        
         <div> <p></p></div>
     </div>
 </body>
