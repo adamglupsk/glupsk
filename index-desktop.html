@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="menu.css">
+    
+    <script defer src="script.js"></script>
+    <style>
+ body{
+    border-top: 1px solid black ;
+
+} 
+        @keyframes slide-left{
+            0%{
+                transform: translateX(-100vh);
+            }
+            100%{
+                transform: translateX(0vh);
+            }
+        }
+        @keyframes slide-up{
+            0%{
+                transform: translateY(100vw);
+            }
+            100%{
+                transform: translateY(0vh);
+            }
+        }
+        .columns{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 60px);
+            grid-auto-columns: 60px;
+            grid-auto-rows: min-content;
+            /* margin-left: 60px; */
+            max-height: 100vh;
+            overflow: hidden;
+
+        }
+        .columns > div{
+            /* border-right: 1px solid black; */
+            border-left: 1px solid black;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+            transform: translateX(-100vw); 
+            animation: slide-left 0.8s linear forwards;
+            /* overflow: scroll; */
+        }
+     
+
+        .fr, .fr2{
+            /* background-color: red; */
+            transition: width 0.5s linear;
+            width: 60px;
+            background-color: white;
+            position: relative;
+            /* z-index: 1500; */
+
+            
+        }
+        .fr2:hover, .fr:hover{
+            background-color: white;
+            position: relative;
+            z-index: 2000;
+            width: calc(60px*8);
+            transition: width 0.5s linear;
+        }
+
+        @media screen and (min-width: 1200px){
+            .body{
+                margin-left: 200px;
+            }
+            .fr:hover{
+                width: calc(60px*15);
+            }
+            iframe{
+       min-width: calc(60px*15);
+                }
+        }
+
+        @media screen and (min-width: 1200px){
+            
+            .fr2:hover{
+                width: calc(60px*8)!important;
+            }
+            
+            .fr2:hover > iframe{
+                min-width: calc(60px*8);
+            }
+        }
+        .fr.disable-hover {
+    pointer-events: none; /* Disable mouse events */
+    width: 60px !important; /* Reset width */
+}
+        
+            iframe{
+        width: calc(60px*8);
+        
+                }
+
+        .columns > div > p, .columns  > img, .columns > div > a{
+            writing-mode: vertical-rl;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            /* margin-top: 50%; */
+            margin-left: 30%;
+            /* animation: slide-left 0.7s ease; */
+
+            /* transform: translate(-50%, -50%); */
+        }
+
+        .top{
+            position: fixed;
+            inset:0;
+            width: 100vw;
+            /* background: rgb(246, 255, 0); */
+            z-index: -100;
+        }
+        img{
+            position: relative;
+            width: 100%;
+            height: 20%;
+            object-fit: cover;
+        }
+        .none{
+            pointer-events: none;
+        }
+        .none > div{
+            border-radius: 3px solid black !important;
+            /* background-color: blue; */
+        }
+        .block{
+            min-width: calc(60px*8);
+            display: block;
+            background-color: white; 
+            opacity: 0;            
+            position: fixed;  
+            min-height: 40vh;
+            left:65px;
+            bottom: 0;
+            z-index: 5000;
+              }
+        
+
+    a, a:hover{
+        color: blue;
+    }
+    a:hover{
+        text-decoration: underline 1px blue;
+    }
+
+    .columns > div > a, p, i{
+        margin-top: 20px
+    }
+    button{
+            font-size: 50%;
+            font-family: inherit;
+            border:0;
+            padding: 20px 30px 0px 0px;
+            background-color: transparent;
+            writing-mode: vertical-lr;
+            position: absolute;
+            right: 0;
+            z-index: 2;
+            color:blue;
+            cursor:col-resize;
+
+        }
+        button:hover{
+        color:red;
+        cursor:col-resize;
+
+    }
+
+    .fr.activate-hover {
+    background-color: white;
+    position: relative;
+    z-index: 2000;
+    width: calc(60px*8);
+    transition: width 0.5s linear;
+}
+
+    </style>
+</head>
+<body>
+    
+    <!-- <div class="block"></div> -->
+    <div class="top"></div>
+    <div class="columns">
+
+        <div class="fr fr2" style="animation-delay: 1s; border-right: 1px solid black; z-index: 4000; border-left: none;"><iframe src="about.html" frameborder="0" style="height: 100vh; max-width: calc(60px * 8)"></iframe><button onclick="disableHover(this)">Close</button></div>
+
+        <div style="animation-delay: 1s;">
+            <!-- <div class="menu">
+            <div class="menu-left note">Selected projects from the past year</div>
+        </div> -->
+            <!-- <p><i>Selected projects:</i></p> -->
+        </div>
+        <div class="fr" style="animation-delay: 0.9s; border-right: 1px solid black; z-index: 3000;">
+            
+            <iframe src="tyda.html" frameborder="x0" style="height: 100vh;"></iframe><button #close onclick="disableHover(this)">Close</button>
+        </div>
+
+        <div class="fr" style="animation-delay: 0.8s; border-right: 1px solid black;"><iframe src="magazine.html" frameborder="0" style="height: 100vh;"></iframe><button onclick="disableHover(this)">Close</button></div>
+            
+
+        <div class="fr" style="animation-delay: 0.8s; border-right: 1px solid black;"><iframe src="opinion.html" frameborder="0" style="height: 100vh;"></iframe><button onclick="disableHover(this)">Close</button></div>
+
+        <div class="fr" style="animation-delay: 0.8s; border-right: 1px solid black;"><iframe src="more.html" frameborder="0" style="height: 100vh;"></iframe><button onclick="disableHover(this)">Close</button></div>
+        
+        <div style="animation-delay: 0.7s;"></div>
+        <div class="fr fr2" style="animation-delay: 0.6s; border-right: 1px solid black;"><iframe src="links.html" frameborder="0" style="height: 100vh;"></iframe><button onclick="disableHover(this)">Close</button></div>
+        <div style="animation-delay: 0.5s;"></div>
+
+        <!-- <div style="animation-delay: 0.4s;"><p><i>Links</i></p></div> -->
+
+        <!-- <div style="animation-delay: 0.3s;"><a href="https://www.instagram.com/babyglupsk">@babyglupsk</a>
+        </div>
+
+        <div style="animation-delay: 0.2s;"><a href="https://www.arinbjarnarson.se/posters">Posters</a></div>
+
+        <div  style="animation-delay: 0.1s;"><a href="https://www.arinbjarnarson.se/solvej">Guide to Malm<div style="display: inline-block; animation: rotation 10s linear infinite; transform-origin: 40%; margin-top: -0px">ö</div></a></div> -->
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0.1s;"></div>
+        <div style="animation-delay: 0s;"></div>
+        <div style="animation-delay: 0s;"></div>
+        <div style="animation-delay: 0s;"></div>
+        <div style="animation-delay: 0s;"></div>
+        <div style="animation-delay: 0s;"></div>
+        <div style="animation-delay: 0s;"></div>
+        <script>
+           document.addEventListener('DOMContentLoaded', function () {
+    var frElement = document.querySelector('.fr');
+    console.log(frElement);  // Check if frElement is found
+
+    var frIframe = frElement.querySelector('iframe');
+    console.log(frIframe);  // Check if frIframe is found
+
+    frIframe.addEventListener('click', function () {
+        console.log('Iframe Clicked');  // Check if the click event is triggered
+        frElement.classList.toggle('activate-hover');
+    });
+
+    var frButtons = frElement.querySelectorAll('button');
+    frButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            console.log('Button Clicked');  // Check if button click event is triggered
+            frElement.classList.remove('activate-hover');
+        });
+    });
+});
+
+
+
+        </script>
+    </div>
+    
+</div>
+</body>
+</html>

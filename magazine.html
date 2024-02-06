@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collecting Music</title>
+<link rel="stylesheet" href="project.css">
+<link rel="stylesheet" href="menu.css">
+<style>
+#image-container img{
+    
+    padding: 5%;
+}
+.container div{
+max-height: fit-content;
+}
+video{
+    width: 100%;
+}
+
+        
+</style>
+    </head>
+<body>
+    <div class="menu">
+        <div class="menu-left index">Adam Arinbjarnars<div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 50%; ">o</div>n</div>
+        <div class="menu-right index"><a href="https://www.arinbjarnarson.se">Index</a> &#160;&#160;&#160;</div>
+        <div class="menu-left"><i>Collecting Mu<div style="display: inline-block; animation: rotation 20s 200s linear reverse infinite; transform-origin: 43% 45%; margin-top: -0px">s</div>ic</i></div>
+        <div class="menu-right">
+        Magazine  &#160;&#160;&#160;&#160;&#160;&#160; 2023          <!-- <a href="index-ny.html">Index</a> &#160;&#160;&#160;<a href="index-ny.html">Links</a> -->
+        </div>
+    </div>
+    <div class="page">
+        <div class="title" style="border-bottom: 1px solid; height:fit-content;"><h1>Collecting Music</h1>
+</div>
+<!-- <div class="big-magazine" ><img src="collecting-1.png" alt=""></div> -->
+<div class="big-magazine" ><img id="slider-image" src="collecting-1.png" alt="Slider Image">
+    <div style="width: 100%; display: flex; justify-content: space-between; padding: 0px 5px 0px 10px"><button id="prev-btn" onclick="changeImage(-1)">Previous</button>
+    <button id="next-btn" onclick="changeImage(1)">Next</button></div>
+</div>
+
+  <script>
+    const images = ['collecting-1.png', 'magazine-page-2.png', 'magazine-page-3.png', 'magazine-page-4.png','magazine-page-5.png','magazine-page-6.png','magazine-page-7.png'];
+    let currentIndex = 0;
+    const totalImages = images.length;
+
+    function changeImage(offset) {
+      currentIndex = (currentIndex + offset + totalImages) % totalImages;
+      document.getElementById('slider-image').src = images[currentIndex];
+    }
+  </script>
+
+
+        <div class="container">
+        
+            
+            <div><i>Collecting</i> is a magazine about collections, music and using digital interfaces. The tabloid magazine is 8 pages in 289 * 380 mm. </div>
+            
+            
+            <div style="font-size: large">Playlists, piracy, algorithms and memories. <i>Collecting</i> is a magazine about collecting and in Volume 1, <i>Music</i>, it's about the ways people collect music. Why we create playlist, how we choose music and the ways Spotify and other digital platforms for music listening have shaped our habits. <div class="indent">Inspirations in the project were <a style="color: blue;" href="https://everynoise.com">Every Noise at Once</a>,  Simon Evans'<a style="color: blue;" href="https://socks-studio.com/2016/03/27/everything-i-have-and-other-works-by-simon-evans/"> Everything I Have </a> and <a style="color: blue;" href="http://www.diva-portal.org/smash/get/diva2:535713/FULLTEXT01.pdf">this essay </a> about playlist psychology. Graphic design choices were based on personal computer UI, catalogues and charts.
+            The project's concept and design was made in collaboration with <a style="color: blue;" href="https://solvejjansson.com">Solvej Jansson</a> and <a style="color: blue;" href="https://www.elvinodelholm.com">Elvin Odelholm</a>, in the course <i>Editoral Design</i>, led by Stefania Malmsten at Beckmans College of Design.</div></div>
+            <div>
+                <img class="mySlides" src="magazine-slide-1.jpeg">
+                <img class="mySlides" src="magazine-slide-2.jpeg">
+                <img class="mySlides" src="magazine-slide-3.png">
+                
+                
+            </div>
+            <script>
+                var myIndex = 0;
+                carousel();
+                
+                function carousel() {
+                  var i;
+                  var x = document.getElementsByClassName("mySlides");
+                  for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";  
+                  }
+                  myIndex++;
+                  if (myIndex > x.length) {myIndex = 1}    
+                  x[myIndex-1].style.display = "block";  
+                  setTimeout(carousel, 2000);
+                }
+                </script>
+            <!-- <div><div class="slideshow"> </div><div class="note">Bookmarks with qr code linking to Collecting's Online edition.</div></div> -->
+            <div><img src="collecting.gif" alt=""></div>
+            
+            <div style="font-size: large;">
+                <div style="font-size: large;">The first issue of collecting uses 306 individual images collected on the internet or our photo libraries. The images correspond to interviews, statistics or lyrics mentioned in the magazine.</div>
+                
+            </div>
+            <div><video autoplay muted loop src="magazine-online.mp4"></video></div>
+            <div class="large"> The playlists, tools and texts mentioned in the magazine are presented on the <i>Online Edition</i> of Collecting. The site, made with plain CSS, is <a style="color: blue;" href="https://arinbjarnarson.se/collecting">online</a>.</div>
+
+            <div><img src="slip-1.png" alt="Bookmars"><div class="note">Bookmarks with qr code linking to Collecting's Online edition.</div>
+            
+        
+
+        
+    </div>
+    </div>
+</body>

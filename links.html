@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+<link rel="stylesheet" href="project.css">
+<link rel="stylesheet" href="menu.css">
+<style>
+    @keyframes scale10x{
+        0%{
+            transform: scale(1);
+        }
+        100%{
+            transform: scale(10);
+        }
+    
+    }
+    body{
+        /* background-image: linear-gradient(white 60%, rgb(0, 225, 255)); */
+        height: 100vh;
+    }
+.big{
+    width: 92%;  
+    height:fit-content;
+    display: flex;
+    overflow: hidden;
+    grid-column: span 1 !important;
+
+/* z-index: 1000; */
+/* position: absolute; */
+}
+.big > img {
+    width: 30%;
+
+
+}
+
+
+
+.container{
+    display: inline;
+}
+@media screen and (max-width: 750px){
+            
+            .container > *{
+                min-height: initial;
+            }
+        }
+a{
+    color: blue;
+}
+.page{
+    font-size: 1.4rem;
+}
+#titleContainer{
+   color:inherit;}
+
+   .links a{
+    line-height: 150%;
+    /* border-bottom: 1px solid black; */
+    /* margin-bottom: 10px; */
+   }
+   span{
+    color:red;
+    font-size: 70%;
+}
+
+</style>
+    </head>
+<body>
+    <div class="menu">
+        <div class="menu-left index">Adam Arinbjarnars<div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 50%; ">o</div>n</div>
+        <div class="menu-right index"><a href="index.html">Index</a></div>
+        <div class="menu-left" style="font-style: normal !important; color:blue">Hyperlinks</div>
+        <!-- <div class="menu-right">Graphic designer <div style="display: inline-block; animation: rotation 20s 20s linear infinite; transform-origin: 40%; ">/</div> Image maker</div> -->
+    
+    </div>
+    <div class="page">
+        <div class="title" style="height: fit-content;"><h1>Hyperlinks</h1>
+</div>
+        <div class="container" >
+            <div class="medium">This is a compilation of things I am making, listening to, reading and so on. Design related projects of mine are marked with <span style="font-size: 100%;">(work)</span>.</div>
+            <div class="links">
+                <a href="solvej.html">Posters <span>(work)</span></a><br>
+                <div class="medium">Self initiated posters I've made recently. Some for fun, some for collaborative projects.</div>
+                <a href="solvej.html">Visual journal, @babyglupsk</a> <br>
+                <div class="medium">Process, documentation, inspiration for all things visual.</div>
+                <a href="solvej.html">Guide to Malmö <span>(work)</span></a><br>
+                <div class="medium">A website with listing places in my hometown for friend Solvej planning a visit.</div>
+                <a href="solvej.html">What is Adam thinking about right now?</a><br>
+                <div class="medium">Quick web project inspired by <a href="https://naiveyearly.com"><i>Naive Yearly</i></a>, a web poetry festival in Copenhagen. </div>
+                <a href="solvej.html">A good listen, courtesy of <i>Smerz</i></a><br>
+                <div class="medium"> <i>The Stylist</i> is my favorite song off this project. </div>
+                
+        </div>
+            
+            </div>
+           
+
+    </div>
+</body>

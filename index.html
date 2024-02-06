@@ -1,240 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://use.typekit.net/mlc7org.css">
-<meta charset="UTF-8">
-<title>Adam Arinbjarnarson</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://use.typekit.net/ovn7jba.css">
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Arinbjarnarson</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;       
+         }
 
-  @keyframes rotate{
-    0% {
-      transform: rotate(0deg);
+            iframe, object{
+                min-width: 100vw;
+                height: 100vh;
+                border: none;
+                border-radius: 0;;
+            
+            }
+#content {
+min-width: 100vw;    
+}
+
+/* @media (max-width: 600px) {
+    #content {
+        background-color: rgb(0, 155, 255);
     }
-    100% {
-      transform: rotate(-360deg);
+}
+
+@media (min-width: 601px) {
+    #content {
+        background-color: rgb(0, 255, 0);
     }
-  }
-body{
+} */
 
-  overflow: hidden;
-  line-height: 115%;
-  font-size: 3.5vmin;
-
-  text-align: left;
-  padding: 0vw;
-  margin: 0px;
-  display: flex;
-  /* align-items: center; */
-  justify-content: center;
-  font-family: neue-haas-grotesk-display, sans-serif;
-  font-weight: 500;
-  
-}
-.message{
-  position: fixed;
-  bottom: 4vmin;
-  right: 4vmin;
-  text-align: right;
-  line-height: 135%;
-}
-.message-right{
-  position: fixed;
-  bottom: 4vmin;
-  left: 4vmin;
-  text-align: left;
-  line-height: 135%;
-}
-
-a:visited{
-  color: blue;
-}
-.u{
-  line-height: 150%;
-  position: fixed;
-  left: 2vmin;
-  bottom: 2vmin;
-  color:red;
-
-}
-.uh{
-  line-height: 150%;
-  position: fixed;
-  bottom: 2vmin;
-  right: 3vmin;
-  color:red;
-}
-p{
-  position: absolute;
-  bottom: 4vmin;
-}
-.text {
-  box-shadow: rgba(0, 0, 0, 0.283) 0px 2px 5px;
-  overflow: scroll;
-  background-color: white;
-  width: 60vmin;
-  height: 40vmin;
-  
-  align-items: center;
-  justify-content: center;
-  z-index: 9;
-  padding: 2vmin;
-  transform:rotate(-3deg);
-  position: fixed;
-  top: 18vmax;
-  animation: rotate 60s linear infinite;
-}
-span {
-  color: red;
-  }
-  /* PETERS WEBSAVER-KOD FRÅN GLITCH */
- html.idle #overlay {
-    opacity:1;
-      /* backdrop-filter: blur(100px); */
-    /* transition: opacity 1s ease-in-out; */
-    padding: 0;
-    bottom:0;
-    left:0;
-    opacity:1;
-    /* width: 100vw; */
-    /* pointer-events:none; */
-    /* position: fixed; */
-    overflow-y: hidden;
-    overflow-x: hidden;
-  } 
-    
-  #overlay {
-    padding: 0;
-    bottom:0;
-    left:0;
-    opacity:1;
-    pointer-events:none;
-    position:fixed;
-    right:0;
-    top:0;
-    transition:opacity .2s ease-in-out;
-    z-index:2;
-    /* width: 100vw; */
-    overflow-y: hidden;
-    overflow-x: hidden;
-  }
-
-  #overlay::-webkit-scrollbar {
-  display: none;
-}
-html.idle #overlay::-webkit-scrollbar {
-  display: none;
-}
-.ramen::-webkit-scrollbar {
-  display: none;
-}
-
-  .ramen {
-    display: flex;
-    align-items: center;
-    justify-self: center;
-  width: 100vw;
-  height: 100vh;
-  border:0;
-  overflow-y: hidden;
-    overflow-x: hidden;
-    pointer-events: none;
-}
-  
-  @media screen 
-  and (max-width: 700px) {
-
-    @keyframes rotate2{
-      0%{
-        rotate: 0 1 0 0deg;
-      }
-      100%{
-        rotate: 0 1 0 180deg;
-      }
-    }
-    body{
-      font-size: 5.5vmin;
-
-      /* background-color: rgb(151, 151, 151); */
-    }
-    .text {
-      margin-top: 5vh;
-      width: 80vw;
-      height:50vw;
-      line-height: 135%;  
-    }
-  .rotate{
-    display: flex;
-    animation: rotate2 1s infinite alternate linear;
-  }
-
-  }
-    
-  
-</style>
+    </style>
 </head>
 <body>
-  <!-- <script>
-    (function() {
-        const interval = 0;
-        const timeout = 1;
-        let idleCounter = 0;
-        window.onload = document.onmousemove = document.onkeypress = function() {
-          idleCounter = 0;
-          document.documentElement.classList.remove('idle');
-        };
-        window.setInterval(function() {
-          if (++idleCounter >= timeout) {
-            document.documentElement.classList.add('idle');
-            idleCounter = 0;
-          }
-        }, interval);
-      })();
-      
-      
-      function visaSvar() {
-        event.preventDefault();
-        const allaSvar = ["index.html","websave.html"];
-        const randomSvar = allaSvar[getRandomInt(allaSvar.length)];
-        location.assign(randomSvar);
-      }
-      function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
-      }
-      </script> -->
-  <div id="overlay"><iframe src="floaters.html" class="ramen"></iframe></div>
-    </div>
-  <div class="text">
-    adam arinbjarnarson
-    <br>graphic designer/image maker
-    <ul></ul>
-    <p> +46707871567
-    <br><a href="mailto:name@email.com" style="color:black; text-decoration: none;">adaari@icloud.com</a></p>
+    <div id="content"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const contentDiv = document.getElementById('content');
 
-    <div class="u"><a href="https://www.instagram.com/adamglupsk">@adamglupsk</a>
-        
-      </div>
-    
-      <!-- <div class="uh"><a href="https://www.instagram.com/babyglupsk">sandlåda</a></div> -->
-        
-      </div>
-      </div>
-  <div class="message"> 
-          <!-- <a href="floaters.html">projects</a> -->
-    <br> <a href="posters.html">posters</a>
-    <br> <a href="solvej.html">guide: malmö</a>
-    <br> <a href="thinking.html">…thinking?</a>
-    <!-- <br> <a href="https://www.instagram.com/adamglupsk">instagram</a> -->
-    <br> <a href="https://www.instagram.com/babyglupsk">@babyglupsk</a>
-    <!-- <br> <a href="https://open.spotify.com/user/adaari98?si=9bd9555669044115">spotify</a> -->
-  </div>
-  <div class="message-right"> 
-    <br> links:
-    <br>
-    <br>
-    <br>
-    <br>
-  </div>
+    if (window.innerWidth <= 600) {
+        contentDiv.innerHTML = '<object type="text/html" data="index-mobile.html" ></object>';
+    } else {
+        contentDiv.innerHTML = '<object type="text/html" data="index-desktop.html" ></object>';
+    }
+});
+
+    </script>
 </body>
 </html>
