@@ -3,13 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animation Demo</title>
+<title>Adam Arinbjarnarson</title>
 <style>
+  @keyframes slide-left{
+    0%{
+        transform: translateX(-100vh);
+    }
+    100%{
+        transform: translateX(0vh);
+    }
+}
     body{
         padding: 0;
         margin:0;
         overflow: clip;
         width: 105vw;
+    }
+
+    body > div{
+      transform: translateX(-100vw); 
+      animation: slide-left 1s 1s forwards;
+
     }
   .fr, .er, .big{
     display: inline-flex;
@@ -18,7 +32,7 @@
     height: 100vh;
     /* background-color: blue; */
     /* margin-bottom: 10px; */
-    transition: width 0.5s ease; /* Animation transition */
+    transition: width 0.5s ease-in-out ; /* Animation transition */
     border-left: 1px solid black;
     position: relative;
     /* box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.1); */
@@ -30,7 +44,7 @@
   .fr:hover{
     width: calc(60px * 8);
   }
-  @media screen and (min-width: 1200px)  {
+  @media screen and (min-width: 1500px)  {
     .big:hover, .big:hover iframe{
     width: calc(60px * 15);
 
@@ -49,6 +63,31 @@
     margin:0;
     padding:0;
   }
+
+  .s1{
+    animation-delay: 1s;
+  }
+  .s01{
+    animation-delay: 0.1s;
+  }
+  .s02{
+    animation-delay: 0.2s;
+  }
+  .s03{
+    animation-delay: 0.3s;
+  }
+  .s04{
+    animation-delay: 0.4s;
+  }
+  .s05{
+    animation-delay: 0.5s;
+  }
+  .s06{
+    animation-delay: 0.6s;
+  }
+  .s07{
+    animation-delay: 0.7s;
+  }
 </style>
 </head>
 <body>
@@ -64,6 +103,8 @@
 <div class="fr">    <iframe src="magazine.html" frameborder="0"></iframe>
 </div>
 <div class="fr">    <iframe src="opinion.html" frameborder="0"></iframe>
+</div>
+<div class="fr">    <iframe src="more.html" frameborder="0"></iframe>
 </div>
 <div class="er"></div>
 <div class="er"></div>
