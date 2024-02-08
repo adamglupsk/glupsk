@@ -307,3 +307,20 @@ transform: translateX(-100px)     ;
         text-align: right;
 
     }
+
+.grad{
+    display: block;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: linear-gradient(90deg, white 70%, yellow);
+    z-index: 5000;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+.mob{
+    background: linear-gradient(0deg, white 70%, yellow);
+    
+}
