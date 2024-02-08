@@ -57,7 +57,7 @@
             }
             .title{
                 border-bottom: 1px solid;
-                height: fit-content;
+                max-height: fit-content;
                 padding: 2% 0% 3% 0%;
             }
         }
