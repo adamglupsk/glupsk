@@ -110,8 +110,8 @@ font-family: Times;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
     margin-top: 3vh;
     padding-bottom: -50px;
-    transform: translate(-50%);
-    animation: scale 0.2s  ease-in-out forwards;
+    /* transform: translate(-50%);
+    animation: scale 0.2s  ease-in-out forwards; */
     
     
 }

@@ -1,11 +1,4 @@
-@keyframes slide-left{
-    0%{
-        transform: translateX(-100vh);
-    }
-    100%{
-        transform: translateX(0vh);
-    }
-}
+
 @import url("https://use.typekit.net/mlc7org.css");
 
         @keyframes hello{
@@ -35,7 +28,7 @@
         .page{
             padding: 10px 0px 0px 75px;
             margin: auto;
-            max-width: 800px;
+            max-width: 1000px;
         }
 
         .container{
