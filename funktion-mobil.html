@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation Demo</title>
+<style>
+  .fr {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    margin-bottom: 10px;
+    transition: transform 0.5s ease; /* Animation transition */
+  }
+
+  .animate {
+    transform: translateX(100px);
+  }
+</style>
+</head>
+<body>
+
+<div class="fr"></div>
+<div class="fr">
+  Hover to Animate
+</div>
+<div class="fr"></div>
+<div class="fr">
+  Hover to Animate
+</div>
+<div class="fr"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Get all divs with the class "fr"
+  const divsToAnimate = document.querySelectorAll('.fr');
+
+  // Add mouseenter event listeners to all the divs
+  divsToAnimate.forEach(div => {
+    div.addEventListener('mouseenter', () => {
+      // Add the "animate" class to the div
+      div.classList.add('animate');
+    });
+
+    // Add mouseleave event listener to reset animation
+    div.addEventListener('mouseleave', () => {
+      // Remove the "animate" class from the div
+      div.classList.remove('animate');
+    });
+  });
+});
+</script>
+
+</body>
+</html>
