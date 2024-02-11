@@ -68,6 +68,18 @@
         #titleContainer{
             font-size: 1.4rem;
         }
+
+        /* .no-animation{
+            animation: none !important;
+            background-color: blue;
+        } */
+        body.no-animation .rows > div, body.no-animation .mobile-top{
+    /* Override styles to disable animation */
+    animation: none !important;
+    /* background-color: yellow; */
+    transform: translateY(0);
+    /* Add any other properties as needed */
+}
     </style>
 </head>
 <body>
@@ -137,5 +149,15 @@
         
         <div> <p></p></div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+  var lastVisit = localStorage.getItem("lastVisit");
+  if (lastVisit && (Date.now() - lastVisit < 5 * 60 * 1000)) { // 5 minutes
+    document.body.classList.add("no-animation");
+  } else {
+    localStorage.setItem("lastVisit", Date.now());
+  }
+});
+    </script>
 </body>
 </html>
