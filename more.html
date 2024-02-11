@@ -84,70 +84,48 @@ iframe{
 
 
             <div style="grid-column: span 2;"><img src="one.png" alt=""></div>
-            <div><img width="91" src="material-2.png" alt=""><div class=<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animation Demo</title>
-<style>
-  .fr {
-    width: 100px;
-    height: 100px;
-    background-color: blue;
-    margin-bottom: 10px;
-  }
+            <div><img width="91" src="material-2.png" alt=""><div class="note">50x70 Poster / Lookbok for BA Fashion show at Beckmans</div></div>
 
-  .animate {
-    transform: translateX(100px);
-    transition: transform 0.5s ease; /* Animation transition */
-  }
-</style>
-</head>
-<body>
+            <div><video loop autoplay muted src="posters.mp4"></video>            <div class="note">Posters, posters, posters, posters. <a href="posters.html">See them individually.</a></div> 
+        </div>
+        <div><video autoplay loop muted src="graduates.mp4"></video><div class="note">Online invitation for Beckmans College of Design at Paris Fashion Week 2023</div></div>           
+        <div>
+            <img class="mySlides" src="malmo-0.png">
+            <img class="mySlides" src="malmo-1.png">
+            <img class="mySlides" src="malmo-2.png">
+            <img class="mySlides" src="malmo-3.png">
+            <img class="mySlides" src="malmo-4.png">
+            <div class="note">A6 Zine about Malmö, my home town.</div>
+            
+        </div>
+        <script>
+            var myIndex = 0;
+            carousel();
+            
+            function carousel() {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+              }
+              myIndex++;
+              if (myIndex > x.length) {myIndex = 1}    
+              x[myIndex-1].style.display = "block";  
+              setTimeout(carousel, 2000);
+            }
+            </script>
+            
+            <!-- <div><img src="malmo-1.png" alt=""><div class="note">Zine about my home town, A6.</div></div> -->
+            <div><img src="bog.png" alt=""><div class="note">Bleached T-shirt.</div></div>
+            
+            <div><img src="luftslott-2.png" alt="" style="width: 100%"><div class="note">Logo and 3d for <i>Luftslott</i> magazine.</div></div>
+            <!-- <div><img src="luftslott-3.png" alt=""></div> -->
+            
+            
+            </div>
+        </div>
+        
 
-<div class="fr"></div>
-<div class="fr">
-  <button class="animateButton">Animate</button>
-</div>
-<div class="fr"></div>
-<div class="fr">
-  <button class="animateButton">Animate</button>
-</div>
-<div class="fr"></div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Get all buttons with the class "animateButton"
-  const animateButtons = document.querySelectorAll('.animateButton');
-
-  // Add click event listeners to all the buttons
-  animateButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Get all div elements after the parent div of the clicked button
-      const divsToAnimate = Array.from(button.parentElement.parentElement.querySelectorAll('.fr'));
-      
-      // Flag to indicate whether to start animating
-      let startAnimating = false;
-
-      // Loop through each div and apply the animation
-      divsToAnimate.forEach(div => {
-        // Check if the current div is the parent div of the clicked button
-        if (div === button.parentElement) {
-          // Set the flag to true to start animating from the next div
-          startAnimating = true;
-        } else if (startAnimating) {
-          // Add the "animate" class to the div if startAnimating is true
-          div.classList.add('animate');
-        }
-      });
-    });
-  });
-});
-</script>
-
-</body>
-</html>
-
+    </div>
     </div>
 </body>

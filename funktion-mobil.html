@@ -5,29 +5,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animation Demo</title>
 <style>
-  .fr {
-    width: 100px;
-    height: 100px;
-    background-color: blue;
-    margin-bottom: 10px;
-    transition: transform 0.5s ease; /* Animation transition */
+    body{
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow-x: clip;
+    }
+  .fr, .er{
+    font-size: larger;
+    width: 100%;
+    height: 40px;
+    overflow: scroll;
+    background-color: white;
+    border-top: 1px solid black;
+    transition: transform 0.8s ease, height 0.5s ease; /* Animation transition */
+    box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.15);
   }
 
-  .animate {
-    transform: translateX(100px);
+  iframe{
+      height: 82vh;
+      width: 100%;
+    border: none;
+    pointer-events:none;
+    position: relative;
+    z-index: 1;
+  }
+  .fr > div{
+    padding: 8px 10px 10px 10px;
+    pointer-events: none;
+    max-height: 40px;
+    /* background-color: red; */
+    display: flex;
+    justify-content:space-between;
+    background-color: white;
+    /* border-bottom: solid 1px red; */
+    margin-bottom: -18vh;
+    position: relative;
+    z-index: 2;
+
+  }
+
+  /* .animate {
+    transform: translateY(200px);
+  } */
+
+  .clicked {
+    height: 70vh;
+  }
+
+  .top{
+    
+    /* width: 100%; */
+    height: 41px;
+    /* background: red; */
+    pointer-events: none;
+  
+  }
+  .big{
+    font-size: 3rem;
+    line-height: 90%;
+    padding: 30px 10px 20px 10px
   }
 </style>
 </head>
 <body>
+<div class="big">
+    <div>Adam Arinbjarnarson</div>
+</div>
 
-<div class="fr"></div>
 <div class="fr">
-  Hover to Animate
+<div><div><i>Tyda</i></div> <div>(Graphic Identity)</div></div>
+<iframe src="tyda.html" frameborder="0"></iframe>
+
+</div>
+<div class="fr">
+    <div><div><i>Opinion</i></div> <div>(Installation)</div></div>
+
+</div>
+<div class="fr">
+    <div><div><i>Collecting Music</i></div> <div>(Magazine)</div></div>
+</div>
+<div class="fr">
+    <div><div><i>Working on it</i></div> <div>(...)</div></div>
+
+</div>
+<div class="er"></div>
+
+<div class="fr">
+    <div><div><i>Contacts</i></div> <div></div></div>
+</div>
+<div class="fr">
+    <div><div><i>Hyperlinks</i></div> <div></div></div>
 </div>
 <div class="fr"></div>
-<div class="fr">
-  Hover to Animate
-</div>
+<div class="fr"></div>
+<div class="fr"></div>
 <div class="fr"></div>
 
 <script>
@@ -35,16 +107,50 @@ document.addEventListener("DOMContentLoaded", function() {
   // Get all divs with the class "fr"
   const divsToAnimate = document.querySelectorAll('.fr');
 
-  // Add mouseenter event listeners to all the divs
-  divsToAnimate.forEach(div => {
-    div.addEventListener('mouseenter', () => {
-      // Add the "animate" class to the div
-      div.classList.add('animate');
-    });
+  // Add click event listeners to all the divs
+  divsToAnimate.forEach((div, index) => {
+    div.addEventListener('click', () => {
+      // Toggle the "clicked" class on the clicked div
+      div.classList.toggle('clicked');
 
-    // Add mouseleave event listener to reset animation
-    div.addEventListener('mouseleave', () => {
-      // Remove the "animate" class from the div
+      // Loop through all divs after the clicked div and add/remove the "animate" class
+      for (let i = index + 1; i < divsToAnimate.length; i++) {
+        divsToAnimate[i].classList.toggle('animate');
+      }
+    });
+  });
+
+  // Add touch event listeners for mobile devices
+  divsToAnimate.forEach((div, index) => {
+    div.addEventListener('touchstart', () => {
+      // Toggle the "clicked" class on the touched div
+      div.classList.toggle('clicked');
+
+      // Loop through all divs after the touched div and add/remove the "animate" class
+      for (let i = index + 1; i < divsToAnimate.length; i++) {
+        divsToAnimate[i].classList.toggle('animate');
+      }
+    });
+  });
+
+  // Add mouseleave event listener to reset animation
+  document.addEventListener('click', (event) => {
+    const clickedElement = event.target;
+    // Check if the clicked element is not a div with class "fr"
+    if (!clickedElement.classList.contains('fr')) {
+      // Loop through all divs and remove the "clicked" and "animate" classes
+      divsToAnimate.forEach(div => {
+        div.classList.remove('clicked');
+        div.classList.remove('animate');
+      });
+    }
+  });
+
+  // Add touchend event listener to reset animation for mobile devices
+  document.addEventListener('touchend', () => {
+    // Loop through all divs and remove the "clicked" and "animate" classes
+    divsToAnimate.forEach(div => {
+      div.classList.remove('clicked');
       div.classList.remove('animate');
     });
   });
