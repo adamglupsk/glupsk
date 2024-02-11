@@ -12,34 +12,28 @@
         overflow-x: clip;
     }
   .fr, .er{
-    font-size: larger;
+    font-size: 1.2rem;
     width: 100%;
-    height: 40px;
-    overflow: scroll;
+    height: 50px;
+    overflow: clip;
     background-color: white;
     border-top: 1px solid black;
     transition: transform 0.8s ease, height 0.5s ease; /* Animation transition */
-    box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.219);
   }
 
-  iframe{
-      height: 82vh;
-      width: 100%;
-    border: none;
-    pointer-events:none;
-    position: relative;
-    z-index: 1;
-  }
-  .fr > div{
-    padding: 8px 10px 10px 10px;
+ 
+  .fr > .list{
+    padding: 14px 10px 14px 20px;
     pointer-events: none;
-    max-height: 40px;
+    max-height: 50px;
     /* background-color: red; */
     display: flex;
     justify-content:space-between;
     background-color: white;
-    /* border-bottom: solid 1px red; */
-    margin-bottom: -18vh;
+    border-bottom: solid 1px black;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+    /* margin-bottom: -18vh; */
     position: relative;
     z-index: 2;
 
@@ -55,52 +49,142 @@
 
   .top{
     
-    /* width: 100%; */
-    height: 41px;
+    height: 51px;
     /* background: red; */
-    pointer-events: none;
+    /* pointer-events: none; */
   
   }
   .big{
+    font-size: 1.2rem;
+    padding: 30px 10px 20px 10px;
+    background: linear-gradient(180deg, white 75%, rgba(255, 255, 255, 0));
+    min-height: 75vh;
+    margin-bottom: -35vh;
+    position: relative;
+  }
+  .big > div{
+    padding: 10px 5px 10px 10px;
+  }
+  .name{
     font-size: 3rem;
     line-height: 90%;
-    padding: 30px 10px 20px 10px
+
+  }
+
+  .frame{
+    position: relative;
+    z-index: 1;
+    /* background:red; */
+    /* border: 1px solid red; */
+    height: 83vh;
+      width: 100%;
+      overflow: hidden;
+  }
+  iframe{
+    margin-top: -17vh;
+      height: 83vh;
+      width: 100%;
+    border: none;
+    /* pointer-events:none; */
+   
   }
 </style>
 </head>
 <body>
-<div class="big">
-    <div>Adam Arinbjarnarson</div>
+<div  class="big">
+    <div class="name">Adam Arinbjarnarson</div>
+    <div id="titleContainer" class="padding"></div>
+        <script>
+            // Array of titles
+            const titlesArray = [
+                "Blender user",
+                "Art director",
+                "InDesign user",
+                "Phone caller",
+                "Cinema 4D user",
+                "E-mailer",
+                "Photoshop brusher",
+                "Pencil shader",
+                "Artist",
+                "Illustrator",
+                "Motion designer",
+                "Solution finder",
+                "Grid maker",
+                "Paper folder",
+                "Small talker",
+                "Google searcher",
+                "Image prompter",
+                "Music listener",
+            ];
+        
+            function changeTitle() {
+                const titleContainer = document.getElementById('titleContainer');
+                const randomTitle = titlesArray[Math.floor(Math.random() * titlesArray.length)];
+        
+                titleContainer.innerHTML = 'Graphic designer' + "<br>" + 'Image maker' + "<br>" + randomTitle ;
+        
+                setTimeout(changeTitle, 500);
+            }
+        
+            changeTitle();
+        </script>
+        <div>
+            <div>Graduating 2025<br>Visual communication, BFA <br> <i>Beckmans College of Design</i> <br> Stockholm, Sweden</div><br>
+            <div
+            ><i>Contact <br>
+            </i><a style="color: blue" href="tel:+46707871567">+46707871567</a>
+            <br><a style="color: blue" href="mailto:adaari@icloud.com">adaari@icloud.com</a>
+            <br><a style="color: blue" href="https://instagram.com/adamglupsk">@adamglupsk</a>
+            </div>
+        </div>
 </div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
 
 <div class="fr">
-<div><div><i>Tyda</i></div> <div>(Graphic Identity)</div></div>
-<iframe src="tyda.html" frameborder="0"></iframe>
+<div class="list"><div><i>Tyda</i></div> <div>(Graphic Identity)</div></div>
+<div class="frame"><iframe src="tyda.html" frameborder="0"></iframe>
+</div>
+</div>
+<div class="fr">
+    <div class="list"><div><i>Opinion</i></div> <div>(Installation)</div></div>
+    <div class="frame"><iframe src="opinion.html" frameborder="0"></iframe></div>
 
 </div>
 <div class="fr">
-    <div><div><i>Opinion</i></div> <div>(Installation)</div></div>
+    <div class="list"><div><i>Collecting Music</i></div> <div>(Magazine)</div></div>
+    <div class="frame"><iframe src="magazine.html" frameborder="0"></iframe></div>
 
 </div>
 <div class="fr">
-    <div><div><i>Collecting Music</i></div> <div>(Magazine)</div></div>
-</div>
-<div class="fr">
-    <div><div><i>Working on it</i></div> <div>(...)</div></div>
+    <div class="list"><div><i>Working on it</i></div> <div>(...)</div></div>
 
 </div>
 <div class="er"></div>
 
 <div class="fr">
-    <div><div><i>Contacts</i></div> <div></div></div>
+    <div class="list"><div><i>Contacts</i></div> <div></div></div>
 </div>
 <div class="fr">
-    <div><div><i>Hyperlinks</i></div> <div></div></div>
+    <div class="list"><div><i>Hyperlinks</i></div> <div></div></div>
 </div>
-<div class="fr"></div>
-<div class="fr"></div>
-<div class="fr"></div>
-<div class="fr"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -141,7 +225,6 @@ document.addEventListener("DOMContentLoaded", function() {
       // Loop through all divs and remove the "clicked" and "animate" classes
       divsToAnimate.forEach(div => {
         div.classList.remove('clicked');
-        div.classList.remove('animate');
       });
     }
   });
