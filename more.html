@@ -84,11 +84,32 @@ iframe{
 
 
             <div style="grid-column: span 2;"><img src="one.png" alt=""></div>
-            <div><img width="91" src="material-1.png" alt=""><div class="note">50x70 Poster / Lookbok for Fashion show at Beckmans</div></div>
+            <!-- <div><img width="91" src="material-1.png" alt=""></div> -->
 
             <div><video loop autoplay muted playsinline src="posters.mp4"></video>            <div class="note">Posters, posters, posters, posters. <a href="posters.html">See them individually.</a></div> 
         </div>
-        <div><video autoplay loop muted playsinline src="graduates.mp4"></video><div class="note">Online invitation for Beckmans College of Design at Paris Fashion Week 2023</div></div>           
+        <div>
+            <img class="material" src="material-1.png">
+            <img class="material" src="material-2.png">
+            <div class="note">50x70 Poster / Lookbok for Fashion show at Beckmans</div>
+            
+        </div>
+        <script>
+            var myIndex = 0;
+            carousel2();
+            
+            function carousel2() {
+              var i;
+              var x = document.getElementsByClassName("material");
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+              }
+              myIndex++;
+              if (myIndex > x.length) {myIndex = 1}    
+              x[myIndex-1].style.display = "block";  
+              setTimeout(carousel2, 1500);
+            }
+            </script>
         <div>
             <img class="mySlides" src="malmo-0.png">
             <img class="mySlides" src="malmo-1.png">
@@ -98,6 +119,12 @@ iframe{
             <div class="note">A6 Zine about Malmö, my home town.</div>
             
         </div>
+        <div><video controls loop muted playsinline src="https://files.cargocollective.com/c1586397/Loop-light.mp4"></video><div class="note">Animation for a project about Nursery clinics.</div></div>           
+
+        <div><video autoplay loop muted playsinline src="graduates.mp4"></video>
+            <div class="note">Online invitation for Beckmans College of Design at Paris Fashion Week 2023</div>
+        </div>                    
+        
         <script>
             var myIndex = 0;
             carousel();
@@ -120,6 +147,10 @@ iframe{
             
             <div><img src="luftslott-2.png" alt="" style="width: 100%"><div class="note">Logo and 3d for <i>Luftslott</i> magazine.</div></div>
             <!-- <div><img src="luftslott-3.png" alt=""></div> -->
+            
+            
+            </div>
+        
             
             
             </div>
