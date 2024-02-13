@@ -14,7 +14,15 @@
     .container div{
 max-height: fit-content;
 }
-    
+    @media  (max-width: 430px){
+        /* body{
+            background: yellow !important;
+        } */
+        .big, .video{
+            min-width: 100vw;
+            min-height: 100vw;
+ }
+    }
     </style>
     </head>
 <body>
@@ -26,7 +34,7 @@ max-height: fit-content;
 
         <div class="menu-left" style="font-style: italic;">Opini<div style="display: inline-block; animation: rotation 10s linear infinite; transform-origin: 40%; margin-top: -0px">o</div>n</div>
         <div class="menu-right">
-            Installation&#160;&#160;&#160;&#160;&#160;&#160;&#160;2023
+            (Installation)
             
         </div>
     </div>
@@ -35,16 +43,15 @@ max-height: fit-content;
 </div>
         <div class="container">
             
-            <div class="video big" style="pointer-events: all; min-width: 86vw; min-height: 90vw; object-fit: cover;">
+            <div class="video big" style="pointer-events: all; min-width: calc(90vw - 60px); min-height: 90vw; object-fit: cover;">
             <iframe title="vimeo-player" src="https://player.vimeo.com/video/889031160?h=a94815740f" width="100%" height="100%" frameborder="0"    allowfullscreen></iframe>
         </div>
 
             <!-- <div class="video big" style="background: url(main.mp4) center top/100% no-repeat;"><video loop autoplay muted src="main.mp4"></video></div> -->
-            <div>Opinion is a a 60 second video loop, projected on acrylic plastic, randomly generated sentences and a physics simulation in 3d software. The video was projected on acrylic plastic, as a part of the exhibition <i>Konst Reklam Konst</i> at Beckmans College of Design</div>
+            <div>Opinion is a a 60 second video loop with generated sentences and a physics simulation in 3d software. The video was projected on acrylic plastic, as a part of the exhibition <i>Konst Reklam Konst</i> at Beckmans College of Design</div>
             <div style="font-size: 1.3rem;">
-                This project is about extremist opinions and the nature of opinions in general. I am fascinated by the audacity of extermists' opinions, and the way people seem to reason when forming their opinions. Inspired by right wing conservative 
-                opinions. The sentences are generated in GPT and After Effects  expressions, and are a mix of opinion <i>sounding</i> phrases, adjectives and random nouns. The sentences are projected on the simulation, and are constantly changing. 
-                <div class="indent"><i>Opinion</i> is the result of a three week course supervised by Måns Wrange, with guest lecturers</div>
+                The project is about extremism and opinions.  I am fascinated by the radical, non-sensical nature of opinions, and the way people seem to reason when forming their opinions. The sentences shown in this project are generated with GPT and After Effects expressions, and are a mix of opinion <i>sounding</i> phrases, adjectives and random nouns. The sentences are projected on the simulation and are constantly changing. They then rotate around the frame of the projection. The 3d simulation inside the frame follows the sentence shown.
+                <div class="indent"><i>Opinion</i> is the result of a three week course supervised by Måns Wrange. Thank you Aida Chehrehgosha for guidance.</div>
             </div>
             <!-- <div class="slideshow" ></div> -->
 
