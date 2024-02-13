@@ -3,50 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.typekit.net/mlc7org.css">
-    <link rel="stylesheet" href="posters-style.css">
-    <link rel="stylesheet" href="menu.css">
-    <style>
-        body{
-            padding: 0;
-        margin:0;
-        }
-        a{
-            color: blue;
-        }
-    </style>
-
     <title>Posters</title>
+<link rel="stylesheet" href="project.css">
+<link rel="stylesheet" href="menu.css">
+<base target='_parent' />
+<style>
+#slider-image, .container > div > img{
+    
+    /* padding: 5%; */
+    outline: 1px solid black;
+}
+.container div{
+max-height: fit-content;
+}
+video{
+    width: 100%;
+}
 
-
-</head>
-<body>
-    <div class="menu" style="margin-top: -20px;">
         
-        <div class="menu-left" style="font-style: normal !important;">Posters</div>
-        <!-- <div class="menu-right">Graphic designer <div style="display: inline-block; animation: rotation 20s 20s linear infinite; transform-origin: 40%; ">/</div> Image maker</div> -->
-    
+</style>
+    </head>
+<body>
+    <div id="index"><a href="index.html">Index</a></div>
+    <div class="menu">
+        <div class="menu-left index">Adam Arinbjarnars<div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 50%; ">o</div>n</div>
+        <div class="menu-right index"><a href="https://www.arinbjarnarson.se">Index</a> &#160;&#160;&#160;</div>
+        <div class="menu-left"><i>P<div style="display: inline-block; animation: rotation 20s 200s linear reverse infinite; transform-origin: 43% 45%; margin-top: -0px">o</div>sters</i></div>
+        <div class="menu-right">
+        (Play)          <!-- <a href="index-ny.html">Index</a> &#160;&#160;&#160;<a href="index-ny.html">Links</a> -->
+        </div>
     </div>
-    <!-- <div class="menu " style="margin-top: -3.3dvh; margin-left: -5px;">
-        <div class="menu-left">
-            <a style="color: black; margin-bottom: -1px;" href="index.html">Adam Arinbjarnars</a><div style="display: inline-block; animation: rotation 20s linear infinite; transform-origin: 50%; ">o</div>n</div>
-        <div class="menu-right"><a href="index.html">Index</a></div>
-    
-    </div> -->
-    <div class="kropp">
-       <div style="margin: auto; background: white; width: min-content;">
-    <div id="image-container"></div>
-
-    <div style="font-size: larger; margin-top: 20px; margin-bottom: 30px; text-align: end;">I like making posters<br>
-        <button type="submit" onClick="refreshPage()">Refresh for more.</button> 
-    </div>
-    <!-- <div class="header right">I like making posters. <br>
-        <button type="submit" onClick="refreshPage()">Refresh for more &#x21BB;</button> 
-    </div> -->
-    
-    <!-- <div class="header left"><a href="https://www.arinbjarnarson.se">arinbjarnarson.se</a></div> -->
-    <!-- &#x21BB; -->
+    <div class="page">
+        <div class="title" style="border-bottom: 1px solid; height:fit-content;"><h1>Posters</h1>
 </div>
-<script src="posters-script.js"></script>
+<div class="big-magazine" ><img id="slider-image" src="posters/1.jpg" alt="Slider Image">
+    <div class="prevnext"><button id="prev-btn" onclick="changeImage(-1)">Previous</button>
+    <button id="next-btn" onclick="changeImage(1)">Next</button></div>
+</div>
+
+  <script>
+    const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '22.jpg', '23.jpg', '24.jpg', '25.jpg'];
+    let currentIndex = 0;
+    const totalImages = images.length;
+
+    function changeImage(offset) {
+      currentIndex = (currentIndex + offset + totalImages) % totalImages;
+      document.getElementById('slider-image').src = '/posters/' + images[currentIndex];
+    }
+  </script>
+<div class="container">
+        <div class="large">I like making posters for myself, for friends, for fun or for work. These are a few posters I've made in the last months. Illustrations are mine, photos are generated or downloaded. </div>
+        <div><img src="posters/5.jpg" alt=""></div>
+        <div><img src="posters/4.jpg" alt=""></div>
+        <div><img src="posters/3.jpg" alt=""></div>
+        <div><img src="posters/2.jpg" alt=""></div>
+        <div><img src="posters/17.jpg" alt=""></div>
+        <div><img src="posters/6.jpg" alt=""></div>
+        <div><img src="posters/7.jpg" alt=""></div>
+        <div><img src="posters/8.jpg" alt=""></div>
+        <div><img src="posters/9.jpg" alt=""></div>
+        <div><img src="posters/10.jpg" alt=""></div>
+        <div><img src="posters/11.jpg" alt=""></div>
+        <div><img src="posters/12.jpg" alt=""></div>
+        <div><img src="posters/13.jpg" alt=""></div>
+        <div><img src="posters/20.jpg" alt=""></div>
+        <div><img src="posters/15.jpg" alt=""></div>
+</div>
 </body>
-</html>
