@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="favicon.png">
-
+<link rel="stylesheet" href="menu.css">
     <title>Adam Arinbjarnarson</title>
     <style>
         @keyframes slide-left{
@@ -22,6 +22,7 @@
             margin: 0;
             padding: 0;  
             overflow-x: hidden;     
+            overflow-y: hidden;
          }
 
             iframe, object{
@@ -45,13 +46,14 @@ min-width: 100vw;
 
 .overlay{
     inset:0;
+    left: 56px;
     height: 110vh;
     width: 120vw;
     background: #ffffff;
     z-index: 1000;
     position: absolute;
     pointer-events: none;
-    animation: slide-left 4s 1s forwards linear;
+    animation: slide-left 4s 5s forwards linear;
     border-left: 1px solid black;
 }
 }
@@ -59,7 +61,13 @@ min-width: 100vw;
 </head>
 <body>
     
-    <div class="overlay"></div>
+    <div class="overlay">
+        <div>
+            <div class="menu" style="border: 0;">
+                <div class="menu-left">Loading…</div>
+            </div>
+        </div>
+    </div>
     <div id="content"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
