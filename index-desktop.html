@@ -13,6 +13,9 @@
         transform: translateX(0);
     }
 }
+/* html{
+  direction: rtl;
+} */
     body{
         padding: 0;
         margin:0;
@@ -20,11 +23,11 @@
         width: 105vw;
     }
 
-    body > div{
+    /* body > div{
       transform: translateX(calc(150vw - 60px)); 
       animation: slide-left 2s 1s forwards;
 
-    }
+    } */
   .fr, .er, .big{
     display: inline-flex;
     width: 60px;
@@ -32,22 +35,31 @@
     height: 100vh;
     /* background-color: blue; */
     /* margin-bottom: 10px; */
-    transition: width 0.5s ease-in-out ;
+    transition: width 1s 0.05s ease;
+
     border-left: 1px solid black;
     position: relative;
     /* box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.15); */
     background: white;
   }
  
-  
+  .er {
+    z-index: 20;
+    position: relative;
+  }
   
 
   .fr:hover{
     width: calc(60px * 8);
   }
+  .er:hover{
+    width: calc(60px * 0.8);
+    transition: width 0.1 ease;
+
+  }
   @media screen and (min-width: 1400px)  {
     .big{
-    transition: width 0.8s ease-in-out ;
+    transition: width 1.2s ease;
 
   }
     .big:hover, .big:hover iframe{
@@ -61,9 +73,7 @@
   }
 
   
-  .animate {
-    transition: height 0.5s ease;
-  }
+  
   iframe{
     position: relative;
     min-width: calc(60px * 8);
@@ -102,34 +112,54 @@
   .s1{
     animation-delay: 1s;
   } */
-
+  
+  .overlay{
+    inset:0;
+    height: 100vh;
+    width: 100vw;
+    background: #ffffff;
+    z-index: 1000;
+    position: absolute;
+    pointer-events: none;
+    transform: translateX(150vw);
+    /* animation: slide-left 1s linear 1s infinite; */
+}
 </style>
 </head>
 <body>
-    <div class="fr">
-        <iframe src="about.html" frameborder="0"></iframe>
-    
-    </div>
-    <div class="er"></div>
-<div class="fr big">
-    <iframe src="tyda.html"  frameborder="0"></iframe>
-</div>
+      <div class="overlay"></div>
 
-<div class="fr big">    <iframe src="magazine.html" frameborder="0"></iframe>
-</div>
-<div class="fr big">    <iframe src="opinion.html" frameborder="0"></iframe>
-</div>
-<div class="fr big">    <iframe src="orionteatern.html" frameborder="0"></iframe>
-</div>
-<div class="fr big">    <iframe src="posters.html" frameborder="0"></iframe>
-</div>
-<div class="fr big">    <iframe src="more.html" frameborder="0"></iframe>
-</div>
+    <div class="fr">     <iframe src="about.html" frameborder="0"></iframe> </div>
+<div class="fr big">   <iframe src="tyda.html"  frameborder="0"></iframe> </div>
+<div class="fr big">    <iframe src="magazine.html" frameborder="0"></iframe> </div>
+<div class="fr big">    <iframe src="opinion.html" frameborder="0"></iframe> </div>
+<div class="fr big">    <iframe src="orionteatern.html" frameborder="0"></iframe> </div>
+<div class="fr big">    <iframe src="posters.html" frameborder="0"></iframe> </div>
+<div class="fr big">    <iframe src="more.html" frameborder="0"></iframe> </div>
+<div class="fr">    <iframe src="links.html" frameborder="0"></iframe> </div>
 <div class="er"></div>
 <div class="er"></div>
 <div class="er"></div>
-<div class="fr">    <iframe src="links.html" frameborder="0"></iframe>
-</div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+ <div class="er"></div>
+<div class="er"></div>
 <div class="er"></div>
 <div class="er"></div>
 <div class="er"></div>
