@@ -21,8 +21,8 @@
             max-height: 100dvh;
             margin: 0;
             padding: 0;  
-            overflow-x: hidden;     
-            overflow-y: hidden;
+            overflow-x: clip;     
+            overflow-y: clip;
          }
 
             iframe, object{
@@ -46,14 +46,14 @@ min-width: 100vw;
 
 .overlay{
     inset:0;
-    left: 56px;
+    /* left: 56px; */
     height: 110vh;
     width: 120vw;
     background: #ffffff;
     z-index: 1000;
     position: absolute;
     pointer-events: none;
-    animation: slide-left 4s 5s forwards linear;
+    animation: slide-left 4s 5s forwards;
     border-left: 1px solid black;
 }
 }
@@ -68,6 +68,7 @@ min-width: 100vw;
             </div>
         </div>
     </div>
+
     <div id="content"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -79,7 +80,6 @@ min-width: 100vw;
         contentDiv.innerHTML = '<object type="text/html" data="index-desktop.html" ></object>';
     }
 });
-
     </script>
 </body>
 </html>
