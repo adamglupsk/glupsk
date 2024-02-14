@@ -202,29 +202,7 @@
 <div class="er"></div>
 <div class="er"></div>
 <div class="er"></div>
-document.addEventListener("DOMContentLoaded", function() {
-  // Get all divs with the class "fr"
-  const divsToAnimate = document.querySelectorAll('.fr');
-
-  // Add mouseenter event listeners to all the divs
-  divsToAnimate.forEach((div, index) => {
-    div.addEventListener('mouseenter', () => {
-      // Loop through all divs after the hovered div and add the "animate" class
-      for (let i = index + 1; i < divsToAnimate.length; i++) {
-        divsToAnimate[i].classList.add('animate');
-      }
-    });
-
-    // Add mouseleave event listener to reset animation
-    div.addEventListener('mouseleave', () => {
-      // Loop through all divs and remove the "animate" class
-      divsToAnimate.forEach(div => {
-        div.classList.remove('animate');
-      });
-    });
-  });
-});
-</script> -->
+</script>
 
 </body>
 </html>
