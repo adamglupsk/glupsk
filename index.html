@@ -52,23 +52,24 @@ display: none;
 .overlay{
     
     inset:0;
-    /* left: 56px; */
+    left: 56px;
     height: 100vh;
     width: 100vw;
     background: #ffffff;
     z-index: 1000;
     position: absolute;
-    pointer-events: none;
     animation: slide-left 4s 6s forwards;
     /* border-left: 1px solid black; */
 }
+}
+.none{
+    display: none;
 }
     </style>
 </head>
 <body>
     
-    <div class="overlay">
-        <div>
+    <div class="overlay" id="overlay"><div>
             <div class="menu" style="border: 0;">
                 <div class="menu-left">Loading…</div>
             </div>
@@ -87,5 +88,20 @@ display: none;
     }
 });
     </script>
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+  var lastVisit = localStorage.getItem("lastVisit");
+  var overlayDiv = document.querySelector(".overlay");
+
+  if (lastVisit && (Date.now() - lastVisit < 5 * 60 * 1000)) {
+    if (overlayDiv) {
+      overlayDiv.classList.add("none");
+    }
+  } else {
+    localStorage.setItem("lastVisit", Date.now());
+  }
+});
+
+      </script> -->
 </body>
 </html>
