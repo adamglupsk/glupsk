@@ -42,9 +42,15 @@ min-width: 100vw;
     }
 }
 */
+@media (max-width: 500px) {
+.overlay{
+display: none;
+}
+}
 @media (min-width: 500px) {
 
 .overlay{
+    
     inset:0;
     /* left: 56px; */
     height: 100vh;
@@ -53,7 +59,7 @@ min-width: 100vw;
     z-index: 1000;
     position: absolute;
     pointer-events: none;
-    animation: slide-left 4s 5s forwards;
+    animation: slide-left 4s 6s forwards;
     /* border-left: 1px solid black; */
 }
 }
