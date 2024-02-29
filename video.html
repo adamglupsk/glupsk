@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video work</title>
+</head>
+<style>
+    body{
+        display: flex;
+        background: linear-gradient(90deg, white 10%, rgb(168, 168, 168));
+    }
+    .grid{
+        border-left: black 1px solid;
+        padding-left: 10px;
+        display: block;
+        /* grid-template-columns: repeat(2, 1fr); */
+        /* grid-gap: 20px; */
+        align-items: start;
+        font-size: large;
+    }
+    .grid > div:has(video, iframe){
+        /* border:1px solid black; */
+        margin-bottom: 10px;
+    }
+    video{
+        width: 100%;
+        height: 100%;
+    }
+    iframe{
+        height: 60vw;
+        min-width: 100%;
+        
+    }
+    div:has(iframe){
+        max-height: min-content;
+    }
+</style>
+<body>
+    <div style="padding-right: 5vw;">Hello Gerrit Rietveld Academie. <br>Because the PDF format does not properly support moving images, I have collected just that on this webpage.<br><br> Adam Arinbjarnarson <br>Applicant for 2nd year bachelor <br> Graphic design department</div>
+    <div class="grid">
+        
+        <div><video controls loop muted src="opinion.mp4"></video></div>
+        <div><video controls loop muted  src="orionteatern-motion-1.mp4"></video></div>
+        <div><video controls loop muted  src="rietveld-1.mp4"></video></div>
+        <div><video controls loop muted src="text.mp4"></video></div>
+        <div><video controls loop muted  src="tyda-motion.mp4"></video></div>
+        <div><video controls loop muted  src="graduates.mp4"></video></div>
+        <div><video controls loop muted  src="rietveld-2.mp4"></video></div>
+        <div><iframe title="vimeo-player" src="https://player.vimeo.com/video/916852964?h=d5c985957b" height="auto" frameborder="0"    allowfullscreen></iframe></div>
+        
+    </div>
+</body>
+</html>
