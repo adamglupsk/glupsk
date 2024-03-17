@@ -3,18 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+      body{
+        background-color: #eae4e1;
+      }
+
+      body > *{
+        filter: drop-shadow(0px 0px 20px #efe3da);
+      }
+        .cls-1 {
+            fill: none;
+            stroke: #f0190a !important;
+            stroke-width: 2px !important;
+            stroke-miterlimit: 15;
+        }
+
+        .cls-2 {
+            fill: #f0190a !important;
+            stroke-width: 0px;
+        }
+    </style>
     <title>SVG TEST
     </title>
 </head>
 <body>
     <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1207.56 1700.79">
+  
   <defs>
     <style>
-      .cls-1 {
+      .cls-3 {
         fill: none;
-        stroke: #ff0400;
-        stroke-miterlimit: 10;
+        stroke: #ffbb00;
+        stroke-miterlimit: 15;
       }
 
       .cls-2 {
@@ -278,6 +300,68 @@
     <path class="cls-2" d="M8.5,1546.88h0c0-5.11-4.14-9.26-9.26-9.26h0c5.11,0,9.26-4.14,9.26-9.26h0c0,5.11,4.14,9.26,9.26,9.26h0c-5.11,0-9.26,4.14-9.26,9.26Z"/>
     <path class="cls-2" d="M53.94,1617.4h0c0-11.33-9.19-20.52-20.52-20.52h0c11.33,0,20.52-9.19,20.52-20.52h0c0,11.33,9.19,20.52,20.52,20.52h0c-11.33,0-20.52,9.19-20.52,20.52Z"/>
   </g>
+  <filter id="erode">
+    <feMorphology operator="erode" radius="0" >
+      <animate attributeName="radius" values="12;0" dur="1s" fill="freeze"
+      id="erode-animation"
+      />
+  <filter id="erode2">
+    <feMorphology operator="erode" radius="0" >
+      <animate attributeName="radius" values="12;12;0" dur="1.75s" fill="freeze"/>
+
+
+  
+ 
+  <style>
+
+
+    .cls-1 {
+      fill: none;
+      stroke: #ff1500;
+      stroke-width: 1.5px;
+      stroke-miterlimit: 0;
+      stroke-dasharray: 10% 15%;
+      animation: dash 20s linear infinite;
+
+    }
+
+    .cls-2 {
+      fill: #ff1500;
+      stroke-width: px;
+
+    }
+    
+    @keyframes dash {
+
+      from{
+        stroke-dasharray: 0% 100%;
+        <!-- stroke-dashoffset: 0%; -->
+
+      }
+      to {
+        stroke-dasharray: 100% 100%;
+        <!-- stroke-dashoffset: 100%; -->
+      }
+    }
+
+
+    #CIRKLAR{
+      opacity: 1;
+    }
+
+
+    #STJÄRNOR{
+      <!-- opacity: 0.5; -->
+      filter: url(#erode);
+    }
+
+    #MAIN_TITLE{
+      filter: url(#erode2);
+    }
+
+
+  </style>
 </svg>
+
 </body>
 </html>
