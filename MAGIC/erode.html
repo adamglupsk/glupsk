@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+'<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,7 @@
     <style>
 
       body{
-        background-color: #f4f0ed;
+        background-color: #white;
       }
 
         .cls-1 {
@@ -319,7 +320,7 @@
       stroke-width: 1.5px;
       stroke-miterlimit: 0;
       stroke-dasharray: 0% 100%;
-      animation: dash 20s 2s forwards;
+      animation: dash 10s 2s linear forwards, spin 10s 0s linear alternate-reverse;
 
     }
 
@@ -341,10 +342,10 @@
 
     @keyframes spin{
 from{
-          stroke-dashoffset: 0%;
+          stroke-dasharray: 100% 100%;
 }
 to{
-  stroke-dashoffset: 100%;
+  stroke-dasharray: -100% 25%;
 }
     }
 
