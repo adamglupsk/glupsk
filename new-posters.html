@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Posters</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            justify-items: center;
+            height: 100vh;
+            cursor:text;
+            max-height: 100vh;
+            overflow-y:hidden;
+            display:flex
+            
+   }
+        img{
+            height: 100vh;
+            margin-right:-60vh;
+            box-shadow: -2px 0px 5px rgba(0, 0, 1, 0.4);
+            transition: all 300ms;
+            cursor: url('me.jpg'), auto;
+
+        }
+
+        /* img:hover{
+            margin-right:0vh;
+            margin-left: 0vh;
+        } */
+        .active {
+    margin-right: 0vh;
+    height: 100vh;
+  }
+        /* div{
+            font-size: 2rem;
+            color: rgba(0, 0, 0, 0.072);
+            display: block;
+            padding: 1vh;
+        } */
+
+        .overlay{
+          font-size: 3rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgb(255, 255, 249);
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    
+        .gone {
+    transform: translateX(100%);
+    transition: all 750ms linear;
+  }
+    </style>
+</head>
+<body>
+  <div class="overlay"> Adam Arinbjarnarson <br>Graphic Designer / Image Maker <br><br><br><br><br><br><br><br><br><br>
+    
+    <div id="countdown">10</div>
+    <script>
+      // Function to start the countdown
+      function startCountdown() {
+        var countdownElement = document.getElementById('countdown');
+        var overlayElement = document.querySelector('.overlay');
+        var countdown = 10; // Set initial countdown value
+    
+        var countdownInterval = setInterval(function() {
+          countdown--;
+          countdownElement.textContent = countdown; // Update countdown display
+    
+          if (countdown <= 0) {
+            clearInterval(countdownInterval); // Stop the countdown
+            overlayElement.classList.add('gone'); // Add the 'gone' class to hide the overlay
+          }
+        }, 1000); // Run the countdown every second (1000 milliseconds)
+      }
+    
+      // Call the startCountdown function when the page loads
+      window.onload = function() {
+        startCountdown();
+      };
+    </script>
+  </div>
+
+    <img src="posters-2/1.png" alt="" class="clickable">
+    <img src="posters-2/2.png" alt="" class="clickable">
+    <img src="posters-2/3.png" alt="" class="clickable">
+    <img src="posters-2/4.png" alt="" class="clickable">
+    <img src="posters-2/5.png" alt="" class="clickable">
+    <img src="posters-2/6.png" alt="" class="clickable">
+    <img src="posters-2/7.png" alt="" class="clickable">
+    <img src="posters-2/8.png" alt="" class="clickable">
+    <img src="posters-2/9.png" alt="" class="clickable">
+    <img src="posters-2/10.png" alt="" class="clickable">
+    <img src="posters-2/11.png" alt="" class="clickable">
+    <img src="posters-2/12.png" alt="" class="clickable">
+    <img src="posters-2/14.png" alt="" class="clickable">
+    <img src="posters-2/15.png" alt="" class="clickable">
+    <img src="posters-2/16.png" alt="" class="clickable">
+    <img src="posters-2/17.png" alt="" class="clickable">
+    <img src="posters-2/18.png" alt="" class="clickable">
+    <img src="posters-2/19.png" alt="" class="clickable">
+    <img src="posters-2/20.png" alt="" class="clickable">
+    <img src="posters-2/21.png" alt="" class="clickable">
+    <img src="posters-2/22.png" alt="" class="clickable">
+    <img src="posters-2/23.png" alt="" class="clickable">
+    <img src="posters-2/24.png" alt="" class="clickable">
+    <img src="posters-2/25.png" alt="" class="clickable">
+    <img src="posters-2/26.png" alt="" class="clickable">
+    <img src="posters-2/27.png" alt="" class="clickable">
+    <img src="posters-2/28.png" alt="" class="clickable">
+    <img src="posters-2/29.png" alt="" class="clickable">
+    <img src="posters-2/30.png" alt="" class="clickable">
+    <img src="posters-2/31.png" alt="" class="clickable">
+    <img src="posters-2/34.png" alt="" class="clickable">
+    <img src="posters-2/35.png" alt="" class="clickable">
+    <img src="posters-2/36.png" alt="" class="clickable">
+    <img src="posters-2/38.png" alt="" class="clickable">
+    <img src="posters-2/41.png" alt="" class="clickable">
+    <img src="posters-2/42.png" alt="" class="clickable">
+    <img src="posters-2/43.png" alt="" class="clickable">
+    <img src="posters-2/44.png" alt="" class="clickable">
+    <img src="posters-2/45.png" alt="" class="clickable">
+    <img src="posters-2/46.png" alt="" class="clickable">
+    <img src="posters-2/47.png" alt="" class="clickable">
+    <img src="posters-2/48.png" alt="" class="clickable">
+    <img src="posters-2/49.png" alt="" class="clickable">
+    <img src="posters-2/50.png" alt="" class="clickable">
+    
+
+    
+    <div> 050824 adam arinbjarnarson</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Get all images with the class 'clickable'
+          const images = document.querySelectorAll("img");
+        
+          // Add click event listener to each image
+          images.forEach(function(img) {
+            img.addEventListener("click", function() {
+              // Toggle the 'active' class
+              this.classList.toggle("active");
+            });
+          });
+        });
+        </script>
+</body>
+</html>

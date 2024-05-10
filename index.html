@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Arinbjarnarson</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            max-height: 100vh;
+            overflow-y:hidden;
+            display:flex
+        }
+       
+        .imgcon{
+            max-width: 5vw;
+            height: 100vh;
+            display: flex;
+            transition: max-width 750ms ;
+            cursor:zoom-in;
+
+        }
+        .active{
+            max-width: 100vh;
+            transition: max-width 750ms ;
+            cursor: zoom-out !important;
+        }
+        img{
+            height: 100vh;
+            /* pointer-events: none; */
+            box-shadow: -1px 0px 3px rgba(0, 0, 1, 0.5);
+        }
+
+        .intro{
+            min-width: 50vh;
+            font-size: 2rem;
+            padding: 1vh !important;
+            user-select: none;
+            cursor: help;
+        }
+        .name{
+            display: inline;
+            margin-right: -0.5rem;
+        }
+
+        @media (max-width: 768px){
+            
+            body{
+                flex-direction: column;
+                overflow-y: scroll;
+            }
+        img{
+            width: 100vw;
+            height:max-content;
+            box-shadow: 0px -1px 5px rgba(0, 0, 1, 0.5);
+
+        }
+
+            .imgcon{
+                max-height: 8vh;
+               object-fit: contain;
+                transition: max-height 750ms ;
+
+
+            }
+            .active{
+                max-height: 100vh;
+                transition: max-height 750ms ;
+                cursor: zoom-out !important;
+            }
+        } 
+    </style>
+</head>
+<body>
+    <div class="imgcon">
+        <!-- <div class="intro">
+            <div class="name">a</div>
+<div class="name">d</div>
+<div class="name">a</div>
+<div class="name">m</div>
+
+<div class="name">a</div>
+<div class="name">r</div>
+<div class="name">i</div>
+<div class="name">n</div>
+<div class="name">b</div>
+<div class="name">j</div>
+<div class="name">a</div>
+<div class="name">r</div>
+<div class="name">n</div>
+<div class="name">a</div>
+<div class="name">r</div>
+<div class="name">s</div>
+<div class="name">o</div>
+<div class="name">n</div>
+        </div> -->
+        <div class="intro">
+    Adam Arinbjarnarson <br>Graphic Designer <br>Images Maker <br> adaari(at)icloud.com <br> +46707871567 <br>instagram.com/adamglupsk <br>On display: <br>Recent posters
+    </div>
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/1.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/2.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/3.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/4.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/5.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/6.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters/6.jpg" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/7.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/8.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/9.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters/1.jpg" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/10.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/11.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/12.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/13.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/14.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/15.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/16.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/17.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/18.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/19.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/20.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/21.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/22.png" alt="">
+    </div>
+    <div class="imgcon">
+        <img src="posters-2/23.png" alt="">
+    </div>
+   
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Get all images with the class 'clickable'
+          const images = document.querySelectorAll(".imgcon");
+        
+          // Add click event listener to each image
+          images.forEach(function(img) {
+            img.addEventListener("click", function() {
+              // Toggle the 'active' class
+              this.classList.toggle("active");
+            });
+          });
+        });
+        let currentIndex = 0;
+
+        
+        </script>
+
+
+<script>
+    document.addEventListener("keydown", function(event) {
+      if([37, 38, 39, 40].includes(event.keyCode)) {
+        event.preventDefault();
+      }
+    });
+    </script>
+</body>
+</html>
