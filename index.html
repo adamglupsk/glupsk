@@ -52,18 +52,14 @@
                 overflow-y: scroll;
             }
         img{
-            width: 100vw;
+            min-width: 100vw;
             height:max-content;
             box-shadow: 0px -1px 5px rgba(0, 0, 1, 0.5);
-
         }
 
             .imgcon{
                 max-height: 8vh;
-               object-fit: contain;
                 transition: max-height 750ms ;
-
-
             }
             .active{
                 max-height: 100vh;
@@ -189,18 +185,8 @@
             });
           });
         });
-        let currentIndex = 0;
 
         
         </script>
-
-
-<script>
-    document.addEventListener("keydown", function(event) {
-      if([37, 38, 39, 40].includes(event.keyCode)) {
-        event.preventDefault();
-      }
-    });
-    </script>
 </body>
 </html>
