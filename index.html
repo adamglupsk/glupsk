@@ -24,17 +24,17 @@
             max-width: 5vw;
             height: 100vh;
             display: flex;
-            transition: max-width 750ms ;
+            transition: max-width 750ms steps(6);
             cursor:zoom-in;
             transform: translateX(100dvw);
 
-            animation: slide-in 1s 1s linear forwards;
+            animation: slide-in 2s 1s steps(12) forwards;
 
 
         }
         .active{
             max-width: 100vh;
-            transition: max-width 750ms ;
+            transition: max-width 750ms steps(6);
             cursor: zoom-out !important;
         }
         img{
@@ -60,13 +60,13 @@
 
         @media (max-width: 768px){
             
-            body{
+             body{
                 flex-direction: column;
                 overflow-y: scroll;
             }
         img{
-            min-width: 100vw;
-            height:max-content;
+            height: fit-content;
+            width: 100vw;
             box-shadow: 0px -1px 5px rgba(0, 0, 1, 0.5);
         }
 
@@ -78,8 +78,8 @@
                 max-height: 100vh;
                 transition: max-height 750ms ;
                 cursor: zoom-out !important;
-            }
-        } 
+            } 
+        }
     </style>
 </head>
 <body>
