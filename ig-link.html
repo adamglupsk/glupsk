@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam</title>
+    <link rel="icon" type="image/x-icon" href="favime.jpg">
+    <style>
+
+        @keyframes look {
+            0% {
+               color: rgb(255, 225, 0);       }
+            
+            25% {
+                color: rgb(0, 0, 0);
+                      }
+            
+            50% {
+                color: yellow;
+            }
+            75% {
+                color: silver;      
+              }            
+            }
+    body, a{
+        padding: 1vh;
+        font-family: Arial;
+        font-size: 10vh;
+        overflow: hidden;
+    }
+    div{
+        transform: rotate(10deg) translateY(20vmin) translateX(10vmin);
+    }
+    .sv{
+        color:rgb(255, 255, 255);
+    }
+.sv a{
+    color: green
+}
+    .en{
+        color:rgb(0, 0, 0);
+    }
+    .en a{
+        color: green
+    }
+    a{
+        animation: look 10s infinite step-end;
+        padding: 0;
+    }
+    </style>
+</head>
+<body>
+   
+   <div class="en">On display: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+   
+</body>
+</html>
