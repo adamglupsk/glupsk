@@ -6,23 +6,55 @@
     <title>Adam Arinbjarnarson</title>
     <link rel="icon" type="image/x-icon" href="favime.jpg">
 
-    <script>
-        // Function to detect if the user is on a mobile device
-        function isMobile() {
-            return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    <style>
+        body{
+            margin: 0;
+            padding:0;
+        }
+        /* Hide both iframes by default */
+        .responsive-iframe {
+            display: none;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            border: none;
+            padding: 0;
+            margin:0;
         }
 
-        // Redirect based on device type
-        window.onload = function() {
-            if (isMobile()) {
-                window.location.href = 'index-mobile.html';
-            } else {
-                window.location.href = 'index-desktop.html';
+        /* Show the mobile iframe for small screens */
+        @media (max-width: 767px) {
+            #mobile-iframe {
+                display: block;
+            }
+        }
+
+        /* Show the desktop iframe for larger screens */
+        @media (min-width: 768px) {
+            #desktop-iframe {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Iframe for mobile version -->
+    <iframe id="mobile-iframe" class="responsive-iframe" src="index-mobile.html" onload="setLinksToOpenInNewWindow(this)"></iframe>
+
+    <!-- Iframe for desktop version -->
+    <iframe id="desktop-iframe" class="responsive-iframe" src="index-desktop.html" onload="setLinksToOpenInNewWindow(this)"></iframe>
+
+    <script>
+        function setLinksToOpenInNewWindow(iframe) {
+            // Ensure the script runs only if the iframe is fully loaded
+            iframe.contentWindow.onload = function() {
+                // Select all links within the iframe
+                var links = iframe.contentDocument.querySelectorAll('a');
+                // Set the target attribute of each link to '_blank'
+                links.forEach(function(link) {
+                    link.setAttribute('target', '_blank');
+                });
             }
         }
     </script>
-</head>
-<body>
-    <p>Redirecting to the appropriate version of the site...</p>
 </body>
 </html>
