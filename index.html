@@ -3,38 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect Page</title>
-    <style>
-        /* Hide both desktop and mobile redirection messages by default */
-        .redirect-message {
-            /* display: none; */
+    <title>Adam Arinbjarnarson</title>
+    <link rel="icon" type="image/x-icon" href="favime.jpg">
+
+    <script>
+        // Function to detect if the user is on a mobile device
+        function isMobile() {
+            return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
-        
-        /* Show the mobile redirection message for small screens */
-        @media (max-width: 767px) {
-            .mobile-redirect {
-                display: block;
+
+        // Redirect based on device type
+        window.onload = function() {
+            if (isMobile()) {
+                window.location.href = 'index-mobile.html';
+            } else {
+                window.location.href = 'index-desktop.html';
             }
         }
-        
-        /* Show the desktop redirection message for larger screens */
-        @media (min-width: 768px) {
-            .desktop-redirect {
-                display: block;
-            }
-        }
-    </style>
+    </script>
 </head>
 <body>
-    <div class="redirect-message mobile-redirect">
-        <p>If you are not redirected automatically, <a href="index-mobile.html">click here</a>.</p>
-        <script>
-            // Redirect to the mobile version
-            window.location.href = 'index-mobile.html';
-        </script>
-    </div>
-    <div class="redirect-message desktop-redirect">
-        <p>If you are not redirected automatically, <a href="index-desktop.html">click here</a>.</p>
-        <script>
-            // Redirect to the desktop version
-            window.location​⬤
+    <p>Redirecting to the appropriate version of the site...</p>
+</body>
+</html>
