@@ -90,9 +90,7 @@
             line-height: 90%;
         }
         @media (min-width: 850px){
-            .title{
-/* max-width: 97.5%;         */
-    }
+            /* .title{max-width: 97.5%;           } */
             
         }
 
