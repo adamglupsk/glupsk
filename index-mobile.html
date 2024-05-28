@@ -37,7 +37,7 @@
         }
         .rows > div{
             background-size: cover;
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             transform: translateY(-200vh);
             animation: slide-down 1.5s linear forwards;
             /* border-bottom: 1px solid black; */
@@ -45,8 +45,14 @@
             padding-left: 10px;
             display: flex;
              justify-content:space-between;
+             overflow: hidden;
 
-
+        }
+        .rows > div > img, .rows > div > video{
+            margin: 2vw;
+            width: 40vw;
+            height: fit-content;
+            /* rotate: 90deg; */
         }
         a{
             text-decoration: none;
@@ -136,37 +142,46 @@
      </div>
     </div>    <div class="rows">
        
-        <div style="animation-delay: 0.5s;">
-            <p>Selected projects:</p></div>
+        <!-- <div style="animation-delay: 0.5s;">
+            <p>Selected projects:</p></div> -->
         <div style="animation-delay: 0.4s;">
             <p><a href="tyda.html"><i>Tyda</i></a></p>
-            <p>(Identity)</p>
+            <video src="tyda-motion-2.mp4" autoplay muted loop playsinline alt="">
+            <!-- <p>(Identity)</p> -->
         </div>
         <div style="animation-delay: 0.3s;">
             <p><a href="magazine.html"><i>Collecting Music</i></a></p>
-            <p>(Magazine)</p>
+            <img src="collecting-1.jpg" alt="">
+            <!-- <p>(Magazine)</p> -->
         
         </div>
-        <div style="animation-delay: 0.2s;"> <p><a href="opinion.html"><i>Opinion</i> </a></p>            <p><a href="opinion.html">(Installation)</a></p>
+        <div style="animation-delay: 0.2s;"> <p><a href="opinion.html"><i>Opinion</i> </a></p>
+<video src="opinion.mp4" autoplay loop muted playsinline></video>            <!-- <p><a href="opinion.html">(Installation)</a></p> -->
         </div>
         <div style="animation-delay: 0.1s;">
             <p><a href="orionteatern.html"><i>1983–2023</i></a></p>
-            <p>(Poster/Invitation)</p>
+            <!-- <p>(Poster/Invitation)</p> -->
+            <img src="orionteatern-1.jpg" alt="" >
         </div>
         <div style="animation-delay: 0.1s;">
             <p><a href="posters.html"><i>Posters</i></a></p>
-            <p>(Graphics)</p>
+            <img src="posters-2/2.png" alt="">
+            <!-- <video src="posters.mp4" autoplay muted loop playsinline></video> -->
+            <!-- <p>(Graphics)</p> -->
         </div>
         <div style="animation-delay: 0.1s;">
             <p><a href="more.html"><i>In the works</i></a></p>
-            <p>(…)</p>
+            <a href="more.html"></a><img src="material-1.jpg" alt="">
+            <!-- <p>(…)</p> -->
         </div>
 
-        <div> <p></p></div>
-        <div> <p></p></div>
+       
         <div style="animation-delay: 0.1s;"> <p><a href="about.html"><i>About</i></a></p></div>
         <div><p><a style="color:blue;" href="links.html">Hyperlinks</a></p></div>
-        
+        <div> <p></p></div>
+        <div> <p></p></div>
+        <div> <p></p></div>
+        <div> <p></p></div>
         <div> <p></p></div>
     </div>
     <script>
