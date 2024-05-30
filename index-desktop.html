@@ -1,113 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adam Arinbjarnarson</title>
-<style>
-  @keyframes slide-left{
- 
-  0%{
-    transform: translateX(0);
-  }
-  
-  100%{
-      transform: translateX(150vw);
-  }
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="project.css"> -->
+    <link rel="icon" type="image/x-icon" href="favime.jpg">
+    <title>Adam Arinbjarnarson</title>
+    <style>
+        /* ........ WAIT ........ */
+        @keyframes dissolve {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .wait{
+            inset:0;
+            position: fixed;
+            z-index: 1000;
+            background-color: white;
+            animation: dissolve 0.5s 6s ease forwards;
+            pointer-events: none;
+            padding: 1vw;
+        }
 
-    body{
-        padding: 0;
-        margin:0;
-        overflow: hidden;
-        width: 105vw;
-    }
+        /* .......TYPOGRAPHY....... */
+               @import url("https://use.typekit.net/mlc7org.css");
 
-   
-  .fr, .er, .big{
-    display: inline-flex;
-    width: 60px;
-    margin-left: -4px;
-    height: 100vh;
-    transition: width 1s 0.05s ease;
+        *{
+            font-family: "neue-haas-grotesk-text", sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 130%;
+        }
 
-    /* border-left: 1px solid black; */
-    position: relative;
-    box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.15);
-    background: white;
-  }
- 
-  .er {
-    z-index: 20;
-    position: relative;
-  }
-  
+        i{
+            font-family: "neue-haas-grotesk-text", sans-serif;
+            font-style: italic;
+        }
+        h1{
+            margin-bottom: 1vh;
+            font-size: 3.45rem;
+            line-height: 90%;
 
-  .fr:hover{
-    width: calc(60px * 8);
-  }
- 
-  @media screen and (min-width: 1400px)  {
-    .big{
-    transition: width 1.2s ease;
+        }
+        
+        p, div{
+            font-size: 1.25rem;
+            line-height: 130%;
+        }
 
-  }
-    .big:hover, .big:hover iframe{
-    width: calc(60px * 17);
+        p, h1{
+            margin: 0 0 1vh 0;
+            padding:0 !important;
+        }
+       
 
-  }
-  .big > iframe{
-    min-width: calc(60px * 17);
-  }
+        /* .......DIV FUNCTIONALITY....... */
 
-  }
+        body {
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .div-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+        }
+        .box {
+            width: 10vw;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            box-shadow: -1px 0px 15px rgba(0, 0, 0, 0.25);
+            transition: width 0.5s ease;
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
 
-  
-  
-  iframe{
-    position: relative;
-    min-width: calc(60px * 8);
-    margin:0;
-    padding:0;
-  }
+        }
+       
+        .box.active {
+            width: 60vw;
+        }
+        .box.shrink {
+            width: 5vw;
+        }
+        .project{
+            padding: 1vw;
+            min-width: 55vw;
+            max-width: 55vw;
+            overflow-y: auto;
+        }
+        .project  img, .project  video{
+            min-width: 55vw;
+            max-width: 55vw;
+            filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.15));
+            margin-bottom: 0.5vw;
+        }
 
 
-</style>
+       
+/* ...............TWO COLUMNS............ */
+
+         @media screen and (min-width: 800px){
+            .split{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap: 0.75vw;
+                row-gap: 0.75vw;
+                margin-top: 0.25vw
+            }
+         
+
+            .split > img, .split > video{
+                min-width: 26.75vw;
+                max-width: 26.75vw;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="fr">     <iframe src="about.html" frameborder="0"></iframe> </div>
-  <div class="fr">    <iframe src="links.html" frameborder="0"></iframe> </div>
-  <div class="fr big">    <iframe src="more.html" frameborder="0"></iframe> </div>
-  <div class="fr big">    <iframe src="opinion.html" frameborder="0"></iframe> </div>
-  <div class="fr big">    <iframe src="posters.html" frameborder="0"></iframe> </div>
-  <div class="fr big">    <iframe src="orionteatern.html" frameborder="0"></iframe> </div>
-  <div class="fr big">    <iframe src="magazine.html" frameborder="0"></iframe> </div>
-  <div class="fr big">   <iframe src="tyda.html"  frameborder="0"></iframe> </div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
-<div class="er"></div>
- <div class="er"></div>
+     <!-- ....WAIT COUNTDOWN TIMER.... -->
 
+    <!-- <div class="wait">
+        <h1 id="timer">5</h1>
+        <script>
+            // JavaScript for Countdown Timer
+            let countdown = 5;
+            const timerElement = document.getElementById('timer');
+            
+            const interval = setInterval(() => {
+                countdown--;
+                timerElement.textContent = countdown;
+                if (countdown <= 0) {
+                    clearInterval(interval);
+                    timerElement.textContent = "0";
+                }
+            }, 1000);
+        </script>
+    </div> -->
 
+    <!-- ....DIV PROJECTS.... -->
+    <div class="div-container">
+
+ <!-- ADAM ARINBJARNARSON -->
+
+        <div class="box">
+            <div class="split">
+           <div class="project"> <h1>Adam Arinbjarnarson</h1>
+           <div id="titleContainer"></div>
+            <script>
+                // Array of titles
+                const titlesArray = [
+                    "Blender user",
+                    "Art director",
+                    "InDesign user",
+                    "Phone caller",
+                    "Cinema 4D user",
+                    "E-mailer",
+                    "Photoshop brusher",
+                    "Pencil shader",
+                    "Artist",
+                    "Illustrator",
+                    "Motion designer",
+                    "Solution finder",
+                    "Grid maker",
+                    "Paper folder",
+                    "Small talker",
+                    "Google searcher",
+                    "Image prompter",
+                    "Music listener",
+                    "Tutorial watcher",
+                    "Font picker",
+                    "Photo editor",
+                ];
+            
+                function changeTitle() {
+                    const titleContainer = document.getElementById('titleContainer');
+                    const randomTitle = titlesArray[Math.floor(Math.random() * titlesArray.length)];
+            
+                    titleContainer.innerHTML = 'Graphic designer' + "<br>" + 'Image maker' + "<br>" + randomTitle ;
+            
+                    setTimeout(changeTitle, 500);
+                }
+            
+                changeTitle();
+            </script>
+            <div>Graduating 2025<br>Visual communication, BFA <br> <i>Beckmans College of Design</i> <br> Stockholm, Sweden</div>
+            <div><i>Contact</i> <br>
+                <a href="tel:+46707871567">+46707871567</a>
+                <br><a href="mailto:adaari@icloud.com">adaari@icloud.com</a>
+           <br> <a href="https://instagram.com/adamglupsk">@adamglupsk</a></div>
+        </div>
+        </div>
+        </div>
+
+<!-- LINKS         -->
+        <!-- <div class="box">
+            <div class="project">
+                <h1>Links</h1>
+                <a href="https://instagram.com/babyglupsk">Visual journal: @babyglupsk</a>  <br>
+                <div class="medium">Process, documentation, inspiration for all things visual. </div>
+                <a href="solvej.html">Guide to Malmö</a><br>
+                <div class="medium">A website with listing places in my hometown for friend Solvej planning a visit.</div>
+                <a href="thinking.html">What is Adam thinking…?</a><br>
+                <div class="medium">Quick web project inspired by <a href="https://naiveyearly.com"><i>Naive Yearly</i></a>, a web poetry festival in Copenhagen. </div>
+               
+                <div class="medium">Self initiated posters I've made recently. Some for fun, some for collaborative projects.</div>
+                <a href="https://soundcloud.com/dismagazine/a-g-cook-personal-computer?si=0eb4e03c744e4a5392526dba79e86e1b&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">This Soundcloud mix</a><br>
+                
+                <div class="medium">One of <i>PC Music's</i>, and <a href="https://open.spotify.com/album/16NHNs15w1bpkFiBOUgDaB?si=tOfxrMpoQiyfVaKYP_EY-A">A. G. Cooks </a>first mixes. It's fun and great, I listen to it all the time.</div>
+                <a href="https://instagram.com/adamglupsk">My instagram</a> <br>
+                <div class="medium">A weird mix of personal and work. But it's a nice way to stay in touch.</div>
+                <a href="https://www.amazon.se/Album-Eline-Mugaas/dp/0985136499">Album</a> <br>
+                <div class="medium">This book is a compilation of 10 issues of a magazine by Eline Mugaas and Elise Storsveen. It's full of great images and combinations. Buy it, but maybe not from Amazon, idk.</div>
+            </div>
+        </div> -->
+
+ <!-- RECENT POSTERS -->
+
+        <div class="box">
+            <div class="project"><h1>Compositions, 2024</h1>
+                <img src="posters-2/2.png" alt="">
+                <img src="posters-2/4.png" alt="">
+            <img src="posters-2/3.png" alt="">
+            <img src="posters-2/1.png" alt="">
+        </div>
+        </div>
+
+<!-- TYDA -->
+        <div class="box">
+            <div class="project"><h1>Tyda</h1>
+                    <video src="tyda-motion.mp4" autoplay muted loop playsinline></video>              
+    <div class="split">
+<p>
+     Tyda is a graphic identity based on Post-it-notes with LaserJet printed text and images, and a poster exhibited at Vandalorum in Värnamo, Småland. 
+</p>            
+    <p>Idea and excecution in collaboration with Maja Ringsäter and Måns Horning</p>
+</div>
+<img src="tyda-process-2.jpg" alt="">
+
+    <div class="split">
+        <img  style="filter:none;" src="tyda-2.jpg" alt="">
+<video src="lim.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <p>
+        Tyda is the result of a collaborative project initiated by Sophia Wood and Oscar Guermouche at Beckmans College of Design and Vandalorum Museum för konst och design in Stockholm and Värnamo, respectively. The overarching theme of the collaboration was Folkhemmet, or Swedish identity and our thesis; On every aspect of swedish history, there's an infinite room for interpretation and personal connotations.
+        <i>What is it like to understand Swedish identity, culture and history on these grounds?
+        </i>
+    </p>
+    </div>  
+ </div>
+
+<!-- COLLECTING -->
+        <div class="box">
+            <div class="project"><h1>Collecting</h1>
+            <img src="collecting-1.jpg" alt="">
+            <div class="split">
+            <p><i>Collecting</i> is a magazine about collections and algorithms. Single issue, 8 pages á 289 * 380 mm.</p>
+            
+           
+        </div>
+        <p>Playlists, piracy, algorithms and memories. <i>Collecting</i> is a magazine about collecting and in Volume 1, <i>Music</i>, it's about the ways people collect music. Why we create playlist, how we choose music and the ways Spotify and other digital platforms for music listening have shaped our habits. Inspirations in the project were <a style="color: blue;" href="https://everynoise.com">Every Noise at Once</a>,  Simon Evans'<a style="color: blue;" href="https://socks-studio.com/2016/03/27/everything-i-have-and-other-works-by-simon-evans/"> Everything I Have </a> and <a style="color: blue;" href="http://www.diva-portal.org/smash/get/diva2:535713/FULLTEXT01.pdf">this essay </a> about playlist psychology. Graphic design choices were based on personal computer UI, catalogues and charts.
+            The project's concept and design was made in collaboration with <a style="color: blue;" href="https://solvejjansson.com">Solvej Jansson</a> and <a style="color: blue;" href="https://www.elvinodelholm.com">Elvin Odelholm</a>, in the course <i>Editorial Design</i>, led by Stefania Malmsten at Beckmans College of Design.</p>
+        
+            <div class="split">
+                <p>
+                    The first issue of collecting uses 306 individual images collected on the internet or our photo libraries. The images correspond to interviews, statistics or lyrics mentioned in the magazine.
+                </p>
+                <p>
+                    The playlists, tools and texts mentioned in the magazine are presented on the Online Edition of Collecting. The site was made using plain CSS and is <a href="https://www.arinbjarnarson.se/collecting"></a>.
+                </p>
+            </div>
+            </div>
+        </div>
+
+<!-- OPINION -->
+        <div class="box">
+            <div class="project">
+                <h1>Opinion</h1>
+                <video src="opinion.mp4" autoplay loop muted playsinline></video>
+                <div class="split">
+                    <p>Opinion is a a 60 second video loop with generated sentences and a physics simulation in 3d software. The video was projected on acrylic plastic, as a part of the exhibition Konst Reklam Konst.</p>
+                    <p>The project is about extremism and opinions. I am fascinated by the radical, non-sensical nature of opinions, and the way people seem to reason when forming their opinions. The sentences shown in this project are generated with GPT and After Effects expressions, and are a mix of opinion sounding phrases, adjectives and random nouns. The sentences are projected on the simulation and are constantly changing. They then rotate around the frame of the projection.
+                        Opinion is the result of a three week course supervised by Måns Wrange and tutored by Aida Chehrehgosha.</p>
+                    <video src="text.mp4" autoplay loop muted playsinline></video>
+                    <video src="java.mp4" autoplay loop muted playsinline></video>
+
+                </div>
+                
+            </div>
+        </div>
+
+<!-- ORIONTEATERN -->
+
+        <div class="box">
+            <div class="project">
+                <h1>Orionteatern</h1>
+                <video src="orionteatern-motion-1.mp4" autoplay loop muted playsinline></video>
+                
+                <p>
+                    Orionteatern 1983–2023 is a poster, an invitation and animation for a small scale, independent theatre in Stockholm celebrating their 40th anniversary.
+
+                    Thanks Sophia Wood for supervising this project and Christopher Backholm for making this project happen.
+                </p>
+
+                <div class="split">
+                    <img src="orionteatern-1.jpg" alt="">
+                    <video src="orionteatern-motion-2.mp4" autoplay loop muted playsinline></video>
+                    
+                </div>
+                <p>The theatre is run in a building from the 1920's, with bare walls and exposed beams and floor. The creative direction of the theatre makes perfect use of this with experimental, natural material scenography. At one time, they used live horses, water and soil on stage. My choices in making the poster were made to reflect the building's history, ambiance and the theatre's brave set designs. They are not afraid to make a mess.
+                    This project was made as part of a group exhibition at Orionteatern. My contribution to the exhibition was adapted for and used as invitation graphics.</p>
+                <div class="split">
+                    
+                    <img src="orionteatern-process-3.png" alt="">
+                    <img src="orionteatern-process-4.png" alt="">
+                    <img src="orionteatern-process-5.png" alt="">
+                    <video src="orionteatern-process-2.mp4" autoplay loop muted playsinline></video>
+                </div>
+            </div>
+        </div>
+
+<!-- MATERIAL   +    MALMÖ -->
+        <div class="box">
+        <div class="project">
+            <h1>Lookbook</h1>
+            <img src="material-1.jpg" alt="">
+            <p>Art direction for <i> Material (im)Perfections</i>, a fashion show consisting of experimental looks crafted by students in Fashion at Beckmans College of Design. 500x700mm, 2023 </p>
+            <img src="material-2.jpg" alt="">
+            <h1>Malmö</h1>
+            <p>A zine guide to Malmö my home town.</p>
+            <img src="malmo-0.png" alt="">
+            <img src="malmo-1.png" alt="">
+            <img src="malmo-3.png" alt="">
+            <img src="malmo-4.png" alt="">
+        </div>
+        </div>
+
+<!-- Spring 2023 -->
+        <div class="box">
+            <div class="project">
+                <h1>Images 2023</h1>
+                <img src="posters/5.jpg" alt="">
+                <img src="posters/13.jpg" alt="">
+                <img src="posters/1.jpg" alt="">
+                <img src="posters/3.jpg" alt="">
+                <img src="posters/6.jpg" alt="">
+                <div class="split">
+                    <img src="posters/17.jpg" alt="">
+                    <img src="posters/2.jpg" alt="">
+                    <img src="posters/12.jpg" alt="">
+                    <img src="posters/7.jpg" alt="">
+                    <img src="posters/8.jpg" alt="">
+                    <img src="posters/9.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+<!-- Script for changing width of divs -->
+<script>
+    let activeIndex = -1;
+
+    document.querySelectorAll('.box').forEach((box, index) => {
+        box.addEventListener('click', function(event) {
+            if (event.target.tagName !== 'A') {
+                toggleBox(index);
+            }
+        });
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowRight') {
+            navigateBoxes(1);
+        } else if (event.key === 'ArrowLeft') {
+            navigateBoxes(-1);
+        }
+    });
+
+    function toggleBox(index) {
+        const boxes = document.querySelectorAll('.box');
+        if (boxes[index].classList.contains('active')) {
+            boxes[index].classList.remove('active');
+            activeIndex = -1;
+            boxes.forEach(b => b.classList.remove('shrink'));
+        } else {
+            boxes.forEach(b => b.classList.add('shrink'));
+            boxes[index].classList.remove('shrink');
+            boxes[index].classList.add('active');
+            activeIndex = index;
+        }
+    }
+
+    function navigateBoxes(direction) {
+        const boxes = document.querySelectorAll('.box');
+        if (activeIndex !== -1) {
+            boxes[activeIndex].classList.remove('active');
+            boxes.forEach(b => b.classList.remove('shrink'));
+            let newIndex = activeIndex + direction;
+            if (newIndex < 0) newIndex = boxes.length - 1;
+            if (newIndex >= boxes.length) newIndex = 0;
+            toggleBox(newIndex);
+        } else {
+            toggleBox(0);
+        }
+    }
+</script>
 </body>
 </html>

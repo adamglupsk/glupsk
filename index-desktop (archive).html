@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adam Arinbjarnarson</title>
+<style>
+  @keyframes slide-left{
+ 
+  0%{
+    transform: translateX(0);
+  }
+  
+  100%{
+      transform: translateX(150vw);
+  }
+}
+
+    body{
+        padding: 0;
+        margin:0;
+        overflow: hidden;
+        width: 105vw;
+    }
+
+   
+  .fr, .er, .big{
+    display: inline-flex;
+    width: 60px;
+    margin-left: -4px;
+    height: 100vh;
+    transition: width 1s 0.05s ease;
+
+    /* border-left: 1px solid black; */
+    position: relative;
+    box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.15);
+    background: white;
+  }
+ 
+  .er {
+    z-index: 20;
+    position: relative;
+  }
+  
+
+  .fr:hover{
+    width: calc(60px * 8);
+  }
+ 
+  @media screen and (min-width: 1400px)  {
+    .big{
+    transition: width 1.2s ease;
+
+  }
+    .big:hover, .big:hover iframe{
+    width: calc(60px * 17);
+
+  }
+  .big > iframe{
+    min-width: calc(60px * 17);
+  }
+
+  }
+
+  
+  
+  iframe{
+    position: relative;
+    min-width: calc(60px * 8);
+    margin:0;
+    padding:0;
+  }
+
+
+</style>
+</head>
+<body>
+  <div class="fr">     <iframe src="about.html" frameborder="0"></iframe> </div>
+  <div class="fr">    <iframe src="links.html" frameborder="0"></iframe> </div>
+  <div class="fr big">    <iframe src="more.html" frameborder="0"></iframe> </div>
+  <div class="fr big">    <iframe src="opinion.html" frameborder="0"></iframe> </div>
+  <div class="fr big">    <iframe src="posters.html" frameborder="0"></iframe> </div>
+  <div class="fr big">    <iframe src="orionteatern.html" frameborder="0"></iframe> </div>
+  <div class="fr big">    <iframe src="magazine.html" frameborder="0"></iframe> </div>
+  <div class="fr big">   <iframe src="tyda.html"  frameborder="0"></iframe> </div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+<div class="er"></div>
+ <div class="er"></div>
+
+
+</body>
+</html>
