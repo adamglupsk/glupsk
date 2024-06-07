@@ -8,26 +8,10 @@
     <link rel="stylesheet" href="menu.css">
     <base target='_parent' />
     <style>
-        @keyframes background-blink{
-            0%{
-                background: white;
-            }
-            
-            90%{
-                background: url(m1.png);
-            }
-            100%{
-                background: white;
-            }
-        }
-        @keyframes slide-down{
-            0%{
-                transform: translateY(-200vh);
-            }
-            100%{
-                transform: translateY(0vh);
-            }
-        }
+    
+    i{
+       font-style: italic;
+    }
         .rows{
             display: grid;
             grid-template-rows: repeat(auto-fit, 60px);
@@ -57,26 +41,28 @@
         }
         a{
             text-decoration: none;
-            color: black;
+            color: black !important;
         }
         .link > p > a{
             color: blue;
             text-decoration: underline 1px blue;
         }
-
+        h1{
+padding-top: 0 !important     ;   }
         .padding, .mobile-top > *{
-            padding: 10px 10px 10px 10px;
-            margin: 10px;
+            /* padding: 10px 10px 10px 10px; */
         }
         .mobile-top{
-            transform: translateY(-200vh);
-            animation: slide-down 1.5s linear forwards;
-            height: 80vh;
-            font-size: 1.4rem;
+            /* height: 100vh; */
+writing-mode: vertical-rl;      
+ /* background: yellow; */
+            font-size: 1.3rem;
+            margin: 10px;
+
 
         }
         #titleContainer{
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
 
         /* .no-animation{
@@ -90,12 +76,28 @@
     transform: translateY(0);
     /* Add any other properties as needed */
 }
+
+.macbook{
+    position: fixed;
+    justify-self: center;
+    align-self: center;
+    bottom: 2vh;  
+    left: 10vw;
+    width: 80vw;
+    transform: translateY(0);
+    mix-blend-mode: multiply;
+}
+
+p,div {
+    margin:0;
+    padding: 0;
+}
     </style>
 </head>
 <body>
     
-     <div class="mobile-top" style="animation-delay: 0.6s; padding-top: 20px;">
-        <h1>Adam Arinbjarnarson</h1>
+     <div class="mobile-top" style="animation-delay: 0.6s;">
+        <!-- <h1>Adam Arinbjarnarson</h1> -->
         <div id="titleContainer" class="padding"></div>
         <script>
             // Array of titles
@@ -103,6 +105,8 @@
                 "Blender user",
                 "Art director",
                 "InDesign user",
+                "Graphic designer",
+                "Image maker",
                 "Phone caller",
                 "Cinema 4D user",
                 "E-mailer",
@@ -124,67 +128,29 @@
                 const titleContainer = document.getElementById('titleContainer');
                 const randomTitle = titlesArray[Math.floor(Math.random() * titlesArray.length)];
         
-                titleContainer.innerHTML = 'Graphic designer' + "<br>" + 'Image maker' + "<br>" + randomTitle ;
+                titleContainer.innerHTML ='Adam Arinbjarnarson/' + randomTitle;
         
-                setTimeout(changeTitle, 500);
+                setTimeout(changeTitle, 250);
             }
         
             changeTitle();
         </script>
         <div>
-            <div>Graduating 2025<br>Visual communication, BFA <br> <i>Beckmans College of Design</i> <br> Stockholm, Sweden</div><br>
+            <!-- <div>Graduating 2025<br>Visual communication, BFA <br> <i>Beckmans College of Design</i> <br> Stockholm, Sweden</div><br> -->
             <div
-            ><i>Contact <br>
-            </i><a style="color: blue" href="tel:+46707871567">+46707871567</a>
-            <br><a style="color: blue" href="mailto:adaari@icloud.com">adaari@icloud.com</a>
-            <br><a style="color: blue" href="https://instagram.com/adamglupsk">@adamglupsk</a>
+            >
+            <a style="color: blue" href="mailto:adaari@icloud.com">adaari@icloud.com</a>/<a style="color: blue" href="https://instagram.com/babyglupsk">@babyglupsk</a>/
+            <a style="color: blue" href="tel:+46707871567">0046707871567</a>
             </div>
         </div>
      </div>
-    </div>    <div class="rows">
-       
-        <!-- <div style="animation-delay: 0.5s;">
-            <p>Selected projects:</p></div> -->
-        <div style="animation-delay: 0.4s;">
-            <p><a href="tyda.html"><i>Tyda</i></a></p>
-            <video src="tyda-motion-2.mp4" autoplay muted loop playsinline alt="">
-            <!-- <p>(Identity)</p> -->
-        </div>
-        <div style="animation-delay: 0.3s;">
-            <p><a href="magazine.html"><i>Collecting Music</i></a></p>
-            <img src="collecting-1.jpg" alt="">
-            <!-- <p>(Magazine)</p> -->
-        
-        </div>
-        <div style="animation-delay: 0.2s;"> <p><a href="opinion.html"><i>Opinion</i> </a></p>
-<video src="opinion.mp4" autoplay loop muted playsinline></video>            <!-- <p><a href="opinion.html">(Installation)</a></p> -->
-        </div>
-        <div style="animation-delay: 0.1s;">
-            <p><a href="orionteatern.html"><i>1983–2023</i></a></p>
-            <!-- <p>(Poster/Invitation)</p> -->
-            <img src="orionteatern-1.jpg" alt="" >
-        </div>
-        <div style="animation-delay: 0.1s;">
-            <p><a href="posters.html"><i>Posters</i></a></p>
-            <img src="posters-2/2.png" alt="">
-            <!-- <video src="posters.mp4" autoplay muted loop playsinline></video> -->
-            <!-- <p>(Graphics)</p> -->
-        </div>
-        <div style="animation-delay: 0.1s;">
-            <p><a href="more.html"><i>In the works</i></a></p>
-            <a href="more.html"></a><img src="material-1.jpg" alt="">
-            <!-- <p>(…)</p> -->
-        </div>
+    </div>   
 
-       
-        <!-- <div style="animation-delay: 0.1s;"> <p><a href="about.html"><i>About</i></a></p></div> -->
-        <div><p><a style="color:blue;" href="links.html">Hyperlinks</a></p></div>
-        <div> <p></p></div>
-        <div> <p></p></div>
-        <div> <p></p></div>
-        <div> <p></p></div>
-        <div> <p></p></div>
-    </div>
+
+
+    <!-- ... finns i notion………………-->
+
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
   var lastVisit = localStorage.getItem("lastVisit");
@@ -195,5 +161,6 @@
   }
 });
     </script>
+    <img src="macbook.jpg" alt="" class="macbook">
 </body>
 </html>
