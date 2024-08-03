@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leonard</title>
+    <style>
+        body{
+            font-size: 2rem;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            line-height: 1.1;
+            text-align: justify;
+            -webkit-text-stroke: black 0.05rem;
+
+        }
+        p{
+            margin: 0;
+            padding: 0 0 7rem 0;
+        }
+        span{
+            opacity: 0;
+            animation: blink 2s infinite step-end;
+        }
+        @keyframes blink{
+            0%{
+                opacity: 0;
+            }
+            50%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+
+        a{
+            color: rgb(0, 0, 0);
+            -webkit-text-stroke: rgb(0, 0, 0) 0.15rem;
+            text-decoration: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <p>   Leonard<span>o</span>
+    </p>
+    <p>Detta blev större och svårare än jag tänkt mig. Det finns så mycket musik att samla ihop, att berätta om och att lyssna på. Så snart jag hittar något att skicka tänker jag: <br> "men hur låter detta?" <br> "hmmmmmm" <br>"e detta bra ens" <br> "vad är det jag tycker om här" <br>Framförallt känner jag att all musik är så rik och värd att uppskattas.</p>
+    <p>Så är det väl med det mesta om man börjar tänka… Men vidare till musiken! Just nu lyssnar jag mycket på album, gärna elektroniska! Kanske kommer det låta lamt i jämförelse med ex. The Chemical Brothers, hehe.</p>
+    <p>
+        <p>
+    1. <a href="https://open.spotify.com/album/7gN7gWms3Uz0GLLtLYHybk?si=kQvlTkTETBOuNs7IeyEcvA">Beautiful Rewind, Four Tet</a><br> Four Tet är nog min favorit just nu. Denna skivan är egentligen en rätt… mosig skiva som inte är hans bästa men den är så rolig. Så många kul och nice beats och trummor.<br>
+</p>
+    2. <a href="https://open.spotify.com/album/16NHNs15w1bpkFiBOUgDaB?si=I069eBCQSfKIMI243OKMiA">7G, A.G. Cook</a> <br> Jag älskar AG:s hjärna och musik. Detta albumet är samling av sju små skivor med olika tema. Det är ett äventyr att lyssna på!!!!! 90% av låtarna är favoritlåtar men just nu är 
+</p>
+    <p><span>Uppdateras inom kort…</span>
+    <br>Sålänge: Musik jag velat lyssnat på ofta på sistone har jag samlat i en <a href="https://open.spotify.com/playlist/5cMdXDKjHgm9HYZfhaACTQ?si=dd7a73987e714961">spellista</a>
+    </p>
+</body>
+</html>
