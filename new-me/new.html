@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Adam</title>
+    <style>
+        .gradient{
+            pointer-events: none;
+            z-index: 10;
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 90%, rgb(255, 255, 255) 100%);
+        }
+        p{
+            margin: 0;
+            padding: 0;
+            line-height: 2.5vh;
+            
+        }
+        body{
+            font-size: 2.25vh;
+            overflow-x: hidden;
+            width: 100vw;
+            margin: auto;
+        }
+        .sliders{
+            padding-top: 2vh;
+        }
+        .slide{
+            display: flex;
+            height: 70vh;
+            overflow: scroll;
+            width: 100%;
+            padding: 0vh 2vh 2vh 2vh;
+        }
+        .title{
+            padding: 0vh 2vh 2vh 2vh;
+
+        }
+        img{
+            /* border-radius: 3px; */
+        }
+        .slide > div{
+            min-width: 30vh;
+            margin-right: 2vh;
+            height: 100%;
+            /* display: flex; */
+            
+        }
+        .slide > img, .slide > video{
+            margin-right: 2vh;
+        }
+        span{
+            line-height: 7vw;
+        }
+        .start{
+            padding: 10vh;
+            text-align: center;
+            font-size: 9vw !important;
+            line-height: 1vh !important;
+        }
+
+        body{
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div>
+        <div class="gradient"></div>
+    <div class="sliders">
+        <div class="title">
+            <p>Adam Arinbjarnarson</p>
+
+        </div>
+    <div class="slide">
+        <img src="/trial-1.png" alt="">
+        <div>
+            <p>Images for Night club Trädgården <i>Pride Garden</i></p>
+        </div>
+        <img src="/trial-2.png" alt="">
+    </div>
+    <div class="slide">
+        <img src="/collecting-1.jpg" alt="">
+        <div>
+            <p>Editorial design in collaboration with Elvin Odelholm and Solvej Jansson. </p>
+        </div>
+        <img src="/collecting-2.jpg" alt="">
+        <img src="/collecting-3.jpg" alt="">
+        <img src="/collecting-4.jpg" alt="">
+        <img src="/collecting-5.jpg" alt="">
+        <img src="/collecting-6.jpg" alt="">
+        <img src="/collecting-7.jpg" alt="">
+        
+    </div>
+    <div class="slide">
+        <div>
+            <p>Seriously, <br> open to commissions. Interested in commercial work. Probably, preferably </p>
+        </div>
+        
+    </div>
+</div>
+</div> -->
+    <div class="start">
+        <!-- <p>adam arinbjarnarson <br> graphic designer <br> visual artist available for probably a lot of things</p>
+        <p>contact instagram </p> -->
+
+        <p>Not fully</p>
+        <p>dressed</p>
+        <p>without</p>
+        <p>a smile</p>
+        
+        
+    </div>
+<script>
+ // Lista med standardtypsnitt
+// const fonts = [
+//     'Arial, sans-serif',
+//     'Helvetica, sans-serif',
+// ];
+
+const fonts = [
+    'Arial, sans-serif',
+    '"Times New Roman", serif',
+    'Verdana, sans-serif',
+    'Gill Sans, sans-serif',
+    'Tahoma, sans-serif',
+    'Monaco, monospace',
+    'Trebuchet MS, sans-serif',
+    'Georgia, serif',
+    'Palatino Linotype, serif',
+    '"Courier New", monospace',
+    'Book Antiqua, serif',
+    'Lucida Console, monospace',
+    'Impact, fantasy',
+    'Lucida Sans Unicode, sans-serif',
+    'Geneva, sans-serif',
+    'Arial Black, sans-serif',
+    'Consolas, monospace',
+    'Helvetica, sans-serif',
+    'Papyrus, fantasy',
+    'Apple Chancery, cursive',
+];
+
+let fontOffset = 0; // Starta med första typsnittet
+
+// Funktion för att skapa bokstäver med typsnitt
+function applyFontCycling() {
+    const paragraphs = document.querySelectorAll('p');
+    
+    paragraphs.forEach(paragraph => {
+        const text = paragraph.textContent; // Hämtar paragrafens text
+        paragraph.innerHTML = ''; // Tömmer paragrafen
+
+        [...text].forEach((char, index) => {
+            const span = document.createElement('span'); // Skapar en `<span>` för varje bokstav
+            span.textContent = char; // Sätter bokstaven som text i `<span>`
+            const fontIndex = (index + fontOffset) % fonts.length; // Räknar ut vilket typsnitt
+            span.style.fontFamily = fonts[fontIndex]; // Sätter typsnitt på `<span>`
+            paragraph.appendChild(span); // Lägger till `<span>` i paragrafen
+        });
+    });
+
+    fontOffset = (fontOffset + 1) % fonts.length; // Ökar offset för nästa cykel
+}
+
+// Kör funktionen var sekund
+setInterval(applyFontCycling, 100);
+</script>
+</body>
+</html>

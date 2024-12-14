@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2vh;
+            columns: 2;
+            font-family: Arial, Helvetica, sans-serif;
+            transition: all 0.5s
+        }
+        h1 {
+            padding: 0;
+            margin: 0 0 2vh 0;
+            font-size: 2vh;
+            font-weight: 400;
+        }
+        img, video {
+            width: 100%;
+            margin: auto;
+            height: auto;
+        }
+        .project {
+            break-inside: avoid;
+            margin-bottom: 2vh;
+        }
+        .blurred {
+            filter: blur(2vh);
+            pointer-events: none;
+            opacity: 0.75;
+            transition: all 0.25s;
+        }
+        .highlight .extra {
+            display: block;
+        }
+        .extra {
+            display: none;
+            transition: 1s;
+        }
+        .wide {
+            column-span: all;
+            font-size: 3vh;
+            font-weight: 700;
+        }
+
+        div.project > h1 {
+            display: none;
+        }
+        @media screen and (min-width: 600px) {
+            body {
+                max-width: 1200px;
+                margin: auto;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            body {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="wide"><h1>Adam Arinbjarnarson </div>
+
+<div class="project">
+    <div><img src="/trial-1.png" alt=""></div>
+    <h1>Pride Garden 2024 for Trädgården</h1>
+    <div class="extra">Extra information för projekt 3</div>
+</div>
+<div class="project">
+    <div><video src="/orionteatern-motion-1.mp4" loop muted playsinline></video></div>
+    <h1>Utmärkt svensk webbkonst, 2024</h1>
+    <div class="extra">Extra information för projekt 1</div>
+</div>
+<div class="project">
+    <div><img src="/dukade-bordet.jpg" alt=""></div>
+    <h1>Utmärkt svensk webbkonst, 2024</h1>
+    <div class="extra">Extra information för projekt 2</div>
+</div>
+<div class="project">
+    <div><video src="/tyda-motion.mp4" autoplay loop muted playsinline></video></div>
+    <h1>Utmärkt svensk webbkonst, 2024</h1>
+    <div class="extra">Extra information för projekt 2</div>
+</div>
+<div class="project">
+    <div><img src="/trial-2.png" alt=""></div>
+    <h1>Pride Garden 2024 for Trädgården</h1>
+    <div class="extra">Extra information för projekt 3</div>
+</div>
+
+<script>
+    document.addEventListener('click', function(event) {
+        const projects = document.querySelectorAll('.project');
+        const target = event.target;
+
+        if (target.tagName === 'IMG' || target.tagName === 'VIDEO') {
+            const project = target.closest('.project');
+
+            if (project) {
+                // Kontrollera om den klickade div redan är markerad
+                if (project.classList.contains('highlight')) {
+                    // Återställ alla projekt
+                    projects.forEach(p => {
+                        p.classList.remove('blurred');
+                        p.classList.remove('highlight');
+                    });
+                } else {
+                    // Lägg till blurred klass på andra projekt
+                    projects.forEach(p => {
+                        if (p !== project) {
+                            p.classList.add('blurred');
+                        } else {
+                            p.classList.add('highlight');
+                        }
+                    });
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

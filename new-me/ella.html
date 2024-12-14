@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projekt</title>
+  <style>
+    body {
+      display: flex;
+      align-items: flex-start;
+      margin: 2rem;
+      /* font-family: Arial, sans-serif; */
+      justify-content: center;
+    }
+
+    .projekt {
+      width: 50vh;
+      /* padding: 1vh; */
+      display: inline;
+      transition: transform 1s linear;
+      flex-basis: 1;
+
+      /* background: yellow; */
+      /* border: red solid 1px; */
+    }
+
+    .projekt img {
+      min-width: 100%;
+      max-width: 100%;
+      transition: filter 0.3s ease;
+    }
+
+    .projekt p {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      margin-top: 0.5rem;
+      /* font-size: 0.8rem; */
+      /* text-align: center; */
+    }
+
+    .projekt img:hover {
+      /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)); */
+    }
+
+    .projekt img:hover + p {
+      opacity: 1;
+    }
+
+    .another{
+        position: absolute;
+        width: 10vh;
+        left: 30%;
+        top: 70%;
+    }
+    
+    .presentation{
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      font-size: 2rem;
+      rotate: 90deg;
+      transform-origin: bottom left;
+      color: rgb(0, 0, 0);
+    }
+  </style>
+</head>
+<body>
+   <div class="presentation">
+    portfolio
+   </div>
+  <div class="projekt">
+    <img src="/trial-1.png" alt="Bild 1">
+    <p>Hello Man</p>
+  </div>
+  <div class="projekt">
+    <img src="/madonna-1.jpg" alt="Bild 1">
+    <p>The funeral of Madonna,
+      Art exhibition and concert flyer, 2024
+      <br>
+      Collage and typography / Digital and print
+    </p>
+  </div>
+  <div class="projekt">
+    <img src="/one.jpg" alt="Bild 2">
+    <p>Madonna, 2024
+      <br>
+      Collage and typography / Digital and print
+    </p>
+<!-- 
+    <script>
+      document.querySelectorAll('.projekt').forEach(element => {
+    let xOffset = 0;
+    let yOffset = 0;
+
+    function randomMovement() {
+        // Generera slumpmässiga förflyttningar inom ett intervall på -10 till 10 pixlar
+        xOffset = Math.random() * 50 - 50;
+        yOffset = Math.random() * 50 - 50;
+
+        // Använd CSS transform för att flytta div:arna
+        element.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+    }
+
+    // Animerar rörelsen var 50-100 millisekund
+    setInterval(randomMovement, Math.random() * 1000 + 1);
+});
+    </script> 
+    -->
+</body>
+</html>
