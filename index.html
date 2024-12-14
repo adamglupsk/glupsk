@@ -67,7 +67,7 @@ img{
 }
 }
 
-@keyframes blur{
+/* @keyframes blur{
     0%{
         filter: blur(10vw);
     }
@@ -79,6 +79,20 @@ img{
 .poster-1{
     filter: blur(10vw);
     animation: blur 5s 2s forwards;
+} */
+
+@keyframes start{
+    0%{
+transform:translateY(100dvh);  
+  }
+    100%{
+        transform:translateY(0dvh);  
+    }
+}
+
+body{
+    transform:translateY(-100dvh);  
+    animation: start 1s 0.5s forwards;
 }
     </style>
 </head>
