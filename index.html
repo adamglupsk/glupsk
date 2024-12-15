@@ -6,6 +6,10 @@
     <title>Adam Arinbjarnarson</title>
     <link rel="icon" type="image/x-icon" href="favime.jpg">
     <style>
+*{
+    background-color: black; 
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -14,7 +18,6 @@ body {
   text-align: center;
   justify-content: center;
   align-items: center;
-  background: black; 
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.5rem;
     overflow: hidden;
@@ -44,6 +47,12 @@ div>img, div>video, div>iframe{
   max-height: 90vh;
   /* min-height: 90vh; */
 }
+.white{
+    background-color: white;
+}
+.white img{
+    filter: drop-shadow(0 0 5vh grey);
+}
 
 img{
     object-fit: contain;
@@ -67,20 +76,6 @@ img{
 }
 }
 
-/* @keyframes blur{
-    0%{
-        filter: blur(10vw);
-    }
-    100%{
-        filter: blur(0px);
-    }
-}
-
-.poster-1{
-    filter: blur(10vw);
-    animation: blur 5s 2s forwards;
-} */
-
 @keyframes start{
     0%{
 transform:translateY(100dvh);  
@@ -99,8 +94,14 @@ body{
 <body>
     <div class="scroll">
     
-    <div class="poster-1">
+    <div>
         <img src="id.jpg" alt="">
+    </div>
+    <div>
+        <video src="material-skiss.mp4" autoplay loop muted playsinline></video>
+    </div>
+    <div>
+        <img src="/material-3d.png" alt="">
     </div>
     <div>
         <img src="magnificent-1.jpg" alt="">
@@ -108,7 +109,7 @@ body{
     <div>
         <video src="/orionteatern-social.mp4" autoplay muted loop playsinline></video>
     </div>
-    <div>
+    <div class="white">
         <img src="pride-garden-1.jpg" alt="">
     </div>
     <div><video src="dukade.mp4" autoplay muted playsinline loop></video></div>
@@ -119,12 +120,6 @@ body{
         <img src="/posters/13.jpg" alt="">
     </div>
     
-    <div>
-        <video src="material-skiss.mp4" autoplay loop muted playsinline></video>
-    </div>
-    <div>
-        <img src="/material-1.jpg" alt="">
-    </div>
     <div>
 
         <img src="anton.jpg" alt="">
