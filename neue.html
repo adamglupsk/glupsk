@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            /* margin: 0; */
+            padding: 0;
+        }
+        div {
+            min-width: 8rem;
+            max-width: 8rem;
+            height: auto;
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center; */
+            overflow: hidden;
+        }
+        div:has(p){
+            margin-bottom: 10px;
+        }
+    
+        img, p, video{
+            object-fit: contain;
+            /* filter: saturate(0) contrast(0.1); */
+            max-width: 8rem;
+        }
+
+        p{
+            padding:0;
+            margin: 0px 2px 0 2px;
+            writing-mode: vertical-lr;
+            /* transform: rotate(90deg); */
+            /* transform-origin: 0.5rem 2rem; */
+        }
+
+        
+        body.dimmed * {
+    opacity: 0;
+}
+
+.expanded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    /* background: rgb(255, 0, 0); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1 !important;
+    z-index: 1000;
+}
+.expanded img, .expanded video {
+    opacity: 1 !important;
+    width: auto;
+object-fit: fill;
+max-width: revert;
+max-height: 80vh;
+filter: saturate(1) contrast(1);
+
+}
+
+/* div{
+    animation: rotation 10s infinite steps(4);
+} */
+@keyframes rotation {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 600px) {
+    .expanded img{
+        max-height: revert;
+        max-width: 90vw;
+    }
+}
+    </style>
+</head>
+<body>
+    <div>
+        <p> adam arinbjarnarson <br>graphic designer
+        </p>
+    </div>
+    <div><img src="pride-garden-drop.png" alt=""></div>
+   
+    
+    
+    <div>
+        <img src="emil.jpg" alt="">
+    </div>
+    <div>
+        <img src="opinion-slideshow-p4.jpg" alt="">
+    </div>
+    <div>
+        <img src="tyda-slideshow-1.jpg" alt="">
+    </div>
+    <div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+    <div><img src="pride-garden-drop.png" alt=""></div>
+
+    <div>
+        <img src="madonna-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="pride-garden-2.jpg" alt="">
+    </div>
+
+<div>
+    <img src="orionteatern-process-3.png" alt="">
+</div>
+<div><img src="pride-garden-drop.png" alt=""></div>
+
+<div>
+    <p>    <a href="www.arinbjarnarson.se/solvej">solvej.html</a>
+    </p>
+</div>
+<div></div>
+<div>
+    <img src="cd.png" alt="">
+</div>
+<div>
+    <img src="pride-garden-1.jpg" alt="">
+</div>
+<div>
+    <p>    <a href="www.arinbjarnarson.se/thinking">thinking.html</a>
+    </p>
+</div>
+<div>
+    <img src="25-edit.png" alt="">
+</div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+    <img src="tyda-process-2.jpg" alt="">
+</div>
+<div></div>
+<div></div>
+<div></div>
+<div><video autoplay muted loop src="tyda-motion-2.mp4"></video></div>
+<div></div>
+<div></div>
+<div></div>
+
+<div>
+    <img  src="kymlinge.png" alt="">
+</div>
+<div><img src="dukade-bordet.jpg" alt=""></div>
+<div><img src="luftslott-3.png" alt=""></div>
+<div><img src="luftslott-2.png" alt=""></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div> <img src="orionteatern-process-4.png" alt=""></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div><video autoplay muted loop src="java.mp4"></video></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div><img src="posters/13-a.jpg" alt=""></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+    <img src="noah-2.jpg" alt="">
+</div>
+<div></div>
+<div></div>
+<div></div>
+<div><img src="posters-2/10.png" alt=""></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div><video autoplay muted loop src="rietveld-5.mp4"></video></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div><video autoplay muted loop src="css-1.mp4"></video></div>
+
+    <!-- <script>
+       document.addEventListener("DOMContentLoaded", () => {
+    const images = Array.from(document.querySelectorAll("img"));
+    const originalSrcs = new Map();
+
+    images.forEach(img => {
+        originalSrcs.set(img, img.src); // Spara originalkällan
+        img.src = "me.jpg"; // Ändra till me.jpg
+    });
+
+    setTimeout(() => {
+        images.sort(() => Math.random() - 0.5); // Slumpmässig ordning
+        images.forEach((img, index) => {
+            setTimeout(() => {
+                img.src = originalSrcs.get(img); // Återställ originalkällan
+            }, index * 100); // Offset med 100 ms
+        });
+    }, 100);
+});
+
+
+    </script> -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const mediaElements = Array.from(document.querySelectorAll("img, video"));
+
+    mediaElements.forEach(media => {
+        media.addEventListener("click", () => {
+            const parentDiv = media.closest("div");
+            if (parentDiv) {
+                if (parentDiv.classList.contains("expanded")) {
+                    document.body.classList.remove("dimmed");
+                    parentDiv.classList.remove("expanded");
+                } else {
+                    document.body.classList.add("dimmed");
+                    parentDiv.classList.add("expanded");
+                }
+            }
+        });
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!event.target.closest("img, video")) {
+            document.body.classList.remove("dimmed");
+            document.querySelectorAll(".expanded").forEach(div => {
+                div.classList.remove("expanded");
+            });
+        }
+    });
+});
+</script>
+</html>
