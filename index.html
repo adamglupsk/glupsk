@@ -37,7 +37,7 @@
             /* transform: rotate(90deg); */
             /* transform-origin: 0.5rem 2rem; */
         }
-
+      
         
         body.dimmed * {
     opacity: 0;
@@ -66,6 +66,15 @@ filter: saturate(1) contrast(1);
 
 }
 
+div:has(img:hover), div:has(video:hover){
+    transform: scale(1.05);
+    transition: all 0.25s linear;
+}
+
+.expanded:hover{
+    transform: initial;
+    transition: all 0.25s;
+}
 /* div{
     animation: rotation 10s infinite steps(4);
 } */
@@ -79,43 +88,107 @@ filter: saturate(1) contrast(1);
 }
 
 @media (max-width: 600px) {
+    div{
+        min-width: 50px;
+        max-width: 50px;
+    }
+    img, video{
+        max-width: 50px;
+    }
     .expanded img{
         max-height: revert;
-        max-width: 90vw;
+        max-width: 95vw;
     }
 }
     </style>
 </head>
 <body>
-    <div>
+    <!-- <div>
         <p> adam arinbjarnarson <br>graphic designer
         </p>
-    </div>
-    <div><img src="pride-garden-drop.png" alt=""></div>
-   
+    </div> -->
+    <div></div>   
+    <div><video autoplay muted loop playsinline src="tyda-motion-2.mp4"></video></div>
     
     
     <div>
-        <img src="emil.jpg" alt="">
-    </div>
-    <div>
-        <img src="opinion-slideshow-p4.jpg" alt="">
-    </div>
-    <div>
-        <img src="tyda-slideshow-1.jpg" alt="">
+        <img src="naomi-2.jpg" alt="">
     </div>
     <div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-    <div><img src="pride-garden-drop.png" alt=""></div>
-
+    <div></div>
+    <div></div>
+    
+    
+    
     <div>
         <img src="madonna-1.jpg" alt="">
     </div>
+    
+    <div></div>
+    <div></div>
+    <div></div>
+    
+    <div><video autoplay muted loop playsinline src="dukade.mp4"></video></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+    <img src="naomi-1.jpg" alt="">
+</div>
+<div></div>
+<div>
+    <img src="myra.jpg" alt="">
+</div>
+<div>
+    <img src="myra-2.jpg" alt="">
+</div>
+<div>
+    <img src="myra-1.jpg" alt="">
+</div>
+<div></div>
+<div></div>
+<div></div>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+    <img src="momans.png" alt="">
+</div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+    
+    
     <div>
         <img src="pride-garden-2.jpg" alt="">
     </div>
@@ -123,12 +196,8 @@ filter: saturate(1) contrast(1);
 <div>
     <img src="orionteatern-process-3.png" alt="">
 </div>
-<div><img src="pride-garden-drop.png" alt=""></div>
 
-<div>
-    <p>    <a href="www.arinbjarnarson.se/solvej">solvej.html</a>
-    </p>
-</div>
+
 <div></div>
 <div>
     <img src="cd.png" alt="">
@@ -136,10 +205,10 @@ filter: saturate(1) contrast(1);
 <div>
     <img src="pride-garden-1.jpg" alt="">
 </div>
-<div>
+<!-- <div>
     <p>    <a href="www.arinbjarnarson.se/thinking">thinking.html</a>
     </p>
-</div>
+</div> -->
 <div>
     <img src="25-edit.png" alt="">
 </div>
@@ -150,12 +219,18 @@ filter: saturate(1) contrast(1);
 <div></div>
 <div></div>
 <div>
-    <img src="tyda-process-2.jpg" alt="">
+    <img src="magnificent-table.jpg" alt="">
 </div>
 <div></div>
 <div></div>
 <div></div>
-<div><video autoplay muted loop src="tyda-motion-2.mp4"></video></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
 <div></div>
 <div></div>
 <div></div>
@@ -163,9 +238,56 @@ filter: saturate(1) contrast(1);
 <div>
     <img  src="kymlinge.png" alt="">
 </div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
 <div><img src="dukade-bordet.jpg" alt=""></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+    <img src="material-mingel.jpg" alt="">
+</div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+    <img src="reflections-1.jpg" alt="">
+</div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
 <div><img src="luftslott-3.png" alt=""></div>
-<div><img src="luftslott-2.png" alt=""></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
 <div></div>
 <div></div>
 <div></div>
@@ -175,15 +297,25 @@ filter: saturate(1) contrast(1);
 <div></div>
 <div></div>
 <div></div>
+<div>
+    <img src="reason-1.jpg" alt="">
+</div>
 <div></div>
 <div></div>
 <div></div>
+
 <div></div>
 <div></div>
+<div>
+    <img src="posters-2/2.png" alt="">
+</div>
 <div></div>
 <div></div>
+<div>
+    <img src="emil.jpg" alt="">
+</div>
 <div></div>
-<div><video autoplay muted loop src="java.mp4"></video></div>
+<div><video autoplay muted loop  playsinline src="java.mp4"></video></div>
 <div></div>
 <div></div>
 <div></div>
@@ -193,6 +325,9 @@ filter: saturate(1) contrast(1);
 <div><img src="posters/13-a.jpg" alt=""></div>
 <div></div>
 <div></div>
+<div>
+    <img src="tyda-process-2.jpg" alt="">
+</div>
 <div></div>
 <div></div>
 <div>
@@ -207,14 +342,19 @@ filter: saturate(1) contrast(1);
 <div></div>
 <div></div>
 <div></div>
-<div><video autoplay muted loop src="rietveld-5.mp4"></video></div>
+<div><video autoplay muted loop playsinline src="rietveld-5.mp4"></video></div>
 <div></div>
 <div></div>
 <div></div>
 <div></div>
+<div>
+    <img src="opinion-slideshow-p4.jpg" alt="">
+</div>
 <div></div>
 <div></div>
-<div><video autoplay muted loop src="css-1.mp4"></video></div>
+<div></div>
+<div></div>
+<div><video autoplay muted loop playsinline src="material-skiss.mp4"></video></div>
 
     <!-- <script>
        document.addEventListener("DOMContentLoaded", () => {
