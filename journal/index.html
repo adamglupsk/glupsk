@@ -30,7 +30,7 @@
         }
         h1{
             padding: 0;
-            margin: 0 0 1rem 0;
+            margin: -0.5rem 0 1rem 0;
             line-height: 1.2;
             font-size: 3rem;
             letter-spacing: 0.05rem;
@@ -47,7 +47,6 @@
             padding:0;
             font-size: 1.5rem;
             line-height: 1.4;
-
         }
 
         sup {
@@ -99,6 +98,8 @@
                     overflow-x: hidden;
                     margin-right: 1vw;
                     border-bottom: 0;
+                    /* border-right: 1.5px solid black; */
+
                 }
                 img{
                     width: 100%;
@@ -127,11 +128,53 @@
 </head>
 <body>
             
-    <div class="post">
+    <div class="post" style="overflow: hidden;">
         <h1>Felt cute might delete later / graduation project
-        
         </h1>
+        
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
+        <p class="moving"> <span>b</span> </p>
     </div>
+
+    <script>
+        const container = document.querySelector(".post");
+        const elements = document.querySelectorAll(".moving");
+
+        function setInitialPositions() {
+            elements.forEach(p => {
+                const initialX = Math.random() * (container.clientWidth - 20);
+                const initialY = Math.random() * (container.clientHeight - 20);
+                p.style.transform = `translate(${initialX}px, ${initialY}px)`;
+            });
+        }
+
+        function moveElements() {
+            elements.forEach(p => {
+                const newX = Math.random() * (container.clientWidth - 20);
+                const newY = Math.random() * (container.clientHeight - 20);
+                p.style.transform = `translate(${newX}px, ${newY}px)`;
+            });
+        }
+
+        setInitialPositions();
+        setInterval(moveElements, 5000);
+    </script>
+
     <div class="post">
         <h1>
             Onsdag 12 februari / Workshop med Jonas (att göra sitt examensarbete på 30 minuter)
