@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Divs with Triangle</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: rgb(255, 255, 255);
+        }
+        .draggable {
+            position: absolute;
+            width: 1vw;
+            height: 1vw;
+            background-color: rgb(0, 0, 0);
+            cursor: grab;
+        }
+        .random-shape {
+            position: absolute;
+            background-color: rgb(0, 0, 0);
+            opacity: 1;
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            color: rgb(0, 0, 0);
+            mix-blend-mode: difference;
+
+        }
+        .type {
+            position: absolute;
+            z-index: -2;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        
+            -webkit-text-stroke: white 1px;
+            mix-blend-mode: difference;
+            font-size: 15vw;
+            font-family: "SandbergWebReg";
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            
+
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="type">
+        Journalism <br>Information <br> Graphic Design
+    </div> -->
+    <svg>
+        <polygon fill="rgba(255, 255, 255, 1)" stroke="black" stroke-width="1" id="triangle"></polygon>
+    </svg>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const points = [];
+            for (let i = 0; i < 3; i++) {
+                const div = document.createElement("div");
+                div.classList.add("draggable");
+                div.style.top = `${Math.random() * 99}vh`;
+                div.style.left = `${Math.random() * 99}vw`;
+                document.body.appendChild(div);
+                points.push(div);
+
+                let isDragging = false;
+                let offsetX, offsetY;
+
+                div.addEventListener("mousedown", (e) => {
+                    isDragging = true;
+                    offsetX = e.clientX - div.offsetLeft;
+                    offsetY = e.clientY - div.offsetTop;
+                    div.style.cursor = "grabbing";
+                });
+
+                document.addEventListener("mousemove", (e) => {
+                    if (isDragging) {
+                        div.style.left = `${e.clientX - offsetX}px`;
+                        div.style.top = `${e.clientY - offsetY}px`;
+                        updateTriangle();
+                        updateRandomShapes();
+                    }
+                });
+
+                document.addEventListener("mouseup", () => {
+                    isDragging = false;
+                    div.style.cursor = "grab";
+                });
+            }
+
+            const polygon = document.getElementById("triangle");
+
+            function updateTriangle() {
+                const pointsAttr = points.map(div => {
+                    const rect = div.getBoundingClientRect();
+                    return `${rect.left + rect.width / 2},${rect.top + rect.height / 2}`;
+                }).join(" ");
+                polygon.setAttribute("points", pointsAttr);
+            }
+
+            function getTriangleCentroid() {
+                let x = 0, y = 0;
+                points.forEach(div => {
+                    const rect = div.getBoundingClientRect();
+                    x += rect.left + rect.width / 2;
+                    y += rect.top + rect.height / 2;
+                });
+                return { x: x / 3, y: y / 3 };
+            }
+
+            function getTriangleSize() {
+                const [a, b, c] = points.map(div => div.getBoundingClientRect());
+                const side1 = Math.hypot(b.left - a.left, b.top - a.top);
+                const side2 = Math.hypot(c.left - b.left, c.top - b.top);
+                const side3 = Math.hypot(a.left - c.left, a.top - c.top);
+                return (side1 + side2 + side3) / 12; 
+            }
+
+            function createRandomShape() {
+                const shape = document.createElement("div");
+                shape.classList.add("random-shape");
+                document.body.appendChild(shape);
+                return shape;
+            }
+
+            let randomShapes = [createRandomShape(), createRandomShape(), createRandomShape()];
+
+            function updateRandomShapes() {
+                const centroid = getTriangleCentroid();
+                const size = getTriangleSize();
+                randomShapes.forEach(shape => {
+                    shape.style.width = `${size}px`;
+                    shape.style.height = `${size}px`;
+                    shape.style.left = `${centroid.x + (Math.random() * size - size / 2)}px`;
+                    shape.style.top = `${centroid.y + (Math.random() * size - size / 2)}px`;
+                });
+            }
+
+            setInterval(updateRandomShapes, 500);
+            updateTriangle();
+        });
+    </script>
+</body>
+</html>
