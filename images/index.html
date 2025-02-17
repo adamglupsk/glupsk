@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktiv Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color:red;
+            text-align: center;
+        }
+        .container {
+            display: grid;
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            grid-template-columns: 50vw 50vw;
+            grid-template-rows: 50vh 50vh;
+            /* transition: grid-template-columns 0.2s, grid-template-rows 0.2s; */
+            cursor: alias;
+
+        }
+        .quadrant {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            display:flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quadrant" id="q1">
+            hej
+
+        </div>
+        <div class="quadrant" id="q2"></div>
+        <div class="quadrant" id="q3"></div>
+        <div class="quadrant" id="q4"></div>
+    </div>
+
+    <script>
+        const imageUrls = [
+             "https://d2w9rnfcy7mm78.cloudfront.net/3501016/original_3cde5559d9522663fb90e183a936dac9.png?1548524334?bc=1",
+            "https://media.pitchfork.com/photos/67b2bae515023e0aa59966a1/2:1/w_1600,c_limit/snl-50-the-anniversary.png",
+            "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25728971/STK083_NVIDIA_2_D.jpg?quality=90&strip=all&crop=0%2C0%2C100%2C100&w=1440",
+            "https://platform.theverge.com/wp-content/uploads/sites/2/2025/01/STKB320_DEEPSEEK_AI_CVIRGINIA_B.jpg?quality=90&strip=all&crop=0%2C0%2C100%2C100&w=1440",
+            "https://www.stanza.dk/media/pages/home/2025-01-17/fb195a1f19-1737136545/screenshot-2024-03-04-at-16.26.20-2048x1368-2560x.webp",
+            "https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIyOTI1MzMzNy9vcmlnaW5hbF83ZWVlMzZiOGNlYzUzOGMyMzViMzk3MTA0MmY3NTE1MC5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo2MDAsImZpdCI6Imluc2lkZSIsIndpdGhvdXRFbmxhcmdlbWVudCI6dHJ1ZX0sIndlYnAiOnsicXVhbGl0eSI6NzV9LCJmbGF0dGVuIjp7ImJhY2tncm91bmQiOnsiciI6MjAzLCJnIjoyMDMsImIiOjIwM319LCJqcGVnIjp7InF1YWxpdHkiOjc1fSwicm90YXRlIjpudWxsfX0=",
+            "/me.jpg",
+            "https://freight.cargo.site/w/1068/q/75/i/b18ecd41be83f620f14e924744eac48c7bfe9d4601caf0aa200a1f3a89f5d55f/113-mundaneum-2.jpg",
+            "https://freight.cargo.site/w/1500/q/75/i/3b1df21a3a45b2cf2d331b31ec9ac888889849e6bc8710706abb8f92bdc26e9d/42.-Solnit-Cover.jpg"]  ;
+
+        function getUniqueImages(count) {
+            const shuffled = imageUrls.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        const selectedImages = getUniqueImages(4);
+
+        document.getElementById('q1').style.backgroundImage = `url(${selectedImages[0]})`;
+        document.getElementById('q2').style.backgroundImage = `url(${selectedImages[1]})`;
+        document.getElementById('q3').style.backgroundImage = `url(${selectedImages[2]})`;
+        document.getElementById('q4').style.backgroundImage = `url(${selectedImages[3]})`;
+
+        document.addEventListener("mousemove", (event) => {
+            let x = event.clientX / window.innerWidth * 100;
+            let y = event.clientY / window.innerHeight * 100;
+            document.querySelector(".container").style.gridTemplateColumns = `${x}vw ${100 - x}vw`;
+            document.querySelector(".container").style.gridTemplateRows = `${y}vh ${100 - y}vh`;
+        });
+    </script>
+</body>
+</html>
