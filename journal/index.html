@@ -9,10 +9,7 @@
     <style>
 
 
-        *{
-            filter:saturate(2) contrast(1);
-
-        }
+        /* *{filter:saturate(2) contrast(1);} */
        
         body{
             padding: 0;
@@ -34,10 +31,9 @@
             line-height: 1.2;
             font-size: 3rem;
             letter-spacing: 0.05rem;
-            /* font-weight: 400; */
-
             font-weight: 400;
             -webkit-text-stroke: 2.5px black;
+            /* font-weight: 400; */
 
         }
 
@@ -55,8 +51,6 @@
         b{
             font-weight: 400;
             -webkit-text-stroke: 2.5px black;
-            /* text-transform: uppercase; */
-            /* letter-spacing: 0.075rem; */
         }
         img{
             width: 100%;
@@ -64,14 +58,10 @@
             display: block;
             margin: 2rem auto 2rem auto;
             height: auto;
-            /* filter: saturate(0) contrast(2) brightness(1); */
+            filter: saturate(0) contrast(057) brightness(2);
+            /* filter: saturate(10) contrast(0.9); */
+            /* opacity: 0.7; */
         }
-        /* .set{
-            text-indent: 2rem;
-        } */
-        /* .dent{
-            margin-left: 2rem;
-        } */
         span{
             font-family: futura, apple-chancery;
             color: black !important;
@@ -79,10 +69,38 @@
             font-size: 1.5rem;
 
         }
-
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgb(255, 255, 255, 0.98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+        }
         
+        .overlay img {
+            min-width: 80vmin;
+            width: 80vmin;
+            height: auto;
+            filter: saturate(0) contrast(3) brightness(1.5);
 
-                
+            /* box-shadow: 0 0 20vw 0px rgba(0, 0, 0, 0.3); */
+        }
+        .overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+       
+        a:hover{
+            color: blue;
+            -webkit-text-stroke: 10px rgba(0, 38, 255, 0.05) !important;
+        }
 
                 @media screen and (min-width: 1000px){
                 body{
@@ -98,7 +116,6 @@
                     overflow-x: hidden;
                     margin-right: 1vw;
                     border-bottom: 0;
-                    /* border-right: 1.5px solid black; */
 
                 }
                 img{
@@ -192,6 +209,7 @@
         <span><b>My strongest tool: The Hard to Understand Image and Text</b></span>
         <br><span><i>Den svårlästa texten, det är mitt verktyg?</i> Information is a give and take / Active Participant</span>
     </p>
+    <img src="18-02-1.jpg" alt="">
     <p>
         Vi kom in på… att arbetet "slår ett slag" för design som praktik, som något "riktigt". Dels var det på grund av att jag nämnde flera texter jag hade läst, som handlade om det. Jag vill inte det, men som Peter nämnde, kommer det oavsett bli en bieffekt av min metod och mitt resonemang. Jag behöver inte ens sikta dithän. Oavsett… Många texter hamnar verkligen där så fort de reflekterar över design-yrket. Design - form - innehåll - kund - author - etc. Peter påpekade att det finns en poäng i att <i>inte</i> kontakta andra människor, andra disciplin, någon alls, för tidigt. Han menade att i de experiment och de tankar jag hade nu fanns en respektlöshet. Att jag inte var försiktig, utan kunde kasta omkring "utan att bry mig". Jag förstår verkligen vad han menar och jag tror han har rätt. Jag har själv varit inne på liknande tankar, men då har jag tänkt mer över explicita politiska ställningstaganden. Att om jag ska citera någon i en tidning/bok/verk som också innehåller massa… skit! Så begränsas min frihet och jag blir skyldig att förhålla mig till andras integritet och generellt önskningar. Utöver att jag påverkas i vilken inställning och attityd jag kommer ha nämndes det också att jag i och med  intervju-arbete eller större redaktionellt arbete där dialog, fysiska besök, samtal, osv. står i fokus… <span>överger</span> grafisk design. Alltså att jag då kanske signalerar att… det krävs att jobba som en journalist och göra reportage, skriva artiklar, om ett projekt ska vara legitimt. Fair point. 
     </p>
@@ -257,7 +275,6 @@
     Imorgon ses jag, tiff, elvin och solvej hos Peter vid Skanstull. Det känns roligt med handledningsgruppen, jag är glad.
 </p>
     </div>
-
     <div class="post">
         <h1>Fredag 14 februari / Alla hjärtans dag, Sandra och Lisa, delmoment 1 med Sophia och Lasse</h1>
         <img src="14-02-1.jpeg" alt="">
@@ -285,13 +302,12 @@
         <p>22:14 / Aga dalénum / Jag försöker göra en pecha kucha och samtidigt fundera över hur jag kortfattat kommer kunna skriva en brief till mig själv. </p>
         <p>Boksamtalet med Yanis och Martin (ekonomerna) är det mest intressanta jag lyssnat på någonsin.</p>
     </div>
-
     <div class="post">
         <h1>
             Onsdag 12 februari / Workshop med Jonas (att göra sitt examensarbete på 30 minuter)
         </h1>
         <p>
-            Workshop 10-16 med klassen. Uppgiften var att göra sitt examensarbete så snabbt det gick. Tre gånger, först utan dator i 30 min, sedan med planering i åtanke med dator i 30 min, och sist med 10 minuters planeringsdiskussion och sedan 45 minuter av görandet. Jag hade väldigt kul med formexaperiment, att kopiera papper och vika dem, sätta dem i trianglar på en affisch. Att göra en broschyr-dummy. Andra omgången fokuserade jag på att vika papper jag redan hade, skrev ut nya stora mönster (triss-lott-blobben). Efter första rundan bad Jonas oss att reflektera över hur stor andel av vår tid vi lagt på idé, göra respektive presentera. Det blev faktiskt lite tankeväckande eftersom jag efter första rundan bara slängt det jag gjort på marken och… inte tyckte det var så roligt. När jag tog rummet i åtanke tänkte jag på höjd, att sprida utt siffror 1, 2, 3 i olika delar av rummet, i olika höjd. Det var intressant, det ledde mig till att tänka över… hur jag ser det som att jag arbetar med någon slags kart-ritande. Ingenting existerar i ett vakum, allt sår i relation till… allt. Men i mina tankar är det kul att se att det kanske är det jag undrar. Hur står olika frågor i förhållande till mig och design och journalistik.  Sista rundan var intressant eftersom vi var tvugna att lägga fokus på tidsplanerinen, som löd: <br>
+            Workshop 10-16 med <span>klassen</span>. Uppgiften var att göra sitt examensarbete så snabbt det gick. Tre gånger, först utan dator i 30 min, sedan med planering i åtanke med dator i 30 min, och sist med 10 minuters planeringsdiskussion och sedan 45 minuter av görandet. Jag hade väldigt kul med formexaperiment, att kopiera papper och vika dem, sätta dem i trianglar på en affisch. Att göra en broschyr-dummy. Andra omgången fokuserade jag på att vika papper jag redan hade, skrev ut nya stora mönster (triss-lott-blobben). Efter första rundan bad Jonas oss att reflektera över hur stor andel av vår tid vi lagt på idé, göra respektive presentera. Det blev faktiskt lite tankeväckande eftersom jag efter första rundan bara slängt det jag gjort på marken och… inte tyckte det var så roligt. När jag tog rummet i åtanke tänkte jag på höjd, att sprida utt siffror 1, 2, 3 i olika delar av rummet, i olika höjd. Det var intressant, det ledde mig till att tänka över… hur jag ser det som att jag arbetar med någon slags kart-ritande. Ingenting existerar i ett vakum, allt sår i relation till… allt. Men i mina tankar är det kul att se att det kanske är det jag undrar. Hur står olika frågor i förhållande till mig och design och journalistik.  Sista rundan var intressant eftersom vi var tvugna att lägga fokus på tidsplanerinen, som löd: <br>
             <span>1.</span><b>Research:</b> läsa, samla, titta
             <br> 15 minuter
         
@@ -467,8 +483,7 @@
         </p>
         <img src="06-02-2.jpg" alt="">
     </div>
-    
-<div class="post">
+    <div class="post">
     <h1>Onsdag 5 februari / Brief, metod, manifest</h1>
     <p>
        Inte en riktig, utan en GPT4o-skrivelse: Oblique strategy: <span>Use an old idea</span>
@@ -482,7 +497,7 @@
     </p>
     <p class="set"></p>
     <img src="face.jpeg" alt="">
-</div>
+    </div>
     <div class="post">
         <h1>Tisdag 4 februari / Baras imperium</h1>
         <p>Oblique strategy: <span>Bridges -build -burn</span></p>
@@ -508,7 +523,6 @@
             <br>Jag är grafisk designer och jag jämför grafisk designerns roll från historien med den jag upplever. Det handlar dels om att grafisk design som disciplin förhåller sig till medier, informationsflöden och människors konsumtion av innehåll. I förlängningen är grafisk designer ibland synonymt med kommunikatör och reklamformgivare, och vilken betydelse har det? I synnerhet när 
         </p>
     </div>
-
     <div class="post">
         <h1> Måndag 3 februari kl 17:42 / 00:09</h1>
         <img src="03-02-1.jpg" alt="">
@@ -517,7 +531,7 @@
         </p>
     <p class="set">När jag tänker på min idé handlar den om… Desinformation, fake news, medier, dvs. tekniska, politiska, ekonomiska aspekter av informationsflöde. Silicon Valley, osv. Men konstnärligt handlar det om att jag vill jämföra desinformation eller… brain rot… eller fake news med konst. Desinformation och konst i bemärkelsen… Språk, yttringar, kultur som inte låter sig krävas på förklaring, försvar, källor. Jag undrar om de fyller konstnärliga funktioner, alltså estetiska upplevelser. Å ena sidan är det en ingång jag tycker om jättemycket och som jag känner starka känslor kring. Poesi, fake news. Värt att notera: iden handlar dels om att det är konstigt vid första anblick och att det känns intressant. Men det handlar mycket om att gestalta skeenden i samhället med förståelse och empati som ledord. Att inte förenkla och säga att incels är dåliga och att internet är privat ägt och därmed dåligt utan att spekulera kring varför det kan fungera som det gör, att det är vanliga mänskliga egenskaper och beteenden som ligger till grund för samhället, tjänster, politiska strömningar… Det handlar givetvis om att människor vill känna saker, att de dras till andras yttringar och att de behöver hantera och förstå sin samtid, sin omgivning. På vilka sätt kan jag jämföra mig själv med dem. Öppenhet ♥  </p>  
     <p class="set">Å andra sidan tänker jag även över hur jag mer och mer inser att min fascination för språk på många vis inte handlar om språk per se, inte som Språket i P1 eller lingvistik, utan att det är ett intresse för filosofi och teori, att språk i många teoerier jag tycker är intressanta är… centralt. Foucalt, strukturalism, poststrukturalism och habitus i Bourdieu utgår alla från språk. Det är intressant dels i stort men också i förhållande till vad jag vill jobba med. Frågan desinformation eller informationskrisen (om vi lever i en sådan) behandlas olika mycket och på olika vis i olika sociala sfärer och i olika discipliner. Jag vill jämföra olika sätt att förklara fenomenet, olika sätt att sätta ord på det, i ton, i kritik, i uppfattning. Vilka skillnader finns mellan konstnärliga, kommersiella (läs: reklam 180hp) sammanhang? Kanske desto mer intressant, vilka skillnader finns mellan akademiska, tekniska,  </p> 
- </div>
+    </div>
     <div class="post">
         <h1>Söndag 2 februari / I telefon med Alice </h1>
         <p>Alice Ahnlide for president. Jag ringde till henne för handledning och inspiration, hihi. Peter Sunde är en intressant person. Strukturalism, post-strukturalism. Bruno Latour var toppen av isberget. Rietvelds text om konstutbildningen… som jag minns än idag… handlade om detta. "The trajectory of Fine Arts involves a shift from regarding 'things as they are' towards a recognition of the complex existence of materials, objects and ideas within changing contexts. Students will acquire the tools to think critically through making, and develop the skills to shape and materialise a creative process in ways that may shift the parameters of theory, practice and the public sphere." </p>
@@ -530,28 +544,26 @@
 
         <p>attention span, hög tolerans, konstant flöde av…, nya bilder, ny text, ny information, människan vänjer sig, doom scroll, beteende (mönster), mänskligt resonemang, lust/affekt/resonans, stillvärde, semiotik, felt cute might delete later, “känns sant”, AI (toppen av isberget tho), AI, bilder, överflöd, schabloner, kopiering, duplicering, rundgång, sammanfattningar, google, gpt, branding, death of the author(?), ansiktslös information, teknik(!), algoritmer, data mining, the cloud + other dangerous metaphors, large language models, källkritik, <span>information</span>, nyheter, film, internet, google, meta, TikTok, silicon valley, techfeudalism, kulturimport, USA/Europa, samtida översättningar, ideologi, liberalism, fascism, för samtidsförankring, nyliberalism, fri marknad (nytt???), trump, musk, privatisering, mexikanska golfen, google maps, xymeta, faktagranskning, få företag, stor makt, populism, reglering, nationer, administratörer, eu, GDPR, trump, acceleration, tempo, utbildning/verktyg, källkritik, skola, intresse (konflikt), informationskris?, alarmism, diskurs, foucault, mcluhan, medier som formar informationens karaktär, samtidens relation till block, latour, [?] printed matter, “message as medium”, [?] medium is the message, bok=poser!, är det provocerbart att göra en tryckt bok om digitala medier, skrivande, kan jag skriva?, essä?, <span>metod</span>, skrivande, kan jag skriva?, essä?, redaktionellt, intervju, samtal, citat, referenser, beijer x beckmans, forskning, tvär-, disciplin, vetenskap, sampling av information, sampling text, sampling bilder, “remix”, oscar guermouche, byta kontext till skrivet ord…?, meric algun, jenny holzer, joyti mistry, roxy farhat, göran hugo olsson, rappakalja, headache, lars fuhre, grafisk form, collage, hantera (andra) bilder, memes???, infografik, designa system, inspirerande utmaningar(?), lekfull, informativ, pr, propaganda, branding, designer-ansvar, stilbild i grafisk form, “förbise(tt)” lager av information, demonstration, subtil komm., kommunikation, illustrationer, 1. problem solver, 2. artist, fri konst, kompositioner, collage</p>
     </div>
-    <!-- <script>
-     document.addEventListener("DOMContentLoaded", function () {
-    const colors = ["#FF0000", "#FF4500", "#00FF00", "#0000FF", "#8A2BE2", "#9400D3", "#000000"]; // Starka regnbågsfärger + svart
-    // const fonts = ["Futura", "Arial", "Times New Roman", "Helvetica", "Verdana", "Trebuchet MS", "Georgia", "Courier New", "Garamond", "Baskerville", "Consolas", "Tahoma", "Gill Sans", "Monaco"];
-    
-    document.querySelectorAll("h1").forEach(h1 => {
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        // const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-        
-        h1.style.color = randomColor;
-        // h1.style.fontFamily = randomFont;
-    });
-    document.querySelectorAll("p").forEach(p => {
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-        // const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-        
-        p.style.color = randomColor;
-        // h1.style.fontFamily = randomFont;
-    });
-});
-
-    </script> -->
+   
+    <div class="overlay" id="overlay">
+        <img src="" alt="Zoomad bild" id="zoomedImg">
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const overlay = document.getElementById('overlay');
+            const zoomedImg = document.getElementById('zoomedImg');
+            
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('click', function () {
+                    zoomedImg.src = this.src;
+                    overlay.classList.add('active');
+                });
+            });
+            
+            overlay.addEventListener('click', function () {
+                overlay.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
