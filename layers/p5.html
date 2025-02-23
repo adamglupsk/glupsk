@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+            background-color:rgb(255, 255, 255);
+        }
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js Bildspår</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <script>
+        let images = []; // Array för bilder
+        let imageIndex = 0; // Håller koll på vilken bild som ska placeras
+
+        function preload() {
+            // Ladda in alla bilder från layer-1.png till layer-84.png
+            for (let i = 1; i <= 84; i++) {
+                images.push(loadImage(`layer-${i}.png`));
+            }
+        }
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            // blendMode(MULTIPLY);
+            // background(220);
+        }
+
+        function windowResized() {
+            // Gör så att canvas alltid fyller fönstret vid resize
+            resizeCanvas(windowWidth, windowHeight);
+            // background(220); // Rensa skärmen vid omstorlekning
+        }
+
+        function mouseDragged() {
+            // Placera en ny bild vid musens position
+            imageMode(CENTER);
+            let img = images[imageIndex % images.length]; // Cirkulär indexering av bilder
+            image(img, mouseX, mouseY, img.width / 15, img.height / 15); // Skala ner bilden
+            
+            // Växla till nästa bild
+            imageIndex++;
+        }
+
+        function keyPressed() {
+            // Rensa skärmen om användaren trycker på en tangent
+            // background(220);
+        }
+    </script>
+</body>
+</html>
