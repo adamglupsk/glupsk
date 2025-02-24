@@ -5,7 +5,11 @@
         body{
             padding:0;
             margin:0;
-            background-color:rgb(255, 255, 255);
+            /* background-color:rgb(227, 227, 227); */
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            
         }
         
     </style>
@@ -21,7 +25,7 @@
 
         function preload() {
             // Ladda in alla bilder från layer-1.png till layer-84.png
-            for (let i = 1; i <= 84; i++) {
+            for (let i = 1; i <= 157; i++) {
                 images.push(loadImage(`layer-${i}.png`));
             }
         }
@@ -42,7 +46,7 @@
             // Placera en ny bild vid musens position
             imageMode(CENTER);
             let img = images[imageIndex % images.length]; // Cirkulär indexering av bilder
-            image(img, mouseX, mouseY, img.width / 15, img.height / 15); // Skala ner bilden
+            image(img, mouseX, mouseY, img.width / 10, img.height / 10); // Skala ner bilden
             
             // Växla till nästa bild
             imageIndex++;
@@ -55,3 +59,149 @@
     </script>
 </body>
 </html>
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js Dragbara Textrutor & Bilder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(/graduates.mp4);
+            overflow: hidden;
+        }
+        .text-box {
+            position: absolute;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: black; /* Ändra färg här */
+            border: none;
+            background: transparent;
+            text-align: center;
+            width: 100px;
+            outline: none; /* Tar bort fokusram */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let boxes = [];
+        let images = [];
+        let spacing = 10; // Avstånd mellan bilder
+        let animationOffset = 0; // För animation
+        let speed = 0.02; // Hur snabbt bilderna rör sig (0.02 ≈ 1 gång per sekund)
+
+        function preload() {
+            for (let i = 1; i <= 84; i++) {
+                images.push(loadImage(`layer-${i}.png`));
+            }
+        }
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            noStroke();
+            clear();
+
+            // Skapa tre lådor i en triangel
+            boxes.push(new DraggableBox(300, 200, "Information"));
+            boxes.push(new DraggableBox(500, 500, "Economy"));
+            boxes.push(new DraggableBox(700, 200, "Technology"));
+
+            setInterval(() => {
+                animationOffset = (animationOffset + speed) % 1; // Cirkulär animation
+            }, 800); // Uppdatera varje sekund
+        }
+
+        function draw() {
+            clear();
+
+            // Rita linjer + bilder mellan alla tre lådor för att skapa en triangel
+            for (let i = 0; i < boxes.length; i++) {
+                let nextIndex = (i + 1) % boxes.length; // Cirkulär indexering för triangel
+                let x1 = boxes[i].x;
+                let y1 = boxes[i].y;
+                let x2 = boxes[nextIndex].x;
+                let y2 = boxes[nextIndex].y;
+
+                let distance = dist(x1, y1, x2, y2);
+                let numImages = floor(distance / spacing);
+
+                stroke(0, 50);
+                strokeWeight(2);
+                line(x1, y1, x2, y2); // Rita linje
+
+                for (let j = 0; j < numImages; j++) {
+                    let t = (j / numImages + animationOffset) % 1; // Flytta bilderna framåt
+                    let x = lerp(x1, x2, t);
+                    let y = lerp(y1, y2, t);
+                    let img = images[j % images.length];
+                    imageMode(CENTER);
+                    image(img, x, y, img.width / 6, img.height / 6);
+                }
+            }
+
+            // Uppdatera textpositioner
+            for (let box of boxes) {
+                box.updateTextPosition();
+            }
+        }
+
+        function mousePressed() {
+            for (let box of boxes) {
+                if (box.contains(mouseX, mouseY)) {
+                    dragging = box;
+                    offsetX = mouseX - box.x;
+                    offsetY = mouseY - box.y;
+                }
+            }
+        }
+
+        function mouseDragged() {
+            if (dragging) {
+                dragging.x = mouseX - offsetX;
+                dragging.y = mouseY - offsetY;
+                dragging.updateTextPosition();
+            }
+        }
+
+        function mouseReleased() {
+            dragging = null;
+        }
+
+        class DraggableBox {
+            constructor(x, y, text) {
+                this.x = x;
+                this.y = y;
+                this.text = text;
+
+                this.input = document.createElement("input");
+                this.input.type = "text";
+                this.input.value = text;
+                this.input.classList.add("text-box");
+                document.body.appendChild(this.input);
+
+                this.updateTextPosition();
+            }
+
+            updateTextPosition() {
+                this.input.style.left = `${this.x - 50}px`; // Centrerad
+                this.input.style.top = `${this.y - 15}px`;
+            }
+
+            contains(px, py) {
+                return dist(px, py, this.x, this.y) < 50;
+            }
+        }
+    </script>
+</body>
+</html> -->
