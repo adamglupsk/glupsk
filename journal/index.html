@@ -8,7 +8,9 @@
    
     <style>
 
-
+        :root {
+        --base-font-size: 1rem;
+        }
         /* *{filter:saturate(2) contrast(1);} */
        
         body{
@@ -21,36 +23,43 @@
             -webkit-text-stroke: 0.5px black;
             hyphens:auto;
         }
-        .post{
-            padding: 10px;
-            overflow-x: hidden;
-        }
         h1{
             padding: 0;
             margin: -0.5rem 0 1rem 0;
             line-height: 1.2;
-            font-size: 3rem;
+            font-size: calc(var(--base-font-size) * 2.8);
             letter-spacing: 0.05rem;
             font-weight: 400;
             -webkit-text-stroke: 2.5px black;
             /* font-weight: 400; */
 
         }
-
-        
         p{
             margin:0 0 1rem 0 ;
             padding:0;
-            font-size: 1.5rem;
+            font-size: calc(var(--base-font-size) * 1.4);
             line-height: 1.4;
+        }
+        span{
+            font-family: futura, apple-chancery;
+            color: black !important;
+            letter-spacing: 0.005rem;
+            font-size: calc(var(--base-font-size) * 1.3);
+
+        }
+        
+        b{
+            font-weight: 400;
+            -webkit-text-stroke: 2.5px black;
+        }
+
+        .post{
+            padding: 10px;
+            overflow-x: hidden;
         }
 
         sup {
             font-size: 1rem;
-        }
-        b{
-            font-weight: 400;
-            -webkit-text-stroke: 2.5px black;
         }
         img, video{
             width: 100%;
@@ -61,13 +70,6 @@
             /* filter: saturate(0) contrast(057) brightness(2); */
             filter: saturate(20) contrast(0.8) brightness(2);
             /* opacity: 0.7; */
-        }
-        span{
-            font-family: futura, apple-chancery;
-            color: black !important;
-            letter-spacing: 0.005rem;
-            font-size: 1.5rem;
-
         }
         .overlay {
             position: fixed;
@@ -107,7 +109,38 @@
             text-decoration: underline 1px solid;
         }
 
-                @media screen and (min-width: 1000px){
+                @media screen and (min-width: 900px){
+                body{
+                    display: flex;
+                    max-height: 100dvh;
+
+                }
+                .post{
+                    min-width: 40vw;
+                    max-width: 40vw;
+                    max-height: 100dvh;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    margin-right: 1vw;
+                    border-bottom: 0;
+
+                }
+                img{
+                    width: 100%;
+                }
+
+               
+                *{
+                scrollbar-width: none;
+                
+                }
+                *::-webkit-scrollbar {
+                    display: none;
+                }
+            
+                }
+
+                @media screen and (min-width: 1200px){
                 body{
                     display: flex;
                     max-height: 100dvh;
@@ -195,10 +228,14 @@
         setInitialPositions();
         setInterval(moveElements, 5000);
     </script>
+
     <div class="post">
-        <h1>Måndag 24 februari / <b>Oblique:</b> Once the search has begun</h1>
+        <h1>Måndag 24 februari / AGA 11-22, Järnvägsg. 23-</h1>
         <p>
-            I helgen har jag läst Technofeudalism, dess första kapitel. Det handlade om kapitalismens metamorfos (förvandling) och vilken roll teknologi har, att det alltid är centralt i ekonomiska modeller, vilken teknik som är tillgänglig, vilken som är ny. I förhållande till andra texter jag läst under projekets gång förstår jag att det perspektivet är relevant, i högsta grad, för (grafisk) design-fältet. Visst, teknologi och tekniker är centrala för samhället i stort men dessa teknologier har ju estetiska kvaliteter. Det finns liknelser och metaforer som hjälper förståelsen av dessa komplexa företeelser som inte går att begripa, utan att förenkla och rationalisera bort nyans. Efter helgens tankegångar tycker jag informationskrisen å ena sidan är tilltalande, men framförallt känner jag att jag är intresserad av förhållandet mellan teknologi, ekonomi och estetik. Frågan är… om det, istället för estetik, är design. Eftersom att jag märker att de alla är i samspel — ekonomi, teknologi och design. Å andra sidan befinner sig jag (som designer) i förhållande till dessa tre. Villkoren för grafisk design förändras av tekniken, som utvecklas för och på grund av ekonomin. All this to say, jag som designer, vill bidra med mitt perspektiv på informationskrisen (snarare… hur information flödar idag), genom att jämföra med hur jag påverkas av samhällets ekonomiska och teknologiska utveckling. Kan jag arbeta i detta och förenkla min frågeställning för att underlätta? 
+            <span><b><i>Oblique Strategy:</i></b> Once the search has begun…</span>
+        </p>
+        <p>
+            <b>Om technofeudalism</b>, i helgen: Kapitalismens metamorfos (förvandling) och vilken roll teknologi har, att det alltid är centralt i ekonomiska modeller, vilken teknik som är tillgänglig, vilken som är ny. I förhållande till andra texter jag läst under projekets gång förstår jag att det perspektivet är relevant, i högsta grad, för (grafisk) design-fältet. Visst, teknologi och tekniker är centrala för samhället i stort men dessa teknologier har ju estetiska kvaliteter. Det finns liknelser och metaforer som hjälper förståelsen av dessa komplexa företeelser som inte går att begripa, utan att förenkla och rationalisera bort nyans. Efter helgens tankegångar tycker jag informationskrisen å ena sidan är tilltalande, men framförallt känner jag att jag är intresserad av förhållandet mellan teknologi, ekonomi och estetik. Frågan är… om det, istället för estetik, är design. Eftersom att jag märker att de alla är i samspel — ekonomi, teknologi och design. Å andra sidan befinner sig jag (som designer) i förhållande till dessa tre. Villkoren för grafisk design förändras av tekniken, som utvecklas för och på grund av ekonomin. All this to say, jag som designer, vill bidra med mitt perspektiv på informationskrisen (snarare… hur information flödar idag), genom att jämföra med hur jag påverkas av samhällets ekonomiska och teknologiska utveckling. Kan jag arbeta i detta och förenkla min frågeställning för att underlätta? 
             <br>Genom att se min metodologi…
             <br><span><b>INSTICK:</b></span>
             <br>Jag läste Method, Mothodology and research design in artistic research (F. Hübner) idag, eller åtminstone började. Det var intressant för det benade ut på vilka sätt jag kan planera en metod och "research strategy" utifrån de tankar och råd som finns på konstnärlig forskning.
@@ -206,6 +243,7 @@
             <br>som någonting i mellanrummet mellan en intellektuell förståelse av teknologier och ekonomi och en estetisk blick – genom konst. Med risk för att detta blir ett manifest… menar jag att det är detta grafisk design är för mig. När jag hittar andra verksamma, med projekt som hanterar liknande tematik… kallar de det konstnärlig forskning, dock… Vad säger det mig? (Lol, plenty simply call it posters )
         </p>
         <p>Yanis introduktion till boken är en anekdot om när hans stålarbetarfar visar honom materiella kvaliteter i metaller, och till sist stål. Genom liknelser och målande språk skapas en <i>känsla</i> av företeelserna han beskriver. K</p>
+        <img src="24-02-1.jpg" alt="">
         <p>
             Vid kungliga konsthögskolan, dock initierat och ev. finansierat av (?)  <a href="https://www.iffs.se/en/">Institutet för framtidsstudier</a>: <a href="https://www.iffs.se/en/research/research-projects/ghost-platform-generating-the-complex-image-of-data-labour-and-logistics/"><i>Ghost Platform: Generating the complex image of data labour and logistics</i></a>. Det är av <a href="https://benjamingerdes.com/">Benjamin Gerdes</a>:
             <i>"[…]is an artist, writer, and organizer working in video, film, and related public formats, individually as well as collaboratively. He is interested in intersections of radical politics, knowledge production, and popular imagination. His work focuses on the affective and social consequences of economic and state regimes, investigating methods for art and cultural projects to contribute to social change. Gerdes’s projects emerge via multiple articulations from long-term research processes conducted in dialogue with activists,  trade unionists, architects, urbanists, geographers, and archival researchers."</i>
@@ -216,8 +254,9 @@
             <br>· <b>Anna Ådahl</b> (KKH) om interdiciplinär, konstnärlig forskning. Med utgångspunkt i teknologier och dess estetiker. <i>Omsätta teori och observation i konstnärligt arbete. (Transmediate)</i>
             <br>· <b>Ruben Pater</b> Om kritisk grafisk design, i förhållande till ekonomiska modeller och politik. Dock väntar jag ännu på hans böcker. Kanske borde läsa dem innan jag bestämmer mig för att hojta.
             <br>· <b>Ingrid Forsler</b> Medie-kommunikations-vetenskap (Södertörn), f.d.  <span>vk-htk på beckmans</span>. Kanske vore det bra för litteratur-lista, för en bredare förståelse av ämnet. <i>Det är dags att fundera över hur stort jag vill att medier, informationskris, etc. ska ha. </i>
-            <br>· <b>Brita Lindvall Leitmann</b>, kanske mest för att hon verkar väldigt klok och intressant. Även forskar, gör hon!
-            <br>·
+            <br>· <b>Brita Lindvall Leitmann</b>, kanske mest för att hon verkar väldigt klok och intressant. Även forskar, gör hon! <i>Subversiva <b>designval</b>
+            </i>
+            <br>· <b>Benjamin Gerdes</b>, Gestaltningar av komplexa system med kopplingar till samhälleliga frågor: <i>skapandet av en mot-estetik</i>, som metod för förändring
         </p>
     </div>
     <div class="post">
