@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information research Journal</title>
+    <style>
+        body {
+            margin: 0;
+            /* background: rgba(232, 232, 232, 0.8); */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 5px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer;
+            opacity: 0.2;
+            transition: all 0.3s;
+        }
+        img:hover {
+            opacity: 1;
+            transition: all 0.3s;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(250, 250, 250, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        .overlay img {
+            /* max-width: 90%; */
+            max-height: 90%;
+        }
+        .title{
+            position: fixed;
+            text-align: center;
+            font-size: 5rem;
+            font-weight: regular;
+            -webkit-text-stroke: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            inset: 0;
+            opacity: 0.9;
+            z-index: 2;
+            pointer-events: none;
+            animation: fade 1s 1s forwards;
+        }
+        @keyframes fade{
+            from{
+                opacity: 0.9;
+            }
+            to{
+                opacity: 0;
+            }
+        }
+        @media screen and (max-width: 600px){
+          body{
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+          }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        INFORMATON <br> RESEARCH <br> JOURNAL <br> Adam Arinbjarnarson
+    </div>
+    <img src="research-25.jpg" alt="research">
+    <img src="research-24.jpg" alt="research">
+    <img src="research-23.jpg" alt="research">
+    <img src="research-22.jpg" alt="research">
+    <img src="research-21.jpg" alt="research">
+    <img src="research-20.jpg" alt="research">
+    <img src="research-19.jpg" alt="research">
+    <img src="research-18.jpg" alt="research">
+    <img src="research-17.jpg" alt="research">
+    <img src="research-16.jpg" alt="research">
+    <img src="research-15.jpg" alt="research">
+    <img src="research-14.jpg" alt="research">
+    <img src="research-13.jpg" alt="research">
+    <img src="research-12.jpg" alt="research">
+    <img src="research-11.jpg" alt="research">
+    <img src="research-10.jpg" alt="research">
+    <img src="research-9.jpg" alt="research">
+    <img src="research-8.jpg" alt="research">
+    <img src="research-7.jpg" alt="research">
+    <img src="research-6.jpg" alt="research">
+    <img src="research-5.jpg" alt="research">
+    <img src="research-4.jpg" alt="research">
+    <img src="research-3.jpg" alt="research">
+    <img src="research-2.jpg" alt="research">
+    <img src="research-1.jpg" alt="research">
+
+    <div class="overlay" id="overlay">
+        <img id="overlayImg" src="" alt="Overlay Image">
+    </div>
+    <script>
+        const images = document.querySelectorAll('img');
+        const overlay = document.getElementById('overlay');
+        const overlayImg = document.getElementById('overlayImg');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                overlayImg.src = img.src;
+                overlay.style.display = 'flex';
+            });
+        });
+
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
