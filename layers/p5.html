@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="sv">
 <head>
     <style>
         body{
             padding:0;
             margin:0;
-            /* background-color:rgb(227, 227, 227); */
+            background-color:rgb(0, 0, 0);
             overflow: hidden;
             width: 100vw;
             height: 100vh;
@@ -46,7 +46,7 @@
             // Placera en ny bild vid musens position
             imageMode(CENTER);
             let img = images[imageIndex % images.length]; // Cirkulär indexering av bilder
-            image(img, mouseX, mouseY, img.width / 10, img.height / 10); // Skala ner bilden
+            image(img, mouseX, mouseY, img.width / 30, img.height / 30); // Skala ner bilden
             
             // Växla till nästa bild
             imageIndex++;
@@ -58,7 +58,7 @@
         }
     </script>
 </body>
-</html>
+</html> -->
 
 
 
@@ -205,3 +205,75 @@
     </script>
 </body>
 </html> -->
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js SVG Path</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <script>
+        let images = [];
+        let imageIndex = 0;
+        let svgPath;
+        let points = [];
+        let imgSpacing = 10; // Avstånd mellan bilderna längs pathen
+
+        function preload() {
+            for (let i = 1; i <= 84; i++) {
+                images.push(loadImage(`layer-${i}.png`));
+            }
+            loadSVG("path.svg", (path) => {
+                svgPath = path.querySelector("path");
+                extractPathPoints(svgPath);
+            });
+        }
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            background(220);
+            blendMode(MULTIPLY);
+        }
+
+        function draw() {
+            background(255, 0); // Lätt genomskinlig bakgrund för bättre effekt
+            if (points.length > 0) {
+                drawImagesAlongPath();
+            }
+        }
+
+        function extractPathPoints(svgPath) {
+            let pathLength = svgPath.getTotalLength();
+            for (let i = 0; i < pathLength; i += imgSpacing) {
+                let point = svgPath.getPointAtLength(i);
+                points.push(createVector(point.x, point.y));
+            }
+        }
+
+        function drawImagesAlongPath() {
+            for (let i = 0; i < points.length; i++) {
+                let img = images[i % images.length]; // Cirkulera genom bilderna
+                imageMode(CENTER);
+                image(img, points[i].x, points[i].y, img.width / 10, img.height / 10);
+            }
+        }
+
+        function mousePressed() {
+            imageIndex = (imageIndex + 1) % images.length;
+        }
+
+        function loadSVG(filename, callback) {
+            fetch(filename)
+                .then((response) => response.text())
+                .then((text) => {
+                    let parser = new DOMParser();
+                    let xmlDoc = parser.parseFromString(text, "image/svg+xml");
+                    callback(xmlDoc);
+                });
+        }
+    </script>
+</body>
+</html>
