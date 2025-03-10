@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Interaktivt p5.js Canvas med Trail</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+      // Antal celler horisontellt och vertikalt
+      let cols = 16;
+      let rows = 9;
+      
+      // Variabler för cellstorlek samt offset för att centrera rutnätet
+      let cellSize;
+      let gridOffsetX, gridOffsetY;
+      
+      // Array för att lagra de senaste cellerna (trail) som är "upplysta"
+      let trail = [];
+      let maxTrailLength = 1000; // max 3 celler syns samtidigt
+      
+      // Lista med färger – justera färgerna efter behov
+      let colorList = [
+        "#AAAAAA", "#BBBBBB", "#CCCCCC", "#DDDDDD", "#EEEEEE", 
+        "#FF00FF", "#FF0000", "#0000FF", "#00FFFF", "#00FF00"
+      ];
+      
+      // Sparar den senaste cellen musen var i
+      let lastCell = { col: -1, row: -1 };
+      
+      function setup() {
+        // Skapar en canvas med 16:9 proportioner (exempelvis 800x450)
+        createCanvas(800, 450);
+        
+        // Beräknar den största möjliga kvadratiska cellen som får plats
+        cellSize = min(width / cols, height / rows);
+        
+        // Rutnätets totala dimensioner
+        let gridWidth = cellSize * cols;
+        let gridHeight = cellSize * rows;
+        
+        // Centrera rutnätet i canvasen
+        gridOffsetX = (width - gridWidth) / 2;
+        gridOffsetY = (height - gridHeight) / 2;
+        
+        noStroke(); // Tar bort rutnätets linjer
+      }
+      
+      function draw() {
+        // Bakgrundsfärg
+        background(220);
+        
+        // Rita de celler som lagts till i trailen
+        for (let i = 0; i < trail.length; i++) {
+          let cell = trail[i];
+          let x = gridOffsetX + cell.col * cellSize;
+          let y = gridOffsetY + cell.row * cellSize;
+          
+          // Fyll cellen med den första slumpade färgen
+          fill(cell.bgColor);
+          rect(x, y, cellSize, cellSize);
+          
+          // Rita en cirkel i cellen med den andra slumpade färgen
+          fill(cell.circleColor);
+          ellipse(x + cellSize / 2, y + cellSize / 2, cellSize, cellSize);
+        }
+      }
+      
+      // Uppdatera trailen när musen rör sig
+      function mouseMoved() {
+        // Kontrollera att musen är inom rutnätet
+        if (mouseX < gridOffsetX || mouseX > gridOffsetX + cols * cellSize || 
+            mouseY < gridOffsetY || mouseY > gridOffsetY + rows * cellSize) {
+          return;
+        }
+        // Bestäm vilken cell musen befinner sig i
+        let col = floor((mouseX - gridOffsetX) / cellSize);
+        let row = floor((mouseY - gridOffsetY) / cellSize);
+        
+        // Om vi flyttat till en ny cell
+        if (col !== lastCell.col || row !== lastCell.row) {
+          lastCell = { col, row };
+          // Välj två slumpade färger från färglistan
+          let bgColor = random(colorList);
+          let circleColor;
+          do {
+            circleColor = random(colorList);
+          } while (circleColor === bgColor); // Se till att färgerna är olika
+
+          // Lägg till den nya cellen i trailen
+          trail.push({ col, row, bgColor, circleColor });
+
+          // Om vi har fler än 3 celler, ta bort den äldsta
+          if (trail.length > maxTrailLength) {
+            trail.shift();
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
