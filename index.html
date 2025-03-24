@@ -20,6 +20,16 @@
             overflow-x: hidden;
             height: 100dvh;
             max-width: 100dvw;
+            opacity: 0;
+            animation: fade 1s 2s forwards;
+        }
+        @keyframes fade {
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
         }
 
         .content {
@@ -99,6 +109,8 @@
             {
                 left: revert;
                 right: 1rem;
+                z-index: 10;
+
             }
         
 
@@ -110,9 +122,7 @@
             font-weight: 400;
             margin: 0;
         }
-        .header, .footer, .prompt{
-            z-index: 10;
-        }
+       
       
 
 
@@ -219,10 +229,39 @@
     a:hover{
         cursor: pointer;
     }
+
+    .nav{
+        position: fixed;
+        inset:0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        pointer-events: none;
+        min-height: 100dvh;
+        min-width: 100dvw;
+        animation: fade 0.5s 3s reverse forwards;
+    }
+    .nav > div{
+        margin: 10vw;
+    }
     </style>
 </head>
 <body>
-    <div class="header">currently on display: files from my ssd </div>
+    <div class="nav">
+        
+        <div>←</div>
+        <div style="display: flex; flex-direction: column; height: 50vh; justify-content: space-between;">
+            <div>↑</div>
+            <div>↓</div>
+        </div>
+       <div>
+        <div>→</div>
+       </div>
+        
+
+    </div>
+    <div class="header">on display: previous work + research</div>
     <div class="prompt">
        <div> adam arinbjarnarson <br></div>
         (click to show/hide info)
@@ -302,18 +341,15 @@
                 <img src="naomi-2.jpg" alt="">
                 <div class="info">poster + typography <br> naomi urrutia opazo</div>
             </div>
+            <div class="content">
+                <img src="naomi-3.jpg" alt="">
+                <div class="info">poster + typography <br> naomi urrutia opazo</div>
+            </div>
             
         </div>
         <div class="plus">
             <div class="content">
-                <img src="pride-garden-4.jpg" alt="">
-                <div class="info">
-                    <p>art direction and photoshop imagery
-                        <br>5 day festival @ night club <i>trädgården</i>
-                        <br>stockholm, 2024</p></div>
-                    </div>
-            <div class="content">
-                <img src="pride-garden-3.jpg" alt="">
+                <img src="pride-garden-2.jpg" alt="">
                 <div class="info">
                     <p>art direction and photoshop imagery
                         <br>5 day festival @ night club <i>trädgården</i>
@@ -327,7 +363,14 @@
                         <br>stockholm, 2024</p></div>
                     </div>
             <div class="content">
-                <img src="pride-garden-2.jpg" alt="">
+                <img src="pride-garden-3.jpg" alt="">
+                <div class="info">
+                    <p>art direction and photoshop imagery
+                        <br>5 day festival @ night club <i>trädgården</i>
+                        <br>stockholm, 2024</p></div>
+                    </div>
+            <div class="content">
+                <img src="pride-garden-4.jpg" alt="">
                 <div class="info">
                     <p>art direction and photoshop imagery
                     <br>5 day festival @ night club <i>trädgården</i>
@@ -360,7 +403,7 @@
         <div class="plus">
             <div class="content">
                 <img src="collecting-1.jpg" style="box-shadow: none;">
-                <div class="info"><div>editorial magazine design <br> about playslists <br> in collaboration with elvin odelholm and solvej jansson</div></div>
+                <div class="info"><div>publication design <br> about collections + playslists <br> in collaboration with elvin odelholm and solvej jansson</div></div>
             </div>
             <div class="content portrait">
                 <img src="collecting-2.jpg" style="box-shadow: none;">
@@ -413,7 +456,14 @@
 
         <div class="content ">
             <img src="me.jpg" alt="">
-            <div class="info"><div>e-mail me: <br> <a href="mailto:adaari@icloud.com">adaari@icloud.com</a></div></div>
+            <div class="info"><div>e-mail me: <br> <a href="mailto:adaari@icloud.com">adaari@icloud.com</a>
+            <br>
+            instagram me:
+            <br>
+            <a href="https://www.instagram.com/adamglupsk">@adamglupsk</a>
+        </div>
+            
+        </div>
         </div>
         <!-- <div class="content">
             <img src="img" alt="">
