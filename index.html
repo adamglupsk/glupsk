@@ -95,6 +95,11 @@
             font-weight: 400;
             margin: 0;
         }
+        .right
+            {
+                left: revert;
+                right: 1rem;
+            }
         
 
         .prompt {
@@ -104,6 +109,9 @@
             font-size: 1rem;
             font-weight: 400;
             margin: 0;
+        }
+        .header, .footer, .prompt{
+            z-index: 10;
         }
       
 
@@ -133,12 +141,18 @@
         div{
                 -webkit-text-stroke: 0.27px black;
             }
+
+            .prompt > div{
+                display: none;
+            }
         @media (max-width: 700px) {
 
             
             .header, .footer{
                 display: none;
             }
+
+          
             
             .prompt {
                 top: 3rem;
@@ -147,6 +161,11 @@
                 text-align: center;
                 right: initial;
             }
+            .prompt > div{
+                line-height: 1.5;
+                display: revert;
+            }
+            
 
             .content img, .content video, .content div{
                 margin-bottom: 2vh;   
@@ -168,18 +187,145 @@
             margin-left: -45vw;
         }
     }
+    div:has(> .index){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100dvh;
+        min-width: 100dvw;
+        
+    }
+    .index{
+        /* margin: 20vh; */
+        min-width: 60dvw;
+        min-height: 80dvh;
+        /* background-color: yellow; */
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        /* padding: 30vw; */
+        grid-template-columns: 3fr 3fr 3fr;
+        grid-template-rows: 3fr 3fr 3fr;
+        grid-gap: 0rem;
+        scroll-snap-align: center;
+    }
+    .index > img, .index > video{
+        max-width: 10vw;
+    }
+    a:visited {
+        color: blue;
+    }
+    a:hover{
+        cursor: pointer;
+    }
     </style>
 </head>
 <body>
-    <div class="header">currently on display: picks from my drive. </div>
+    <div class="header">currently on display: files from my ssd </div>
     <div class="prompt">
-        (clicks show/hide info)
+       <div> adam arinbjarnarson <br></div>
+        (click to show/hide info)
     </div>
-      
+    <div class="footer">adam arinbjarnarson, graphic designer</div>
+    <div class="footer right">
+        recent updates: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
+    </div>
+    
+    
     <div class="container">
 
+        
+        <!-- <div>
+            <div class="index">
+                <img src="pride-garden-1.jpg" alt="">
+                <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
+                <img src="naomi-2.jpg" alt="">
+                <img src="pride-garden-1.jpg" alt="">
+                <img src="pride-garden-1.jpg" alt="">
+                <img src="pride-garden-1.jpg" alt="">
+                <img src="pride-garden-1.jpg" alt="">
+                <img src="pride-garden-1.jpg" alt="">
+                <img src="pride-garden-1.jpg" alt="">
+                </div>  
+        </div> -->
+
+        <!-- <div class="plus">
+            <div class="content" style="filter: invert(1);">
+                <video  src="exprel-2.mp4" muted autoplay loop playsinline></video>
+                <div class="info">art direction, interview campaign <br>beckmans college of design 2025</div>
+            </div>
+            <div class="content">
+                <video src="exprel-3.mp4" muted autoplay loop playsinline></video>
+                <div class="info">art direction, interview campaign <br>beckmans college of design 2025</div>
+            </div>
+            <div class="content">
+                <video src="exprel-1.mp4" muted autoplay loop playsinline></video>
+                <div class="info">art direction, interview campaign <br>beckmans college of design 2025</div>
+            </div>
+        </div> -->
+        <div class="plus">
+            <div class="content">
+                <video src="horse.mp4" autoplay loop muted playsinline></video>
+                <div class="info">visual research<br> graduation project bfa 2025</div>
+            </div>
+            <div class="content">
+                <img src="research/research-72.jpg" alt="">
+                <div class="info">poster made using css+javascript<br> graduation project bfa 2025</div>
+            </div>
+            <div class="content">
+                <img src="research/research-73.jpg" alt="">
+                <div class="info">poster made using css+javascript<br> graduation project bfa 2025</div>
+            </div>
+            <div class="content">
+                <img src="research/research-71.jpg" alt="">
+                <div class="info">poster made using css+javascript<br> graduation project bfa 2025</div>
+            </div>
+        </div>
 
         <div class="plus">
+            <div class="content">
+                <img src="madonna-1.jpg" alt="">
+                <div class="info">poster + collage <br> art studio madonna <br> malmö, 2024 </div>
+            </div>
+            <div class="content">
+                <img src="madonna-2.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="plus">
+            <div class="content">
+                <img src="naomi-1.jpg" alt="">
+                <div class="info">poster + typography <br> naomi urrutia opazo</div>
+            </div>
+            <div class="content">
+                <img src="naomi-2.jpg" alt="">
+                <div class="info">poster + typography <br> naomi urrutia opazo</div>
+            </div>
+            
+        </div>
+        <div class="plus">
+            <div class="content">
+                <img src="pride-garden-4.jpg" alt="">
+                <div class="info">
+                    <p>art direction and photoshop imagery
+                        <br>5 day festival @ night club <i>trädgården</i>
+                        <br>stockholm, 2024</p></div>
+                    </div>
+            <div class="content">
+                <img src="pride-garden-3.jpg" alt="">
+                <div class="info">
+                    <p>art direction and photoshop imagery
+                        <br>5 day festival @ night club <i>trädgården</i>
+                        <br>stockholm, 2024</p></div>
+                    </div>
+            <div class="content">
+                <img src="pride-garden-1.jpg" alt="">
+                <div class="info">
+                    <p>art direction and photoshop imagery
+                        <br>5 day festival @ night club <i>trädgården</i>
+                        <br>stockholm, 2024</p></div>
+                    </div>
             <div class="content">
                 <img src="pride-garden-2.jpg" alt="">
                 <div class="info">
@@ -187,14 +333,10 @@
                     <br>5 day festival @ night club <i>trädgården</i>
                     <br>stockholm, 2024</p></div>
             </div>
-            <div class="content">
-                <img src="pride-garden-1.jpg" alt="">
-                <div class="info">
-                    <p>art direction and photoshop imagery
-                    <br>5 day festival @ night club <i>trädgården</i>
-                    <br>stockholm, 2024</p></div>
-            </div>
         </div>
+
+        
+
         <div class="plus">
             <div class="content">
                 <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
@@ -208,17 +350,6 @@
            </div>
         
         
-        <div class="plus">
-            <div class="content">
-                <img src="naomi-1.jpg" alt="">
-                <div class="info">poster + typography <br> naomi urrutia opazo</div>
-            </div>
-            <div class="content">
-                <img src="naomi-2.jpg" alt="">
-                <div class="info">poster + typography <br> naomi urrutia opazo</div>
-            </div>
-            
-        </div>
 
 
         <div class="content">
@@ -253,7 +384,7 @@
             </div>
         </div>
         
-        <div class="plus">
+        <!-- <div class="plus">
             <div class="content">
                 <img src="research/research-84.jpg" alt="">
                 <div class="info">visual research<br> graduation project bfa 2025</div>
@@ -262,19 +393,22 @@
                 <img src="research/research-40.jpg" alt="">
                 <div class="info">visual research<br> graduation project bfa 2025</div>
             </div>
-        </div>
+        </div> -->
         
-        <div class="content">
-            <img src="research/research-72.jpg" alt="">
-            <div class="info">poster made using css+javascript<br> graduation project bfa 2025</div>
-        </div>
+       
        
         
     
         
-        <div class="content">
-            <img src="posters/13-a.jpg" alt="">
-            <div class="info">illustration + poster <br> beckmans student union</div>
+        <div class="plus">
+            <div class="content">
+                <img src="posters/13-a.jpg" alt="">
+                <div class="info">illustration + poster <br> beckmans student union</div>
+            </div>
+            <div class="content">
+                <img src="posters/5.jpg" alt="">
+                <div class="info">graphite illustration + poster</div>
+            </div>
         </div>
 
         <div class="content ">
@@ -304,7 +438,7 @@
             });
         </script>
     </div>
-    <div class="footer">adam arinbjarnarson: graphic designer / artist, currently at beckmans college of design, stockholm. for recent updates: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a></div>
+    
 
     <!-- <script>
         if (!/Mobi|Android/i.test(navigator.userAgent)) {
