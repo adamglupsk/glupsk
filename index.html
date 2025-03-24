@@ -3,90 +3,176 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-             cursor: none;
-             justify-content: center;
+            cursor: cell;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        body > *{
-            margin: auto;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
         }
-        p{
-           margin: 5px;
+
+        .content {
+            scroll-snap-align: top;
+            scroll-snap-type: mandatory;
+            scroll-behavior: smooth;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
         }
-        .custom-cursor {
-             position: fixed;
-             width: 10vw;
-             height: 10vw;
-             pointer-events: none;
-             background: url('me.jpg') no-repeat center center;
-             background-size: cover;
-             z-index: 1000;
-             transform: translate(-50%, -50%);
+
+        .content img, .content video {
+            cursor: pointer;
+            max-width: 80%;
+            max-height: 80%;
+            transition: all 0.25s;
+            /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25); */
         }
+
+        .content img.blurred, .content video.blurred {
+            /* filter: blur(20px); */
+            filter: brightness(10);
+            opacity: 50%;
+        }
+        
+        .header {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
+        }
+        
         .footer {
-             position: fixed;
-             bottom: 1rem;
-             left: 1rem;
-             font-size: 1rem;
-             font-weight: 400;
-             margin: 0;
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
         }
-        video, img{
-            display: block;
-            
+        
+
+        .prompt {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
+            animation: blink 2s forwards step-start;
         }
-        img, video{
-            
-            max-width: 30vw;
-            margin-top: 5vh;
+      
+
+
+        .info {
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 10;
+            transition: all 0.25s;
+            line-height: 1.5;
         }
-        video {
-             height: 400px;
-             max-width: initial;
-             /* margin: 0; */
+
+        .info.visible {
+            pointer-events: initial;
+            opacity: 1;
+            transition: all 0.25s;
         }
-        .wide{
-            max-width: 80vw;
-        }
-        </style>
+    </style>
 </head>
 <body>
-    <p>currently on display: picks from my drive. for recent updates: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a></p>
-    <img class="wide" src="pride-garden-2.jpg" alt="">
-    <img src="research/research-46.jpg" alt="">
-    <video src="journal/16-03-2.mp4" loop muted autoplay playsinline ></video>
-    
-    <img src="research/research-64.jpg" alt="">
-    <video src="journal/20-02-0.mp4" loop muted autoplay playsinline></video>
-    <video src="journal/18-03-1.mp4" loop muted autoplay playsinline ></video>
-    <video src="journal/16-03-1.mp4" loop muted autoplay playsinline ></video>
-    <video src="journal/4-03-1.mp4" loop muted autoplay playsinline></video>
+    <div class="header">currently on display: picks from my drive. for recent updates: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
+    </div>
+    <div class="prompt">
+        <div>clicks show/hide info</div>
+    </div>
+      
+    <div class="container">
+        <div class="content">
+            <img src="naomi-1.jpg" alt="">
+            <div class="info">poster + typography <br> naomi urrutia opazo</div>
+        </div>
+        <div class="content">
+            <img src="research/research-72.jpg" alt="">
+            <div class="info">poster made using css+javascript<br> graduation project bfa 2025</div>
+        </div>
+        <div class="content">
+            <img src="tyda-process-2.jpg" alt="">
+            <div class="info">graphic identity + poster <br> printed on post it notes <br> in collaboration with maja ringsäter </div>
+        </div>
+        <div class="content">
+            <img src="naomi-2.jpg" alt="">
+            <div class="info">poster + typography <br> naomi urrutia opazo</div>
+        </div>
+    <div class="content">
+            <img src="pride-garden-2.jpg" alt="">
+            <div class="info">
+                <p>art direction and photoshop imagery
+                <br>5 day festival @ night club <i>trädgården</i>
+                <br>stockholm, 2024</p></div>
+        </div>
+        <div class="content">
+            <img src="research/research-59.jpg" alt="">
+            <div class="info">visual research <br> graduation project bfa 2025</div>
+        </div>
+        <div class="content">
+            <img src="posters/13-a.jpg" alt="">
+            <div class="info">illustration + poster <br> beckmans student union</div>
+        </div>
+        <!-- <div class="content">
+            <img src="img" alt="">
+            <div class="info">info <br> and more details</div>
+        </div> -->
+        
+
+        <script>
+            document.querySelectorAll('.content').forEach(content => {
+                const media = content.querySelector('img, video');
+                const info = content.querySelector('.info');
+
+                content.addEventListener('click', () => {
+                    if (info.classList.contains('visible')) {
+                        info.classList.remove('visible');
+                        media.classList.remove('blurred');
+                    } else {
+                        info.classList.add('visible');
+                        media.classList.add('blurred');
+                    }
+                });
+            });
+        </script>
+    </div>
+    <div class="footer">adam arinbjarnarson: graphic designer / artist, currently at beckmans college of design, stockholm</div>
 
     <script>
-        const videos = document.querySelectorAll('video');
+        if (!/Mobi|Android/i.test(navigator.userAgent)) {
+            const cursor = document.createElement('div');
+            cursor.classList.add('custom-cursor');
+            document.body.appendChild(cursor);
 
-        videos.forEach(video => {
-            video.addEventListener('mouseenter', () => {
-                video.controls = true;
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.pageX}px`;
+                cursor.style.top = `${e.pageY}px`;
             });
-
-            video.addEventListener('mouseleave', () => {
-                video.controls = false;
-            });
-        });
+        }
     </script>
-    <div class="footer">adam arinbjarnarson: graphic designer / artist, currently at beckmans college of design, stockholm
-    </div>
 </body>
-
-<script>
-    if (!/Mobi|Android/i.test(navigator.userAgent)) {
-        const cursor = document.createElement('div');
-        cursor.classList.add('custom-cursor');
-        document.body.appendChild(cursor);
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.pageX}px`;
-            cursor.style.top = `${e.pageY}px`;
-        });
-    }
-</script>
