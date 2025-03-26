@@ -21,7 +21,19 @@
             height: 100dvh;
             max-width: 100dvw;
             opacity: 0;
-            animation: fade 1s 2s forwards;
+            animation: 
+            fade 1s 1s forwards;
+            
+
+        }
+        @keyframes slide{
+            0%{
+                height: 300vh;
+                transform: translateY(-300vh);
+            }
+            100%{
+                transform: translateY(0);
+            }
         }
         @keyframes fade {
             0%{
@@ -44,16 +56,22 @@
             min-height: 100dvh;
             position: relative;
         }
+        ::-webkit-scrollbar {
+                display: none;
+            }
+
         .plus{
              min-width: 100dvw;
             min-height: 100dvh;
-            
             max-width: 100vw;
             overflow-x: scroll;
             overflow-y: visible;
             scroll-snap-type: x mandatory;
             scroll-snap-align: center;
             display: flex;
+           
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
             /* background-color: yellow; */
         }
         .plus > *{
@@ -77,15 +95,15 @@
             max-height: 80vh;
             transition: all 0.25s;
             pointer-events: none;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05); */
         }
 
         .content img.blurred, .content video.blurred {
-            filter: blur(10px);
+            filter: blur(5px);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.0);
 
             /* filter: brightness(10); */
-            opacity: 80%;
+            opacity: 10%;
         }
         
         .header {
@@ -129,8 +147,10 @@
         .info {
             opacity: 0;
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
+            flex-direction: column;
+            
             pointer-events: none;
             text-align: center;
             position: absolute;
@@ -143,10 +163,18 @@
             line-height: 1.5;
         }
 
+            .block{
+            width: 50vw;
+            height: auto;
+            text-align: left;
+            /* background-color: red; */
+            }
+
         .info.visible {
             pointer-events: initial;
             opacity: 1;
             transition: all 0.25s;
+            text-shadow: 0 0 100px white;
         }
         div{
                 -webkit-text-stroke: 0.27px black;
@@ -240,33 +268,36 @@
         pointer-events: none;
         min-height: 100dvh;
         min-width: 100dvw;
-        animation: fade 0.5s 3s reverse forwards;
+        animation: fade 0.5s 1s reverse forwards;
     }
     .nav > div{
         margin: 10vw;
     }
+
+   
     </style>
 </head>
 <body>
     <div class="nav">
         
-        <div>←</div>
+        <!-- <div>←</div>
         <div style="display: flex; flex-direction: column; height: 50vh; justify-content: space-between;">
             <div>↑</div>
             <div>↓</div>
         </div>
        <div>
         <div>→</div>
-       </div>
+       </div> -->
+       <div>scroll to navigate</div>
         
 
     </div>
-    <div class="header">on display: previous work + research</div>
+    <div class="header">adam arinbjarnarson</div>
     <div class="prompt">
        <div> adam arinbjarnarson <br></div>
         (click to show/hide info)
     </div>
-    <div class="footer">adam arinbjarnarson, graphic designer</div>
+    <div class="footer">graphic design + art direction</div>
     <div class="footer right">
         recent updates: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
     </div>
@@ -303,6 +334,24 @@
                 <div class="info">art direction, interview campaign <br>beckmans college of design 2025</div>
             </div>
         </div> -->
+        <div class="plus">
+            <div class="content">
+                <video src="tinstam-2.mp4" autoplay loop muted playsinline></video>
+                <div class="info">
+                    
+                    <div class="block">
+                        <div style="text-align: center; margin: 1rem;">
+                            visual identity + animation
+                        </div>
+                    <i>there is no such thing as magic</i> is a collaborative project about ai and its' societal and environmental impact. the visual identity was designed to reflect the work of scientific researchers at the <a href="https://beijer.kva.se/">beijer institute</a> and encourage reflection on the realities of generative ai. the project was exhibited at <a href="https://www.svenskttenn.se/">svenskt tenn</a> in stockholm, 2024.
+                    <div style="text-align: center; margin: 1rem;">
+                        co-designers: <br> maja ringsäter + solvej jansson
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
         <div class="plus">
             <div class="content">
                 <video src="horse.mp4" autoplay loop muted playsinline></video>
