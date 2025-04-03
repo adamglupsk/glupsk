@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Barcode Path Drawer</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+<script>
+    let paths = [];
+    let currentPath = [];
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+        background(255);
+        strokeCap(SQUARE);
+    }
+
+    function draw() {
+        background(255);
+        
+        for (let path of paths) {
+            drawBarcodePath(path);
+        }
+
+        drawBarcodePath(currentPath);
+    }
+
+    function mousePressed() {
+        currentPath.push({ x: mouseX, y: mouseY });
+    }
+
+    function keyPressed() {
+        if (key === 'Enter') {
+            if (currentPath.length > 1) {
+                paths.push(currentPath);
+                currentPath = [];
+            }
+        } else if (key === 'Backspace') {
+            paths.pop();
+        }
+    }
+
+    function drawBarcodePath(path) {
+        if (path.length < 2) return;
+        
+        for (let i = 0; i < path.length - 1; i++) {
+            let a = path[i];
+            let b = path[i + 1];
+            let d = dist(a.x, a.y, b.x, b.y);
+            let steps = int(d / 2);
+            let angle = atan2(b.y - a.y, b.x - a.x); // Calculate the angle of the segment
+            
+            for (let j = 0; j < steps; j++) {
+                let t = j / steps;
+                let x = lerp(a.x, b.x, t);
+                let y = lerp(a.y, b.y, t);
+                
+                // Draw barcode-style lines following the direction
+                let barCount = int(random(3, 10));
+                let barLength = random(5, 15);
+                let barSpacing = random(2, 5);
+                for (let k = 0; k < barCount; k++) {
+                    let offset = (k - barCount / 2) * barSpacing;
+                    let barX1 = x + cos(angle + HALF_PI) * offset;
+                    let barY1 = y + sin(angle + HALF_PI) * offset;
+                    let barX2 = barX1 + cos(angle) * barLength;
+                    let barY2 = barY1 + sin(angle) * barLength;
+                    stroke(0);
+                    strokeWeight(1);
+                    line(barX1, barY1, barX2, barY2);
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
