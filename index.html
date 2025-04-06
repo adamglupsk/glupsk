@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            cursor: cell;
+            /* cursor: cell; */
             margin: 0;
             padding: 0;;
             overflow: hidden;
@@ -90,12 +90,15 @@
         }
 
         .content img, .content video {
-            cursor: pointer;
+            /* cursor: pointer; */
             max-width: 80vw;
             max-height: 80vh;
             transition: all 0.25s;
-            pointer-events: none;
+            /* pointer-events: none; */
             /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05); */
+        }
+        .content img:hover, .content video:hover{
+            cursor: zoom-in;
         }
 
         .content img.blurred, .content video.blurred {
@@ -104,6 +107,10 @@
 
             /* filter: brightness(10); */
             opacity: 10%;
+        }
+        
+        .info:hover{
+            cursor:zoom-out;
         }
         
         .header {
@@ -544,7 +551,35 @@
         </script>
     </div>
     
+    <!-- <script>
+        const cursor = document.createElement('div');
+        cursor.classList.add('custom-cursor');
+        cursor.style.position = 'fixed';
+        cursor.style.pointerEvents = 'none';
+        cursor.style.zIndex = '1000';
+        cursor.style.display = 'none';
+        cursor.style.fontSize = '1rem';
+        cursor.style.backgroundColor = 'none';
+        document.body.appendChild(cursor);
 
+        const cursorText = "more information"; // Change this text as needed
+        cursor.textContent = cursorText;
+
+        document.querySelectorAll('img, video').forEach(media => {
+            media.addEventListener('mouseenter', () => {
+                cursor.style.display = 'block';
+            });
+
+            media.addEventListener('mouseleave', () => {
+                cursor.style.display = 'none';
+            });
+
+            media.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.pageX + 10}px`;
+                cursor.style.top = `${e.pageY + 10}px`;
+            });
+        });
+    </script> -->
     <!-- <script>
         if (!/Mobi|Android/i.test(navigator.userAgent)) {
             const cursor = document.createElement('div');
