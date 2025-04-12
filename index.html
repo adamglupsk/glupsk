@@ -97,6 +97,11 @@
             /* pointer-events: none; */
             /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05); */
         }
+
+        .plus:hover{
+            cursor: zoom-in;
+
+        }
         .content img:hover, .content video:hover{
             cursor: zoom-in;
         }
@@ -120,6 +125,8 @@
             font-size: 1rem;
             font-weight: 400;
             margin: 0;
+            line-height: 1.4;
+
         }
         
         .footer {
@@ -154,7 +161,7 @@
         .info {
             opacity: 0;
             display: flex;
-            justify-content: space-evenly;
+            justify-content:space-around;
             align-items: center;
             flex-direction: column;
             
@@ -165,7 +172,7 @@
             height: 100%;
             left: 0;
             top: 0;
-            z-index: 10;
+            z-index: 0;
             transition: all 0.25s;
             line-height: 1.5;
         }
@@ -264,7 +271,9 @@
     a:hover{
         cursor: pointer;
     }
-
+    a{
+        color: black;
+    }
     .nav{
         position: fixed;
         inset:0;
@@ -281,7 +290,32 @@
         margin: 10vw;
     }
 
-   
+   .hello{
+    width: 70vw;
+    min-width: 70vw;
+    height: 50vh;
+    text-align: left;
+   }
+   h1{
+    margin:0;
+    line-height: 1.2;
+   }
+   .mini{
+
+   }
+   .mini > img{
+    max-width: 10vw;
+    max-height: 10vh;
+    /* margin: 0.5rem; */
+   }
+
+   .footer{
+    opacity: 0.25;
+    transition: all 0.25s;
+    z-index: 100;
+   }
+    .footer:hover{
+    opacity: 1;}
     </style>
 </head>
 <body>
@@ -295,37 +329,35 @@
        <div>
         <div>→</div>
        </div> -->
-       <div>scroll to navigate</div>
+       <!-- <div>scroll to navigate</div> -->
         
 
     </div>
-    <div class="header">adam arinbjarnarson</div>
+    <div class="footer right">        
+        Journal: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
+        
+    </div>
+    <div class="footer">
+        <a href="mailto:adaari@icloud.com">E-mail</a> <a href="https://www.instagram.com/adamglupsk">Social media</a>
+    </div>
+    <div class="header"><h1>Adam Arinbjarnarson</h1>
+        Freelance graphic designer and visual artist 
+        
+        </div>
     <div class="prompt">
-       <div> adam arinbjarnarson <br></div>
-        (click to show/hide info)
+       <div> <h1>Adam Arinbjarnarson</h1> <br></div>
+        <!-- (click to show/hide info) -->
     </div>
-    <div class="footer">graphic designer / artist</div>
-    <div class="footer right">
+    <!-- <div class="footer">graphic designer / artist</div> -->
+    <!-- <div class="footer right">
         recent updates: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
-    </div>
+    </div> -->
     
     
     <div class="container">
 
         
-        <!-- <div>
-            <div class="index">
-                <img src="pride-garden-1.jpg" alt="">
-                <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
-                <img src="naomi-2.jpg" alt="">
-                <img src="pride-garden-1.jpg" alt="">
-                <img src="pride-garden-1.jpg" alt="">
-                <img src="pride-garden-1.jpg" alt="">
-                <img src="pride-garden-1.jpg" alt="">
-                <img src="pride-garden-1.jpg" alt="">
-                <img src="pride-garden-1.jpg" alt="">
-                </div>  
-        </div> -->
+      
 
         <!-- <div class="plus">
             <div class="content" style="filter: invert(1);">
@@ -344,148 +376,167 @@
        
         <div class="content">
             <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
-            <div class="info">graphic identity + poster <br> printed on post it notes <br> in collaboration with maja ringsäter </div>
+            <div class="info">
+                <div>
+                    <h1>Tyda (folkhemmet)</h1>
+                Graphic identity + poster <br> printed on post-it notes <br> in collaboration with Maja Ringsäter</div>
+                </div>
         </div>
         <div class="plus">
             <div class="content">
-                <img src="tyda-slideshow-5.jpg" alt="">
-                <div class="info">graphic identity + poster <br> printed on post it notes <br> in collaboration with maja ringsäter </div>
+            <img src="tyda-slideshow-5.jpg" alt="">
+            <div class="info">Graphic identity + poster <br> printed on post-it notes <br> in collaboration with Maja Ringsäter</div>
             </div>
             <div class="content">
-                <img src="tyda-process-2.jpg" alt="">
-                <div class="info">graphic identity + poster <br> printed on post it notes <br> in collaboration with maja ringsäter </div>
+            <img src="tyda-process-2.jpg" alt="">
+            <div class="info">Graphic identity + poster <br> printed on post-it notes <br> in collaboration with Maja Ringsäter</div>
             </div>
-            
-            
-           </div>
+            <div class="content">
+            <img src="tyda-slideshow-2.jpg" alt="">
+            <div class="info">Graphic identity + poster <br> printed on post-it notes <br> in collaboration with Maja Ringsäter</div>
+            </div>
+            <div class="content">
+            <img src="tyda-slideshow-1.jpg" alt="">
+            <div class="info">Graphic identity + poster <br> printed on post-it notes <br> in collaboration with Maja Ringsäter</div>
+            </div>
+        </div>
 
-           
         <div class="plus">
             <div class="content">
-                <video src="tinstam.mp4" autoplay loop muted playsinline></video>
-                <div class="info">
-                    
-                    <div class="block">
-                        <div style="text-align: center; margin: 1rem;">
-                            visual identity + animation
-                        </div>
-                    <i>there is no such thing as magic</i> is a collaborative project about ai and its' societal and environmental impact. the visual identity was designed to reflect the work of scientific researchers at the <a href="https://beijer.kva.se/">beijer institute</a> and encourage reflection on the realities of generative ai. the project was exhibited at <a href="https://www.svenskttenn.se/">svenskt tenn</a> in stockholm, 2024.
-                    <div style="text-align: center; margin: 1rem;">
-                        designed in collaboration with: <br> maja ringsäter + solvej jansson
-                    </div>
-                    </div>
-                    
+            <video src="tinstam.mp4" autoplay loop muted playsinline></video>
+            <div class="info">
+                <div class="block">
+                <div style="text-align: center; margin: 1rem;">
+                    <h1>There is no such thing as magic</h1>
+                    Visual identity + animation
+                </div>
+                <i>There is no such thing as magic</i> is a collaborative project about AI and its societal and environmental impact. The visual identity was designed to reflect the work of scientific researchers at the <a href="https://beijer.kva.se/">Beijer Institute</a> and encourage reflection on the realities of generative AI. The project was exhibited at <a href="https://www.svenskttenn.se/">Svenskt Tenn</a> in Stockholm, 2024.
+                <div style="text-align: center; margin: 1rem;">
+                    Designed in collaboration with: <br> Maja Ringsäter + Solvej Jansson
+                </div>
                 </div>
             </div>
+            </div>
+            <div class="content">
+                <img src="tinstam-process-1.jpg" alt="">
+                <div class="info"><div class="block">
+                    <h1>Stars </h1>
+                    The pattern graphics used in the identity was based on contemporary design trends in apps and websites. We noticed stars, often symbolic for magic, was used for features enabled by new AI technology. </div> </div>
+            </div>
         </div>
         <div class="plus">
             <div class="content">
-                <video src="horse.mp4" autoplay loop muted playsinline></video>
-                <div class="info">visual research<br> graduation project bfa 2025</div>
+            <video src="horse.mp4" autoplay loop muted playsinline></video>
+            <div class="info">Visual research<br> graduation project BFA 2025</div>
             </div>
             <div class="content">
-                <img src="research/research-72.jpg" alt="">
-                <div class="info">poster made using css+javascript<br> graduation project bfa 2025</div>
+            <img src="research/research-72.jpg" alt="">
+            <div class="info">Poster made using CSS + JavaScript<br> graduation project BFA 2025</div>
             </div>
             <div class="content">
-                <img src="research/research-73.jpg" alt="">
-                <div class="info">poster made using css+javascript<br> graduation project bfa 2025</div>
+            <img src="research/research-73.jpg" alt="">
+            <div class="info">Poster made using CSS + JavaScript<br> graduation project BFA 2025</div>
             </div>
             <div class="content">
-                <img src="research/research-71.jpg" alt="">
-                <div class="info">poster made using css+javascript<br> graduation project bfa 2025</div>
+            <img src="research/research-71.jpg" alt="">
+            <div class="info">Poster made using CSS + JavaScript<br> graduation project BFA 2025</div>
             </div>
         </div>
-
 
         <div class="plus">
             <div class="content">
-                <img src="naomi-1.jpg" alt="">
-                <div class="info">poster + typography <br> naomi urrutia opazo</div>
+            <img src="naomi-1.jpg" alt="">
+            <div class="info">Poster + typography <br> Naomi Urrutia Opazo</div>
             </div>
             <div class="content">
-                <img src="naomi-2.jpg" alt="">
-                <div class="info">poster + typography <br> naomi urrutia opazo</div>
+            <img src="naomi-2.jpg" alt="">
+            <div class="info">Poster + typography <br> Naomi Urrutia Opazo</div>
             </div>
             <div class="content">
-                <img src="naomi-3.jpg" alt="">
-                <div class="info">poster + typography <br> naomi urrutia opazo</div>
+            <img src="naomi-3.jpg" alt="">
+            <div class="info">Poster + typography <br> Naomi Urrutia Opazo</div>
             </div>
-            
         </div>
         <div class="plus">
             <div class="content">
-                <img src="pride-garden-2.jpg" alt="">
-                <div class="info">
-                    <p>art direction and photoshop imagery
-                        <br>5 day festival @ night club <i>trädgården</i>
-                        <br>stockholm, 2024</p></div>
-                    </div>
+            <img src="pride-garden-2.jpg" alt="">
+            <div class="info">
+                <p>Art direction and Photoshop imagery
+                <br>5-day festival @ night club <i>Trädgården</i>
+                <br>Stockholm, 2024</p>
+            </div>
+            </div>
             <div class="content">
-                <img src="pride-garden-1.jpg" alt="">
-                <div class="info">
-                    <p>art direction and photoshop imagery
-                        <br>5 day festival @ night club <i>trädgården</i>
-                        <br>stockholm, 2024</p></div>
-                    </div>
+            <img src="pride-garden-1.jpg" alt="">
+            <div class="info">
+                <p>Art direction and Photoshop imagery
+                <br>5-day festival @ night club <i>Trädgården</i>
+                <br>Stockholm, 2024</p>
+            </div>
+            </div>
             <div class="content">
-                <img src="pride-garden-3.jpg" alt="">
-                <div class="info">
-                    <p>art direction and photoshop imagery
-                        <br>5 day festival @ night club <i>trädgården</i>
-                        <br>stockholm, 2024</p></div>
-                    </div>
+            <img src="pride-garden-3.jpg" alt="">
+            <div class="info">
+                <p>Art direction and Photoshop imagery
+                <br>5-day festival @ night club <i>Trädgården</i>
+                <br>Stockholm, 2024</p>
+            </div>
+            </div>
             <div class="content">
-                <img src="pride-garden-4.jpg" alt="">
-                <div class="info">
-                    <p>art direction and photoshop imagery
-                    <br>5 day festival @ night club <i>trädgården</i>
-                    <br>stockholm, 2024</p></div>
+            <img src="pride-garden-4.jpg" alt="">
+            <div class="info">
+                <p>Art direction and Photoshop imagery
+                <br>5-day festival @ night club <i>Trädgården</i>
+                <br>Stockholm, 2024</p>
+            </div>
             </div>
         </div>
 
-
-        
-        
-           <div class="plus">
+        <div class="plus">
             <div class="content">
-                <img src="madonna-1.jpg" alt="">
-                <div class="info">poster + collage <br> art studio madonna <br> malmö, 2024 </div>
+            <img src="madonna-1.jpg" alt="">
+            <div class="info">Poster + collage <br> Art Studio Madonna <br> Malmö, 2024</div>
             </div>
             <div class="content">
-                <img src="madonna-2.jpg" alt="">
+            <img src="madonna-2.jpg" alt="">
             </div>
         </div>
 
-        <div class="content">
+        <div class="plus">
+            <div class="content">
             <video src="dukade.mp4" autoplay loop muted playsinline></video>
-            <div class="info">exhibition invitation <br> beckmans college of design + svenskt tenn</div>
+            <div class="info">Exhibition invitation <br> Beckmans College of Design + Svenskt Tenn</div>
         </div>
+        <div class="content">
+            <img src="dukade-bordet.jpg" alt="">
+            <div class="info">Exhibition invitation <br> Beckmans College of Design + Svenskt Tenn</div>
+        </div>
+    </div>
 
         <div class="plus">
             <div class="content">
-                <img src="collecting-1.jpg" style="box-shadow: none;">
-                <div class="info"><div>publication design <br> about collections + playslists <br> in collaboration with elvin odelholm and solvej jansson</div></div>
+            <img src="collecting-1.jpg" style="box-shadow: none;">
+            <div class="info"><div>Publication design <br> about collections + playlists <br> in collaboration with Elvin Odelholm and Solvej Jansson</div></div>
             </div>
             <div class="content portrait">
-                <img src="collecting-2.jpg" style="box-shadow: none;">
-                <div class="info"><div>editorial magazine design <br> about playslists <br> in collaboration with elvin odelholm and solvej jansson</div></div>
+            <img src="collecting-2.jpg" style="box-shadow: none;">
+            <div class="info"><div>Editorial magazine design <br> about playlists <br> in collaboration with Elvin Odelholm and Solvej Jansson</div></div>
             </div>
             <div class="content portrait">
-                <img src="collecting-3.jpg" style="box-shadow: none;">
-                <div class="info"><div>editorial magazine design <br> about playslists <br> in collaboration with elvin odelholm and solvej jansson</div></div>
+            <img src="collecting-3.jpg" style="box-shadow: none;">
+            <div class="info"><div>Editorial magazine design <br> about playlists <br> in collaboration with Elvin Odelholm and Solvej Jansson</div></div>
             </div>
             <div class="content portrait">
-                <img src="collecting-4.jpg" style="box-shadow: none;">
-                <div class="info"><div>editorial magazine design <br> about playslists <br> in collaboration with elvin odelholm and solvej jansson</div></div>
+            <img src="collecting-4.jpg" style="box-shadow: none;">
+            <div class="info"><div>Editorial magazine design <br> about playlists <br> in collaboration with Elvin Odelholm and Solvej Jansson</div></div>
             </div>
             <div class="content portrait">
-                <img src="collecting-5.jpg" style="box-shadow: none;">
-                <div class="info"><div>editorial magazine design <br> about playslists <br> in collaboration with elvin odelholm and solvej jansson</a></div></div>
+            <img src="collecting-5.jpg" style="box-shadow: none;">
+            <div class="info"><div>Editorial magazine design <br> about playlists <br> in collaboration with Elvin Odelholm and Solvej Jansson</div></div>
             </div>
             <div class="content portrait">
-                <img src="collecting-6.jpg" style="box-shadow: none;">
-                <div class="info"><div>editorial magazine design <br> about playslists <br> in collaboration with elvin odelholm and solvej jansson</a></div></div>
+            <img src="collecting-6.jpg" style="box-shadow: none;">
+            <div class="info"><div>Editorial magazine design <br> about playlists <br> in collaboration with Elvin Odelholm and Solvej Jansson</div></div>
             </div>
         </div>
         
