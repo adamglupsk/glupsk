@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bookland</title>
+  <link rel="stylesheet" href="https://use.typekit.net/ovn7jba.css">
+  <style>
+    body {
+      margin: 0;
+      margin-top: 0;
+      padding: 7vw;
+      padding-top:0;
+      overflow-x: hidden;
+      font-family: "bookman-jf-pro", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+    }
+
+    h1{
+        font-size: 4.1rem;
+        letter-spacing: 0.075em;
+        line-height: 1.4;
+        margin: 5rem 0 0rem 0;
+        font-weight: 400;
+
+    }
+
+    p{
+        font-size: 1.85rem;
+        line-height: 1.4 ;
+        letter-spacing: 0.05em;
+
+        
+    }
+    a{
+        color:black
+    }
+    div:has(img){
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    img{
+        width: 80%;
+        height: 100%;
+        mix-blend-mode: multiply;
+        
+    }
+ a{
+        color:black
+    }
+    .pop{
+        animation: up 1s 200ms step-end infinite;
+        display: inline-block;
+    }
+    .up{
+        animation: up 1s step-end infinite;
+        display: inline-block;
+    }
+    @keyframes up {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+                        @media (min-width: 1200px) {
+                        body{
+                            padding: 10vw;
+                            padding-top: 0rem;
+
+                            /* background-color: beige; */
+                        }
+                        div:has(img){
+                            /* min-height: initial; */
+                            }
+                            img{
+                                width: 40%;
+                                height: 100%;
+                                mix-blend-mode: multiply;
+                            }
+                            h1{
+                            font-size: 3rem;
+                            line-height: 1.3;
+                            }
+                        
+                            p{
+                                font-size: 1.5rem;
+                                
+                            }
+                        }
+
+                        span {
+                            font-feature-settings: "swsh" 1;
+                            margin: 0;
+                            padding: 0;
+                        }
+   
+  </style>
+</head>
+<body>
+    <h1><span style="margin-left: -0.3em" >B</span>eckmans Bookland: <br> <span>G</span>raduation Project<span>s</span><br> May 22-25, 2025</h1>
+
+    <div>
+        <img src="bookland.gif" alt="">
+
+    </div>
+    <h1><i><span style="margin-left: -0.3em">B</span>ookland</i> is a touring <span class="up">pop</span>-<span class="pop">up</span> shop for books, graphic design, illustration, publishing and more from BFA graduates of Visual Communication. Bookland’s first stop will take place as part
+    of Beckmans College of Design’s Graduation Exhibition this spring.
+        Welcome!</h1>
+    <p></p>
+    <p> Traveling to Bookland is easy. Beckmans College of Design is located at Agavägen 54, Lidingö in eastern Stockholm. Take the metro's red line to Ropsten and the tram Lidingöbanan to AGA. From Ropsten or Nybroplan, you can travel by Ferry SL80 (<i>The Book Boat</i> ) to Lidingö/Dalénum. Use SL's travel planner <a href="https://sl.se/">here!</a></p>
+    <h1>Participants </h1>
+    <p>From Visual Communication's Class of '25: Nayra Aly, Adam Arinbjarnarson, Amanda Artberger, Noah Constantinou, Sofia Di Marco, Tiffany Louise Hoff, Måns Horning, Elvin Odelholm, Maja Ringsäter, Lina Sundqvist Strindberg.
+    </p>
+
+    <h1>Why 'Bookland'?</h1>
+    <p>'Bookland' refers to the country code represented in the ISBN (International Standard Book Number) used to register books and publications.
+        On any published book, regardless of country of origin, the first three digits of '9 78' stand for <i>Bookland</i>. For the curious: <a href="https://en.wikipedia.org/wiki/Bookland">Read more</a>.
+        <!-- On any book sold and distributed in the world, the three first digits of book barcodes '978' stands for 'Bookland' -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/EAN-13-ISBN-13.svg/1200px-EAN-13-ISBN-13.svg.png" alt="" style="display: block; margin: auto; padding: 5vw">
+        We are turning this Bookland into a physical space where visitors are invited to read, explore or purchase works from Beckmans graduates. Books were the starting point for Bookland but visitors should expect much more than books in the traditional sense! </p>
+    <h1>Later this summer</h1>
+    <p>Bookland will go on tour! Stay tuned for more information…</p>
+    <script>
+        const colors = ["pink", "yellow", "beige", "white", "lightblue"];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        document.body.style.backgroundColor = randomColor;
+    </script>
+</body>
+</html>
