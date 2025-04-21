@@ -1,0 +1,664 @@
+<head>
+    <title>adam arinbjarnarson</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            /* cursor: cell; */
+            background-color: black;
+            color:white;
+            margin: 0;
+            padding: 0;;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-width: 100dvw;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 100dvh;
+            max-width: 100dvw;
+            opacity: 0;
+            animation: 
+            fade 1s 1s forwards;
+            
+
+        }
+        @keyframes slide{
+            0%{
+                height: 300vh;
+                transform: translateY(-300vh);
+            }
+            100%{
+                transform: translateY(0);
+            }
+        }
+        @keyframes fade {
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+
+        .content {
+            scroll-snap-align: center;
+            scroll-snap-type: mandatory;
+            scroll-behavior: smooth;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100dvw;
+            width: 100dvw;
+            min-height: 100dvh;
+            position: relative;
+        }
+        ::-webkit-scrollbar {
+                display: none;
+            }
+
+        .plus{
+             min-width: 100dvw;
+            min-height: 100dvh;
+            max-width: 100vw;
+            overflow-x: scroll;
+            overflow-y: visible;
+            scroll-snap-type: x mandatory;
+            scroll-snap-align: center;
+            display: flex;
+           
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+            /* background-color: yellow; */
+        }
+        .plus > *{
+            min-width: 100dvw;
+            max-width: 100dvw;
+            scroll-snap-type: mandatory;
+            scroll-snap-type: x mandatory;
+            scroll-snap-align: center;
+            margin-left: -25vw;
+        }
+        .plus > .portrait{
+            margin-left: -30vw;
+        }
+        .plus *:first-child{
+            margin-left: initial;
+        }
+
+        .content img, .content video {
+            /* cursor: pointer; */
+            max-width: 80vw;
+            max-height: 80vh;
+            transition: all 0.25s;
+            /* pointer-events: none; */
+            /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05); */
+        }
+
+        .plus:hover{
+            cursor: zoom-in;
+
+        }
+        .content img:hover, .content video:hover{
+            cursor: zoom-in;
+        }
+
+        .content img.blurred, .content video.blurred {
+            /* filter: blur(5px); */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.0);
+
+            /* filter: brightness(10); */
+            /* opacity: 10%; */
+        }
+        
+        .info:hover{
+            cursor:zoom-out;
+        }
+        
+        .header {
+            background-color: black;
+            padding:1vw;
+            margin:-1vw;
+            position: fixed;
+            z-index: -1;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.4;
+
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
+        }
+        .right
+            {
+                left: revert;
+                right: 1rem;
+                z-index: 10;
+
+            }
+        
+
+        .prompt {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
+        }
+       
+      
+
+
+        .info {
+            opacity: 0;
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+            flex-direction: column;
+            
+            pointer-events: none;
+            text-align: center;
+            position: absolute;
+            width: 100dvw;
+            height: 100dvh;
+            left: 0;
+            top: 0;
+            z-index: 0;
+            transition: all 0.25s;
+            line-height: 1.5;
+        }
+
+            .block{
+                width: 30vw;
+            height: auto;
+            text-align: left;
+            /* background-color: red; */
+            }
+            .block > div{
+             margin-bottom: 2rem;
+            }
+
+        .info.visible {
+            pointer-events: initial;
+            opacity: 1;
+            width: 100dvw;
+            height: 100dvh;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(0.25rem);
+            position: absolute;
+            z-index: 2000;
+            transition: all 0.25s;
+            /* text-shadow: 0 0 100px white; */
+        }
+        div{
+                -webkit-text-stroke: 0.27px white;
+            }
+
+            .prompt > div{
+                display: none;
+            }
+        @media (max-width: 700px) {
+
+            
+            .header, .footer{
+                /* display: none; */
+                /* bottom: 2rem; */
+                /* left: 2rem; */
+                opacity: 1 !important;
+            }
+            .right{
+                /* right: 2rem; */
+            }
+
+            .block{
+                width: 80vw;
+                height: auto;
+                text-align: left;
+                /* background-color: red; */
+            }
+            
+            .prompt {
+                /* top: 2rem; */
+                width: 100%;
+                margin: 2rem;
+                /* text-align: center; */
+                right: initial;
+            }
+            .prompt > div{
+                line-height: 1.5;
+                display: revert;
+            }
+            
+
+            .content img, .content video, .content div{
+                margin-bottom: 2vh;   
+            }
+            .plus > *{
+                
+                margin-left: -15vw;
+            }
+            .plus > .portrait{
+            margin-left: -15vw;
+        }
+        }
+        @media (min-width: 1200px) {
+            .plus > *{
+                
+                margin-left: -35vw;
+            }
+            .plus > .portrait{
+            margin-left: -45vw;
+        }
+    }
+    div:has(> .index){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100dvh;
+        min-width: 100dvw;
+        
+    }
+    
+    a:visited {
+        color: white;
+    }
+    a:hover{
+        cursor: pointer;
+    }
+    a{
+        color: white;
+    }
+    .nav{
+        position: fixed;
+        inset:0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        pointer-events: none;
+        min-height: 100dvh;
+        min-width: 100dvw;
+        animation: fade 0.5s 1s reverse forwards;
+    }
+    .nav > div{
+        margin: 10vw;
+    }
+
+   .hello{
+    width: 70vw;
+    min-width: 70vw;
+    height: 50vh;
+    text-align: left;
+   }
+   h1{
+    margin:0;
+    line-height: 1.2;
+   }
+
+   .mini > img{
+    max-width: 10vw;
+    max-height: 10vh;
+    /* margin: 0.5rem; */
+   }
+
+   .footer{
+    opacity: 0.25;
+    transition: all 0.25s;
+    z-index: 100;
+   }
+    .footer:hover{
+    opacity: 1;}
+    </style>
+</head>
+<body>
+    <div class="nav">
+        
+        <!-- <div>←</div>
+        <div style="display: flex; flex-direction: column; height: 50vh; justify-content: space-between;">
+            <div>↑</div>
+            <div>↓</div>
+        </div>
+       <div>
+        <div>→</div>
+       </div> -->
+       <!-- <div>scroll to navigate</div> -->
+        
+
+    </div>
+    
+    <!-- <div class="prompt">
+       <div> <h1>Adam Arinbjarnarson</h1> Freelance graphic designer</div>
+    </div> -->
+    <!-- <div class="footer">graphic designer / artist</div> -->
+    <!-- <div class="footer right">
+        recent updates: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
+    </div> -->
+    
+    
+    <div class="container">
+
+        <div class="plus">
+            <div class="content">
+               <div class="block">
+                <h1>Adam Arinbjarnarson</h1>
+                <div>            EY Doberman, 23 april 2025
+                </div>
+               </div>
+            </div>
+        </div>
+   
+        <div class="content">
+            <video src="bookland-1.mp4"  autoplay loop muted playsinline style="filter:invert(1); width: 50%;"></video>
+            <div class="info">    
+            <a href="https://beckmans.college/bookland"><img src="bookland-link.png" alt=""></a> </div>
+        </div>
+        <div class="plus" style="background-color: black;">
+            <div class="content">
+                <video src="bookland-3.mp4"></video>
+            </div>
+            <div class="content">
+            <video src="bookland-3.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="content">
+            <img src="bookland-1.jpg" alt="">
+        </div>
+       </div>
+        <div class="content">
+            <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
+            <div class="info">
+                <div class="block">
+                    
+                        <div>
+                            <h1>Tyda</h1>
+                    Graphic identity, poster and animation 
+                </div>
+                <div>This project was initated in a course led by artist Oscar Guermouche and designer Sophia Wood. The project and its process was created through research on the concept of 'Folkhemmet'. On the subject of Swedish identity, there are countless parallell interpretations and connotations. <i>Tyda</i> aims to visualise what it is like to understand Swedish identity when it is being redefined, again and again. The project was exhibited at the show <i>Ett hem</i> in Vandalorum art museum. The poster was assembled with laserjet print on post-it notes.</div>
+                <div>Idea and production in collaboration with Maja Ringsäter and Måns Horning</div>
+                </div>
+                
+                    
+                </div>
+        </div>
+        <div class="plus">
+            <div class="content">
+            <img src="tyda-process-2.jpg" alt="">
+            <div class="info">Graphic identity + poster <br> printed on post-it notes <br> in collaboration with Maja Ringsäter</div>
+            </div>
+            <div class="content">
+                <img src="tyda-slideshow-5.jpg" alt="">
+                <div class="info">Graphic identity + poster <br> printed on post-it notes <br> in collaboration with Maja Ringsäter</div>
+            </div>
+                <div class="content">
+                    <img src="tyda-slideshow-4.jpg" alt="">
+                    <div class="info">Graphic identity + poster <br> printed on post-it notes <br> in collaboration with Maja Ringsäter</div>
+            </div>
+            <div class="content">
+            <img src="tyda-slideshow-1.jpg" alt="">
+            <div class="info">Graphic identity + poster <br> printed on post-it notes <br> in collaboration with Maja Ringsäter</div>
+            </div>
+        </div>
+
+        <div class="content">
+        <video src="tinstam.mp4" autoplay loop muted playsinline></video>
+        <div class="info">
+            <div class="block">
+            <div >
+                <h1>There is no such thing as magic</h1>
+                Visual identity + animation
+            </div>
+            <i>There is no such thing as magic</i> is a collaborative project about AI and its societal and environmental impact. The visual identity was designed to reflect the work of scientific researchers at the <a href="https://beijer.kva.se/">Beijer Institute</a> and encourage reflection on the realities of generative AI, for example its environmental and social impact. The project was exhibited at <a href="https://www.svenskttenn.se/">Svenskt Tenn</a> in Stockholm, 2024. Designed in collaboration with Maja Ringsäter and Solvej Jansson
+            <div >
+                
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="plus">
+            <div class="content">
+                <img src="tinstam-process-1.jpg" alt="" >
+                <div class="info">
+                    <div class="block">
+                    <h1>Stars </h1>
+                    The pattern graphics used in the identity was based on contemporary design trends in apps and websites. We noticed stars, often symbolic for magic, was used for features enabled by new AI technology. While this is understandable – AI feels like magic - metaphors like these cause problems if we stop questioning them. </div> </div>
+            </div>
+            <div class="content">
+                <img src="tinstam-process-2.jpg" alt="" style="filter: saturate(1.2);">
+            </div>
+            <div class="content">
+                <img src="tinstam-process-3.jpg" alt="" style="filter: saturate(1.2);">
+            </div>
+        </div>
+
+        <div class="plus">
+            <div class="content">
+            <img src="pride-garden-1.jpg" alt="">
+            <div class="info">
+                <div class="block">
+                    <h1>Trädgården Pride Garden</h1>
+                    <p>Art direction and Photoshop imagery
+                        <br>5-day festival @ night club <i>Trädgården</i>
+                        <br>Stockholm, 2024</p>
+                </div>
+            </div>
+            </div>
+            <div class="content">
+            <img src="pride-garden-2.jpg" alt="">
+            <div class="info">
+                <p>Art direction and Photoshop imagery
+                <br>5-day festival @ night club <i>Trädgården</i>
+                <br>Stockholm, 2024</p>
+            </div>
+            </div>
+            <div class="content">
+            <img src="pride-garden-3.jpg" alt="">
+            <div class="info">
+                <p>Art direction and Photoshop imagery
+                <br>5-day festival @ night club <i>Trädgården</i>
+                <br>Stockholm, 2024</p>
+            </div>
+            </div>
+            <div class="content">
+            <img src="pride-garden-4.jpg" alt="">
+            <div class="info">
+                <p>Art direction and Photoshop imagery
+                <br>5-day festival @ night club <i>Trädgården</i>
+                <br>Stockholm, 2024</p>
+            </div>
+            </div>
+        </div>
+
+       <div class="plus">
+        <div class="content">
+            <video src="orionteatern-social.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="content">
+            <img src="orionteatern-1.jpg" alt="">
+        </div>
+        <div class="content portrait">
+            <video src="orionteatern-process-2.mp4" autoplay muted loop playsinline></video>
+        </div>
+       </div>
+            <div class="plus">
+                <div class="content">
+                <video src="horse.mp4" autoplay loop muted playsinline></video>
+                <div class="info">Visual research<br> graduation project BFA 2025</div>
+                </div>
+                <div class="content">
+                    <video src="examen-1.mp4" autoplay muted loop playsinline style="width: 40%; filter: invert(1);"></video>
+                </div>
+                <div class="content">
+                    <video src="journal/20-02-0.mp4" autoplay muted loop playsinline></video>
+                </div>
+                <div class="content">
+                <video src="journal/30-3-1.mp4" autoplay muted loop playsinline style="filter: invert(1);"></video>            
+                </div>
+                <div class="content">
+                    <video src="journal/4-03-1.mp4" autoplay muted loop playsinline></video>
+                </div>
+            
+            </div>
+            <div class="plus">
+                <div class="content">
+                    <video src="emilia-1.mp4" muted autoplay loop playsinline></video>
+                </div>
+                <div class="content">
+                    <video src="emilia-2.mp4" muted autoplay loop playsinline></video>
+                </div>
+            </div>
+        <div class="plus">
+            <div class="content">
+                <video src="dukade.mp4" autoplay loop muted playsinline></video>
+                <div class="info">Exhibition invitation <br> Beckmans College of Design + Svenskt Tenn</div>
+            </div>
+            <div class="content">
+                <img src="naomi-1.jpg" alt="">
+                <div class="info">Poster + typography <br> Naomi Urrutia Opazo</div>
+                </div>
+            <div class="content">
+                <img src="posters/13-a.jpg" alt="">
+                <div class="info">illustration + poster <br> beckmans student union</div>
+            </div>
+            <div class="content">
+                <img src="isabelle.jpg" alt="">
+            </div>
+            
+                <div class="content">
+                <img src="madonna-1.jpg" alt="">
+                <div class="info">Poster + collage <br> Art Studio Madonna <br> Malmö, 2024</div>
+            </div>
+            
+        </div>
+        
+        <!-- <div class="plus">
+            <div class="content">
+                <img src="research/research-84.jpg" alt="">
+                <div class="info">visual research<br> graduation project bfa 2025</div>
+            </div>
+            <div class="content portrait">
+                <img src="research/research-40.jpg" alt="">
+                <div class="info">visual research<br> graduation project bfa 2025</div>
+            </div>
+        </div> -->
+        
+       
+       
+        
+    
+        
+       
+        <div class="content">
+            <div class="block">
+                <h1>Adam Arinbjarnarson</h1>
+                <div>            EY Doberman, 23 april 2025
+                </div>
+               </div>
+        </div>
+        <!-- <div class="content" id="about">
+            
+                <div class="block">
+                    <p>Designer of print, graphic identity, websites, motion, videos and more.</p>
+                    <p>Visual Communication, BFA<br>Beckmans College of Design <br>2022-2025</p>
+                    <p>Art and design <br> Östra Grevie folkhögskola <br>2021-2022</p>
+                    <p>Design internship <br> Research and Development (SE) <br>2024 </p>
+                    <p>Jury member <br> Svensk Webbkonst <a href="https://w3.svenskwebbkonst.se/">Read more</a> </p>
+            
+        
+            
+        </div>
+        </div> -->
+        
+        <!-- <div class="footer right">        
+            Journal: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
+            
+        </div>
+        <div class="footer">
+            <a href="#about" id="about-link">About</a>
+            <script>document.getElementById('about-link').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default anchor behavior
+              
+                // Scroll to the target section with smooth behavior
+                document.querySelector('#about').scrollIntoView({
+                  behavior: 'smooth'
+                });
+              });</script>
+
+            <a href="mailto:adaari@icloud.com">E-mail</a> <a href="https://www.instagram.com/adamglupsk">Social media</a>
+        </div> -->
+        <!-- <div class="header"><h1>Adam Arinbjarnarson</h1>
+            EY Doberman, 22 april 2025
+            </div> -->
+
+        <script>
+            document.querySelectorAll('.content').forEach(content => {
+                const media = content.querySelector('img, video');
+                const info = content.querySelector('.info');
+
+                content.addEventListener('click', () => {
+                    if (info.classList.contains('visible')) {
+                        info.classList.remove('visible');
+                        media.classList.remove('blurred');
+                    } else {
+                        info.classList.add('visible');
+                        media.classList.add('blurred');
+                    }
+                });
+            });
+        </script>
+    </div>
+    
+    <!-- <script>
+        const cursor = document.createElement('div');
+        cursor.classList.add('custom-cursor');
+        cursor.style.position = 'fixed';
+        cursor.style.pointerEvents = 'none';
+        cursor.style.zIndex = '1000';
+        cursor.style.display = 'none';
+        cursor.style.fontSize = '1rem';
+        cursor.style.backgroundColor = 'none';
+        document.body.appendChild(cursor);
+
+        const cursorText = "more information"; // Change this text as needed
+        cursor.textContent = cursorText;
+
+        document.querySelectorAll('img, video').forEach(media => {
+            media.addEventListener('mouseenter', () => {
+                cursor.style.display = 'block';
+            });
+
+            media.addEventListener('mouseleave', () => {
+                cursor.style.display = 'none';
+            });
+
+            media.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.pageX + 10}px`;
+                cursor.style.top = `${e.pageY + 10}px`;
+            });
+        });
+    </script> -->
+    <!-- <script>
+        if (!/Mobi|Android/i.test(navigator.userAgent)) {
+            const cursor = document.createElement('div');
+            cursor.classList.add('custom-cursor');
+            document.body.appendChild(cursor);
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.pageX}px`;
+                cursor.style.top = `${e.pageY}px`;
+            });
+        }
+    </script> -->
+</body>

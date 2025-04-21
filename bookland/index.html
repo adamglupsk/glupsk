@@ -15,7 +15,7 @@
     font-weight: 400;
     font-style: normal;
     text-rendering: optimizeLegibility;
-    cursor: https://beckmans.se/wp-content/uploads/2021/10/favicon-192x192-1.png;
+    cursor: url('/me.jpg'), auto;
 
     }
 
@@ -74,9 +74,9 @@
 
                             /* background-color: beige; */
                         }
-                        div:has(img){
-                            /* min-height: initial; */
-                            }
+                        /* div:has(img){
+                            min-height: initial;
+                            } */
                             img{
                                 width: 40%;
                                 height: 100%;
@@ -102,10 +102,10 @@
   </style>
 </head>
 <body>
-    <!-- <div style="pointer-events: none; position: fixed; inset:0;  mix-blend-mode: multiply; display: flex; align-items: center; justify-content: center; ">        
+    <div style="pointer-events: none; position: fixed; inset:0;  mix-blend-mode: multiply; display: flex; align-items: center; justify-content: center; ">        
         <video src="fireworks.mp4"  autoplay loop muted style="width: 50%;"></video>
         
-    </div> -->
+    </div>
     <h1><span style="margin-left: -0.3em" >B</span>eckmans Bookland: <br> <span>G</span>raduation Project<span>s</span><br> May 22-25, 2025</h1>
 
     <div>
@@ -115,10 +115,27 @@
     <h1><i><span style="margin-left: -0.3em">B</span>ookland</i> is a touring <span class="up">pop</span>-<span class="pop">up</span> shop for books, graphic design, illustration, publishing and more from BFA graduates of Visual Communication. Bookland’s first stop will take place as part
     of Beckmans College of Design’s Graduation Exhibition this spring.
         Welcome!</h1>
-    <p></p>
-    <p> Traveling to Bookland is easy. Beckmans College of Design is located at Agavägen 54, Lidingö in eastern Stockholm. Take the metro's red line to Ropsten and the tram Lidingöbanan to AGA. From Ropsten or Nybroplan, you can travel by Ferry SL80 (<i>The Book Boat</i> ) to Lidingö/Dalénum. Use SL's travel planner <a href="https://sl.se/">here!</a></p>
+
+        <h1>Location</h1>
+
+    <p> Traveling to Bookland is easy. Beckmans College of Design is located at Agavägen 54, Lidingö in eastern Stockholm. Take the metro's red line to Ropsten and the tram Lidingöbanan to AGA. From Ropsten, Nacka Strand or Nybroplan, you can travel by Ferry SL80 (<i>The Book Boat</i>) to Lidingö/Dalénum. Use SL's travel planner <a href="https://sl.se/">here!</a> Bookland will take place in Beckmans' library, during the main <a href="https://beckmans.se/beckmans-examensutstallning-2025/"><span>G</span>raduation <span>E</span>xhibition</a>!</p>
+    <h1>Opening hours</h1>
+    <div style="display: flex;">
+        <p style="width: 50vw;">
+             May 22 (Thursday)
+            <br> May 23 (Friday)
+            <br> May 24 (Saturday)
+            <br> May 25 (Sunday)
+        </p>
+        <p> 
+            16-20
+            <br>12-19
+            <br>11-16
+            <br>11-16
+        </p>
+    </div>
     <h1>Participants </h1>
-    <p>From Visual Communication's Class of '25: Nayra Aly, Adam Arinbjarnarson, Amanda Artberger, Noah Constantinou, Sofia Di Marco, Tiffany Louise Hoff, Måns Horning, Elvin Odelholm, Maja Ringsäter, Lina Sundqvist Strindberg.
+    <p>From Visual Communication's Class of '25: Nayra Aly, Adam Arinbjarnarson, Amanda Artberger, Noah Constantinou, Sofia Di Marco, Tiffany Louise Hoff, Måns Horning, Elvin Odelholm, Maja Ringsäter, Andy Voitka, Lina Sundkvist Strindberg.
     </p>
 
     <h1>Why 'Bookland'?</h1>
@@ -130,7 +147,7 @@
     <h1>Later this summer</h1>
     <p>Bookland will go on tour! Stay tuned for more information…</p>
     <script>
-        const colors = ["pink", "yellow", "beige", "white", "lightblue"];
+        const colors = ["pink", "yellow", "beige", "white", "lightblue", "lightgreen", "lightgrey", "lavender", "peach", "lightcoral", "lightgoldenrodyellow", "lightpink", "lightsalmon", "lightseagreen", "lightskyblue", "lightsteelblue", "lightyellow", "lightcyan", "lightgoldenrod", "lightkhaki", "lightmossgreen", "lightorchid", "lightslategray", "lightsteelblue", "lightthistle", "lighttomato", "lightturquoise", "lightviolet", "mistyrose", "navajowhite", "peachpuff", "powderblue", "rosybrown", "seashell", "skyblue", "slateblue", "slategray", "snow", "tan"];
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         document.body.style.backgroundColor = randomColor;
     </script>
