@@ -315,7 +315,7 @@
    }
 
    .footer{
-    opacity: 0.25;
+    /* opacity: 0.25; */
     transition: all 0.25s;
     z-index: 100;
    }
@@ -368,27 +368,8 @@
             </div>
         </div> -->
         
-       <div class="plus">
-        <div class="content">
-            <video src="bookland-1.mp4" autoplay loop muted playsinline></video>
-            <div class="info">
-                <div class="block">
-                    <h1>Bookland</h1>
-                    <div>Graphic identity + logo + animation</div>
-                    <div>Bookland is a touring bookshop for graduates in Visual Communication at Beckmans College of Design, founded in 2025. Its first stop will be at Beckmans' Graduation Exhibition, May 22-25th. Further details: <a href="https://beckmans.college/bookland">https://beckmans.college/bookland</a></div>
-                    </div>
-            </div>
-        </div>
-    </div>
-   <div class="plus">
-    <div class="content">
-        <video src="bookland-3.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <div class="content">
-        <video src="bookland-3.mp4" muted playsinline></video>
-        
-    </div>
-   </div>
+       
+   
         <div class="content">
             <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
             <div class="info">
@@ -456,6 +437,28 @@
                 <img src="tinstam-process-3.jpg" alt="" style="filter: saturate(1.2);">
             </div>
         </div>
+
+        <div class="plus">
+            <div class="content">
+                <video src="bookland-1.mp4" autoplay loop muted playsinline></video>
+                <div class="info">
+                    <div class="block">
+                        <h1>Bookland</h1>
+                        <div>Graphic identity + logo + animation</div>
+                        <div>Bookland is a touring bookshop for graduates in Visual Communication at Beckmans College of Design, founded in 2025. Its first stop will be at Beckmans' Graduation Exhibition, May 22-25th. Further details: <a href="https://beckmans.college/bookland">https://beckmans.college/bookland</a></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="plus">
+            <div class="content">
+                <video src="bookland-3.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="content">
+                <video src="bookland-3.mp4" muted playsinline></video>
+                
+            </div>
+           </div>
         <!-- <div class="plus">
             <div class="content">
             <video src="horse.mp4" autoplay loop muted playsinline></video>
@@ -551,19 +554,31 @@
             </div>
         </div> -->
 
+        <div class="content">
+            <video src="valand-1.mp4" autoplay muted loop playsinline></video>
+        </div>
+
         <div class="plus">
             <div class="content">
-                <video src="valand-1.mp4" autoplay muted loop playsinline></video>
+                <img src="posters/13-a.jpg" alt="">
+                <div class="info">illustration + poster <br> beckmans student union</div>
+            </div>
+            <div class="content">
+                <img src="posters/2.jpg" alt="">
+                <div class="info">illustration + poster <br> beckmans student union</div>
+            </div>
+        </div>
+      
+        <div class="plus">
+            <div class="content">
+                <img src="research/research-88.jpg" alt="">
+                <div class="info">Visual research</div>
             </div>
             <div class="content">
                 <img src="research/research-50.jpg" alt="">
                 <div class="info">Visual research</div>
             </div>
             
-            <div class="content">
-                <img src="posters/13-a.jpg" alt="">
-                <div class="info">illustration + poster <br> beckmans student union</div>
-            </div>
             <div class="content">
                 <img src="research/research-54.jpg" alt="">
                 <div class="info">
@@ -643,6 +658,23 @@
             <img src="img" alt="">
             <div class="info">info <br> and more details</div>
         </div> -->
+
+        <div class="content">
+            <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
+            <div class="info">
+                <div class="block">
+                    
+                        <div>
+                            <h1>Tyda</h1>
+                    Graphic identity, poster and animation 
+                </div>
+                <div>This project was initated in a course led by artist Oscar Guermouche and designer Sophia Wood. The project and its process was created through research on the concept of 'Folkhemmet'. On the subject of Swedish identity, there are countless parallell interpretations and connotations. <i>Tyda</i> aims to visualise what it is like to understand Swedish identity when it is being redefined, again and again. The project was exhibited at the show <i>Ett hem</i> in Vandalorum art museum. The poster was assembled with laserjet print on post-it notes.</div>
+                <div>Idea and production in collaboration with Maja Ringsäter and Måns Horning</div>
+                </div>
+                
+                    
+                </div>
+        </div>
         <div class="footer right">        
             Journal: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
             
@@ -680,7 +712,17 @@
             });
         </script>
     </div>
-    
+    <script>
+        document.querySelector('.container').addEventListener('scroll', (event) => {
+            const container = event.target;
+            if (container.scrollHeight - container.scrollTop <= container.clientHeight) {
+                container.scrollTo({
+                    top: 0,
+                    behavior: 'auto'
+                });
+            }
+        });
+    </script>
     <!-- <script>
         const cursor = document.createElement('div');
         cursor.classList.add('custom-cursor');

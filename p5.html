@@ -1,11 +1,11 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
     <style>
         body{
             padding:0;
             margin:0;
-            background-color:rgb(0, 0, 0);
+            background-color:rgb(255, 255, 255);
             overflow: hidden;
             width: 100vw;
             height: 100vh;
@@ -26,7 +26,7 @@
         function preload() {
             // Ladda in alla bilder från layer-1.png till layer-84.png
             for (let i = 1; i <= 157; i++) {
-                images.push(loadImage(`layer-${i}.png`));
+                images.push(loadImage(`/layers/layer-${i}.png`));
             }
         }
 
@@ -46,7 +46,7 @@
             // Placera en ny bild vid musens position
             imageMode(CENTER);
             let img = images[imageIndex % images.length]; // Cirkulär indexering av bilder
-            image(img, mouseX, mouseY, img.width / 30, img.height / 30); // Skala ner bilden
+            image(img, mouseX, mouseY, img.width / 12, img.height / 12); // Skala ner bilden
             
             // Växla till nästa bild
             imageIndex++;
@@ -58,13 +58,29 @@
         }
     </script>
 </body>
-</html> -->
+</html>
 
 
 
 
-<!-- 
-<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
@@ -206,6 +222,29 @@
 </body>
 </html> -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -276,4 +315,4 @@
         }
     </script>
 </body>
-</html>
+</html> -->
