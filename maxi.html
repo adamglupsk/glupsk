@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Arinbjarnarson</title>
+    <style>
+       
+
+        .h100 {
+            z-index: -1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        h1{
+            margin:0;
+            line-height: 1.2;
+        }
+        body {
+            overflow: hidden;
+            /* background: black; */
+            animation: fadeIn 1s 2s linear forwards;
+            opacity: 0;
+            /* color: white; */
+        }
+
+       h1{
+            transform: rotate(-90deg);
+            font-size: 10vh;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
+            color:red;
+        }
+        .right
+            {
+                left: revert;
+                right: 1rem;
+                z-index: 10;
+
+            }
+
+        img {
+            width: 100%;
+            margin:0;
+            padding:0;
+            /* animation: rotate 100s linear infinite; */
+            transition: all 1s;
+        }
+        img:hover{
+            animation-play-state: paused;
+            /* transform: scale(1.5); */
+            transition: all 1s;
+        }
+
+        .whirl{
+            /* display: grid; */
+            columns: 2;
+            /* grid-template-columns: repeat(6, 1fr); */
+            /* grid-template-rows: repeat(10, 1fr); */
+            justify-content: space-around;
+            column-gap: 0;
+            align-items: space-evenly;
+            height: 100vh;
+            max-width: 100vw;
+            margin: 0;
+            min-width: 100vw;
+            position: absolute;
+            inset: 0 ;
+            z-index: -1;
+            padding:0;
+            overflow-y: scroll;
+        }
+
+        img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        img:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        img:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        /* @keyframes rotate {
+            0% {
+            transform: rotate(0deg) translateX(30vw) rotate(0deg);
+            }
+            100% {
+            transform: rotate(360deg) translateX(30vw) rotate(-360deg);
+            }
+        } */
+
+        @keyframes fadeIn {
+            0% {
+            opacity: 0;
+            }
+            100% {
+            opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="h100">
+        Adam Arinbjarnarson
+    </div> -->
+    <h1>Adam Arinbjarnarson</h1>
+    <p>Adam Arinbjarnarson</p>
+    <p><a href="index.html">Less</a></p>
+    <div class="footer"><a href="index.html"></a>
+    </div>
+    <div class="whirl">
+        <img src="madonna-1.jpg" alt="">
+        <img src="journal/08-03-1.jpg" alt="">
+        <img src="journal/30-3-1.jpg" alt="">
+        <img src="madonna-2.jpg" alt="">
+        <img src="magazine-slide-1.jpeg" alt="">
+        <img src="magazine-slide-3.jpeg" alt="">
+        
+    </div>
+    <script>
+        document.querySelectorAll('p, h1, h2').forEach((element, index) => {
+            const text = element.textContent;
+            element.textContent = '';
+            text.split('').forEach((letter, i) => {
+                const span = document.createElement('span');
+                span.textContent = letter;
+                span.style.display = 'inline-block';
+                span.style.position = 'relative';
+                span.style.left = `${Math.random() * 10 - 50}px`; // Random position
+                span.style.top = `${Math.random() * 15 - 50}px`;  // Random position
+                span.style.animation = `letterSwirl 20s linear infinite`;
+                span.style.animationDelay = `${i * 0.5}s`;
+                element.appendChild(span);
+            });
+        });
+    
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes letterSwirl {
+                0% {
+                    transform: rotate(0deg) translateX(0) rotate(0deg);
+                }
+                50% {
+                    transform: rotate(180deg) translateX(100px) rotate(-180deg);
+                }
+                100% {
+                    transform: rotate(360deg) translateX(0) rotate(-360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
