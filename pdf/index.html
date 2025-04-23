@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+    <style>
+        body {
+            overflow: scroll;
+            max-width: 100dvw;
+            max-height: 100dvw;
+            padding: 0;
+            margin: 0;
+            background: white;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        embed{
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+        }
+        #infoContent {
+            position: fixed;
+            inset: 0;
+            padding:10px;
+            margin:0;
+            background-color: white;
+            /* backdrop-filter: blur(5px); */
+            z-index: 2;
+            text-align: justify;
+            /* animation: fontCycle 20s infinite; */
+            /* columns: 4; */
+            text-transform: lowercase;
+
+        }
+        div:has(#infoButton), div:has(#closeButton) {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+        
+        .customCanvas{
+            /* position: fixed; */
+            top: 0;
+            left: 0;
+            z-index: -1;
+            min-width: 400dvw;
+            min-height: 400dvh;
+        }
+
+        @keyframes fontCycle {
+            0% { font-family: 'Arial', serif; }
+            20% { font-family: 'Helvetica', serif; }
+            30% { font-family: 'Instagram Sans DEV'; }
+            40% { font-family: 'Helvetica Neue', serif; }
+            60% { font-family: 'Roboto'; }
+            70% { font-family: 'SF Pro', monospace; }
+            80% { font-family: 'Akzidenz-Grotesk Pro', 'futura'; }
+            90% { font-family: 'OpenAI Sans', monospace; }
+            100% { font-family: 'Univers', 'Courier'; }
+        }
+    </style>
+</head>
+<body>
+    <embed src="map.svg" type="image/svg+xml" width="400%" height="400%"/>
+   
+    <div>
+        <a href="#" id="infoButton">?</a>
+    </div>
+    <div id="infoContent" style="display: none;">
+        this is a webpage hosted on a github repository. essentially, this means a remote storage location built for managing and collaborating on code projects using git, a version control system. my usage of the system is not quite the intended use case. none the less, the web browser you are using is interpreting a hyper text markup language file, with  divisions containing plain text. i have written the text you are reading the free software application visual studio code, a text editor maintained by microsoft (?), on my macbook. with each update of my text content, i save the html document on my <a href="https://www.apple.com">apple</a> <br>macbook's storage drive. then, a version of the website exists offline, locally on my computer, in the form of a file. to upload it, i use a desktop application from <a href="https://www.github.com">Github</a> that creates a copy of the folder containing my html file and uploads it to a remote storage
+        technically, the internet is configured this way. with readily accessible means like writing skills, a laptop, some free software, internet connection, users can share their thoughts, images and ideas on the internet.
+
+        The process of uploading files to a remote repository is referred to as "pushing." Once files are pushed, they are accessible to anyone with the repository's URL. This is the mechanism by which the webpage being viewed is made available on the internet. The repository hosting this webpage is public, allowing users to view the code, download it, or propose changes if they possess a GitHub account.
+
+        GitHub Pages is a feature provided by GitHub that enables users to host static websites directly from their repositories. By activating GitHub Pages in the repository settings, the HTML file is served as a webpage and becomes accessible via a unique URL. This method provides a straightforward and cost-free solution for sharing content online without requiring a dedicated web server or hosting service.
+
+        GitHub is owned by Microsoft, a company known for its software products such as Windows. Microsoft acquired GitHub in 2018 to enhance support for developers and open-source projects. GitHub is now integrated into Microsoft's ecosystem, which includes tools like Visual Studio Code and Azure cloud services, facilitating collaboration and deployment of projects.
+
+        On a technical level, when files are uploaded to GitHub, the data is transmitted through a network of fiber optic cables, routers, and switches that constitute the internet. These cables transmit data as light pulses, which are converted into electrical signals by servers located in data centers. GitHub's servers, distributed across multiple data centers globally, store the uploaded files. These data centers utilize advanced cooling systems to manage heat generated by servers during operation.
+
+        Data centers also employ uninterrupted power supplies (UPS) and backup generators to maintain accessibility to files during power outages. GitHub implements redundant storage systems to create multiple copies of data, ensuring reliability and minimizing the risk of data loss. This process occurs within milliseconds, enabling rapid upload and retrieval of files.
+        <a href="#" id="closeButton" style="position: fixed; bottom: 10px; right: 10px; color: red;">x</a>
+    </div>
+    <script>
+        document.getElementById('infoButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            const infoContent = document.getElementById('infoContent');
+            infoContent.style.display = infoContent.style.display === 'none' ? 'block' : 'none';
+        });
+        </script>
+        <script>
+            document.getElementById('closeButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('infoContent').style.display = 'none';
+            });
+        </script>
+                    <script>
+                        let images = []; // Array för bilder
+                        let imageIndex = 0; // Håller koll på vilken bild som ska placeras
+
+                        function preload() {
+                            // Ladda in alla bilder från layer-1.png till layer-84.png
+                            for (let i = 1; i <= 157; i++) {
+                                images.push(loadImage(`/layers/layer-${i}.png`));
+                            }
+                        }
+
+                        function setup() {
+                            let canvas = createCanvas(windowWidth, windowHeight);
+                            canvas.class('customCanvas'); // Add a class to the canvas
+                            // background(220);
+                        }
+
+                        function windowResized() {
+                            // Gör så att canvas alltid fyller fönstret vid resize
+                            resizeCanvas(windowWidth, windowHeight);
+                        }
+
+                        function mouseDragged() {
+                            // Placera en ny bild vid musens position
+                            imageMode(CENTER);
+                            let img = images[imageIndex % images.length]; // Cirkulär indexering av bilder
+                            image(img, mouseX, mouseY, img.width / 5, img.height / 5); // Skala ner bilden
+                            
+                            // Växla till nästa bild
+                            imageIndex++;
+                        }
+
+                        function keyPressed() {
+                            // Rensa skärmen om användaren trycker på en tangent
+                        }
+                        function mouseDragged() {
+                            // Placera en ny bild vid musens position
+                            imageMode(CENTER);
+                            let img = images[imageIndex % images.length]; // Cirkulär indexering av bilder
+                            let x = mouseX;
+                            let y = mouseY;
+                            let imgWidth = img.width / 12;
+                            let imgHeight = img.height / 12;
+
+                            // Rita bilden vid musens position
+                            image(img, x, y, imgWidth, imgHeight);
+
+                            // Växla till nästa bild
+                            imageIndex++;
+
+                            // Gör så att just denna bild försvinner efter 1 sekund
+                            setTimeout(() => {
+                                clear();
+                                // Rita om alla bilder som inte har försvunnit
+                                for (let i = 0; i < imageIndex; i++) {
+                                    let tempImg = images[i % images.length];
+                                    image(tempImg, x, y, imgWidth, imgHeight);
+                                }
+                            }, 1000);
+                        }
+                    </script>
+                    <style>
+                        .customCanvas {
+                            top: 0;
+                            left: 0;
+                            z-index: -1;
+                        }
+                    </style>
+        
+</body>
+</html>
