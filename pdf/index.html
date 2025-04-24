@@ -121,15 +121,7 @@
                             resizeCanvas(windowWidth, windowHeight);
                         }
 
-                        function mouseDragged() {
-                            // Placera en ny bild vid musens position
-                            imageMode(CENTER);
-                            let img = images[imageIndex % images.length]; // Cirkulär indexering av bilder
-                            image(img, mouseX, mouseY, img.width / 5, img.height / 5); // Skala ner bilden
-                            
-                            // Växla till nästa bild
-                            imageIndex++;
-                        }
+                        // Removed duplicate mouseDragged function to avoid conflicts
 
                         function keyPressed() {
                             // Rensa skärmen om användaren trycker på en tangent
@@ -167,6 +159,73 @@
                             z-index: -1;
                         }
                     </style>
+                    <script>
+                        let isDragging = false;
+                        let startX, startY, scrollLeft, scrollTop;
+
+                        document.body.addEventListener('mousedown', (e) => {
+                            isDragging = true;
+                            startX = e.pageX - document.body.scrollLeft;
+                            startY = e.pageY - document.body.scrollTop;
+                            scrollLeft = document.body.scrollLeft;
+                            scrollTop = document.body.scrollTop;
+                            document.body.style.cursor = 'grabbing';
+                        });
+
+                        document.body.addEventListener('mousemove', (e) => {
+                            if (!isDragging) return;
+                            e.preventDefault();
+                            const x = e.pageX - document.body.scrollLeft;
+                            const y = e.pageY - document.body.scrollTop;
+                            const walkX = (x - startX) * -1; // Reverse direction
+                            const walkY = (y - startY) * -1; // Reverse direction
+                            document.body.scrollLeft = scrollLeft + walkX;
+                            document.body.scrollTop = scrollTop + walkY;
+                        });
+
+                        document.body.addEventListener('mouseup', () => {
+                            isDragging = false;
+                            document.body.style.cursor = 'default';
+                        });
+
+                        document.body.addEventListener('mouseleave', () => {
+                            isDragging = false;
+                            document.body.style.cursor = 'default';
+                        });
+                    </script>
+                        let isDragging = false;
+                        let startX, startY, scrollLeft, scrollTop;
+
+                        document.body.addEventListener('mousedown', (e) => {
+                            isDragging = true;
+                            startX = e.pageX - document.body.scrollLeft;
+                            startY = e.pageY - document.body.scrollTop;
+                            scrollLeft = document.body.scrollLeft;
+                            scrollTop = document.body.scrollTop;
+                            document.body.style.cursor = 'grabbing';
+                        });
+
+                        document.body.addEventListener('mousemove', (e) => {
+                            if (!isDragging) return;
+                            e.preventDefault();
+                            const x = e.pageX - document.body.scrollLeft;
+                            const y = e.pageY - document.body.scrollTop;
+                            const walkX = (x - startX) * -1; // Reverse direction
+                            const walkY = (y - startY) * -1; // Reverse direction
+                            document.body.scrollLeft = scrollLeft + walkX;
+                            document.body.scrollTop = scrollTop + walkY;
+                        });
+
+                        document.body.addEventListener('mouseup', () => {
+                            isDragging = false;
+                            document.body.style.cursor = 'default';
+                        });
+
+                        document.body.addEventListener('mouseleave', () => {
+                            isDragging = false;
+                            document.body.style.cursor = 'default';
+                        });
+                    </script>
         
 </body>
 </html>

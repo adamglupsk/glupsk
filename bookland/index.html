@@ -98,12 +98,19 @@
                             margin: 0;
                             padding: 0;
                         }
+                        video{
+                            animation: fade-away 2s 1s forwards step;
+                        }
+                        @keyframes fade-away {
+                            0% { opacity: 1; }
+                            100% { opacity: 0; }
+                        }
    
   </style>
 </head>
 <body>
     <div style="pointer-events: none; position: fixed; inset:0;  mix-blend-mode: multiply; display: flex; align-items: center; justify-content: center; ">        
-        <video src="fireworks.mp4"  autoplay loop muted style="width: 50%;"></video>
+        <video src="fireworks.mp4"  autoplay loop muted playsinline style="width: 50%;"></video>
         
     </div>
     <h1><span style="margin-left: -0.3em" >B</span>eckmans Bookland: <br> <span>G</span>raduation Project<span>s</span><br> May 22-25, 2025</h1>
@@ -147,7 +154,7 @@
     <h1>Later this summer</h1>
     <p>Bookland will go on tour! Stay tuned for more information…</p>
     <script>
-        const colors = ["pink", "yellow", "beige", "white", "lightblue", "lightgreen", "lightgrey", "lavender", "peach", "lightcoral", "lightgoldenrodyellow", "lightpink", "lightsalmon", "lightseagreen", "lightskyblue", "lightsteelblue", "lightyellow", "lightcyan", "lightgoldenrod", "lightkhaki", "lightmossgreen", "lightorchid", "lightslategray", "lightsteelblue", "lightthistle", "lighttomato", "lightturquoise", "lightviolet", "mistyrose", "navajowhite", "peachpuff", "powderblue", "rosybrown", "seashell", "skyblue", "slateblue", "slategray", "snow", "tan"];
+        const colors = ["pink", "yellow", "beige", "lightblue", "lightgreen", "lightgrey", "lavender", "peach"];
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         document.body.style.backgroundColor = randomColor;
     </script>
