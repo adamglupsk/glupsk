@@ -16,7 +16,7 @@
         .container {
             display: flex;
             flex-direction: column;
-            scroll-snap-type: y mandatory;
+            /* scroll-snap-type: y mandatory; */
             overflow-y: scroll;
             overflow-x: hidden;
             height: 100dvh;
@@ -47,7 +47,7 @@
 
         .content {
             scroll-snap-align: center;
-            scroll-snap-type: mandatory;
+            /* scroll-snap-type: mandatory; */
             scroll-behavior: smooth;
             display: flex;
             justify-content: center;
@@ -211,6 +211,10 @@
                 display: none;
             }
         @media (max-width: 700px) {
+
+            .info{
+                max-width: 90vw;
+            }
 
             #about > .block{
                 max-height: 60vh;
