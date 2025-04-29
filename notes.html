@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+    <style>
+        body{
+            font-size: 5rem;
+            max-width: 100vw;
+            line-height: 1;
+            background-image: url(journal/19-02-2.jpg);
+            color: white;
+            font-family: 'Akzidenz-Grotesk Pro';
+            animation: slideshow 1s infinite;
+        }
+        
+    </style>
+</head> 
+<body>
+    <div id="id">
+        Handledning 29
+        <br>1. Titel (verkstext)
+        <br>3. Texten
+        <br>2. Utställning
+    
+    </div>
+    
+    <!-- <script>
+        const fonts = [
+            'Instagram Sans DEV',
+            'Roboto',
+            'SF Pro, monospace',
+            'OpenAI Sans, monospace',
+            'TikTok Text, serif',
+            'Aptos'
+        ];
+
+        const element = document.getElementById('id');
+        const text = element.innerHTML;
+        element.innerHTML = '';
+
+        text.split(/(<br\s*\/?>|.)/g).forEach(part => {
+            if (part.toLowerCase().startsWith('<br')) {
+                element.appendChild(document.createElement('br'));
+            } else {
+                const span = document.createElement('span');
+                span.innerHTML = part;
+                span.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
+                element.appendChild(span);
+            }
+        });
+
+        setInterval(() => {
+            const spans = element.querySelectorAll('span');
+            spans.forEach(span => {
+                span.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
+            });
+        }, 3000);
+    </script> -->
+</body>
+</html>
