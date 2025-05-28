@@ -341,21 +341,28 @@
 <body>
     
     
-    <!-- <div class="prompt">
-       <div> <h1>Adam Arinbjarnarson</h1> Freelance graphic designer</div>
-    </div> -->
-    <!-- <div class="footer">graphic designer / artist</div> -->
-    <!-- <div class="footer right">
-        recent updates: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
-    </div> -->
+  
     
     
     <div class="container">
         
     
-        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('img, video').forEach(function (el) {
+                    if (el.hasAttribute('src')) {
+                        const src = el.getAttribute('src');
+                        if (src && !src.startsWith('http') && !src.startsWith('../') && !src.startsWith('/')) {
+                            el.setAttribute('src', '../' + src);
+                        }
+                    }
+                });
+            });
+        </script>
        
-   
+        <div class="content">
+            <video src="rietveld.mp4" autoplay playsinline muted loop></video>
+        </div>
         <div class="content">
             <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
             <div class="info">
