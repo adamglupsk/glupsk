@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <style>
+
+     
+
+        @keyframes lights {
+            0%{
+                background: #feb3da;
+            }
+            40%{
+                background: #fe9458;
+            }
+            60%{
+                background: #dfffac;
+            }
+            100%{
+                background: #feb3da;
+            }
+        }
+        body{
+            min-height: 100dvh ;
+            background: #e1e0dc;
+        }
+        body > video{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+
+        .background-gradient-masked{
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-size: cover;
+            inset: 0;
+            position: absolute;
+            animation: lights 20s infinite;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <video src="trans.webm" autoplay loop muted playsinline></video>
+    <div class="background-gradient-masked"></div>
+</body>
+</html>
