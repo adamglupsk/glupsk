@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sverige</title>
+    <style>
+
+        body{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: ;
+        }
+        h1{
+            text-transform: uppercase;
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 400;
+            pointer-events: none;
+        }
+        h2{
+            /* text-transform: uppercase; */
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        h2:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        p{
+            padding:0;
+            margin:0;
+            max-width: 75%;
+        }
+        a {
+            color: inherit;
+        }
+        .split{
+            display: flex;
+            inset:0;
+            min-height: 100vh;
+            min-width: 100vw;
+            overflow: hidden;
+        }
+        .split > div{
+            display: flex;
+            width: 100%;
+            height: 100dvh;
+        }
+
+        .left *, .right * {
+            text-align: center;
+            opacity: 0;
+            animation: fade 1s 1s linear forwards;
+        }
+        .right > * {
+            max-width: 80%;
+            animation: fade 1.5s 1s linear forwards;
+        }
+        
+        @keyframes fade{
+            to {
+                opacity: 1;
+            }
+        }
+
+        .left{
+            background-color: #0060ff;
+            color:#ffe400;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+        .left img{
+            width: 60%;
+            max-width: 40vmax;
+            height: auto;
+        }
+        .right{
+            background-color: #ffe400;
+            color: #0060ff;
+            display: flex;
+            padding: 2vw 0vw 2vw 0vw;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            animation: fade 1s 2s linear forwards;
+
+        }
+
+        .left > div{
+            transform: rotate(180deg);
+            position: absolute;
+            top: 3vh;
+            width: 40vw;
+            hyphens: auto;
+        }
+
+        .left > h1{
+            position: absolute;
+            bottom: 5vh;
+            width: 40vw;
+            hyphens: auto;
+        }
+
+        .information {
+            position: absolute;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            /* justify-content:space-evenly; */
+            justify-content:space-around;
+            gap: 2vh;
+            background-color: #0060ff;
+            color: #ffe400;
+            inset: 0;
+            width: 50%;
+            hyphens: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            font-size: 1.5rem;
+
+        }
+
+        .information img {
+            width: 50%;
+            height: auto;
+            /* margin-bottom: 2vh; */
+        }
+        .information h1{
+            font-size: 3rem;
+            position: absolute;
+            top: 1vh;
+        }
+
+        .information p {
+            position: absolute;
+            bottom: 4vh;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="information bladee">
+            <h1>Bladee</h1>
+            <!-- <img src="bladee.png" alt=""> -->
+            <div>
+                <div>1</div>
+                <!-- <div>The Fool</div> -->
+                <div>2</div>
+                <div>3</div>
+            </div>
+            <p>Bladee is a prolific artist, and his music is very much an acquired taste. Start with 333, which is his most accessible album, and then move on to E, which is darker and more experimental. The Fool is a bit of a departure from his usual style, but it's still worth a listen.</p>
+        </div>
+
+            
+        <div class="information fever-ray">
+            <h1>Fever Ray / The Knife</h1>
+            <!-- <img src="fever-ray.png" alt=""> -->
+            <div>
+            <div>1. <a href="https://open.spotify.com/album/58VeC1LO2OjyHXsjtI306m?si=86cx2qouQga4_KzkMevyow"><i>Deep Cuts</i></a></div>
+            <div>2.</div>
+            <div>3.</div>
+            </div>
+            <p>This is amazing. Start out with The Knife, perhaps because it's chronologically first, but also because it's very accessible and a fun listen. </p>
+        </div>
+
+        <div class="information toxe">
+            <h1>Toxe</h1>
+            <!-- <img src="toxe.png" alt=""> -->
+            <div>
+                <div>1.</div>
+                <div>2.</div>
+                <div>3.</div>
+            </div>
+            <p></p>
+        </div>
+
+        <div class="information hakan-hellstrom">
+            <h1>Håkan Hellström</h1>
+            <!-- <img src="hakan-hellstrom.png" alt=""> -->
+            <div>
+                <div>1.</div>
+                <div>2.</div>
+                <div>3.</div>
+            </div>
+            <p>I think Håkan Hellström may be Sweden's Bruce Springsteen! He is known for his poor singing voice, and has a reputation of stealing lyrics from Bob Dylan (among others). His old music is very good, and I listen to it when I do work-stuff late.</p>
+        </div>
+        <div class="information abba">
+            <h1>ABBA</h1>
+            <img src="abba.png" alt="">
+            <div>
+                <div>1.</div>
+                <div>2.</div>
+                <div>3.</div>
+            </div>
+            <p></p>
+        </div>
+
+    <div class="split">
+    
+    <div class="left">
+        
+        <img src="sverige-1.png" alt="">
+        <h1>Velkommen <br> til <br> svensk <br>musikk</h1>
+        <div>A special, definitive, collection of Swedish, or Swedish-ish music, artists and genres. Made in 2025.</div>
+    </div>
+    <div class="right">
+        <div class="title">
+            <div style="font-size: 3rem;">
+            &#119070;
+            </div>
+            <div>
+                <!-- <h1>Top Tier</h1> -->
+                    <!-- <h2 style="cursor:pointer;" onclick="
+                        const info = document.querySelector('.bladee');
+                        info.style.opacity = info.style.opacity === '1' ? '0' : '1';
+                    ">Bladee</h2>
+                    <h2 style="cursor:pointer;" onclick="
+                        const info = document.querySelector('.fever-ray');
+                        info.style.opacity = info.style.opacity === '1' ? '0' : '1';
+                    ">Fever Ray</h2>
+                    <h2 style="cursor:pointer;" onclick="
+                        const info = document.querySelector('.toxe');
+                        info.style.opacity = info.style.opacity === '1' ? '0' : '1';
+                    ">Toxe</h2>
+                    <h2 style="cursor:pointer;" onclick="
+                        const info = document.querySelector('.hakan-hellstrom');
+                        info.style.opacity = info.style.opacity === '1' ? '0' : '1';
+                    ">Håkan Hellström</h2> -->
+                    <script>
+                        function showInfo(className) {
+                            document.querySelectorAll('.information').forEach(div => div.style.opacity = '0');
+                            document.querySelector('.' + className).style.opacity = '1';
+                        }
+                    </script>
+                    <h2 style="cursor:pointer;" onclick="showInfo('bladee')">Bladee</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('fever-ray')">Fever Ray</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('toxe')">Toxe</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('hakan-hellstrom')">Håkan Hellström</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('abba')">ABBA</h2>
+            </div>
+            
+            <div style="font-size: 3rem;">
+            &#119070;
+            </div>
+
+        </div>
+    </div>
+    </div>
+</body>
+</html>
