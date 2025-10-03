@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sverige</title>
+    <link rel="icon" type="image/x-icon" href="sverige-1.png">
     <style>
 
         body{
             margin: 0;
             padding: 0;
             overflow: hidden;
-            font-family: ;
         }
+
         h1{
             text-transform: uppercase;
             font-size: 2rem;
@@ -21,12 +22,14 @@
         }
         h2{
             /* text-transform: uppercase; */
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 400;
         }
 
         h2:hover {
             cursor: pointer;
+            transform: translateY(-1px);
+            transition: all 0.25s ease;
             text-decoration: underline;
         }
 
@@ -37,6 +40,13 @@
         }
         a {
             color: inherit;
+        }
+
+        a:hover {
+            cursor: pointer;
+            transform: translateY(-1px);
+            transition: all 0.25s ease;
+            text-decoration: underline;
         }
         .split{
             display: flex;
@@ -78,14 +88,14 @@
         }
         .left img{
             width: 60%;
-            max-width: 40vmax;
+            max-width: 40vmin;
             height: auto;
         }
         .right{
             background-color: #ffe400;
             color: #0060ff;
             display: flex;
-            padding: 2vw 0vw 2vw 0vw;
+            /* padding: 2vw 0vw 2vw 0vw; */
             align-items: center;
             flex-direction: column;
             text-align: center;
@@ -145,6 +155,18 @@
             position: absolute;
             bottom: 4vh;
         }
+
+        .close{
+            position: relative;
+            top: 0;
+            color: #ffe400;
+            text-align: center;
+        }
+
+        .skane{
+            background-color: rgb(228, 54, 5);
+            color: #ffe400;
+        }
     </style>
 </head>
 <body>
@@ -185,7 +207,7 @@
         </div>
 
         <div class="information hakan-hellstrom">
-            <h1>Håkan Hellström</h1>
+            <h1>Håkan Hellström</h1><h2 class="close" style="cursor:pointer;" onclick="document.querySelectorAll('.information').forEach(div => div.style.opacity = '0')">X</h2>
             <!-- <img src="hakan-hellstrom.png" alt=""> -->
             <div>
                 <div>1.</div>
@@ -204,6 +226,16 @@
             </div>
             <p></p>
         </div>
+        <div class="information bob-hund skane">
+            <h1>Bob Hund</h1>
+            <!-- <img src="bob-hund.png" alt=""> -->
+            <div>
+                <div>1.</div>
+                <div>2.</div>
+                <div>3.</div>
+            </div>
+            <p>This is music from Skåne! The singer has a great accent, and the lyrics are nice. This year they (supposedly) did their last concert.</p>
+        </div>
 
     <div class="split">
     
@@ -214,6 +246,8 @@
         <div>Essential listening: Swedish music and musicians as of 2025.</div>
     </div>
     <div class="right">
+            
+
         <div class="title">
             <div style="font-size: 3rem;">
             &#119070;
@@ -242,21 +276,33 @@
                             document.querySelector('.' + className).style.opacity = '1';
                         }
                     </script>
+
                     <h2 style="cursor:pointer;" onclick="showInfo('bladee')">Bladee</h2>
                     <h2 style="cursor:pointer;" onclick="showInfo('fever-ray')">Fever Ray</h2>
                     <h2 style="cursor:pointer;" onclick="showInfo('toxe')">Toxe</h2>
                     <h2 style="cursor:pointer;" onclick="showInfo('hakan-hellstrom')">Håkan Hellström</h2>
                     <h2 style="cursor:pointer;" onclick="showInfo('abba')">ABBA</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('eurohead')">Eurohead</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('fricky')">Fricky</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('markus-krunegard')">Markus Krunegård</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('namasenda')">Namasenda</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('yung-lean')">Yung Lean</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('ecco2k')">Ecco2k</h2>
+                    <h2 style="cursor:pointer;" onclick="showInfo('bob-hund')">Bob Hund</h2>
+                </div>
+                
+                <div style="font-size: 3rem; transform: rotate(180deg);">
+                    &#119070;
+                </div>
+                
+                <div style="font-size: 1.5rem; margin-top: 2vh;">
+                    &#9733;
+                </div>
+                
             </div>
-            
-            <div style="font-size: 3rem; transform: rotate(180deg);">
-            &#119070;
-            </div>
-
         </div>
     </div>
-    </div>
-
+    
     
 </body>
 </html>
