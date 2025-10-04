@@ -17,7 +17,7 @@
             display: flex;
             flex-direction: column;
             scroll-snap-type: y mandatory;
-            /* scroll-behavior: smooth; */
+            scroll-behavior: smooth;
             overflow-y: scroll;
             overflow-x: hidden;
             height: 100dvh;
@@ -49,7 +49,7 @@
         .content {
             scroll-snap-align: center;
             scroll-snap-type: mandatory;
-            /* scroll-behavior: smooth; */
+            scroll-behavior: smooth;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -361,9 +361,21 @@
     
         
        <div class="content">
-        <video src="landing-1.mp4" class="xl" autoplay loop muted playsinline></video>
+        <img style="z-index: -10; transform: scale(1.25);" src="3.png" alt="">
+        <!-- <video src="landing-1.mp4" class="xl" autoplay loop muted playsinline></video> -->
        </div>
-   
+   <div class="plus">
+       <div class="content">
+           <img src="luft.jpg" alt="">
+       </div>
+       <div class="content">
+           <img src="luft-2.jpg" alt="">
+       </div>
+       <div class="content">
+           <img src="luft-3.jpg" alt="">
+       </div>
+       
+   </div>
         <div class="content">
             <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
             <div class="info">
@@ -667,7 +679,7 @@
                     <p>Fellow designer <a href="https://harald.peter.stream">Peter Ström</a> has intitiated an award(!) as part of a resarch project on preservation and archival of digital design. In this project I contributed with research on swedish web design projects and was part of the jury selecting nominees and recipients:</p>
                     <p style="margin-left: 2em;">Svensk Webbkonst 2021-2024 <br> <a href="https://w3.svenskwebbkonst.se/">w3.svenskwebbkonst.se</a> </p>
 
-                    <p>Occationally, I do freelance work at a smaller scale, designing posters and simple printed matter. Don't hesitate to contact:</p>
+                    <p>Occasionally, I do freelance work at a smaller scale, designing posters and simple printed matter. E-mail me!</p>
                     <p style="margin-left: 2em;"> <a href="mailto:adaari@icloud.com">E-mail</a> <br> <a href="https://www.instagram.com/adamglupsk">Instagram</a> <br> &#8203;</p>
 
             
@@ -681,20 +693,7 @@
         </div> -->
 
         <div class="content">
-            <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
-            <div class="info">
-                <div class="block">
-                    
-                        <div>
-                            <h1>Tyda</h1>
-                    Graphic identity, poster and animation 
-                </div>
-                <div>This project was initated in a course led by artist Oscar Guermouche and designer Sophia Wood. The project and its process was created through research on the concept of 'Folkhemmet'. On the subject of Swedish identity, there are countless parallell interpretations and connotations. <i>Tyda</i> aims to visualise what it is like to understand Swedish identity when it is being redefined, again and again. The project was exhibited at the show <i>Ett hem</i> in Vandalorum art museum. The poster was assembled with laserjet print on post-it notes.</div>
-                <div>Idea and production in collaboration with Maja Ringsäter and Måns Horning</div>
-                </div>
-                
-                    
-                </div>
+        <img style="z-index: -10; transform: scale(1.25);" src="3.png" alt="">
         </div>
         <div class="footer right">        
             Journal: <a href="https://www.instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
@@ -738,7 +737,7 @@
             if (container.scrollHeight - container.scrollTop <= container.clientHeight) {
                 container.scrollTo({
                     top: 0,
-                    behavior: 'auto'
+                    behavior: 'instant'
                 });
             }
         });
@@ -784,4 +783,77 @@
             });
         }
     </script> -->
+     
+    <script>
+    document.addEventListener('keydown', function(e) {
+        const container = document.querySelector('.container');
+        const plusDivs = Array.from(container.querySelectorAll('.plus'));
+        const contentDivs = Array.from(container.querySelectorAll('.content:not(.plus .content)'));
+        const allSections = [];
+        // Build a flat list of all top-level content and plus divs in order
+        container.childNodes.forEach(node => {
+            if (node.nodeType === 1 && (node.classList.contains('content') || node.classList.contains('plus'))) {
+                allSections.push(node);
+            }
+        });
+
+        // Find current vertical section (content or plus)
+        let currentSectionIdx = 0;
+        let minDist = Infinity;
+        const containerRect = container.getBoundingClientRect();
+        allSections.forEach((section, idx) => {
+            const rect = section.getBoundingClientRect();
+            const dist = Math.abs(rect.top - containerRect.top);
+            if (dist < minDist) {
+                minDist = dist;
+                currentSectionIdx = idx;
+            }
+        });
+
+        // If inside a plus div, find current horizontal content
+        let currentPlusIdx = -1;
+        let currentPlusContentIdx = 0;
+        if (allSections[currentSectionIdx].classList.contains('plus')) {
+            currentPlusIdx = currentSectionIdx;
+            const plus = allSections[currentPlusIdx];
+            const plusContents = Array.from(plus.querySelectorAll('.content'));
+            let minHDist = Infinity;
+            plusContents.forEach((c, idx) => {
+                const rect = c.getBoundingClientRect();
+                const dist = Math.abs(rect.left - containerRect.left);
+                if (dist < minHDist) {
+                    minHDist = dist;
+                    currentPlusContentIdx = idx;
+                }
+            });
+        }
+
+        // Arrow key logic
+        if (e.key === 'ArrowDown') {
+            // Next vertical section
+            if (currentSectionIdx < allSections.length - 1) {
+                allSections[currentSectionIdx + 1].scrollIntoView({behavior: 'smooth', block: 'center'});
+            }
+        } else if (e.key === 'ArrowUp') {
+            // Previous vertical section
+            if (currentSectionIdx > 0) {
+                allSections[currentSectionIdx - 1].scrollIntoView({behavior: 'smooth', block: 'center'});
+            }
+        } else if (e.key === 'ArrowRight' && currentPlusIdx !== -1) {
+            // Next horizontal content in plus
+            const plus = allSections[currentPlusIdx];
+            const plusContents = Array.from(plus.querySelectorAll('.content'));
+            if (currentPlusContentIdx < plusContents.length - 1) {
+                plusContents[currentPlusContentIdx + 1].scrollIntoView({behavior: 'smooth', inline: 'center'});
+            }
+        } else if (e.key === 'ArrowLeft' && currentPlusIdx !== -1) {
+            // Previous horizontal content in plus
+            const plus = allSections[currentPlusIdx];
+            const plusContents = Array.from(plus.querySelectorAll('.content'));
+            if (currentPlusContentIdx > 0) {
+                plusContents[currentPlusContentIdx - 1].scrollIntoView({behavior: 'smooth', inline: 'center'});
+            }
+        }
+    });
+    </script>
 </body>
