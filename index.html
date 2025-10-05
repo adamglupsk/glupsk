@@ -17,6 +17,9 @@
     }
     body, .text, .title, .second, .media, h1, p, a {
         font-family: 'Director', Arial, Helvetica, sans-serif;
+        font-size: 0.875rem;
+        line-height: 1.6;
+
     }
         :root{
             --column-height: 1vh;
@@ -25,11 +28,9 @@
             margin: auto;
             max-width: 1500px;
             padding: var(--column-height);
-            overflow-x: hidden;
+            overflow: hidden;
             box-sizing: border-box;
             letter-spacing: 0.035em;
-            /* color: rgb(216, 216, 216); */
-            /* -webkit-text-stroke: 7.5px rgb(238, 238, 238); */
         }
         div:has(.text):hover{
             color:black;
@@ -53,6 +54,7 @@
         }
         .second{
             flex: 3;
+            margin-left: calc(var(--column-height) * 0.5);
 
         }
 
@@ -93,15 +95,14 @@
         }
 
         h1{
-            font-size: 2.5rem;
+            font-size: inherit;
             margin-top: 0;
             padding: 0;
-            line-height: 1;
+            line-height: inherit;
         }
         p{
             padding: 0;
             margin: 0;
-            line-height: 1.5;
         }
         a{
             color: inherit;
@@ -132,13 +133,25 @@
             scroll-snap-align: center;
         }
 
+        .head{
+            align-items: center;
+            justify-items: center;
+            text-align: center;
+            font-size: 2rem;
+            /* background-color: yellow; */
+        }
+
+        .head > div{
+            flex: 5;
+        }
+
           @media (max-width: 900px){
             body{
                 padding: 0;
                 max-width: 95vw;
                 overflow-x: hidden;
             }
-            body > .block{
+            body > div > .block{
                 flex-direction: column;
                 max-width: 100dvw;
             }
@@ -173,14 +186,13 @@
     </style>
 </head>
 <body>
-
-<!-- <div style="text-align: center;">
-    <h1>Selection of works, 2023-2025 <br>
-    Application for Acne Studios 
-    </h1>
-</div> -->
 <div class="scroll-container">
-    
+    <!-- <div class="block head">
+        <div>Adam Arinbjarnarson <br>Selected projects, 2023-2025</div>
+    </div> -->
+    <div class="alt">
+        <img src="3.png" alt="">
+    </div>
 <div class="block cv">
     <div class="text">
         <div id="aa">Adam&nbsp;Arinbjarnarson</div>
@@ -346,41 +358,77 @@
     </div>
 </div>
 </div>
+<script>
+    document.addEventListener('keydown', function(e) {
+        const container = document.querySelector('.container');
+        const plusDivs = Array.from(container.querySelectorAll('.plus'));
+        const contentDivs = Array.from(container.querySelectorAll('.content:not(.plus .content)'));
+        const allSections = [];
+        // Build a flat list of all top-level content and plus divs in order
+        container.childNodes.forEach(node => {
+            if (node.nodeType === 1 && (node.classList.contains('content') || node.classList.contains('plus'))) {
+                allSections.push(node);
+            }
+        });
 
-        <!-- <script>
-        const fonts = [
-            'Arial, sans-serif',
-            'Helvetica, sans-serif',
-            'Helvetica Neue, sans-serif',
+        // Find current vertical section (content or plus)
+        let currentSectionIdx = 0;
+        let minDist = Infinity;
+        const containerRect = container.getBoundingClientRect();
+        allSections.forEach((section, idx) => {
+            const rect = section.getBoundingClientRect();
+            const dist = Math.abs(rect.top - containerRect.top);
+            if (dist < minDist) {
+                minDist = dist;
+                currentSectionIdx = idx;
+            }
+        });
 
-            ];
-
-        function randomFont() {
-            return fonts[Math.floor(Math.random() * fonts.length)];
-        }
-
-        function wrapCharsWithFonts(element) {
-            if (!element) return;
-            element.childNodes.forEach(node => {
-                if (node.nodeType === Node.TEXT_NODE) {
-                    const chars = node.textContent.split('');
-                    const wrapped = chars.map(char => {
-                        if (char.trim() === '') return char;
-                        return `<span style="font-family:${randomFont()}">${char}</span>`;
-                    }).join('');
-                    const span = document.createElement('span');
-                    span.innerHTML = wrapped;
-                    node.parentNode.replaceChild(span, node);
-                } else if (node.nodeType === Node.ELEMENT_NODE) {
-                    wrapCharsWithFonts(node);
+        // If inside a plus div, find current horizontal content
+        let currentPlusIdx = -1;
+        let currentPlusContentIdx = 0;
+        if (allSections[currentSectionIdx].classList.contains('plus')) {
+            currentPlusIdx = currentSectionIdx;
+            const plus = allSections[currentPlusIdx];
+            const plusContents = Array.from(plus.querySelectorAll('.content'));
+            let minHDist = Infinity;
+            plusContents.forEach((c, idx) => {
+                const rect = c.getBoundingClientRect();
+                const dist = Math.abs(rect.left - containerRect.left);
+                if (dist < minHDist) {
+                    minHDist = dist;
+                    currentPlusContentIdx = idx;
                 }
             });
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.text').forEach(wrapCharsWithFonts);
-        });
-        </script> -->
-
+        // Arrow key logic
+        if (e.key === 'ArrowDown') {
+            // Next vertical section
+            if (currentSectionIdx < allSections.length - 1) {
+                allSections[currentSectionIdx + 1].scrollIntoView({behavior: 'smooth', block: 'center'});
+            }
+        } else if (e.key === 'ArrowUp') {
+            // Previous vertical section
+            if (currentSectionIdx > 0) {
+                allSections[currentSectionIdx - 1].scrollIntoView({behavior: 'smooth', block: 'center'});
+            }
+        } else if (e.key === 'ArrowRight' && currentPlusIdx !== -1) {
+            // Next horizontal content in plus
+            const plus = allSections[currentPlusIdx];
+            const plusContents = Array.from(plus.querySelectorAll('.content'));
+            if (currentPlusContentIdx < plusContents.length - 1) {
+                plusContents[currentPlusContentIdx + 1].scrollIntoView({behavior: 'smooth', inline: 'center'});
+            }
+        } else if (e.key === 'ArrowLeft' && currentPlusIdx !== -1) {
+            // Previous horizontal content in plus
+            const plus = allSections[currentPlusIdx];
+            const plusContents = Array.from(plus.querySelectorAll('.content'));
+            if (currentPlusContentIdx > 0) {
+                plusContents[currentPlusContentIdx - 1].scrollIntoView({behavior: 'smooth', inline: 'center'});
+            }
+        }
+    });
+    </script>
 </body>
 </html>
