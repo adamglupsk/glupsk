@@ -6,24 +6,27 @@
     <title>column index</title>
 
     <style>
-    ::-webkit-scrollbar {
-    display: none;
-    }
-    @font-face {
-        font-family: 'Director';
-        src: url('Director-Regular.woff2') format('woff2');
-        font-weight: normal;
-        font-style: normal;
-    }
-    body, .text, .title, .second, .media, h1, p, a {
-        font-family: 'Director', Arial, Helvetica, sans-serif;
-        font-size: 0.875rem;
-        line-height: 1.6;
-
-    }
         :root{
             --column-height: 1vh;
         }
+
+        ::-webkit-scrollbar {
+        display: none;
+        }
+
+        @font-face {
+            font-family: 'Director';
+            src: url('Director-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body, .text, .title, .second, .media, h1, p, a {
+            font-family: 'Director', Arial, Helvetica, sans-serif;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
         body{
             margin: auto;
             max-width: 1500px;
@@ -159,11 +162,11 @@
                 -webkit-hyphens: auto;
                 -moz-hyphens: auto;
                 hyphens: auto;
-                margin-right: 10vw;
+                margin-right: 0vw;
                 margin-bottom: calc(var(--column-height) * 2);
                 overflow: hidden;
             }
-            .media{
+            .media, .second{
                 margin-left: 0;
             }
             .alt > *{
