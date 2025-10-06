@@ -7,7 +7,7 @@
 
     <style>
         :root{
-            --column-height: 1vh;
+            --column-height: 1.5vw;
         }
 
         ::-webkit-scrollbar {
@@ -22,9 +22,13 @@
         }
 
         body, .text, .title, .second, .media, h1, p, a {
-            font-family: 'Director', Arial, Helvetica, sans-serif;
-            font-size: 0.875rem;
-            line-height: 1.6;
+            font-family: 'Times', Arial, Helvetica, sans-serif;
+            /* font-family: 'Director', Arial, Helvetica, sans-serif; */
+            font-size: 1rem;
+            /* font-size: 0.8rem; */
+            line-height: 1.4;
+            -webkit-text-stroke: 0.5px black;
+
         }
 
         body{
@@ -37,7 +41,7 @@
         }
         div:has(.text):hover{
             color:black;
-            -webkit-text-stroke: 0.25px black;
+            -webkit-text-stroke: 0.5px black;
         }
         body > div > .block{
             box-sizing: border-box;
@@ -87,29 +91,40 @@
         .alt > *{
             display: flex;
             flex-direction: column;
-            gap: var(--column-height);
+            gap: calc(var(--column-height) * 0.25);
             max-width: 60vh;
             height: auto;
             object-fit: contain;
         }
-        .alt > *:hover{
-            -webkit-text-stroke: 0px black;
-            color: black;
-        }
 
+        .cv{
+            min-height: 100vh;
+        }
+  
         h1{
-            font-size: inherit;
+            /* font-size: inherit; */
+            /* text-transform: uppercase; */
+            font-weight: bold;
+            font-size: 3rem;
+            line-height: 1;
+            text-align: center;
             margin-top: 0;
+            margin-bottom: calc(var(--column-height) * 1);
+            /* border: 1px solid red; */
+
+            /* font-family: 'Times New Roman', Times, serif; */
             padding: 0;
-            line-height: inherit;
+            /* line-height: inherit; */
         }
         p{
+            /* border: 1px solid red; */
             padding: 0;
             margin: 0;
         }
         a{
             color: inherit;
-            /* text-decoration: none;       */
+            text-underline-offset: 2px;
+            text-decoration-thickness: 3px;
           }
         
           .portrait{
@@ -175,16 +190,6 @@
             .plus > *{
                 margin: 10vh 0 10vh 0;
             }
-            *{
-                -webkit-text-stroke: 0px black;
-                color: black;
-
-            }
-            div:has(> #aa){
-                -webkit-text-stroke: 0px black;
-                color: black;
-                min-height: 50vh;
-            }
           }
     </style>
 </head>
@@ -193,59 +198,16 @@
     <!-- <div class="block head">
         <div>Adam Arinbjarnarson <br>Selected projects, 2023-2025</div>
     </div> -->
-    <div class="alt">
-        <img src="3.png" alt="">
-    </div>
-<div class="block cv">
-    <div class="text">
-        <div id="aa">Adam&nbsp;Arinbjarnarson</div>
-        <script>
-            const aa = document.getElementById('aa');
-            const text = aa.textContent;
-            aa.innerHTML = '';
-            text.split('').forEach((char, i) => {
-                const span = document.createElement('span');
-                span.textContent = char;
-                span.style.display = 'inline-block';
-                span.style.position = 'relative';
-                aa.appendChild(span);
-            });
-
-            function randomizeLetters() {
-                aa.childNodes.forEach(span => {
-                    const x = Math.random() * 200;
-                    const y = Math.random() * 300;
-                    span.style.transform = `translate(${x}px, ${y}px)`;
-                    span.style.transition = 'transform 0.5s step';
-                });
-            }
-
-            setInterval(randomizeLetters, 2000);
-        </script>
+    <div class="alt" 
+    style="min-height: 75vh;" 
+    >
+        <div style="text-align: center;">
+            <h1 style="hyphens: auto; ">www.arinbjarnarson.se</h1>
+            <p><a href="https://www.instagram.com/babyglupsk">@babyglupsk</a></p>
+            <p><a href="#about">About</a></p>
+        </div>
     </div>
 
-    <div class="text second"><p> I (Adam Arinbjarnarson) design graphic identity through print, websites (like this one) and animation. I also experiment with programming, 3d-animation and video editing. Tools I use include:</p>
-                    <p style="margin-left: 2em;">
-                        InDesign, Photoshop, Illustrator<br>
-                        After Effects, Premiere Pro<br>
-                        Figma (design and prototyping)<br>
-                        Cavalry, Blender<br>
-                        HTML, CSS, JavaScript, ChatGPT (for programming)<br>
-                        Handlettering, pencil sketching and illustration
-                    </p>
-                    <p>Currently, I am working at an international architecture and design studio based in Oslo. Here, I design visual identities as well as digital or spatial implementations of graphic design, collaborating across diciplines.</p>
-                    <p style="margin-left: 2em;"><a href="https://snohetta.com">Snøhetta</a> Oslo, NO <br>2025-</p>
-
-                    <p>I recently graduated from a small scale (sometimes experimental) design school in Stockholm: </p>
-                    <p style="margin-left: 2em;">Visual Communication, BFA<br>Beckmans College of Design <br>2022-2025</p>
-                    <p>During my bachelor studies, I did an internship at a Stockholm based design studio. My contributions were in web design, 2d+3d animation and graphic design, collaborating with UX designers, front and back-end developers or printers to realise design projects:</p>
-                    <p style="margin-left: 2em;"><a href="https://researchanddevelopment.se">Research and Development</a> Stockholm, SE<br>2024 </p>
-                    <p>Fellow designer Peter Ström has intitiated an award(!) as part of a resarch project on preservation and archival of digital design. In this project I contributed with research on swedish web design projects and was part of the jury selecting nominees and recipients:</p>
-                    <p style="margin-left: 2em;">Svensk Webbkonst 2021-2024 <br> <a href="https://w3.svenskwebbkonst.se/">w3.svenskwebbkonst.se</a> </p>
-
-                    <p>Occasionally, I do freelance work at a smaller scale, designing posters and simple printed matter. Don't hesitate to contact:</p>
-                    <p style="margin-left: 2em;"> <a href="mailto:adaari@icloud.com">adaari@icloud.com</a> <br> <a href="https://www.instagram.com/adamglupsk">@adamglupsk</a> &#8203;</p> <br></div>
-</div>
 
 <div class="block">
     <div class="text">
@@ -270,8 +232,8 @@
 <div class="block">
     <div class="text">
         <h1>Tyda</h1>
-        <p>Graphic identity, hand assembled poster and cell animation. The project and its process was created through research on the concept of 'Folkhemmet'. On the topic of Swedish identity, there are countless parallell interpretations and connotations. <i>Tyda</i> aims to visualise this process, being redefined, again and again by different actors and authors. The project was exhibited at the show <i>Ett hem</i> in Vandalorum art museum. The poster was assembled with laserjet print on post-it notes, overlapping and creating trails and layers of meaning.</p>
-        <p>Designed in collaboration with Maja Ringsäter and Måns Horning</p>
+        <p>Hand assembled poster and cell animation. The project and its process was created through research on the concept of 'Folkhemmet'. On the topic of Swedish identity, there are countless parallell interpretations and connotations. <i>Tyda</i> aims to visualise this process, being redefined, again and again by different actors and authors. The project was exhibited at the show <i>Ett hem</i> in Vandalorum art museum. The poster was assembled with laserjet print on post-it notes, overlapping and creating trails and layers of meaning. Designed in collaboration with Maja Ringsäter and Måns Horning</p>
+        
     </div>
     <div class="media">
         <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
@@ -289,8 +251,7 @@
 <div class="block">
     <div class="text">
         <h1>There is no such thing as magic</h1>
-        <p>Visual identity + animation, 2023</p>
-        <p>There is no such thing as magic</i> is a collaborative project about AI and its societal and environmental impact. The visual identity was designed to reflect the work of scientific researchers at the <a href="https://beijer.kva.se/">Beijer Institute</a> and encourage reflection on the realities of generative AI, for example its environmental and social impact. The project was exhibited at <a href="https://www.svenskttenn.se/">Svenskt Tenn</a> in Stockholm, 2024. Designed in collaboration with Maja Ringsäter and Solvej Jansson</p>
+        <p>There is no such thing as magic</i> is a collaborative project about AI and its societal and environmental impact. The visual identity was designed to reflect and communicate the work of scientific researchers at the <a href="https://beijer.kva.se/">Beijer Institute</a> and encourage reflection on the realities of generative AI, for example its environmental and social impact. The project was exhibited at <a href="https://www.svenskttenn.se/">Svenskt Tenn</a> in Stockholm, 2024. Designed and produced in collaboration with Maja Ringsäter and Solvej Jansson.</p>
     </div>
     <div class="media">
         <video src="tinstam.mp4" autoplay loop muted playsinline></video>
@@ -306,8 +267,7 @@
 <div class="block">
     <div class="text">
         <h1>Bookland</h1>
-        <p>Mini identity, illustration, web page and concept development of a pop-up book shop, taking place at Beckmans' yearly graduation exhibition.</p>
-        <p>Produced and realised in collaboration with Maja Ringsäter, Tiffany Louise Hoff and Visual communication class of 2025 at Beckmans.</p>
+        <p>Mini identity, illustration, web page and concept development of a pop-up book shop, taking place at Beckmans' yearly graduation exhibition. 'Bookland' is a play on the history of the international ISBN barcode system. Read about it on <a href="https://en.wikipedia.org/wiki/Bookland">Wikipedia</a>, it's very cute. Produced and realised in collaboration with Maja Ringsäter, Tiffany Louise Hoff and Visual communication class of 2025 at Beckmans.</p>
     </div>
     <div class="media">
         <video autoplay playsinline loop muted src="bookland-3.mp4"></video>
@@ -356,7 +316,59 @@
         Excerpt from magazine, designed with Solvej Jansson and Elvin Odelholm.
     </div>
 </div>
+<div class="block cv" id="about">
+    <div class="text">
+        <div id="aa">Adam&nbsp;Arinbjarnarson</div>
+        <script>
+            const aa = document.getElementById('aa');
+            const text = aa.textContent;
+            aa.innerHTML = '';
+            text.split('').forEach((char, i) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.style.display = 'inline-block';
+                span.style.position = 'relative';
+                aa.appendChild(span);
+            });
+
+            function randomizeLetters() {
+                aa.childNodes.forEach(span => {
+                    const x = Math.random() * 200;
+                    const y = Math.random() * 300;
+                    span.style.transform = `translate(${x}px, ${y}px)`;
+                    span.style.transition = 'transform 0.5s step';
+                });
+            }
+
+            setInterval(randomizeLetters, 2000);
+        </script>
+    </div>
+
+    <div class="text second"><p> I (Adam Arinbjarnarson) design graphic identity through print, websites (like this one) and animation. I also experiment with programming, 3d-animation and video editing. Tools I use include:</p>
+                    <p style="margin-left: 2em;">
+                        InDesign, Photoshop, Illustrator<br>
+                        After Effects, Premiere Pro<br>
+                        Figma (design and prototyping)<br>
+                        Cavalry, Blender<br>
+                        HTML, CSS, JavaScript, ChatGPT (for programming)<br>
+                        Handlettering, pencil sketching and illustration
+                    </p>
+                    <p>Currently, I am working at an international architecture and design studio based in Oslo. Here, I design visual identities as well as digital or spatial implementations of graphic design, collaborating across diciplines.</p>
+                    <p style="margin-left: 2em;"><a href="https://snohetta.com">Snøhetta</a> <br>
+                         Oslo, NO <br>2025-</p>
+
+                    <p>I recently graduated from a small scale (sometimes experimental) design school in Stockholm: </p>
+                    <p style="margin-left: 2em;">Visual Communication, BFA<br>Beckmans College of Design <br>2022-2025</p>
+                    <p>During my bachelor studies, I did an internship at a Stockholm based design studio. My contributions were in web design, 2d+3d animation and graphic design, collaborating with UX designers, front and back-end developers or printers to realise design projects:</p>
+                    <p style="margin-left: 2em;"><a href="https://researchanddevelopment.se">Research and Development</a> <br> Stockholm, SE<br>2024 </p>
+                    <p>Fellow designer Peter Ström has intitiated an award(!) as part of a resarch project on preservation and archival of digital design. In this project I contributed with research on swedish web design projects and was part of the jury selecting nominees and recipients:</p>
+                    <p style="margin-left: 2em;">Svensk Webbkonst 2021-2024 <br> <a href="https://w3.svenskwebbkonst.se/">w3.svenskwebbkonst.se</a> </p>
+
+                    <p>Occasionally, I do freelance work at a smaller scale, designing posters and simple printed matter. Please contact:</p>
+                    <p style="margin-left: 2em;"> <a href="mailto:adaari@icloud.com">adaari@icloud.com</a> <br> <a href="https://www.instagram.com/adamglupsk">@adamglupsk</a> &#8203;</p> <br></div>
 </div>
+</div>
+
 </div>
 <!-- <script>
     document.addEventListener('keydown', function(e) {
