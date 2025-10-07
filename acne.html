@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adam Arinbjarnarson</title>
 
-    <style>
+     <style>
         :root{
             --column-height: 1.5vw;
         }
@@ -22,12 +22,14 @@
         }
 
         body, .text, .title, .second, .media, h1, p, a {
-            font-family: 'Times', Arial, Helvetica, sans-serif;
-            /* font-family: 'Director', Arial, Helvetica, sans-serif; */
-            font-size: 1rem;
-            /* font-size: 0.8rem; */
-            line-height: 1.4;
-            -webkit-text-stroke: 0.5px black;
+            /* font-family: 'Times', Arial, Helvetica, sans-serif; */
+            font-family: 'Director', Arial, Helvetica, sans-serif;
+            /* font-size: 1rem; */
+            -webkit-text-stroke: 0.25px black;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            letter-spacing: 0.035em;
+
 
         }
 
@@ -37,11 +39,10 @@
             /* padding: var(--column-height); */
             overflow: hidden;
             box-sizing: border-box;
-            letter-spacing: 0.035em;
         }
         div:has(.text):hover{
             color:black;
-            -webkit-text-stroke: 0.5px black;
+            /* -webkit-text-stroke: 0.5px black; */
         }
         body > div > .block{
             box-sizing: border-box;
@@ -57,8 +58,15 @@
             flex: 2;
             text-align: left;
             margin-right: calc(var(--column-height) * 2);
-
+            
         }
+
+        .text img{
+                max-width: 100%;
+                margin: auto;
+                display: block;
+            }
+
         .second{
             flex: 3;
             margin-left: calc(var(--column-height) * 0.5);
@@ -104,9 +112,11 @@
         h1{
             /* font-size: inherit; */
             /* text-transform: uppercase; */
-            font-weight: bold;
-            font-size: 2.5rem;
-            line-height: 1;
+            font-weight: inherit;
+            max-width: 80%;
+            margin: auto;
+            /* font-size: 2.5rem; */
+            /* line-height: 1; */
             text-align: center;
             margin-top: 0;
             margin-bottom: calc(var(--column-height) * 1);
@@ -121,6 +131,22 @@
             padding: 0;
             margin: 0;
         }
+
+        /* .text p{
+            margin-bottom: calc(var(--column-height) * 2);
+        } */
+        .dent{
+            margin-left: calc(var(--column-height) * 2);
+            margin-bottom: calc(var(--column-height) * 1);
+        }
+        .text p + p{
+            text-indent: calc(var(--column-height) * 2);
+        }
+
+        .clear > p{
+            text-indent: revert !important;
+        }
+
         a{
             color: inherit;
             text-underline-offset: 2px;
@@ -163,9 +189,6 @@
             flex: 5;
         }
 
-        .wide > *{
-            max-width: 70vw;
-        }
           @media (max-width: 900px){
             body{
                 padding: 0;
@@ -184,6 +207,8 @@
                 margin-bottom: calc(var(--column-height) * 2);
                 overflow: hidden;
             }
+
+            
             .media, .second{
                 margin-left: 0;
             }
@@ -230,8 +255,8 @@
             <p>&nbsp;</p>
             <p>&nbsp;</p>
             <p><a href="https://www.instagram.com/babyglupsk">@babyglupsk</a></p>
-            <p><a href="archive.html">Archive</a></p>
-            <p><a href="4927163.pdf">CV</a></p>
+            <p><a href="archive.html">/archive.html</a></p>
+            <p><a href="4927163.pdf">CV.pdf</a></p>
         </div>
     </div>
 
@@ -344,7 +369,8 @@
 <div class="block">
     <div class="text">
         <h1>Tyda</h1>
-        <p>Hand assembled poster and cell animation. The project and its process was created through research on the concept of 'Folkhemmet'. On the topic of Swedish identity, there are countless parallell interpretations and connotations. <i>Tyda</i> aims to visualise this process, being redefined, again and again by different actors and authors. The project was exhibited at the show <i>Ett hem</i> in Vandalorum art museum. The poster was assembled with laserjet print on post-it notes, overlapping and creating trails and layers of meaning. Designed in collaboration with Maja Ringsäter and Måns Horning</p>
+        <p>Hand assembled poster and cell animation. The project and its process was created through research on the concept of 'Folkhemmet'. On the topic of Swedish identity, there are countless parallell interpretations and connotations. <i>Tyda</i> aims to visualise this process, being redefined, again and again by different actors and authors. </p>
+        <p>The project was exhibited at the show <i>Ett hem</i> in Vandalorum art museum. The poster was assembled with laserjet print on post-it notes, overlapping and creating trails and layers of meaning. Designed in collaboration with Maja Ringsäter and Måns Horning</p>
         
     </div>
     <div class="media">
@@ -385,7 +411,7 @@
 </div>
 <div class="block" >
     <div class="text" style="display: flex; justify-content: flex-end; flex-direction: column; min-height: 80dvh;">
-        <p style="text-align: center;">Adam Arinbjarnarson, Updated October 6, 2025 </p>
+        <p style="text-align: center;">Adam Arinbjarnarson, Updated October 7, 2025 </p>
     </div>
 </div>
 <!-- <div class="alt">
