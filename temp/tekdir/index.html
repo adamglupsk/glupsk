@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>tekdir</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.0/lib/p5.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      /* background-color: white; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+        font-family: Arial, sans-serif;
+
+    }
+    .one{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgb(174, 174, 174);
+        mix-blend-mode: darken;
+        z-index: 10;
+    }
+    .two{
+        position: absolute;
+        z-index: -10;
+        width: 100%;
+        height: 100%;
+        background: rgb(136, 136, 136);
+        /* mix-blend-mode: darken; */
+    }
+    canvas {
+      z-index: 1;
+      position: relative;
+      /* mix-blend-mode: multiply; */
+    filter: invert();
+    }
+    .annotation{
+        position: absolute;
+        top: 2vh;
+        left: 2vh;
+        color: white;
+    }
+  </style>
+</head>
+<body>
+    <div class="annotation">Your annotation text here</div>
+    <div class="one">    </div>
+
+
+  <script>
+    // make the canvas cover the full viewport (100vw x 100vh)
+    let canvasSize = window.innerWidth; // keep for compatibility with existing code
+
+    // If p5's createCanvas exists, monkey-patch it so any call uses innerWidth/innerHeight
+    if (typeof createCanvas === 'function') {
+        const _origCreateCanvas = createCanvas;
+        window.createCanvas = function (w, h) {
+            return _origCreateCanvas.call(this, window.innerWidth, window.innerHeight);
+        };
+    }
+
+    // Keep canvas resized on window resize (uses p5's resizeCanvas if available)
+    window.addEventListener('resize', () => {
+        if (typeof resizeCanvas === 'function') {
+            try { resizeCanvas(window.innerWidth, window.innerHeight); } catch (e) {}
+        }
+    });
+    let gridSize = 300;
+    let targetGridSize = 150;
+    let cols = 6;
+    let rows = 6;
+    let circleCount = 6;
+
+    let rotationAngle = 0;
+    let targetRotation = 0;
+    let easing = 0.08;
+
+    let showText = false;
+    let showCircles = true;
+    let lettersLocked = false;
+
+    let positions = [];
+    let targetPositions = [];
+    let letterPositions = [];
+    let targetLetterPositions = [];
+
+    let word = "TEKDIR";
+    let font;
+
+    function setup() {
+      createCanvas(canvasSize, canvasSize);
+      textAlign(CENTER, CENTER);
+      textSize(18);
+      noStroke();
+      fill(255);
+      rectMode(CENTER);
+
+      generateCirclesAndLetters();
+    }
+
+    function draw() {
+    clear();
+
+      gridSize = lerp(gridSize, targetGridSize, easing);
+      rotationAngle = lerp(rotationAngle, targetRotation, easing);
+
+      for (let i = 0; i < circleCount; i++) {
+        positions[i].x = lerp(positions[i].x, targetPositions[i].x, easing);
+        positions[i].y = lerp(positions[i].y, targetPositions[i].y, easing);
+      }
+
+      for (let i = 0; i < word.length; i++) {
+        letterPositions[i].x = lerp(letterPositions[i].x, targetLetterPositions[i].x, easing);
+        letterPositions[i].y = lerp(letterPositions[i].y, targetLetterPositions[i].y, easing);
+      }
+
+      handleRotationLetterOrder();
+
+      push();
+      translate(width / 2, height / 2);
+      rotate(rotationAngle);
+      drawGridElements();
+      pop();
+    }
+
+    function handleRotationLetterOrder() {
+      if (lettersLocked) {
+        let rotDeg = degrees(rotationAngle) % 360;
+        if (rotDeg < 0) rotDeg += 360;
+        let reverse = abs(rotDeg - 270) < 1 || abs(rotDeg - 180) < 1;
+        if (reverse) reverseLetters();
+        else lockLettersTopRow();
+      }
+    }
+
+    function reverseLetters() {
+      for (let i = 0; i < word.length; i++) {
+        targetLetterPositions[i].set((word.length - 1 - i) % cols, 0);
+      }
+    }
+
+    function generateCirclesAndLetters() {
+      let allCells = [];
+      for (let i = 0; i < cols * rows; i++) allCells.push(i);
+      shuffleArray(allCells);
+
+      if (positions.length === 0) {
+        for (let i = 0; i < circleCount; i++) {
+          positions.push(createVector());
+          targetPositions.push(createVector());
+        }
+      }
+
+      for (let i = 0; i < circleCount; i++) {
+        let cellIndex = allCells.shift();
+        let cx = cellIndex % cols;
+        let cy = floor(cellIndex / cols);
+        targetPositions[i].set(cx, cy);
+      }
+
+      if (letterPositions.length === 0) {
+        for (let i = 0; i < word.length; i++) {
+          letterPositions.push(createVector());
+          targetLetterPositions.push(createVector());
+        }
+      }
+
+      for (let i = 0; i < word.length; i++) {
+        let cellIndex = allCells.shift();
+        let cx = cellIndex % cols;
+        let cy = floor(cellIndex / cols);
+        targetLetterPositions[i].set(cx, cy);
+      }
+
+      if (lettersLocked) lockLettersTopRow();
+    }
+
+    function generateCirclesOnly() {
+      let availableCells = [];
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          let isTopRowLetter = (lettersLocked && y === 0 && x < word.length);
+          if (!isTopRowLetter) availableCells.push(y * cols + x);
+        }
+      }
+      shuffleArray(availableCells);
+
+      for (let i = 0; i < circleCount && availableCells.length > 0; i++) {
+        let cellIndex = availableCells.shift();
+        let cx = cellIndex % cols;
+        let cy = floor(cellIndex / cols);
+        targetPositions[i].set(cx, cy);
+      }
+    }
+
+    function lockLettersTopRow() {
+      for (let i = 0; i < word.length; i++) {
+        targetLetterPositions[i].set(i % cols, 0);
+      }
+    }
+
+    function drawGridElements() {
+      let cellSize = gridSize / cols;
+      fill(0);
+
+      if (showCircles) {
+        for (let cell of positions) {
+          let x = (cell.x + 0.5) * cellSize - gridSize / 2;
+          let y = (cell.y + 0.5) * cellSize - gridSize / 2;
+          ellipse(x, y, 20, 20);
+        }
+      }
+
+      if (showText) {
+        for (let i = 0; i < word.length; i++) {
+          let x = (letterPositions[i].x + 0.5) * cellSize - gridSize / 2;
+          let y = (letterPositions[i].y + 0.5) * cellSize - gridSize / 2;
+          push();
+          translate(x, y);
+          rotate(-rotationAngle);
+          text(word.charAt(i), 0, 0);
+          pop();
+        }
+      }
+    }
+
+    function keyPressed() {
+      if (keyCode === RIGHT_ARROW) {
+        if (lettersLocked) generateCirclesOnly();
+        else generateCirclesAndLetters();
+      } else if (keyCode === LEFT_ARROW) {
+        targetRotation -= HALF_PI;
+      } else if (keyCode === DOWN_ARROW) {
+        targetGridSize *= 0.5;
+      } else if (keyCode === UP_ARROW) {
+        targetGridSize *= 2;
+      } else if (key === 't' || key === 'T') {
+        showText = !showText;
+      } else if (key === 'c' || key === 'C') {
+        showCircles = !showCircles;
+      } else if (key === 'l' || key === 'L') {
+        lettersLocked = !lettersLocked;
+        generateCirclesAndLetters();
+      }
+    }
+
+    // Helper: Fisher–Yates shuffle
+    function shuffleArray(a) {
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+    }
+  </script>
+
+    <div class="two"></div>
+
+</body>
+</html>
