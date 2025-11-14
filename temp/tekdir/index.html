@@ -16,7 +16,8 @@
       justify-content: center;
       align-items: center;
       font-size: 1.1rem;
-    font-family: 'Mercator ST', Arial;
+      line-height: 1.5;
+     font-family: 'Mercator ST', Arial, sans-serif;
 
     }
     .color{
@@ -36,7 +37,7 @@
       width: 100%;
       height: 100%;
       z-index: 10;
-      opacity: 1;
+      opacity: 0.2;
     }
     canvas {
       z-index: 1;
@@ -54,18 +55,25 @@
         left: 2vw;
         text-align: left;
     }
+  .bottom{
+          top: revert;
+          left: 2vw;
+          bottom: 2vw;
+          text-transform: lowercase;
+          display: flex;
+          gap: 2vw;
+      }
 
     .tab{
         position: absolute;
-        top: 2vw;
         left: 20vw;
     }
-
-    .bottom{
+    .tab-tab{
         position: absolute;
-        bottom: 2vw;
-        left: 2vw;
+        left: 40vw;
     }
+
+   
     @font-face {
       font-family: 'Mercator ST';
       src: local('Mercator ST'), local('MercatorST'),
@@ -79,8 +87,25 @@
       <div class="color">    </div>
 
   <div class="invert"></div>
-    <div class="annotation left">TEKDIR<br>2020-2025<br> Oslo, Norway</div>
-    <div class="annotation tab">Sikkerhet i praksis</div>
+    <div class="annotation left">TEKDIR<br>2020-2025<br> Oslo, NO</div>
+    <div class="annotation tab">Rådgivning og løsninger for sikkerhet.</div>
+    <div class="annotation bottom">
+      <div>→ <br> ← <br>↑ <br>↓</div> 
+      <div>Regenerate<br>Rotate<br>Scale up<br>Scale down</div> 
+    
+    </div>
+    <div class="annotation bottom tab">
+      <div style>b <br>c <br> t <br> e</div> 
+      <div>Brightness<br>Color<br>Text<br>Ellipse</div> 
+    
+    </div>
+    <div class="annotation bottom tab-tab">
+      <div style>S <br> P <br></div> 
+      <div>Save as .svg<br>Save as .png</div> 
+    
+    </div>
+    <!-- <div class="annotation bottom">→&emsp;Regenerate<br> ←&emsp;Rotate <br> ↑ &emsp; Scale up<br> ↓ &emsp; Scale down </div> -->
+    <!-- <div class="annotation bottom tab">T &emsp;Text<br> E &emsp;Ellipsis<br> B &emsp;Brightness<br> c &emsp;color<br></div> -->
 
 
   <script>
@@ -109,7 +134,7 @@
 
     let rotationAngle = 0;
     let targetRotation = 0;
-    let easing = 0.08;
+    let easing = 0.125;
 
     let showText = false;
     let showCircles = true;
@@ -131,6 +156,7 @@
       fill(255);
       rectMode(CENTER);
 
+      textFont('Mercator ST');
       generateCirclesAndLetters();
     }
 
@@ -272,7 +298,7 @@
         targetGridSize *= 2;
       } else if (key === 't' || key === 'T') {
         showText = !showText;
-      } else if (key === 'c' || key === 'C') {
+    } else if (key === 'e' || key === 'E') {
         showCircles = !showCircles;
       } else if (key === 'l' || key === 'L') {
         lettersLocked = !lettersLocked;
@@ -287,9 +313,127 @@
         [a[i], a[j]] = [a[j], a[i]];
       }
     }
+    // start at the current target as the minimum allowed grid size
+    let minGridSize = targetGridSize;
+    gridSize = targetGridSize;
+
+    // track whether the user has ever scaled up (so DOWN is blocked until they do)
+    let scaledUpOnce = false;
+    window.addEventListener('keydown', (e) => {
+      if (e.keyCode === 38) { // UP_ARROW
+        scaledUpOnce = true;
+      }
+    });
+
+    // Capture-phase listener to block DOWN_ARROW while at minimum and before any scale-up
+    window.addEventListener('keydown', (e) => {
+      if (e.keyCode !== 40) return; // not DOWN_ARROW
+      if (!scaledUpOnce && targetGridSize <= minGridSize) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+
+    // Safety clamp after p5 processes key events so grid never goes below the minimum
+    window.addEventListener('keydown', (e) => {
+      if (e.keyCode !== 40) return;
+      // run after other handlers
+      setTimeout(() => {
+        if (targetGridSize < minGridSize) targetGridSize = minGridSize;
+      }, 0);
+    });
+    // Export current grid as SVG and download when user presses "S"
+    (function () {
+      function exportGridAsSVG() {
+        const margin = 50; // pixels around the grid
+        const gs = gridSize; // current grid size (may be fractional)
+        const w = Math.round(gs + margin * 2);
+        const h = Math.round(gs + margin * 2);
+        const cx = w / 2;
+        const cy = h / 2;
+        const deg = (rotationAngle * 180) / Math.PI; // rotationAngle is in radians
+        const cs = gs / cols;
+        const halfGrid = gs / 2;
+
+        const ns = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(ns, 'svg');
+        svg.setAttribute('xmlns', ns);
+        svg.setAttribute('width', String(w));
+        svg.setAttribute('height', String(h));
+        svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+        // Group that centers and rotates the grid like the canvas
+        const g = document.createElementNS(ns, 'g');
+        g.setAttribute('transform', `translate(${cx},${cy}) rotate(${deg})`);
+        svg.appendChild(g);
+
+        // Draw circles (if visible)
+        if (showCircles) {
+          for (let i = 0; i < positions.length; i++) {
+            const p = positions[i];
+            // positions are in grid cell coords
+            const x = (p.x + 0.5) * cs - halfGrid;
+            const y = (p.y + 0.5) * cs - halfGrid;
+            const c = document.createElementNS(ns, 'circle');
+            c.setAttribute('cx', String(x));
+            c.setAttribute('cy', String(y));
+            c.setAttribute('r', String(10)); // same as ellipse(20,20) => r=10
+            c.setAttribute('fill', 'black');
+            g.appendChild(c);
+          }
+        }
+
+        // Draw letters (if visible)
+        if (showText) {
+          for (let i = 0; i < word.length; i++) {
+            const lp = letterPositions[i];
+            const x = (lp.x + 0.5) * cs - halfGrid;
+            const y = (lp.y + 0.5) * cs - halfGrid;
+
+            // Each letter is translated to its cell and rotated -rotationAngle to remain upright
+            const tg = document.createElementNS(ns, 'g');
+            tg.setAttribute('transform', `translate(${x},${y}) rotate(${-deg})`);
+
+            const t = document.createElementNS(ns, 'text');
+            t.setAttribute('x', '0');
+            t.setAttribute('y', '0');
+            t.setAttribute('fill', 'black');
+            t.setAttribute('text-anchor', 'middle');
+            t.setAttribute('dominant-baseline', 'middle');
+            t.setAttribute('font-size', String(18));
+            t.setAttribute('font-family', "Mercator ST, Arial, sans-serif");
+            t.textContent = word.charAt(i);
+
+            tg.appendChild(t);
+            g.appendChild(tg);
+          }
+        }
+
+        const serializer = new XMLSerializer();
+        const svgStr = serializer.serializeToString(svg);
+        const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'tekdir-grid.svg';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 's' || e.key === 'S') {
+          // avoid interfering with modifier shortcuts
+          if (e.altKey || e.ctrlKey || e.metaKey) return;
+          e.preventDefault();
+          exportGridAsSVG();
+        }
+      });
+    })();
   </script>
 
-    <script>
+    <!-- <script>
     (function(){
       const invertEl = document.querySelector('.invert');
       if (!invertEl) return;
@@ -305,7 +449,60 @@
         }
       });
     })();
-    </script>
+    </script> -->
     
+    <script>
+    (function(){
+      const el = document.querySelector('.invert');
+      if (!el) return;
+
+      const start = 0.2;
+      const step = 0.1;
+      const count = 8;
+      const eps = 1e-6;
+      const opacities = [];
+      let v = start;
+      while (opacities.length < count) {
+        if (Math.abs(v - 0.5) > eps) opacities.push(Number(v.toFixed(2)));
+        v += step;
+      }
+
+      // sync initial index with current computed opacity (fallback to 0)
+      const current = Number(window.getComputedStyle(el).opacity);
+      let idx = opacities.indexOf(Number(current.toFixed(2)));
+      if (idx === -1) idx = 0;
+      el.style.opacity = opacities[idx];
+
+      window.addEventListener('keydown', (e) => {
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+        if (e.key === 'b' || e.key === 'B') {
+          idx = (idx + 1) % opacities.length;
+          el.style.opacity = opacities[idx];
+          e.preventDefault();
+        }
+      });
+    })();
+
+
+    </script>
+
+    <script>
+    (function(){
+      const colors = ['white', 'deepskyblue', 'khaki', 'orange','mediumseagreen'];
+      const el = document.querySelector('.color');
+      if (!el) return;
+      let idx = 0;
+      el.style.backgroundColor = colors[idx];
+
+      window.addEventListener('keydown', (e) => {
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+        if (e.key === 'c' || e.key === 'C') {
+          idx = (idx + 1) % colors.length;
+          el.style.backgroundColor = colors[idx];
+          e.preventDefault();
+        }
+      });
+    })();
+    </script>
 </body>
 </html>
