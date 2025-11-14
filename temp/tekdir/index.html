@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>tekdir</title>
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.0/lib/p5.min.js"></script>
   <style>
     html, body {
       margin: 0;
@@ -24,7 +23,6 @@
         position: absolute;
         width: 100%;
         height: 100%;
-
         mix-blend-mode: multiply;
         z-index: 20;
     }
@@ -39,11 +37,12 @@
       z-index: 10;
       opacity: 0.2;
     }
+
     canvas {
       z-index: 1;
       position: relative;
-      /* mix-blend-mode: multiply; */
-    filter: invert();
+      filter: invert();
+      mix-blend-mode: difference;
     }
     .annotation{
         position: absolute;
@@ -87,435 +86,360 @@
       <div class="color">    </div>
 
   <div class="invert"></div>
+  <script>
+  (function(){
+    const el = document.querySelector('.color');
+    if (!el) return;
+
+    const modes = ['multiply', 'screen'];
+    const cs = getComputedStyle(el);
+    let current = (cs.mixBlendMode && cs.mixBlendMode !== 'normal') ? cs.mixBlendMode : cs.getPropertyValue('mix-blend-mode') || 'multiply';
+    let idx = modes.indexOf(current);
+    if (idx === -1) idx = 0;
+    el.style.mixBlendMode = modes[idx];
+
+    window.addEventListener('keydown', (e) => {
+      if (e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.key === 'i' || e.key === 'I') {
+        idx = (idx + 1) % modes.length;
+        el.style.mixBlendMode = modes[idx];
+        e.preventDefault();
+      }
+    });
+  })();
+  </script>
+  
     <div class="annotation left">TEKDIR<br>2020-2025<br> Oslo, NO</div>
-    <div class="annotation tab">Rådgivning og løsninger for sikkerhet.</div>
+    <div class="annotation tab">
+      Sikkerhet i praksis
+
+    </div>
     <div class="annotation bottom">
       <div>→ <br> ← <br>↑ <br>↓</div> 
-      <div>Regenerate<br>Rotate<br>Scale up<br>Scale down</div> 
+      <div>Reorganise<br>Rotate<br>Scale up<br>Scale down</div> 
     
     </div>
     <div class="annotation bottom tab">
-      <div style>b <br>c <br> t <br> e</div> 
-      <div>Brightness<br>Color<br>Text<br>Ellipse</div> 
+      <div style>b <br>c <br> t <br> l</div> 
+      <div>Brightness<br>Color<br>Text<br>Logo</div> 
     
     </div>
     <div class="annotation bottom tab-tab">
-      <div style>S <br> P <br></div> 
+      <div>S <br> P <br></div> 
       <div>Save as .svg<br>Save as .png</div> 
     
     </div>
-    <!-- <div class="annotation bottom">→&emsp;Regenerate<br> ←&emsp;Rotate <br> ↑ &emsp; Scale up<br> ↓ &emsp; Scale down </div> -->
-    <!-- <div class="annotation bottom tab">T &emsp;Text<br> E &emsp;Ellipsis<br> B &emsp;Brightness<br> c &emsp;color<br></div> -->
 
 
-  <script>
-    // make the canvas cover the full viewport (100vw x 100vh)
-    let canvasSize = window.innerWidth; // keep for compatibility with existing code
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+<script>
+let canvasSize = window.innerWidth;
+let gridSize = 300;
+let targetGridSize = 150;
+let minGridSize = targetGridSize;
+let cols = 6;
+let rows = 6;
+let circleCount = 6;
 
-    // If p5's createCanvas exists, monkey-patch it so any call uses innerWidth/innerHeight
-    if (typeof createCanvas === 'function') {
-        const _origCreateCanvas = createCanvas;
-        window.createCanvas = function (w, h) {
-            return _origCreateCanvas.call(this, window.innerWidth, window.innerHeight);
-        };
+let rotationAngle = 0;
+let targetRotation = 0;
+let easing = 0.125;
+
+let showText = false;
+let showCircles = true;
+let lMode = false;
+
+let positions = [];
+let targetPositions = [];
+let letterPositions = [];
+let targetLetterPositions = [];
+
+let word = "TEKDIR";
+
+// Hard-coded L mode circle constellation (0-indexed)
+const hardcodedCircles = [
+  {x:0,y:2}, {x:1,y:2}, {x:0,y:3}, {x:5,y:3}, {x:4,y:4}, {x:5,y:4}
+];
+
+function setup() {
+  createCanvas(canvasSize, canvasSize);
+  textAlign(CENTER, CENTER);
+  textSize(19);
+  noStroke();
+  fill(255);
+  rectMode(CENTER);
+  textFont('Mercator ST Medium');
+  generateRandomPositions();
+}
+
+function draw() {
+  clear();
+
+  gridSize = lerp(gridSize, targetGridSize, easing);
+  rotationAngle = lerp(rotationAngle, targetRotation, easing);
+
+  for(let i=0;i<circleCount;i++){
+    positions[i].x = lerp(positions[i].x,targetPositions[i].x,easing);
+    positions[i].y = lerp(positions[i].y,targetPositions[i].y,easing);
+  }
+
+  for(let i=0;i<word.length;i++){
+    letterPositions[i].x = lerp(letterPositions[i].x,targetLetterPositions[i].x,easing);
+    letterPositions[i].y = lerp(letterPositions[i].y,targetLetterPositions[i].y,easing);
+  }
+
+  push();
+  translate(width/2,height/2);
+  rotate(rotationAngle);
+  drawGridElements();
+  pop();
+}
+
+function drawGridElements(){
+  let cellSize = gridSize / cols;
+  fill(0);
+
+  if(showCircles){
+    for(let cell of positions){
+      let x = (cell.x+0.5)*cellSize - gridSize/2;
+      let y = (cell.y+0.5)*cellSize - gridSize/2;
+      ellipse(x,y,20,20);
     }
+  }
 
-    // Keep canvas resized on window resize (uses p5's resizeCanvas if available)
-    window.addEventListener('resize', () => {
-        if (typeof resizeCanvas === 'function') {
-            try { resizeCanvas(window.innerWidth, window.innerHeight); } catch (e) {}
-        }
-    });
-    let gridSize = 300;
-    let targetGridSize = 135;
-    let cols = 6;
-    let rows = 6;
-    let circleCount = 6;
-
-    let rotationAngle = 0;
-    let targetRotation = 0;
-    let easing = 0.125;
-
-    let showText = false;
-    let showCircles = true;
-    let lettersLocked = false;
-
-    let positions = [];
-    let targetPositions = [];
-    let letterPositions = [];
-    let targetLetterPositions = [];
-
-    let word = "TEKDIR";
-    let font;
-
-    function setup() {
-      createCanvas(canvasSize, canvasSize);
-      textAlign(CENTER, CENTER);
-      textSize(18);
-      noStroke();
-      fill(255);
-      rectMode(CENTER);
-
-      textFont('Mercator ST');
-      generateCirclesAndLetters();
-    }
-
-    function draw() {
-    clear();
-
-      gridSize = lerp(gridSize, targetGridSize, easing);
-      rotationAngle = lerp(rotationAngle, targetRotation, easing);
-
-      for (let i = 0; i < circleCount; i++) {
-        positions[i].x = lerp(positions[i].x, targetPositions[i].x, easing);
-        positions[i].y = lerp(positions[i].y, targetPositions[i].y, easing);
-      }
-
-      for (let i = 0; i < word.length; i++) {
-        letterPositions[i].x = lerp(letterPositions[i].x, targetLetterPositions[i].x, easing);
-        letterPositions[i].y = lerp(letterPositions[i].y, targetLetterPositions[i].y, easing);
-      }
-
-      handleRotationLetterOrder();
-
+  if(showText){
+    for(let i=0;i<word.length;i++){
+      let x = (letterPositions[i].x+0.5)*cellSize - gridSize/2;
+      let y = (letterPositions[i].y+0.5)*cellSize - gridSize/2;
       push();
-      translate(width / 2, height / 2);
-      rotate(rotationAngle);
-      drawGridElements();
+      translate(x,y);
+      rotate(-rotationAngle);
+      text(word.charAt(i),0,0);
       pop();
     }
+  }
+}
 
-    function handleRotationLetterOrder() {
-      if (lettersLocked) {
-        let rotDeg = degrees(rotationAngle) % 360;
-        if (rotDeg < 0) rotDeg += 360;
-        let reverse = abs(rotDeg - 270) < 1 || abs(rotDeg - 180) < 1;
-        if (reverse) reverseLetters();
-        else lockLettersTopRow();
-      }
+// RANDOM POSITIONS AVOIDING LETTERS AND CIRCLES
+function generateRandomPositions(){
+  if(positions.length===0){
+    for(let i=0;i<circleCount;i++){
+      positions.push(createVector());
+      targetPositions.push(createVector());
     }
-
-    function reverseLetters() {
-      for (let i = 0; i < word.length; i++) {
-        targetLetterPositions[i].set((word.length - 1 - i) % cols, 0);
-      }
+  }
+  if(letterPositions.length===0){
+    for(let i=0;i<word.length;i++){
+      letterPositions.push(createVector());
+      targetLetterPositions.push(createVector());
     }
+  }
 
-    function generateCirclesAndLetters() {
-      let allCells = [];
-      for (let i = 0; i < cols * rows; i++) allCells.push(i);
-      shuffleArray(allCells);
-
-      if (positions.length === 0) {
-        for (let i = 0; i < circleCount; i++) {
-          positions.push(createVector());
-          targetPositions.push(createVector());
-        }
-      }
-
-      for (let i = 0; i < circleCount; i++) {
-        let cellIndex = allCells.shift();
-        let cx = cellIndex % cols;
-        let cy = floor(cellIndex / cols);
-        targetPositions[i].set(cx, cy);
-      }
-
-      if (letterPositions.length === 0) {
-        for (let i = 0; i < word.length; i++) {
-          letterPositions.push(createVector());
-          targetLetterPositions.push(createVector());
-        }
-      }
-
-      for (let i = 0; i < word.length; i++) {
-        let cellIndex = allCells.shift();
-        let cx = cellIndex % cols;
-        let cy = floor(cellIndex / cols);
-        targetLetterPositions[i].set(cx, cy);
-      }
-
-      if (lettersLocked) lockLettersTopRow();
+  // Random letters first
+  let allCells = [];
+  for(let y=0;y<rows;y++){
+    for(let x=0;x<cols;x++){
+      allCells.push({x:x,y:y});
     }
+  }
+  shuffleArray(allCells);
 
-    function generateCirclesOnly() {
-      let availableCells = [];
-      for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-          let isTopRowLetter = (lettersLocked && y === 0 && x < word.length);
-          if (!isTopRowLetter) availableCells.push(y * cols + x);
-        }
-      }
-      shuffleArray(availableCells);
+  for(let i=0;i<word.length;i++){
+    let cell = allCells.shift();
+    targetLetterPositions[i].set(cell.x,cell.y);
+  }
 
-      for (let i = 0; i < circleCount && availableCells.length > 0; i++) {
-        let cellIndex = availableCells.shift();
-        let cx = cellIndex % cols;
-        let cy = floor(cellIndex / cols);
-        targetPositions[i].set(cx, cy);
-      }
+  // Remove letter cells for circles
+  let availableCells = allCells.map(c=>({x:c.x,y:c.y}));
+  shuffleArray(availableCells);
+
+  for(let i=0;i<circleCount && availableCells.length>0;i++){
+    let cell = availableCells.shift();
+    targetPositions[i].set(cell.x,cell.y);
+  }
+}
+
+function activateLMode(){
+  lMode = !lMode;
+  if(lMode){
+    // make letters visible if not already
+    if(!showText) showText = true;
+    // letters top row
+    for(let i=0;i<word.length;i++){
+      targetLetterPositions[i].set(i%cols,0);
     }
-
-    function lockLettersTopRow() {
-      for (let i = 0; i < word.length; i++) {
-        targetLetterPositions[i].set(i % cols, 0);
-      }
+    // circles hard-coded
+    for(let i=0;i<circleCount;i++){
+      targetPositions[i].set(hardcodedCircles[i].x,hardcodedCircles[i].y);
     }
+    // snap rotation to the nearest 0° (nearest multiple of TWO_PI)
+    targetRotation = Math.round(targetRotation / TWO_PI) * TWO_PI;
+  } else {
+    generateRandomPositions();
+  }
+}
 
-    function drawGridElements() {
-      let cellSize = gridSize / cols;
-      fill(0);
+function keyPressed(){
+  if(key==='t'||key==='T') showText = !showText;
+  else if(key==='e'||key==='E') showCircles = !showCircles;
+  else if(key==='l'||key==='L') activateLMode();
+  else if(keyCode===RIGHT_ARROW){
+    if(!lMode) generateRandomPositions();
+    else activateLMode(); // emulate unlock+relock
+  }
+  else if(keyCode===LEFT_ARROW){
+    // only rotate, do not generate random positions
+    if(lMode) activateLMode(); // emulate unlock+relock when in L mode
+    targetRotation -= HALF_PI;
+  }
+  else if(keyCode===DOWN_ARROW) targetGridSize = max(targetGridSize*0.5,minGridSize);
+  else if(keyCode===UP_ARROW) targetGridSize *= 2;
+  else if(key==='s'||key==='S') exportGridAsSVG();
+  else if(key==='p'||key==='P') exportGridAsPNG();
+}
 
-      if (showCircles) {
-        for (let cell of positions) {
-          let x = (cell.x + 0.5) * cellSize - gridSize / 2;
-          let y = (cell.y + 0.5) * cellSize - gridSize / 2;
-          ellipse(x, y, 20, 20);
-        }
-      }
+// Fisher-Yates shuffle
+function shuffleArray(a){
+  for(let i=a.length-1;i>0;i--){
+    const j = floor(random(0,i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+}
 
-      if (showText) {
-        for (let i = 0; i < word.length; i++) {
-          let x = (letterPositions[i].x + 0.5) * cellSize - gridSize / 2;
-          let y = (letterPositions[i].y + 0.5) * cellSize - gridSize / 2;
-          push();
-          translate(x, y);
-          rotate(-rotationAngle);
-          text(word.charAt(i), 0, 0);
-          pop();
-        }
-      }
+// --- EXPORT SVG ---
+function exportGridAsSVG(){
+  const margin = 50;
+  const gs = gridSize;
+  const w = Math.round(gs+margin*2);
+  const h = Math.round(gs+margin*2);
+  const cx = w/2, cy=h/2;
+  const deg = rotationAngle*180/PI;
+  const cs = gs/cols;
+  const halfGrid = gs/2;
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(ns,'svg');
+  svg.setAttribute('xmlns',ns);
+  svg.setAttribute('width',w);
+  svg.setAttribute('height',h);
+  svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+
+  const g = document.createElementNS(ns,'g');
+  g.setAttribute('transform',`translate(${cx},${cy}) rotate(${deg})`);
+  svg.appendChild(g);
+
+  if(showCircles){
+    for(let i=0;i<positions.length;i++){
+      const p = positions[i];
+      const x = (p.x+0.5)*cs-halfGrid;
+      const y = (p.y+0.5)*cs-halfGrid;
+      const c = document.createElementNS(ns,'circle');
+      c.setAttribute('cx',x);
+      c.setAttribute('cy',y);
+      c.setAttribute('r',10);
+      c.setAttribute('fill','black');
+      g.appendChild(c);
     }
+  }
 
-    function keyPressed() {
-      if (keyCode === RIGHT_ARROW) {
-        if (lettersLocked) generateCirclesOnly();
-        else generateCirclesAndLetters();
-      } else if (keyCode === LEFT_ARROW) {
-        targetRotation -= HALF_PI;
-      } else if (keyCode === DOWN_ARROW) {
-        targetGridSize *= 0.5;
-      } else if (keyCode === UP_ARROW) {
-        targetGridSize *= 2;
-      } else if (key === 't' || key === 'T') {
-        showText = !showText;
-    } else if (key === 'e' || key === 'E') {
-        showCircles = !showCircles;
-      } else if (key === 'l' || key === 'L') {
-        lettersLocked = !lettersLocked;
-        generateCirclesAndLetters();
-      }
+  if(showText){
+    for(let i=0;i<word.length;i++){
+      const lp = letterPositions[i];
+      const x = (lp.x+0.5)*cs-halfGrid;
+      const y = (lp.y+0.5)*cs-halfGrid;
+      const tg = document.createElementNS(ns,'g');
+      tg.setAttribute('transform',`translate(${x},${y}) rotate(${-deg})`);
+      const t = document.createElementNS(ns,'text');
+      t.setAttribute('x',0);
+      t.setAttribute('y',0);
+      t.setAttribute('text-anchor','middle');
+      t.setAttribute('dominant-baseline','middle');
+      t.setAttribute('font-size',18);
+      t.setAttribute('fill','black');
+      t.setAttribute('font-family','Mercator ST, Arial, sans-serif');
+      t.textContent = word.charAt(i);
+      tg.appendChild(t);
+      g.appendChild(tg);
     }
+  }
 
-    // Helper: Fisher–Yates shuffle
-    function shuffleArray(a) {
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
+  const serializer = new XMLSerializer();
+  const svgStr = serializer.serializeToString(svg);
+  const blob = new Blob([svgStr],{type:'image/svg+xml;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download='tekdir-grid.svg';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),2000);
+}
+
+// --- EXPORT PNG ---
+function exportGridAsPNG(){
+  const margin = 50;
+  const gs = gridSize;
+  const w = Math.round(gs+margin*2);
+  const h = Math.round(gs+margin*2);
+  const cx=w/2, cy=h/2;
+  const cs = gs/cols;
+  const halfGrid = gs/2;
+
+  const dpr = max(1,window.devicePixelRatio||1);
+  const c = document.createElement('canvas');
+  c.width=Math.round(w*dpr);
+  c.height=Math.round(h*dpr);
+  c.style.width=`${w}px`;
+  c.style.height=`${h}px`;
+  const ctx=c.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,w,h);
+
+  ctx.translate(cx,cy);
+  ctx.rotate(rotationAngle);
+
+  if(showCircles){
+    ctx.fillStyle='black';
+    for(let i=0;i<positions.length;i++){
+      const p=positions[i];
+      const x=(p.x+0.5)*cs-halfGrid;
+      const y=(p.y+0.5)*cs-halfGrid;
+      ctx.beginPath();
+      ctx.arc(x,y,10,0,PI*2);
+      ctx.fill();
     }
-    // start at the current target as the minimum allowed grid size
-    let minGridSize = targetGridSize;
-    gridSize = targetGridSize;
+  }
 
-    // track whether the user has ever scaled up (so DOWN is blocked until they do)
-    let scaledUpOnce = false;
-    window.addEventListener('keydown', (e) => {
-      if (e.keyCode === 38) { // UP_ARROW
-        scaledUpOnce = true;
-      }
-    });
+  if(showText){
+    ctx.fillStyle='black';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.font='18px "Mercator ST", Arial, sans-serif';
+    for(let i=0;i<word.length;i++){
+      const lp = letterPositions[i];
+      const x = (lp.x+0.5)*cs-halfGrid;
+      const y = (lp.y+0.5)*cs-halfGrid;
+      ctx.save();
+      ctx.translate(x,y);
+      ctx.rotate(-rotationAngle);
+      ctx.fillText(word.charAt(i),0,0);
+      ctx.restore();
+    }
+  }
 
-    // Capture-phase listener to block DOWN_ARROW while at minimum and before any scale-up
-    window.addEventListener('keydown', (e) => {
-      if (e.keyCode !== 40) return; // not DOWN_ARROW
-      if (!scaledUpOnce && targetGridSize <= minGridSize) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    }, true);
-
-    // Safety clamp after p5 processes key events so grid never goes below the minimum
-    window.addEventListener('keydown', (e) => {
-      if (e.keyCode !== 40) return;
-      // run after other handlers
-      setTimeout(() => {
-        if (targetGridSize < minGridSize) targetGridSize = minGridSize;
-      }, 0);
-    });
-    // Export current grid as SVG and download when user presses "S"
-    (function () {
-      function exportGridAsSVG() {
-        const margin = 50; // pixels around the grid
-        const gs = gridSize; // current grid size (may be fractional)
-        const w = Math.round(gs + margin * 2);
-        const h = Math.round(gs + margin * 2);
-        const cx = w / 2;
-        const cy = h / 2;
-        const deg = (rotationAngle * 180) / Math.PI; // rotationAngle is in radians
-        const cs = gs / cols;
-        const halfGrid = gs / 2;
-
-        const ns = 'http://www.w3.org/2000/svg';
-        const svg = document.createElementNS(ns, 'svg');
-        svg.setAttribute('xmlns', ns);
-        svg.setAttribute('width', String(w));
-        svg.setAttribute('height', String(h));
-        svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-
-        // Group that centers and rotates the grid like the canvas
-        const g = document.createElementNS(ns, 'g');
-        g.setAttribute('transform', `translate(${cx},${cy}) rotate(${deg})`);
-        svg.appendChild(g);
-
-        // Draw circles (if visible)
-        if (showCircles) {
-          for (let i = 0; i < positions.length; i++) {
-            const p = positions[i];
-            // positions are in grid cell coords
-            const x = (p.x + 0.5) * cs - halfGrid;
-            const y = (p.y + 0.5) * cs - halfGrid;
-            const c = document.createElementNS(ns, 'circle');
-            c.setAttribute('cx', String(x));
-            c.setAttribute('cy', String(y));
-            c.setAttribute('r', String(10)); // same as ellipse(20,20) => r=10
-            c.setAttribute('fill', 'black');
-            g.appendChild(c);
-          }
-        }
-
-        // Draw letters (if visible)
-        if (showText) {
-          for (let i = 0; i < word.length; i++) {
-            const lp = letterPositions[i];
-            const x = (lp.x + 0.5) * cs - halfGrid;
-            const y = (lp.y + 0.5) * cs - halfGrid;
-
-            // Each letter is translated to its cell and rotated -rotationAngle to remain upright
-            const tg = document.createElementNS(ns, 'g');
-            tg.setAttribute('transform', `translate(${x},${y}) rotate(${-deg})`);
-
-            const t = document.createElementNS(ns, 'text');
-            t.setAttribute('x', '0');
-            t.setAttribute('y', '0');
-            t.setAttribute('fill', 'black');
-            t.setAttribute('text-anchor', 'middle');
-            t.setAttribute('dominant-baseline', 'middle');
-            t.setAttribute('font-size', String(18));
-            t.setAttribute('font-family', "Mercator ST, Arial, sans-serif");
-            t.textContent = word.charAt(i);
-
-            tg.appendChild(t);
-            g.appendChild(tg);
-          }
-        }
-
-        const serializer = new XMLSerializer();
-        const svgStr = serializer.serializeToString(svg);
-        const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'tekdir-grid.svg';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 2000);
-      }
-
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 's' || e.key === 'S') {
-          // avoid interfering with modifier shortcuts
-          if (e.altKey || e.ctrlKey || e.metaKey) return;
-          e.preventDefault();
-          exportGridAsSVG();
-        }
-      });
-    })();
-
-    (function () {
-      function exportGridAsPNG() {
-        const margin = 50;
-        const gs = gridSize;
-        const w = Math.round(gs + margin * 2);
-        const h = Math.round(gs + margin * 2);
-        const cx = w / 2;
-        const cy = h / 2;
-        const cs = gs / cols;
-        const halfGrid = gs / 2;
-
-        // create an offscreen canvas and account for devicePixelRatio for crispness
-        const dpr = Math.max(1, window.devicePixelRatio || 1);
-        const c = document.createElement('canvas');
-        c.width = Math.round(w * dpr);
-        c.height = Math.round(h * dpr);
-        c.style.width = `${w}px`;
-        c.style.height = `${h}px`;
-        const ctx = c.getContext('2d');
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-        // Optional: transparent background to match SVG; fill if desired
-        ctx.clearRect(0, 0, w, h);
-
-        // center & rotate the whole grid like the canvas
-        ctx.translate(cx, cy);
-        ctx.rotate(rotationAngle);
-
-        // draw circles
-        if (showCircles) {
-          ctx.fillStyle = 'black';
-          for (let i = 0; i < positions.length; i++) {
-            const p = positions[i];
-            const x = (p.x + 0.5) * cs - halfGrid;
-            const y = (p.y + 0.5) * cs - halfGrid;
-            ctx.beginPath();
-            ctx.arc(x, y, 10, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-
-        // draw letters (keep them upright by rotating each by -rotationAngle)
-        if (showText) {
-          ctx.fillStyle = 'black';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          // match font size used for SVG/text drawing
-          const fontSize = 18;
-          ctx.font = `${fontSize}px "Mercator ST", Arial, sans-serif`;
-          for (let i = 0; i < word.length; i++) {
-            const lp = letterPositions[i];
-            const x = (lp.x + 0.5) * cs - halfGrid;
-            const y = (lp.y + 0.5) * cs - halfGrid;
-            ctx.save();
-            ctx.translate(x, y);
-            ctx.rotate(-rotationAngle);
-            ctx.fillText(word.charAt(i), 0, 0);
-            ctx.restore();
-          }
-        }
-
-        // convert to blob and trigger download
-        c.toBlob(function (blob) {
-          if (!blob) return;
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'tekdir-grid.png';
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          setTimeout(() => URL.revokeObjectURL(url), 2000);
-        }, 'image/png');
-      }
-
-      window.addEventListener('keydown', (e) => {
-        if (e.altKey || e.ctrlKey || e.metaKey) return;
-        if (e.key === 'p' || e.key === 'P') {
-          e.preventDefault();
-          exportGridAsPNG();
-        }
-      });
-    })();
-  </script>
+  c.toBlob(blob=>{
+    if(!blob)return;
+    const url = URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download='tekdir-grid.png';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),2000);
+  },'image/png');
+}
+</script>
 
     <!-- <script>
     (function(){
@@ -572,7 +496,7 @@
 
     <script>
     (function(){
-      const colors = ['white', 'deepskyblue', 'khaki', 'orange','mediumseagreen'];
+      const colors = ['white', '#13A1F0','#069C38'];
       const el = document.querySelector('.color');
       if (!el) return;
       let idx = 0;
