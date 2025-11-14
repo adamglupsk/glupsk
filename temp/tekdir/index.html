@@ -431,6 +431,90 @@
         }
       });
     })();
+
+    (function () {
+      function exportGridAsPNG() {
+        const margin = 50;
+        const gs = gridSize;
+        const w = Math.round(gs + margin * 2);
+        const h = Math.round(gs + margin * 2);
+        const cx = w / 2;
+        const cy = h / 2;
+        const cs = gs / cols;
+        const halfGrid = gs / 2;
+
+        // create an offscreen canvas and account for devicePixelRatio for crispness
+        const dpr = Math.max(1, window.devicePixelRatio || 1);
+        const c = document.createElement('canvas');
+        c.width = Math.round(w * dpr);
+        c.height = Math.round(h * dpr);
+        c.style.width = `${w}px`;
+        c.style.height = `${h}px`;
+        const ctx = c.getContext('2d');
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // Optional: transparent background to match SVG; fill if desired
+        ctx.clearRect(0, 0, w, h);
+
+        // center & rotate the whole grid like the canvas
+        ctx.translate(cx, cy);
+        ctx.rotate(rotationAngle);
+
+        // draw circles
+        if (showCircles) {
+          ctx.fillStyle = 'black';
+          for (let i = 0; i < positions.length; i++) {
+            const p = positions[i];
+            const x = (p.x + 0.5) * cs - halfGrid;
+            const y = (p.y + 0.5) * cs - halfGrid;
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // draw letters (keep them upright by rotating each by -rotationAngle)
+        if (showText) {
+          ctx.fillStyle = 'black';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          // match font size used for SVG/text drawing
+          const fontSize = 18;
+          ctx.font = `${fontSize}px "Mercator ST", Arial, sans-serif`;
+          for (let i = 0; i < word.length; i++) {
+            const lp = letterPositions[i];
+            const x = (lp.x + 0.5) * cs - halfGrid;
+            const y = (lp.y + 0.5) * cs - halfGrid;
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(-rotationAngle);
+            ctx.fillText(word.charAt(i), 0, 0);
+            ctx.restore();
+          }
+        }
+
+        // convert to blob and trigger download
+        c.toBlob(function (blob) {
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'tekdir-grid.png';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 2000);
+        }, 'image/png');
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+        if (e.key === 'p' || e.key === 'P') {
+          e.preventDefault();
+          exportGridAsPNG();
+        }
+      });
+    })();
   </script>
 
     <!-- <script>
