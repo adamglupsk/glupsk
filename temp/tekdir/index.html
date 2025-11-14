@@ -9,29 +9,38 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      /* background-color: white; */
+      max-height: 100vh;
+      overflow: hidden;
+      background-color: black;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1rem;
-    font-family: Arial, sans-serif;
+      font-size: 1.1rem;
+    font-family: 'Mercator ST', Arial;
 
     }
-    .one{
+    .color{
         position: absolute;
         width: 100%;
         height: 100%;
-        background: rgb(174, 174, 174);
-        mix-blend-mode: darken;
-        z-index: 10;
+
+        background: rgb(29, 91, 236);
+        background: rgb(59, 182, 34);
+        background: rgb(239, 129, 32);
+        background: rgb(255, 255, 255);
+        mix-blend-mode: multiply;
+        z-index: 20;
     }
-    .two{
-        position: absolute;
-        z-index: -10;
-        width: 100%;
-        height: 100%;
-        background: rgb(136, 136, 136);
-        /* mix-blend-mode: darken; */
+    
+
+    .invert{
+      mix-blend-mode: difference;
+      position: absolute;
+      background-color: white;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      opacity: 1;
     }
     canvas {
       z-index: 1;
@@ -41,15 +50,41 @@
     }
     .annotation{
         position: absolute;
-        top: 2vh;
-        left: 2vh;
+        top: 2vw;
         color: white;
+    }
+
+    .left{
+        left: 2vw;
+        text-align: left;
+    }
+
+    .tab{
+        position: absolute;
+        top: 2vw;
+        left: 20vw;
+    }
+
+    .bottom{
+        position: absolute;
+        bottom: 2vw;
+        left: 2vw;
+    }
+    @font-face {
+      font-family: 'Mercator ST';
+      src: local('Mercator ST'), local('MercatorST'),
+           url('./MercatorST_Regular.woff2') format('woff2');
+      font-style: normal;
+      font-display: swap;
     }
   </style>
 </head>
 <body>
-    <div class="annotation">TEKDIR<br>2020-2025<br> Oslo</div>
-    <div class="one">    </div>
+      <div class="color">    </div>
+
+  <div class="invert"></div>
+    <div class="annotation left">TEKDIR<br>2020-2025<br> Oslo, Norway</div>
+    <div class="annotation tab">Sikkerhet i praksis</div>
 
 
   <script>
@@ -71,7 +106,7 @@
         }
     });
     let gridSize = 300;
-    let targetGridSize = 150;
+    let targetGridSize = 135;
     let cols = 6;
     let rows = 6;
     let circleCount = 6;
@@ -258,7 +293,22 @@
     }
   </script>
 
-    <div class="two"></div>
+    <script>
+    (function(){
+      const invertEl = document.querySelector('.invert');
+      if (!invertEl) return;
 
+      // Map 1-9 -> 0.1 - 0.9, 0 -> 1.0 (Photoshop-like)
+      document.addEventListener('keydown', (e) => {
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+        const k = e.key;
+        if (/^[0-9]$/.test(k)) {
+          const opacity = (k === '0') ? 1 : parseInt(k, 10) / 10;
+          invertEl.style.opacity = opacity;
+          e.preventDefault();
+        }
+      });
+    })();
+    </script>
 </body>
 </html>
