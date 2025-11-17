@@ -10,14 +10,30 @@
       height: 100%;
       max-height: 100vh;
       overflow: hidden;
-      background-color: black;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 1.1rem;
       line-height: 1.5;
      font-family: 'Mercator ST', Arial, sans-serif;
+     background-color: transparent;
 
+    }
+    .background{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        background-color: rgb(0, 0, 0);
+        opacity: 1;
+    }
+    .video{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -5;
+        opacity: 0;
     }
     .color{
         position: absolute;
@@ -35,14 +51,14 @@
       width: 100%;
       height: 100%;
       z-index: 10;
-      opacity: 0.2;
+      opacity: 0;
     }
 
     canvas {
       z-index: 1;
       position: relative;
       filter: invert();
-      mix-blend-mode: difference;
+      /* mix-blend-mode: difference; */
     }
     .annotation{
         position: absolute;
@@ -83,31 +99,17 @@
   </style>
 </head>
 <body>
+  <div class="background"></div>
+  <div class="video">
+    <video class="video" autoplay muted loop playsinline>
+    <source src="montage-2.mp4" >
+  </video>
+  </div>
+
       <div class="color">    </div>
 
   <div class="invert"></div>
-  <script>
-  (function(){
-    const el = document.querySelector('.color');
-    if (!el) return;
-
-    const modes = ['multiply', 'screen'];
-    const cs = getComputedStyle(el);
-    let current = (cs.mixBlendMode && cs.mixBlendMode !== 'normal') ? cs.mixBlendMode : cs.getPropertyValue('mix-blend-mode') || 'multiply';
-    let idx = modes.indexOf(current);
-    if (idx === -1) idx = 0;
-    el.style.mixBlendMode = modes[idx];
-
-    window.addEventListener('keydown', (e) => {
-      if (e.altKey || e.ctrlKey || e.metaKey) return;
-      if (e.key === 'i' || e.key === 'I') {
-        idx = (idx + 1) % modes.length;
-        el.style.mixBlendMode = modes[idx];
-        e.preventDefault();
-      }
-    });
-  })();
-  </script>
+  
   
     <div class="annotation left">TEKDIR<br>2020-2025<br> Oslo, NO</div>
     <div class="annotation tab">
@@ -125,8 +127,8 @@
     
     </div>
     <div class="annotation bottom tab-tab">
-      <div>S <br> P <br></div> 
-      <div>Save as .svg<br>Save as .png</div> 
+      <div>V<br> S <br> P <br></div> 
+      <div>Video <br> Save as .svg<br>Save as .png</div> 
     
     </div>
 
@@ -441,74 +443,106 @@ function exportGridAsPNG(){
 }
 </script>
 
-    <!-- <script>
-    (function(){
-      const invertEl = document.querySelector('.invert');
-      if (!invertEl) return;
 
-      // Map 1-9 -> 0.1 - 0.9, 0 -> 1.0 (Photoshop-like)
-      document.addEventListener('keydown', (e) => {
-        if (e.altKey || e.ctrlKey || e.metaKey) return;
-        const k = e.key;
-        if (/^[0-9]$/.test(k)) {
-          const opacity = (k === '0') ? 1 : parseInt(k, 10) / 10;
-          invertEl.style.opacity = opacity;
-          e.preventDefault();
-        }
-      });
-    })();
-    </script> -->
-    
+<!-- invert -->
     <script>
     (function(){
-      const el = document.querySelector('.invert');
-      if (!el) return;
+      // elements
+      const invertEl = document.querySelector('.invert');
+      const colorEl = document.querySelector('.color');
+      const wrapper = document.querySelector('.video');
+      const innerVideo = wrapper && wrapper.tagName && wrapper.tagName.toLowerCase() === 'div'
+      ? wrapper.querySelector('video')
+      : null;
+      const videoEl = innerVideo || wrapper;
 
-      const start = 0.2;
-      const step = 0.1;
-      const count = 8;
-      const eps = 1e-6;
-      const opacities = [];
+      // --- invert opacity sequence ---
+      let invertOpacities = [];
+      let invertIdx = 0;
+      if (invertEl) {
+      const start = 0.1, step = 0.2, count = 4, eps = 1e-6;
       let v = start;
-      while (opacities.length < count) {
-        if (Math.abs(v - 0.5) > eps) opacities.push(Number(v.toFixed(2)));
-        v += step;
+      while (invertOpacities.length < count) {
+      if (Math.abs(v - 0.5) > eps) invertOpacities.push(Number(v.toFixed(2)));
+      v += step;
+      }
+      const current = Number(window.getComputedStyle(invertEl).opacity || 0);
+      const found = invertOpacities.indexOf(Number(current.toFixed(2)));
+      invertIdx = found === -1 ? 0 : found;
+      invertEl.style.opacity = invertOpacities[invertIdx];
       }
 
-      // sync initial index with current computed opacity (fallback to 0)
-      const current = Number(window.getComputedStyle(el).opacity);
-      let idx = opacities.indexOf(Number(current.toFixed(2)));
-      if (idx === -1) idx = 0;
-      el.style.opacity = opacities[idx];
+      // --- color background & blend mode ---
+      const colors = ['transparent', '#13A1F0', '#069C38'];
+      const modes = ['multiply', 'screen'];
+      let colorIdx = 0;
+      let modeIdx = 0;
+      if (colorEl) {
+      colorEl.style.backgroundColor = colors[colorIdx];
+      const cs = getComputedStyle(colorEl);
+      const currentMode = (cs.mixBlendMode && cs.mixBlendMode !== 'normal')
+      ? cs.mixBlendMode
+      : cs.getPropertyValue('mix-blend-mode') || 'multiply';
+      modeIdx = modes.indexOf(currentMode);
+      if (modeIdx === -1) modeIdx = 0;
+      colorEl.style.mixBlendMode = modes[modeIdx];
+      }
 
-      window.addEventListener('keydown', (e) => {
-        if (e.altKey || e.ctrlKey || e.metaKey) return;
-        if (e.key === 'b' || e.key === 'B') {
-          idx = (idx + 1) % opacities.length;
-          el.style.opacity = opacities[idx];
-          e.preventDefault();
-        }
+      // --- video opacity handling & transitions ---
+      let videoVisible = true;
+      let overlayHidden = false; // Track .color and .invert visibility
+      if (videoEl) {
+      [wrapper, innerVideo, videoEl].forEach(node => {
+      if (!node) return;
+      if (!node.style.transition) node.style.transition = 'opacity 200ms ease';
       });
-    })();
+      videoVisible = Number(window.getComputedStyle(videoEl).opacity || 0) > 0.5;
+      }
 
-
-    </script>
-
-    <script>
-    (function(){
-      const colors = ['white', '#13A1F0','#069C38'];
-      const el = document.querySelector('.color');
-      if (!el) return;
-      let idx = 0;
-      el.style.backgroundColor = colors[idx];
-
+      // single key handler for b / c / i / v
       window.addEventListener('keydown', (e) => {
-        if (e.altKey || e.ctrlKey || e.metaKey) return;
-        if (e.key === 'c' || e.key === 'C') {
-          idx = (idx + 1) % colors.length;
-          el.style.backgroundColor = colors[idx];
-          e.preventDefault();
-        }
+      if (e.altKey || e.ctrlKey || e.metaKey) return;
+      const k = e.key;
+      if (!k) return;
+
+      if ((k === 'b' || k === 'B') && invertEl && invertOpacities.length) {
+      if (!videoVisible) { // Do nothing if video is visible
+        invertIdx = (invertIdx + 1) % invertOpacities.length;
+        invertEl.style.opacity = invertOpacities[invertIdx];
+      }
+      e.preventDefault();
+      return;
+      }
+
+      if ((k === 'c' || k === 'C') && colorEl) {
+      colorIdx = (colorIdx + 1) % colors.length;
+      colorEl.style.backgroundColor = colors[colorIdx];
+      e.preventDefault();
+      return;
+      }
+
+      if ((k === 'i' || k === 'I') && colorEl) {
+      modeIdx = (modeIdx + 1) % modes.length;
+      colorEl.style.mixBlendMode = modes[modeIdx];
+      e.preventDefault();
+      return;
+      }
+
+      if ((k === 'v' || k === 'V') && videoEl) {
+      videoVisible = !videoVisible;
+      const val = videoVisible ? '1' : '0';
+      if (wrapper) wrapper.style.opacity = val;
+      if (innerVideo) innerVideo.style.opacity = val;
+      videoEl.style.opacity = val;
+
+      // Toggle .color and .invert opacity
+      overlayHidden = !overlayHidden;
+      if (colorEl) colorEl.style.opacity = overlayHidden ? '0' : '1';
+      if (invertEl) invertEl.style.opacity = overlayHidden ? '0' : invertOpacities[invertIdx];
+
+      e.preventDefault();
+      return;
+      }
       });
     })();
     </script>
