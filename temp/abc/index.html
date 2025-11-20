@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SECRET</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      max-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.1rem;
+      line-height: 1.5;
+     font-family: 'Mercator ST', Arial, sans-serif;
+     background-color: transparent;
+
+    }
+    .background{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        background-color: rgb(0, 0, 0);
+        opacity: 1;
+    }
+    .video{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -5;
+        opacity: 0;
+        /* filter:blur(1vh); */
+    }
+    .color{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: multiply;
+        z-index: 20;
+    }
+    
+
+    .invert{
+      mix-blend-mode: difference;
+      position: absolute;
+      background-color: white;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      opacity: 0;
+    }
+
+    canvas {
+      z-index: 1;
+      position: relative;
+      filter: invert();
+      /* mix-blend-mode: difference; */
+    }
+    .annotation{
+        position: absolute;
+        top: 2vw;
+        color: white;
+    }
+
+    .left{
+        left: 2vw;
+        text-align: left;
+    }
+  .bottom{
+          top: revert;
+          left: 2vw;
+          bottom: 2vw;
+          text-transform: lowercase;
+          display: flex;
+          gap: 2vw;
+      }
+
+    .tab{
+        position: absolute;
+        left: 20vw;
+    }
+    .tab-tab{
+        position: absolute;
+        left: 40vw;
+    }
+
+   
+    @font-face {
+      font-family: 'Mercator ST';
+      src: local('Mercator ST'), local('MercatorST'),
+           url('./MercatorST_Regular.woff2') format('woff2');
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="video">
+    <video class="video" autoplay muted loop playsinline>
+    <source src="drone.mp4" >
+  </video>
+  </div>
+
+      <div class="color">    </div>
+
+  <div class="invert"></div>
+  
+  
+    <div class="annotation left">SECRET<br>2020-2025<br> Oslo, NO</div>
+    <div class="annotation tab">
+      Sikkerhet i praksis
+
+    </div>
+    <div class="annotation bottom">
+      <div>→ <br> ← <br>↑ <br>↓</div> 
+      <div>Reorganise<br>Rotate<br>Scale up<br>Scale down</div> 
+    
+    </div>
+    <div class="annotation bottom tab">
+      <div style>b <br>c <br> t <br> l</div> 
+      <div>Brightness<br>Color<br>Text<br>Logo</div> 
+    
+    </div>
+    <div class="annotation bottom tab-tab">
+      <div>V<br> S <br> P <br></div> 
+      <div>Video <br> Save as .svg<br>Save as .png</div> 
+    
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+<script>
+let canvasSize = window.innerWidth;
+let gridSize = 300;
+let targetGridSize = 150;
+let minGridSize = targetGridSize;
+let cols = 6;
+let rows = 6;
+let circleCount = 6;
+
+let rotationAngle = 0;
+let targetRotation = 0;
+let easing = 0.125;
+
+let showText = false;
+let showCircles = true;
+let lMode = false;
+
+let positions = [];
+let targetPositions = [];
+let letterPositions = [];
+let targetLetterPositions = [];
+
+let word = "SECRET";
+
+// Hard-coded L mode circle constellation (0-indexed)
+const hardcodedCircles = [
+  {x:0,y:2}, {x:1,y:2}, {x:0,y:3}, {x:2,y:3}, {x:1,y:4}, {x:2,y:4}
+];
+
+function setup() {
+  createCanvas(canvasSize, canvasSize);
+  textAlign(CENTER, CENTER);
+  textSize(19);
+  noStroke();
+  fill(255);
+  rectMode(CENTER);
+  textFont('Mercator ST Medium, Arial, sans-serif');
+  generateRandomPositions();
+}
+
+function draw() {
+  clear();
+
+  gridSize = lerp(gridSize, targetGridSize, easing);
+  rotationAngle = lerp(rotationAngle, targetRotation, easing);
+
+  for(let i=0;i<circleCount;i++){
+    positions[i].x = lerp(positions[i].x,targetPositions[i].x,easing);
+    positions[i].y = lerp(positions[i].y,targetPositions[i].y,easing);
+  }
+
+  for(let i=0;i<word.length;i++){
+    letterPositions[i].x = lerp(letterPositions[i].x,targetLetterPositions[i].x,easing);
+    letterPositions[i].y = lerp(letterPositions[i].y,targetLetterPositions[i].y,easing);
+  }
+
+  push();
+  translate(width/2,height/2);
+  rotate(rotationAngle);
+  drawGridElements();
+  pop();
+}
+
+function drawGridElements(){
+  let cellSize = gridSize / cols;
+  fill(0);
+
+  if(showCircles){
+    for(let cell of positions){
+      let x = (cell.x+0.5)*cellSize - gridSize/2;
+      let y = (cell.y+0.5)*cellSize - gridSize/2;
+      ellipse(x,y,20,20);
+    }
+  }
+
+  if(showText){
+    for(let i=0;i<word.length;i++){
+      let x = (letterPositions[i].x+0.5)*cellSize - gridSize/2;
+      let y = (letterPositions[i].y+0.5)*cellSize - gridSize/2;
+      push();
+      translate(x,y);
+      rotate(-rotationAngle);
+      text(word.charAt(i),0,0);
+      pop();
+    }
+  }
+}
+
+// RANDOM POSITIONS AVOIDING LETTERS AND CIRCLES
+function generateRandomPositions(){
+  if(positions.length===0){
+    for(let i=0;i<circleCount;i++){
+      positions.push(createVector());
+      targetPositions.push(createVector());
+    }
+  }
+  if(letterPositions.length===0){
+    for(let i=0;i<word.length;i++){
+      letterPositions.push(createVector());
+      targetLetterPositions.push(createVector());
+    }
+  }
+
+  // Random letters first
+  let allCells = [];
+  for(let y=0;y<rows;y++){
+    for(let x=0;x<cols;x++){
+      allCells.push({x:x,y:y});
+    }
+  }
+  shuffleArray(allCells);
+
+  for(let i=0;i<word.length;i++){
+    let cell = allCells.shift();
+    targetLetterPositions[i].set(cell.x,cell.y);
+  }
+
+  // Remove letter cells for circles
+  let availableCells = allCells.map(c=>({x:c.x,y:c.y}));
+  shuffleArray(availableCells);
+
+  for(let i=0;i<circleCount && availableCells.length>0;i++){
+    let cell = availableCells.shift();
+    targetPositions[i].set(cell.x,cell.y);
+  }
+}
+
+function activateLMode(){
+  lMode = !lMode;
+  if(lMode){
+    // make letters visible if not already
+    if(!showText) showText = true;
+    // letters top row
+    for(let i=0;i<word.length;i++){
+      targetLetterPositions[i].set(i%cols,0);
+    }
+    // circles hard-coded
+    for(let i=0;i<circleCount;i++){
+      targetPositions[i].set(hardcodedCircles[i].x,hardcodedCircles[i].y);
+    }
+    // snap rotation to the nearest 0° (nearest multiple of TWO_PI)
+    targetRotation = Math.round(targetRotation / TWO_PI) * TWO_PI;
+  } else {
+    generateRandomPositions();
+  }
+}
+
+function keyPressed(){
+  if(key==='t'||key==='T') showText = !showText;
+  else if(key==='e'||key==='E') showCircles = !showCircles;
+  else if(key==='l'||key==='L') activateLMode();
+  else if(keyCode===RIGHT_ARROW){
+    if(!lMode) generateRandomPositions();
+    else activateLMode(); // emulate unlock+relock
+  }
+  else if(keyCode===LEFT_ARROW){
+    // only rotate, do not generate random positions
+    if(lMode) activateLMode(); // emulate unlock+relock when in L mode
+    targetRotation -= HALF_PI;
+  }
+  else if(keyCode===DOWN_ARROW) targetGridSize = max(targetGridSize*0.5,minGridSize);
+  else if(keyCode===UP_ARROW) targetGridSize *= 2;
+  else if(key==='s'||key==='S') exportGridAsSVG();
+  else if(key==='p'||key==='P') exportGridAsPNG();
+}
+
+// Fisher-Yates shuffle
+function shuffleArray(a){
+  for(let i=a.length-1;i>0;i--){
+    const j = floor(random(0,i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+}
+
+// --- EXPORT SVG ---
+function exportGridAsSVG(){
+  const margin = 50;
+  const gs = gridSize;
+  const w = Math.round(gs+margin*2);
+  const h = Math.round(gs+margin*2);
+  const cx = w/2, cy=h/2;
+  const deg = rotationAngle*180/PI;
+  const cs = gs/cols;
+  const halfGrid = gs/2;
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(ns,'svg');
+  svg.setAttribute('xmlns',ns);
+  svg.setAttribute('width',w);
+  svg.setAttribute('height',h);
+  svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+
+  const g = document.createElementNS(ns,'g');
+  g.setAttribute('transform',`translate(${cx},${cy}) rotate(${deg})`);
+  svg.appendChild(g);
+
+  if(showCircles){
+    for(let i=0;i<positions.length;i++){
+      const p = positions[i];
+      const x = (p.x+0.5)*cs-halfGrid;
+      const y = (p.y+0.5)*cs-halfGrid;
+      const c = document.createElementNS(ns,'circle');
+      c.setAttribute('cx',x);
+      c.setAttribute('cy',y);
+      c.setAttribute('r',10);
+      c.setAttribute('fill','black');
+      g.appendChild(c);
+    }
+  }
+
+  if(showText){
+    for(let i=0;i<word.length;i++){
+      const lp = letterPositions[i];
+      const x = (lp.x+0.5)*cs-halfGrid;
+      const y = (lp.y+0.5)*cs-halfGrid;
+      const tg = document.createElementNS(ns,'g');
+      tg.setAttribute('transform',`translate(${x},${y}) rotate(${-deg})`);
+      const t = document.createElementNS(ns,'text');
+      t.setAttribute('x',0);
+      t.setAttribute('y',0);
+      t.setAttribute('text-anchor','middle');
+      t.setAttribute('dominant-baseline','middle');
+      t.setAttribute('font-size',18);
+      t.setAttribute('fill','black');
+      t.setAttribute('font-family','Mercator ST, Arial, sans-serif');
+      t.textContent = word.charAt(i);
+      tg.appendChild(t);
+      g.appendChild(tg);
+    }
+  }
+
+  const serializer = new XMLSerializer();
+  const svgStr = serializer.serializeToString(svg);
+  const blob = new Blob([svgStr],{type:'image/svg+xml;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download='SECRET-grid.svg';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),2000);
+}
+
+// --- EXPORT PNG ---
+function exportGridAsPNG(){
+  const margin = 50;
+  const gs = gridSize;
+  const w = Math.round(gs+margin*2);
+  const h = Math.round(gs+margin*2);
+  const cx=w/2, cy=h/2;
+  const cs = gs/cols;
+  const halfGrid = gs/2;
+
+  const dpr = max(1,window.devicePixelRatio||1);
+  const c = document.createElement('canvas');
+  c.width=Math.round(w*dpr);
+  c.height=Math.round(h*dpr);
+  c.style.width=`${w}px`;
+  c.style.height=`${h}px`;
+  const ctx=c.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,w,h);
+
+  ctx.translate(cx,cy);
+  ctx.rotate(rotationAngle);
+
+  if(showCircles){
+    ctx.fillStyle='black';
+    for(let i=0;i<positions.length;i++){
+      const p=positions[i];
+      const x=(p.x+0.5)*cs-halfGrid;
+      const y=(p.y+0.5)*cs-halfGrid;
+      ctx.beginPath();
+      ctx.arc(x,y,10,0,PI*2);
+      ctx.fill();
+    }
+  }
+
+  if(showText){
+    ctx.fillStyle='black';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.font='18px "Mercator ST", Arial, sans-serif';
+    for(let i=0;i<word.length;i++){
+      const lp = letterPositions[i];
+      const x = (lp.x+0.5)*cs-halfGrid;
+      const y = (lp.y+0.5)*cs-halfGrid;
+      ctx.save();
+      ctx.translate(x,y);
+      ctx.rotate(-rotationAngle);
+      ctx.fillText(word.charAt(i),0,0);
+      ctx.restore();
+    }
+  }
+
+  c.toBlob(blob=>{
+    if(!blob)return;
+    const url = URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download='SECRET-grid.png';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),2000);
+  },'image/png');
+}
+</script>
+
+
+<!-- invert -->
+    <script>
+    (function(){
+      // elements
+      const invertEl = document.querySelector('.invert');
+      const colorEl = document.querySelector('.color');
+      const wrapper = document.querySelector('.video');
+      const innerVideo = wrapper && wrapper.tagName && wrapper.tagName.toLowerCase() === 'div'
+      ? wrapper.querySelector('video')
+      : null;
+      const videoEl = innerVideo || wrapper;
+
+      // --- invert opacity sequence ---
+      let invertOpacities = [];
+      let invertIdx = 0;
+      if (invertEl) {
+      const start = 0.1, step = 0.2, count = 4, eps = 1e-6;
+      let v = start;
+      while (invertOpacities.length < count) {
+      if (Math.abs(v - 0.5) > eps) invertOpacities.push(Number(v.toFixed(2)));
+      v += step;
+      }
+      const current = Number(window.getComputedStyle(invertEl).opacity || 0);
+      const found = invertOpacities.indexOf(Number(current.toFixed(2)));
+      invertIdx = found === -1 ? 0 : found;
+      invertEl.style.opacity = invertOpacities[invertIdx];
+      }
+
+      // --- color background & blend mode ---
+      const colors = ['#F3EFED', '#FF431D', '#37983C'];
+      const modes = ['multiply', 'screen'];
+      let colorIdx = 0;
+      let modeIdx = 0;
+      if (colorEl) {
+      colorEl.style.backgroundColor = colors[colorIdx];
+      const cs = getComputedStyle(colorEl);
+      const currentMode = (cs.mixBlendMode && cs.mixBlendMode !== 'normal')
+      ? cs.mixBlendMode
+      : cs.getPropertyValue('mix-blend-mode') || 'multiply';
+      modeIdx = modes.indexOf(currentMode);
+      if (modeIdx === -1) modeIdx = 0;
+      colorEl.style.mixBlendMode = modes[modeIdx];
+      }
+
+      // --- video opacity handling & transitions ---
+      let videoVisible = true;
+      let overlayHidden = false; // Track .color and .invert visibility
+      if (videoEl) {
+      [wrapper, innerVideo, videoEl].forEach(node => {
+      if (!node) return;
+      if (!node.style.transition) node.style.transition = 'opacity 200ms ease';
+      });
+      videoVisible = Number(window.getComputedStyle(videoEl).opacity || 0) > 0.5;
+      }
+
+      // single key handler for b / c / i / v
+      window.addEventListener('keydown', (e) => {
+      if (e.altKey || e.ctrlKey || e.metaKey) return;
+      const k = e.key;
+      if (!k) return;
+
+      if ((k === 'b' || k === 'B') && invertEl && invertOpacities.length) {
+      if (!videoVisible) { // Do nothing if video is visible
+        invertIdx = (invertIdx + 1) % invertOpacities.length;
+        invertEl.style.opacity = invertOpacities[invertIdx];
+      }
+      e.preventDefault();
+      return;
+      }
+
+      if ((k === 'c' || k === 'C') && colorEl) {
+      colorIdx = (colorIdx + 1) % colors.length;
+      colorEl.style.backgroundColor = colors[colorIdx];
+      e.preventDefault();
+      return;
+      }
+
+      if ((k === 'i' || k === 'I') && colorEl) {
+      modeIdx = (modeIdx + 1) % modes.length;
+      colorEl.style.mixBlendMode = modes[modeIdx];
+      e.preventDefault();
+      return;
+      }
+
+      if ((k === 'v' || k === 'V') && videoEl) {
+      videoVisible = !videoVisible;
+      const val = videoVisible ? '1' : '0';
+      if (wrapper) wrapper.style.opacity = val;
+      if (innerVideo) innerVideo.style.opacity = val;
+      videoEl.style.opacity = val;
+
+      // Toggle .color and .invert opacity
+      overlayHidden = !overlayHidden;
+      if (colorEl) colorEl.style.opacity = overlayHidden ? '0' : '1';
+      if (invertEl) invertEl.style.opacity = overlayHidden ? '0' : invertOpacities[invertIdx];
+
+      e.preventDefault();
+      return;
+      }
+      });
+    })();
+    </script>
+</body>
+</html>
