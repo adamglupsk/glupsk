@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>tekdir</title>
+  <title>TEKDIR</title>
   <style>
     html, body {
       margin: 0;
@@ -103,7 +103,7 @@
   <div class="background"></div>
   <div class="video">
     <video class="video" autoplay muted loop playsinline>
-    <source src="montage.mp4" >
+    <source src="drone.mp4" >
   </video>
   </div>
 
@@ -114,7 +114,7 @@
   
     <div class="annotation left">TEKDIR<br>2020-2025<br> Oslo, NO</div>
     <div class="annotation tab">
-      Sikkerhet i praksis
+      Sikkerhet i praksis.
 
     </div>
     <div class="annotation bottom">
@@ -137,16 +137,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 <script>
 let canvasSize = window.innerWidth;
-let gridSize = 300;
-let targetGridSize = 150;
+let gridSize = 400;
+let targetGridSize = 145;
 let minGridSize = targetGridSize;
-let cols = 6;
-let rows = 6;
+let cols = 7;
+let rows = 7;
 let circleCount = 6;
 
 let rotationAngle = 0;
 let targetRotation = 0;
-let easing = 0.125;
+let easing = 0.075;
 
 let showText = false;
 let showCircles = true;
@@ -157,17 +157,17 @@ let targetPositions = [];
 let letterPositions = [];
 let targetLetterPositions = [];
 
-let word = "TEKDIR";
+let word = " TEKDIR ";
 
 // Hard-coded L mode circle constellation (0-indexed)
 const hardcodedCircles = [
-  {x:0,y:2}, {x:1,y:2}, {x:0,y:3}, {x:5,y:3}, {x:4,y:4}, {x:5,y:4}
+  {x:2,y:2}, {x:3,y:2}, {x:2,y:3}, {x:4,y:3}, {x:3,y:4}, {x:4,y:4}
 ];
 
 function setup() {
   createCanvas(canvasSize, canvasSize);
   textAlign(CENTER, CENTER);
-  textSize(19);
+  textSize(18);
   noStroke();
   fill(255);
   rectMode(CENTER);
@@ -178,17 +178,17 @@ function setup() {
 function draw() {
   clear();
 
-  gridSize = lerp(gridSize, targetGridSize, easing);
-  rotationAngle = lerp(rotationAngle, targetRotation, easing);
+  gridSize = linearInterpolate(gridSize, targetGridSize, easing);
+  rotationAngle = linearInterpolate(rotationAngle, targetRotation, easing);
 
   for(let i=0;i<circleCount;i++){
-    positions[i].x = lerp(positions[i].x,targetPositions[i].x,easing);
-    positions[i].y = lerp(positions[i].y,targetPositions[i].y,easing);
+    positions[i].x = linearInterpolate(positions[i].x, targetPositions[i].x, easing);
+    positions[i].y = linearInterpolate(positions[i].y, targetPositions[i].y, easing);
   }
 
   for(let i=0;i<word.length;i++){
-    letterPositions[i].x = lerp(letterPositions[i].x,targetLetterPositions[i].x,easing);
-    letterPositions[i].y = lerp(letterPositions[i].y,targetLetterPositions[i].y,easing);
+    letterPositions[i].x = linearInterpolate(letterPositions[i].x, targetLetterPositions[i].x, easing);
+    letterPositions[i].y = linearInterpolate(letterPositions[i].y, targetLetterPositions[i].y, easing);
   }
 
   push();
@@ -206,7 +206,7 @@ function drawGridElements(){
     for(let cell of positions){
       let x = (cell.x+0.5)*cellSize - gridSize/2;
       let y = (cell.y+0.5)*cellSize - gridSize/2;
-      ellipse(x,y,20,20);
+      ellipse(x,y,15,15);
     }
   }
 
@@ -265,8 +265,8 @@ function generateRandomPositions(){
 function activateLMode(){
   lMode = !lMode;
   if(lMode){
-    // make letters visible if not already
-    if(!showText) showText = true;
+    // make letters invisible if they are visible
+    if(showText) showText = false;
     // letters top row
     for(let i=0;i<word.length;i++){
       targetLetterPositions[i].set(i%cols,0);
@@ -277,6 +277,8 @@ function activateLMode(){
     }
     // snap rotation to the nearest 0° (nearest multiple of TWO_PI)
     targetRotation = Math.round(targetRotation / TWO_PI) * TWO_PI;
+    // reset grid size to the initial one
+    targetGridSize = minGridSize;
   } else {
     generateRandomPositions();
   }
@@ -307,6 +309,11 @@ function shuffleArray(a){
     const j = floor(random(0,i+1));
     [a[i],a[j]] = [a[j],a[i]];
   }
+}
+
+// Linear interpolation function
+function linearInterpolate(start, end, t) {
+  return start + (end - start) * t;
 }
 
 // --- EXPORT SVG ---
@@ -359,9 +366,16 @@ function exportGridAsSVG(){
       t.setAttribute('font-size',18);
       t.setAttribute('fill','black');
       t.setAttribute('font-family','Mercator ST, Arial, sans-serif');
+      t.setAttribute('opacity', 0); // Start with opacity 0
+      t.style.transition = 'opacity 0.5s ease'; // Add transition for opacity
       t.textContent = word.charAt(i);
       tg.appendChild(t);
       g.appendChild(tg);
+
+      // Trigger the fade-in effect
+      requestAnimationFrame(() => {
+        t.setAttribute('opacity', 1); // Set opacity to 1 after appending
+      });
     }
   }
 
@@ -371,7 +385,7 @@ function exportGridAsSVG(){
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download='tekdir-grid.svg';
+  a.download='TEKDIR-grid.svg';
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -435,7 +449,7 @@ function exportGridAsPNG(){
     const url = URL.createObjectURL(blob);
     const a=document.createElement('a');
     a.href=url;
-    a.download='tekdir-grid.png';
+    a.download='TEKDIR-grid.png';
     document.body.appendChild(a);
     a.click();
     a.remove();
