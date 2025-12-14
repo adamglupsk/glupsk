@@ -136,8 +136,9 @@
             margin-bottom: calc(var(--column-height) * 2);
         } */
         .dent{
+            margin-top: calc(var(--column-height) * 0.75);
             margin-left: calc(var(--column-height) * 2);
-            margin-bottom: calc(var(--column-height) * 1);
+            margin-bottom: calc(var(--column-height) * 0.75);
         }
         .text p + p{
             text-indent: calc(var(--column-height) * 2);
@@ -187,6 +188,10 @@
 
         .head > div{
             flex: 5;
+        }
+
+        .back{
+
         }
 
           @media (max-width: 900px){
@@ -239,7 +244,29 @@
         </div>
     </div>
 
+<script>
+            const aa = document.getElementById('aa');
+            const text = aa.textContent;
+            aa.innerHTML = '';
+            text.split('').forEach((char, i) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.style.display = 'inline-block';
+                span.style.position = 'relative';
+                aa.appendChild(span);
+            });
 
+            function randomizeLetters() {
+                aa.childNodes.forEach(span => {
+                    const x = Math.random() * 1000;
+                    const y = Math.random() * 1200;
+                    span.style.transform = `translate(${x}px, ${y}px)`;
+                    span.style.transition = 'transform 0.5s step';
+                });
+            }
+
+            setInterval(randomizeLetters, 2000);
+        </script>
 
 <div class="block">
     <div class="text">
@@ -404,9 +431,9 @@
 </div>
 
 
-  <div class="alt">
+  <!-- <div class="alt">
         <div><video src="landing-1.mp4" autoplay muted loop playsinline></video>Learning software and sampling screen recordings</div>
-    </div>
+    </div> -->
 <div class="alt"><div><img src="posters/13-a.jpg" alt="">Illustrated poster for student union breakfast club. Organised with Måns Horning.</div>
 </div>
 
@@ -487,35 +514,21 @@
 
 
  <div class="block cv" id="about">
-    <div class="text">
-        <div id="aa">Adam&nbsp;Arinbjarnarson</div>
-        <script>
-            const aa = document.getElementById('aa');
-            const text = aa.textContent;
-            aa.innerHTML = '';
-            text.split('').forEach((char, i) => {
-                const span = document.createElement('span');
-                span.textContent = char;
-                span.style.display = 'inline-block';
-                span.style.position = 'relative';
-                aa.appendChild(span);
-            });
+    <div class="text" style="flex-basis: 3;">
+        <div>        <div class="back"><a href="#aa">back</a> ↑</div> <br>
+</div>
+        <div>
+            <!-- Adam&nbsp;Arinbjarnarson -->
+             <!-- <a href="#aa">Back</a> -->
+             
+            <br>
+                    <!-- <div class="back"><a href="#aa">Back</a> </div> -->
 
-            function randomizeLetters() {
-                aa.childNodes.forEach(span => {
-                    const x = Math.random() * 1000;
-                    const y = Math.random() * 1200;
-                    span.style.transform = `translate(${x}px, ${y}px)`;
-                    span.style.transition = 'transform 0.5s step';
-                });
-            }
-
-            setInterval(randomizeLetters, 2000);
-        </script>
+        </div>
     </div>
 
     <div class="text second clear">
-        <p> I'm a designer interested in graphic identity applied to print, digital (websites like this one) and animation. I utilise typography, animation, image editing and experimentation with programming. I define and develop concepts with and for collaborators, to create both meaningful and strategic design. Tools I rely on and use include:</p>
+        <p>I (Adam Arinbjarnarson) am a designer interested in graphic identity applied to print, digital and motion. I utilise typography, animation, image editing and programming. I define and develop concepts with and for collaborators, to create both meaningful and strategic design. Tools I rely on and use include:</p>
             <p class="dent">
                 Listening, speaking, writing<br>
                 InDesign, Photoshop, Illustrator<br>
@@ -533,14 +546,24 @@
         <p>I recently graduated from an artistic, small scale and sometimes experimental design school in Stockholm, heavy on conceptual thinking and challenging interdisciplinary collaborations:</p>
             <p class="dent">Visual Communication, BFA<br>Beckmans College of Design <br>2022-2025</p>
 
-        <p>Last year, I did an internship at a Stockholm based design studio. My contributions were in web design, 2d+3d animation and graphic design, collaborating with UX designers, front and back-end developers or printers to realise design projects:</p>
+        <p>A while back, I assisted two brilliant graphic designers that run a design studio in Stockholm. During my internship with them, I contributed with web design, 2d+3d animation and graphic design, collaborating with UX designers, front- and back-end developers or printers to realise design projects:</p>
             <p class="dent"><a href="https://researchanddevelopment.se">Research and Development</a> <br> Stockholm, SE<br>2024 </p>
 
         <p>Fellow designer Peter Ström has intitiated an award(!) as part of a resarch project on preservation and archival of digital design. In this project I contributed with research on Swedish web design projects and was part of the jury selecting nominees and recipients:</p>
             <p class="dent">Svensk Webbkonst 2021-2024 <br> <a href="https://w3.svenskwebbkonst.se/">w3.svenskwebbkonst.se</a> </p>
 
-        <p>Occasionally, I do freelance work at a smaller scale, designing posters and simple printed matter or web projects. Please contact:</p>
-        <p class="dent"> <a href="mailto:adaari@icloud.com">adaari@icloud.com</a>&#8203;</p> <br></div>
+        <p>Besides this website, I regularly post work in progress and some trial and error-stuff on an instagram account, and in other parts:</p>
+        <p class="dent"> <a href="https://www.instagram.com/babyglupsk">@babyglupsk</a>
+                <br><a href="archive.html">/archive.html</a>
+            </p>
+
+        <p>Occasionally, I do freelance work like designing posters, printed matter or web projects. Please contact:</p>
+        <p class="dent"> <a href="mailto:adaari@icloud.com">adaari@icloud.com</a>&#8203;</p>
+        
+    
+        </div>
+        
+        
 </div>
 </div>
 
