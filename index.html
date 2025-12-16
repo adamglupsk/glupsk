@@ -193,7 +193,7 @@
         .back{
             position: sticky;
         }
-
+        
           @media (max-width: 900px){
             body{
                 padding: 0;
@@ -245,28 +245,40 @@
     </div>
 
 <script>
-            const aa = document.getElementById('aa');
-            const text = aa.textContent;
-            aa.innerHTML = '';
-            text.split('').forEach((char, i) => {
-                const span = document.createElement('span');
-                span.textContent = char;
-                span.style.display = 'inline-block';
-                span.style.position = 'relative';
-                aa.appendChild(span);
-            });
+    const aa = document.getElementById('aa');
+    const text = aa.textContent;
+    aa.innerHTML = '';
+    text.split('').forEach((char, i) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.display = 'inline-block';
+        span.style.position = 'relative';
+        aa.appendChild(span);
+    });
 
-            function randomizeLetters() {
-                aa.childNodes.forEach(span => {
-                    const x = Math.random() * 1000;
-                    const y = Math.random() * 1200;
-                    span.style.transform = `translate(${x}px, ${y}px)`;
-                    span.style.transition = 'transform 0.5s step';
-                });
+    function isMobile() {
+        return window.innerWidth <= 900;
+    }
+
+    function randomizeLetters() {
+        aa.childNodes.forEach(span => {
+            if (isMobile()) {
+                const x = Math.random() * -12;
+                const y = Math.random() * 45;
+                span.style.transition = 'transform 3s ease-in-out';
+                span.style.transform = `translate(${x}vw, ${y}vh)`;
+            } else {
+                const x = Math.random() * -12;
+                const y = Math.random() * 45;
+                span.style.transition = 'transform 3s ease-in-out';
+                span.style.transform = `translate(${x}vw, ${y}vh)`;
             }
+        });
+    }
 
-            setInterval(randomizeLetters, 2000);
-        </script>
+    setInterval(randomizeLetters, 3000);
+    window.addEventListener('resize', randomizeLetters);
+</script>
 
 <div class="block">
     <div class="text">
