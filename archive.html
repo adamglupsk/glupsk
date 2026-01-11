@@ -5,1012 +5,290 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adam Arinbjarnarson</title>
     <style>
-        :root{
-            --column-height: 1.5vw;
-        }
-        body {
-            display: flex;
-            flex-wrap: wrap;
-            /* margin: 0; */
+        body{
+            min-width: 100dvw;
+            max-width: 100dvw;
+
+            min-height: 100dvh;
+            max-height: 100dvh;
+
+            overflow-x: hidden;
             padding: 0;
+            margin: 1vw;
+            display: flex;
+            gap: 0vw;
+            flex-direction: column;
+            background-color: black;
+            color:white;
+
         }
-        div {
-            min-width: 8rem;
-            max-width: 8rem;
-            min-height: 10rem;
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center; */
-            overflow: hidden;
+
+        h1, h2, p, a{
+            font-family: Arial Black, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
         }
-        div:has(p){
-            margin-bottom: 10px;
-        }
-    
-        img, p, video{
-            object-fit: contain;
-            /* filter: saturate(0) contrast(0.1); */
-            max-width: 8rem;
-        }
-      
+
         
-        body.dimmed * {
-    opacity: 0;
-}
-
-.expanded {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100vw;
-    min-height: 100vh;
-    /* background: rgb(255, 0, 0); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 1 !important;
-    z-index: 1000;
-}
-.expanded img, .expanded video {
-    opacity: 1 !important;
-    width: auto;
-object-fit: fill;
-max-width: revert;
-max-height: 80vh;
-filter: saturate(1) contrast(1);
-
-}
-
-div:has(img:hover), div:has(video:hover){
-    transform: scale(1.1);
-    /* transition: scale 0.05s linear; */
-}
-
-.expanded:hover{
-    transform: initial;
-    /* transition: scale 0.25s; */
-}
-
-
- body, .text, .title, .second, .media, h1, p, a {
-            font-family: 'Times', Arial, Helvetica, sans-serif;
-            /* font-size: 0.8rem; */
-            line-height: 1.4;
-            -webkit-text-stroke: 0.5px black;
+        img, video{
+            max-width: 50%;
+            height: auto;
+            /* margin-bottom: -1vw; */
 
         }
-.head{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: scaleX(-100%);
-    min-width: 100vw;
-    min-height: 70vh;
-    
-    hyphens: auto;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 1rem;
-    position: fixed;
-    z-index: 2;
-    display: flex;
-    align-items: center;
 
-}
+        .title{
+        position: fixed;
+        right:0;
+        z-index: -1;
+        width: 50vw;
+        height: 100dvh;
+        font-size: 1vw;
 
-.head div{
-    min-width: 100dvw;
-    display: flex;
-    gap: calc(var(--column-height) * 2);
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
+        }
+        @media (max-width: 1000000px) {
+            body{
+                margin: 0vw;
+            }
+        
 
-h1{ 
-    font-size: 2.5rem;
-                letter-spacing: 0.035em;
-                line-height: 0.5;
+            img, video{
+                min-width: 100%;
+                max-width: 100%;
+                margin-bottom: 0vw;
 
-}
-
-a{
-    color: black;
-}
-/* div{
-    animation: rotation 10s infinite steps(4);
-} */
-@keyframes rotation {
-    0%{
-        transform: rotate(0deg);
+        }
     }
-    100%{
-        transform: rotate(360deg);
-    }
-}
-
-@media (max-width: 600px) {
-    
-    p{
-        font-size: 0.5rem;
-
-    }
-    div{
-        min-width: 50px;
-        max-width: 50px;        
-    }
-    img, video{
-        max-width: 50px;
-    }
-    .expanded img, .expanded video {
-        max-height: revert;
-        max-width: 95vw;
-    }
-}
     </style>
+
 </head>
 <body>
-    <!-- <div class="head">
-        <div>
-            <h1><a href="index.html" aria-label="Back">
-           www.arinbjarnarson.se
-        </a></h1>
    
-        </div>
-         </div> -->
 
-    <!-- <div> &#8592; </div> -->
-    <div></div>
-    <div></div>
-    <div></div>
-
-        
-    
+    <div class="wow"></div>
     <div>
-        <img src="naomi-2.jpg" alt="">
+        <video src="brottare.mp4" autoplay muted loop playsinline></video>
     </div>
-    <div></div>
-    <div></div>
-    <div></div>
-    
-    
-    
+    <div><img src="research/research-12.jpg" alt=""></div>
     <div>
         <img src="madonna-1.jpg" alt="">
     </div>
-    
-    <div></div>
-    <div></div>
-    <div></div>
-    
-    <div><video autoplay muted loop playsinline src="dukade.mp4"></video></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="naomi-3.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-
-<div></div>
-<div>
-    <video src="brottare.mp4" autoplay muted loop playsinline></video>
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="research/research-15.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <video src="emilia-2.mp4" autoplay muted loop playsinline></video>
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="examen-1.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="research/research-73.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <video src="noah-1.mp4" autoplay muted loop playsinline></video>
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <video src="examen-1.mp4" autoplay muted loop playsinline></video>
-</div>
-<div></div>
-<div>
-    <img src="research/research-88.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="research/research-68.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="posters-2/5.png" alt="">
-</div>
-<div>
-    <img src="posters-2/14.png" alt="">
-</div>
-<div>
-    <img src="posters-2/11.png" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="journal/19-03-1.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="journal/31-03-4.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="journal/19-03-2.jpg" alt="">
-</div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="posters-2/40.png" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="myra.jpg" alt="">
-</div>
-<div>
-    <img src="myra-2.jpg" alt="">
-</div>
-<div>
-    <img src="myra-1.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="journal/27-02-1.jpeg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <video src="journal/30-3-1.mp4" muted autoplay loop playsinline></video>
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="research/research-51.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="research/research-59.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="research/research-44.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="one.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div>
-    <img src="material-studio.png" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="posters/5.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div>
-    <img src="posters/3.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <video src="landing.mp4" autoplay muted loop playsinline></video>
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="collecting-7.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <video src="tyda-dokument.mp4" muted autoplay loop playsinline></video>
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="posters/7.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <video src="exprel-2.mp4" muted autoplay loop playsinline></video>
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="posters/2.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<!-- <div>
-    <img src="agnes-1.jpg" alt="">
-</div> -->
-<div></div>
-<div></div>
-<div></div><div></div>
-<div></div>
-<div></div><div></div>
-<div></div>
-<div></div><div></div>
-<div></div>
-<div></div><div></div>
-<div></div>
-<div></div><div></div>
-<div></div>
-<div></div><div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="isabelle.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div><div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div><div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="csn-1.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div><div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div><div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="research/research-64.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-
-
-<div>
-    <img src="pride-garden-2.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="orionteatern-process-3.png" alt="">
-</div>
-
-
-<div></div>
-<div>
-    <img src="cd.png" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="pride-garden-1.jpg" alt="">
-</div>
-
-<div>
-    <img src="25-edit.png" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="research/research-5.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="momans.png" alt="">
-</div>
-<div></div>
-<div></div>
-<div>
-    <img src="magnificent-table.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-
-<div>
-    <img  src="kymlinge.png" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div><img src="dukade-bordet.jpg" alt=""></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="reflections-1.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="material-mingel.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div><img src="luftslott-3.png" alt=""></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="reason-1.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-
-<div></div>
-<div></div>
-<div>
-    <img src="posters-2/2.png" alt="">
-</div>
-<div></div>
-<div></div>
-<div>
-    <img src="emil.jpg" alt="">
-</div>
-<div></div>
-<div><video autoplay muted loop  playsinline src="java.mp4"></video></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div><img src="posters/13-a.jpg" alt=""></div>
-<div></div>
-<div></div>
-<div>
-    <img src="tyda-process-2.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div>
-    <img src="noah-2.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div><img src="posters-2/10.png" alt=""></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="research/research-61.jpg" alt="">
-</div>
-<div>
-    <img src="research/research-62.jpg" alt="">
-</div>
-<div><video autoplay muted loop playsinline src="rietveld-5.mp4"></video></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="opinion-slideshow-p2.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="opinion-slideshow-p1.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="binding-1.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="opinion-slideshow-p4.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
-    <img src="madonna-2.jpg" alt="">
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>
     <div>
-    <img src="journal/14-03-1.jpg" alt="">
-</div>
-</div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-
-<div><video autoplay muted loop playsinline src="material-skiss.mp4"></video></div>
+        <video autoplay muted loop playsinline src="dukade.mp4"></video>
+    </div>
+    <div>
+        <img src="naomi-3.jpg" alt="">
+    </div>
+    
+    <div>
+        <img src="research/research-15.jpg" alt="">
+    </div>
+    <div>
+        <video src="emilia-2.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div>
+        <img src="examen-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="research/research-73.jpg" alt="">
+    </div>
+    <div>
+        <video src="noah-1.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div>
+        <video src="examen-1.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div>
+        <img src="research/research-88.jpg" alt="">
+    </div>
+    <div>
+        <img src="research/research-68.jpg" alt="">
+    </div>
+    <div>
+        <img src="posters-2/5.png" alt="">
+    </div>
+    <div>
+        <img src="posters-2/14.png" alt="">
+    </div>
+    <div>
+        <img src="posters-2/11.png" alt="">
+    </div>
+    <div>
+        <img src="journal/19-03-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="journal/31-03-4.jpg" alt="">
+    </div>
+    <div>
+        <img src="journal/19-03-2.jpg" alt="">
+    </div>
+    <div>
+        <img src="posters-2/40.png" alt="">
+    </div>
+    <div>
+        <img src="myra.jpg" alt="">
+    </div>
+    <div>
+        <img src="myra-2.jpg" alt="">
+    </div>
+    <div>
+        <img src="myra-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="journal/27-02-1.jpeg" alt="">
+    </div>
+    <div>
+        <video src="journal/30-3-1.mp4" muted autoplay loop playsinline></video>
+    </div>
+    <div>
+        <img src="research/research-51.jpg" alt="">
+    </div>
+    <div>
+        <img src="research/research-59.jpg" alt="">
+    </div>
+    <div>
+        <img src="research/research-44.jpg" alt="">
+    </div>
+    <div>
+        <img src="one.jpg" alt="">
+    </div>
+    <div>
+        <img src="material-studio.png" alt="">
+    </div>
+    <div>
+        <img src="posters/5.jpg" alt="">
+    </div>
+    <div>
+        <img src="posters/3.jpg" alt="">
+    </div>
+    <div>
+        <video src="landing.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div>
+        <img src="collecting-7.jpg" alt="">
+    </div>
+    <div>
+        <video src="tyda-dokument.mp4" muted autoplay loop playsinline></video>
+    </div>
+    <div>
+        <img src="posters/7.jpg" alt="">
+    </div>
+    <div>
+        <video src="exprel-2.mp4" muted autoplay loop playsinline></video>
+    </div>
+    <div>
+        <img src="posters/2.jpg" alt="">
+    </div>
+    <div>
+        <img src="isabelle.jpg" alt="">
+    </div>
+    <div>
+        <img src="csn-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="research/research-64.jpg" alt="">
+    </div>
+    <div>
+        <img src="pride-garden-2.jpg" alt="">
+    </div>
+    <div>
+        <img src="orionteatern-process-3.png" alt="">
+    </div>
+    <div>
+        <img src="cd.png" alt="">
+    </div>
+    <div>
+        <img src="pride-garden-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="25-edit.png" alt="">
+    </div>
+    <div>
+        <img src="research/research-5.jpg" alt="">
+    </div>
+    <div>
+        <img src="momans.png" alt="">
+    </div>
+    <div>
+        <img src="magnificent-table.jpg" alt="">
+    </div>
+    <div>
+        <img src="kymlinge.png" alt="">
+    </div>
+    <div>
+        <img src="dukade-bordet.jpg" alt="">
+    </div>
+    <div>
+        <img src="reflections-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="material-mingel.jpg" alt="">
+    </div>
+    <div>
+        <img src="luftslott-3.png" alt="">
+    </div>
+    <div>
+        <img src="reason-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="posters-2/2.png" alt="">
+    </div>
+    <div>
+        <img src="emil.jpg" alt="">
+    </div>
+    <div>
+        <video autoplay muted loop playsinline src="java.mp4"></video>
+    </div>
+    <div>
+        <img src="posters/13-a.jpg" alt="">
+    </div>
+    <div>
+        <img src="tyda-process-2.jpg" alt="">
+    </div>
+    <div>
+        <img src="noah-2.jpg" alt="">
+    </div>
+    <div>
+        <img src="naomi-2.jpg" alt="">
+    </div>
+    <div>
+        <img src="posters-2/10.png" alt="">
+    </div>
+    <div>
+        <img src="research/research-61.jpg" alt="">
+    </div>
+    <div>
+        <img src="research/research-62.jpg" alt="">
+    </div>
+    <div>
+        <video autoplay muted loop playsinline src="rietveld-5.mp4"></video>
+    </div>
+    <div>
+        <img src="opinion-slideshow-p2.jpg" alt="">
+    </div>
+    <div>
+        <img src="opinion-slideshow-p1.jpg" alt="">
+    </div>
+    <div>
+        <img src="binding-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="opinion-slideshow-p4.jpg" alt="">
+    </div>
+    <div>
+        <img src="madonna-2.jpg" alt="">
+    </div>
+    <div>
+        <div>
+            <img src="journal/14-03-1.jpg" alt="">
+        </div>
+    </div>
+    <div>
+        <video autoplay muted loop playsinline src="material-skiss.mp4"></video>
+    </div>
 
     <!-- <script>
-       document.addEventListener("DOMContentLoaded", () => {
-    const images = Array.from(document.querySelectorAll("img"));
-    const originalSrcs = new Map();
-
-    images.forEach(img => {
-        originalSrcs.set(img, img.src); // Spara originalkällan
-        img.src = "me.jpg"; // Ändra till me.jpg
-    });
-
-    setTimeout(() => {
-        images.sort(() => Math.random() - 0.5); // Slumpmässig ordning
-        images.forEach((img, index) => {
-            setTimeout(() => {
-                img.src = originalSrcs.get(img); // Återställ originalkällan
-            }, index * 100); // Offset med 100 ms
-        });
-    }, 100);
-});
-
-
-    </script> -->
-<script>
 document.addEventListener("DOMContentLoaded", () => {
     const mediaElements = Array.from(document.querySelectorAll("img, video"));
 
@@ -1038,5 +316,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-</script>
+    </script> -->
+</body>
 </html>
