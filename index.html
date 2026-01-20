@@ -8,7 +8,7 @@
     <style>
         :root{
             --column-height: 1.5vw;
-            --rgb: rgb(255, 0, 191);
+            --rgb: rgb(0, 0, 0);
         }
 
 
@@ -25,14 +25,14 @@
 
         body, .text, .title, .second, .media, h1, p, a, div {
             /* font-family: 'Times', Arial, Helvetica, sans-serif; */
+            /* font-family: Arial Black, Arial, Helvetica, sans-serif; */
+            font-family: Helvetica, sans-serif;
             /* font-family: 'Director', Arial, Helvetica, sans-serif; */
-            font-family: Arial Black, Arial, Helvetica, sans-serif;
-            /* font-size: 1rem; */
-            -webkit-text-stroke: 0.25px var(--rgb);
+            -webkit-text-stroke: 0.4px var(--rgb);
             color: var(--rgb);
-            font-size: 0.8rem;
-            line-height: 1.35;
-            letter-spacing: 0.035em;
+            font-size: 0.85rem;
+            line-height: 1.375;
+            letter-spacing: 0.055em;
         }
         
         body{
@@ -235,19 +235,7 @@
     </style>
 </head>
 <body>
-<script>
-    function getRandomColor() {
-        const colors = [
-            'rgb(255, 0, 191)',    // magenta
-            'rgb(128, 128, 128)',  // 50% grey
-            'rgb(0, 128, 0)',      // css green
-            'rgb(255, 0, 0)'       // red
-        ];
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-    
-    document.documentElement.style.setProperty('--rgb', getRandomColor());
-</script>
+
 
 <div class="scroll-container">
     <div class="block" style="min-height: 50vh;">
