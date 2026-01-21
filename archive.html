@@ -5,68 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adam Arinbjarnarson</title>
     <style>
+        :root{
+            --column-height: 1.5vw;
+            --rgb: rgb(47, 47, 47);
+        }
+        
         body{
             min-width: 100dvw;
             max-width: 100dvw;
 
             min-height: 100dvh;
             max-height: 100dvh;
-
+            
             overflow-x: hidden;
             padding: 0;
-            margin: 1vw;
-            display: flex;
-            gap: 0vw;
-            flex-direction: column;
-            background-color: black;
+            margin: auto;
+
+            background-color: rgb(255, 0, 187);
             color:white;
 
+            font-family: Helvetica, sans-serif;
+            -webkit-text-stroke: 0.025em var(--rgb);
+            color: var(--rgb);
+            font-size: 0.75rem;
+            line-height: 1.375;
+            letter-spacing: 0.06em;
+        }
+        
+        .wrap{
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1vw;
+            padding-bottom: 1vw;
         }
 
-        h1, h2, p, a{
-            font-family: Arial Black, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
+        a{
+            /* text-decoration: none; */
+            color: rgb(0, 0, 0);
+            color: inherit;
+            text-underline-offset: 2.25px;
+            text-decoration-thickness: 1.5px;
         }
+        
 
         
         img, video{
-            max-width: 50%;
+            width: 10dvw;
             height: auto;
+            filter: saturate(10);
             /* margin-bottom: -1vw; */
-
         }
-
-        .title{
-        position: fixed;
-        right:0;
-        z-index: -1;
-        width: 50vw;
-        height: 100dvh;
-        font-size: 1vw;
-
-        }
-        @media (max-width: 1000000px) {
-            body{
-                margin: 0vw;
-            }
         
-
-            img, video{
-                min-width: 100%;
-                max-width: 100%;
-                margin-bottom: 0vw;
-
+        .expanded{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            cursor: zoom-out;
         }
-    }
+
+        .expanded img, .expanded video{
+            filter:none;
+            width: auto;
+            height: auto;
+            max-width: 90dvw;
+            max-height: 90dvh;
+        }
+        .dimmed::before{
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100dvw;
+            height: 100dvh;
+            background-color: lightgray;
+            z-index: 999;
+        }
+        .top{
+            margin-right: 1vw;
+            margin-left: 1vw;
+            margin-bottom: var(--column-height);
+            margin-top: var(--column-height);
+            display: flex;
+            justify-content:space-between;
+            max-width: 98dvw;
+            text-align: center;
+            position: relative;
+            z-index: 1001;
+        }
+
     </style>
 
 </head>
 <body>
-   
+    <div class="top">
+        <div><a href="index.html">https://www.arinbjarnarson.se/</a>
+        </div>
+        <div id="right"><a href="https://www.instagram.com/babyglupsk">https://www.instagram.com/babyglupsk</a></div>
+    </div>
+<div class="wrap">
+    <div>
+        <video src="journal/20-02-0.mp4" autoplay muted loop playsinline></video>    
+    </div>
+    <div>
+        <img src="journal/06-02-2.jpg" alt="">
+    </div>
 
-    <div class="wow"></div>
+    <div><img src="2025/7.jpg" alt=""></div>
+    
+    <div><img src="2025/2.jpg" alt=""></div>
+    
+    <div>
+        <img src="opinion-slideshow-p3.jpg" alt="">
+    </div>
+    
+    <div>
+        <img src="journal/27-02-1.jpeg" alt="">
+    </div>
+    <div>
+        <img src="journal/14-03-2.jpg" alt="">
+    </div>
+    <div>
+        <img src="journal/12-02-3.jpeg" alt="">
+    </div>
+    <div>
+        <img src="journal/08-03-1.jpg" alt="">
+    </div>
+    <div><img src="2025/5.jpg" alt=""></div>
+    <div>
+        <img src="journal/06-02-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="posters/20.jpg" alt="">
+    </div>
+    <div><img src="2025/4.jpg" alt=""></div>
+    <div>
+        <img src="posters/4.jpg" alt="">
+    </div>
+    <div>
+        <img src="posters/11.jpg" alt="">
+    </div>
+    <div><img src="2025/8.jpg" alt=""></div>
+    
+    <div>
+        <img src="research/research-60.jpg" alt="">
+    </div>
+    <div>
+        <img src="journal/02-11-2.jpg" alt="">
+    </div>
+    <div><img src="posters-2/3.png" alt=""></div>
+    <div>
+        <img src="research/research-13.jpg" alt="">
+    </div>
+    <div><img src="2025/6.jpg" alt=""></div>
+    <div><img src="2025/3.jpg" alt=""></div>
+    <div><img src="2025/9.jpg" alt=""></div>
+    <div>
+        <img src="journal/1-03-1.jpg" alt="">
+    </div>
     <div>
         <video src="brottare.mp4" autoplay muted loop playsinline></video>
     </div>
@@ -80,7 +179,8 @@
     <div>
         <img src="naomi-3.jpg" alt="">
     </div>
-    
+    <div><img src="posters-2/12.png" alt=""></div>
+    <div><img src="research/research-9.jpg" alt=""></div>
     <div>
         <img src="research/research-15.jpg" alt="">
     </div>
@@ -91,8 +191,14 @@
         <img src="examen-1.jpg" alt="">
     </div>
     <div>
+        <img src="research/research-20.jpg" alt="">
+    </div>
+    
+    <div>
         <img src="research/research-73.jpg" alt="">
     </div>
+<div>    <img src="research/research-17.jpg" alt="">
+</div>
     <div>
         <video src="noah-1.mp4" autoplay muted loop playsinline></video>
     </div>
@@ -124,11 +230,16 @@
         <img src="journal/19-03-2.jpg" alt="">
     </div>
     <div>
+        <img src="orionteatern-process-5.png" alt="">
+    </div>
+    <div>
         <img src="posters-2/40.png" alt="">
     </div>
     <div>
         <img src="myra.jpg" alt="">
     </div>
+    <div><img src="posters-2/23.png" alt=""></div>
+
     <div>
         <img src="myra-2.jpg" alt="">
     </div>
@@ -157,6 +268,9 @@
         <img src="material-studio.png" alt="">
     </div>
     <div>
+        <img src="pride-garden-4.jpg" alt="">
+    </div>
+    <div>
         <img src="posters/5.jpg" alt="">
     </div>
     <div>
@@ -169,10 +283,20 @@
         <img src="collecting-7.jpg" alt="">
     </div>
     <div>
+        <img src="pride-garden-3.jpg" alt="">
+    </div>
+    <div>
         <video src="tyda-dokument.mp4" muted autoplay loop playsinline></video>
+    </div>
+    
+    <div>
+        <img src="orionteatern-process-4.png" alt="">
     </div>
     <div>
         <img src="posters/7.jpg" alt="">
+    </div>
+    <div>
+        <img src="tyda-2.png" alt="">
     </div>
     <div>
         <video src="exprel-2.mp4" muted autoplay loop playsinline></video>
@@ -270,12 +394,15 @@
     <div>
         <img src="opinion-slideshow-p1.jpg" alt="">
     </div>
+    <div><img src="posters-2/27.png" alt=""></div>
+
     <div>
         <img src="binding-1.jpg" alt="">
     </div>
     <div>
         <img src="opinion-slideshow-p4.jpg" alt="">
     </div>
+    
     <div>
         <img src="madonna-2.jpg" alt="">
     </div>
@@ -287,35 +414,64 @@
     <div>
         <video autoplay muted loop playsinline src="material-skiss.mp4"></video>
     </div>
+</div>
 
-    <!-- <script>
+    <script>
 document.addEventListener("DOMContentLoaded", () => {
     const mediaElements = Array.from(document.querySelectorAll("img, video"));
+    let currentExpandedIndex = -1;
+
+    function expandMedia(media) {
+        const parentDiv = media.closest("div");
+        if (parentDiv) {
+            document.body.classList.add("dimmed");
+            parentDiv.classList.add("expanded");
+            currentExpandedIndex = mediaElements.indexOf(media);
+        }
+    }
+
+    function collapseMedia() {
+        document.body.classList.remove("dimmed");
+        document.querySelectorAll(".expanded").forEach(div => {
+            div.classList.remove("expanded");
+        });
+        currentExpandedIndex = -1;
+    }
 
     mediaElements.forEach(media => {
         media.addEventListener("click", () => {
             const parentDiv = media.closest("div");
-            if (parentDiv) {
-                if (parentDiv.classList.contains("expanded")) {
-                    document.body.classList.remove("dimmed");
-                    parentDiv.classList.remove("expanded");
-                } else {
-                    document.body.classList.add("dimmed");
-                    parentDiv.classList.add("expanded");
-                }
+            if (parentDiv && parentDiv.classList.contains("expanded")) {
+                collapseMedia();
+            } else {
+                collapseMedia();
+                expandMedia(media);
             }
         });
     });
 
     document.addEventListener("click", (event) => {
         if (!event.target.closest("img, video")) {
-            document.body.classList.remove("dimmed");
-            document.querySelectorAll(".expanded").forEach(div => {
-                div.classList.remove("expanded");
-            });
+            collapseMedia();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (currentExpandedIndex === -1) return;
+
+        if (event.key === "ArrowRight") {
+            event.preventDefault();
+            const nextIndex = (currentExpandedIndex + 1) % mediaElements.length;
+            collapseMedia();
+            expandMedia(mediaElements[nextIndex]);
+        } else if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            const prevIndex = (currentExpandedIndex - 1 + mediaElements.length) % mediaElements.length;
+            collapseMedia();
+            expandMedia(mediaElements[prevIndex]);
         }
     });
 });
-    </script> -->
+    </script>
 </body>
 </html>
