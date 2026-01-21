@@ -8,7 +8,7 @@
     <style>
         :root{
             --column-height: 1.5vw;
-            --rgb: rgb(25, 25, 25);
+            --rgb: rgb(55, 55, 55);
         }
 
 
@@ -28,11 +28,11 @@
             /* font-family: Arial Black, Arial, Helvetica, sans-serif; */
             font-family: Helvetica, sans-serif;
             /* font-family: 'Director', Arial, Helvetica, sans-serif; */
-            -webkit-text-stroke: 0.4px var(--rgb);
+            -webkit-text-stroke: 0.025em var(--rgb);
             color: var(--rgb);
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             line-height: 1.375;
-            letter-spacing: 0.055em;
+            letter-spacing: 0.06em;
         }
         
         body{
@@ -43,6 +43,16 @@
             overflow: hidden;
             box-sizing: border-box;
         }
+
+        img, video{
+            filter: saturate(0) brightness(1.1) contrast(1);
+            
+
+        }
+        img:hover, video:hover{
+            filter: none;
+        }
+
         div:has(.text):hover{
             color: var(--rgb);
             /* -webkit-text-stroke: 0.5px black; */
@@ -123,8 +133,8 @@
             text-align: center;
             margin-top: 0;
             margin-bottom: calc(var(--column-height) * 1);
-            border-left: 1.5px solid var(--rgb);
-            border-right: 1.5px solid var(--rgb);
+            border-left: 2px solid var(--rgb);
+            border-right: 2px solid var(--rgb);
 
             /* font-family: 'Times New Roman', Times, serif; */
             padding: 0;
@@ -334,26 +344,7 @@
 </div>
 </div>
 
-  <div class="block">
-    <div class="text">
-        <h1>Orionteatern</h1>
-                    
-                    <p>3d animated anniversary poster for Orionteatern, a small scale theatre in Stockholm, Sweden. The theatre has a long history of hosting performances with soil, animals and dirty stage design. On one occasion, there were live horses and puddles of water on stage. My poster was designed to reflect this in honour of the theater's 40th anniversary. In the design, I combine images and handwriting sampled from the theatre's archive and the general composition samples the dark (and somewhat rough) physical space.</p>
-                    <p>
-                    Designed and animated in Blender and Photoshop. Part of a collaboration with Beckmans College of Design, led and supervised by <a href="https://www.studiosophiawood.com/">Sophia Wood</a>.
-                    </p>
-    </div>
-    <div class="media">
-                    <video src="orionteatern-motion-1.mp4" autoplay playsinline muted loop></video>
-
-    </div>
-  </div>
-  <div class="alt">
-        <div>
-            <img src="orionteatern-1.jpg" alt="">
-            <p>50x70 cm poster print, displayed at Orionteatern.</p>
-        </div>
-    </div>
+  
   
 <div class="block">
     <div class="text">
@@ -487,7 +478,26 @@
     </div>
 </div>
 
+<div class="block">
+    <div class="text">
+        <h1>Orionteatern</h1>
+                    
+                    <p>3d animated anniversary poster for Orionteatern, a small scale theatre in Stockholm, Sweden. The theatre has a long history of hosting performances with soil, animals and dirty stage design. On one occasion, there were live horses and puddles of water on stage. My poster was designed to reflect this in honour of the theater's 40th anniversary. In the design, I combine images and handwriting sampled from the theatre's archive and the general composition samples the dark (and somewhat rough) physical space.</p>
+                    <p>
+                    Designed and animated in Blender and Photoshop. Part of a collaboration with Beckmans College of Design, led and supervised by <a href="https://www.studiosophiawood.com/">Sophia Wood</a>.
+                    </p>
+    </div>
+    <div class="media">
+                    <video src="orionteatern-motion-1.mp4" autoplay playsinline muted loop></video>
 
+    </div>
+  </div>
+  <div class="alt">
+        <div>
+            <img src="orionteatern-1.jpg" alt="">
+            <p>50x70 cm poster print, displayed at Orionteatern.</p>
+        </div>
+    </div>
 <div class="block">
     <div class="text"><h1>Collecting</h1>
     An educational exercise in editorial design and art direction, resulting in a concept for a magazine about collecting. The project consists of a 6 page tabloid magazine, an essay, four interviews, one playlist and small website.</p>
@@ -562,7 +572,7 @@
     </div>
 
     <div class="text second clear">
-        <p>I (Adam Arinbjarnarson) am a designer interested in graphic identity applied to print, digital and motion. I utilise typography, animation, image editing and programming. I define and develop concepts with and for collaborators, to create both meaningful and strategic design. Tools I rely on and use include:</p>
+        <p>I (Adam Arinbjarnarson) am a designer of graphic identity applied to print, digital and motion. I utilise typography, animation, image editing and programming. I define and develop concepts with and for collaborators, to create meaningful and wise design. Tools I rely on and use include:</p>
             <p class="dent">
                 Listening, speaking, writing<br>
                 InDesign, Photoshop, Illustrator<br>
@@ -586,12 +596,11 @@
         <p>Fellow designer Peter Ström has intitiated an award(!) as part of a resarch project on preservation and archival of digital design. In this project I contributed with research on Swedish web design projects and was part of the jury selecting nominees and recipients:</p>
             <p class="dent">Svensk Webbkonst 2021-2024 <br> <a href="https://w3.svenskwebbkonst.se/">w3.svenskwebbkonst.se</a> </p>
 
-        <p>Besides this website, I regularly post work in progress and some trial and error-stuff on an instagram account and on an archive webpage:</p>
+        <p>In addition to this website, I regularly update this instagram account (with references, attempts and errors):</p>
         <p class="dent"> <a href="https://www.instagram.com/babyglupsk">@babyglupsk</a>
-                <br><a href="archive.html">/archive.html</a>
             </p>
 
-        <p>Occasionally, I do freelance work like designing posters, printed matter or web projects. Please contact:</p>
+        <p>For collaborations and commissions, contact:</p>
         <p class="dent"> <a href="mailto:adaari@icloud.com">adaari@icloud.com</a>&#8203;</p>
         
     
