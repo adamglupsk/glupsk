@@ -96,7 +96,13 @@
             position: relative;
             z-index: 1001;
         }
-
+        @media screen and (max-width: 768px) {
+            .top{
+                flex-direction: column;
+                gap: calc(var(--column-height) * 1);
+                margin:  calc(var(--column-height) * 3);
+            }
+        }
     </style>
 
 </head>
