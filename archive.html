@@ -21,7 +21,7 @@
             padding: 0;
             margin: auto;
 
-            background-color: rgb(255, 0, 187);
+            background-color: rgb(255, 0, 200);
             color:white;
 
             font-family: Helvetica, sans-serif;
@@ -106,7 +106,7 @@
             width: 100dvw;
             height: 100dvh;
             pointer-events: none;
-            background-color: red;
+            background-color: rgb(255, 0, 200);
             mix-blend-mode: saturation;
         }
         @media screen and (max-width: 768px) {
@@ -154,7 +154,8 @@
     <div>
         <img src="journal/06-02-2.jpg" alt="">
     </div>
-
+    <div><video src="2025/video-1.mp4" muted loop autoplay playsinline></video></div>
+    <div><img src="2025/10.jpg" alt=""></div>
     <div><img src="2025/7.jpg" alt=""></div>
     
     <div><img src="2025/2.jpg" alt=""></div>
@@ -169,12 +170,14 @@
     <div>
         <img src="journal/14-03-2.jpg" alt="">
     </div>
+    <div><img src="material-1.jpg" alt=""></div>
     <div>
         <img src="journal/12-02-3.jpeg" alt="">
     </div>
     <div>
         <img src="journal/08-03-1.jpg" alt="">
     </div>
+    <div><img src="2025/6.jpg" alt=""></div>
     <div><img src="2025/5.jpg" alt=""></div>
     <div>
         <img src="journal/06-02-1.jpg" alt="">
@@ -182,15 +185,19 @@
     <div>
         <img src="posters/20.jpg" alt="">
     </div>
+    <div><img src="posters-2/49.png" alt=""></div>
     <div><img src="2025/4.jpg" alt=""></div>
     <div>
         <img src="posters/4.jpg" alt="">
     </div>
+    <div><img src="2025/13.jpg" alt=""></div>
     <div>
         <img src="posters/11.jpg" alt="">
     </div>
+    <div><img src="material-2.jpg" alt=""></div>
     <div><img src="2025/8.jpg" alt=""></div>
     
+    <div><img src="posters-2/46.png" alt=""></div>
     <div>
         <img src="research/research-60.jpg" alt="">
     </div>
@@ -201,7 +208,6 @@
     <div>
         <img src="research/research-13.jpg" alt="">
     </div>
-    <div><img src="2025/6.jpg" alt=""></div>
     <div><img src="2025/3.jpg" alt=""></div>
     <div><img src="2025/9.jpg" alt=""></div>
     <div>
@@ -308,6 +314,9 @@
         <img src="research/research-44.jpg" alt="">
     </div>
     <div>
+        <img src="cd.png" alt="">
+    </div>
+    <div>
         <img src="journal/11-02.jpeg" alt="">
     </div>
     <div>
@@ -371,11 +380,10 @@
     <div>
         <img src="orionteatern-process-3.png" alt="">
     </div>
+    <div><img src="material-mingel-2.png" alt=""></div>
+    <div><img src="material-3d-2.png" alt=""></div>
     <div>
         <img src="journal/12-02-1.jpeg" alt="">
-    </div>
-    <div>
-        <img src="cd.png" alt="">
     </div>
     <div>
         <img src="pride-garden-1.jpg" alt="">
@@ -437,6 +445,7 @@
     <div>
         <img src="research/research-61.jpg" alt="">
     </div>
+    <div><img src="research/research-7.jpg" alt=""></div>
     <div>
         <img src="research/research-62.jpg" alt="">
     </div>
@@ -450,7 +459,7 @@
         <img src="opinion-slideshow-p1.jpg" alt="">
     </div>
     <div><img src="posters-2/27.png" alt=""></div>
-
+<div><img src="reserach/research-69.jpg" alt=""></div>
     <div>
         <img src="binding-1.jpg" alt="">
     </div>
@@ -473,7 +482,18 @@
     <div><img src="magnificent-2.jpg" alt=""></div>
     <div><video src="orionteatern-process-1.mp4" autoplay muted loop playsinline></video></div>
 </div>
-
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const wrap = document.querySelector('.wrap');
+    if (!wrap) return;
+    const children = Array.from(wrap.children);
+    for (let i = children.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        wrap.appendChild(children[j]);
+        children.splice(j, 1);
+    }
+});
+</script>
     <script>
 document.addEventListener("DOMContentLoaded", () => {
     const mediaElements = Array.from(document.querySelectorAll("img, video"));
