@@ -96,7 +96,7 @@
             top: inset 0;
             right: inset 0  ;
             position: relative;
-            z-index: 1001;
+            z-index: 1;
         }
         .saturate{
             position: fixed;
@@ -494,10 +494,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
-    <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
     const mediaElements = Array.from(document.querySelectorAll("img, video"));
     let currentExpandedIndex = -1;
+    let previousBgColor = "";
 
     function expandMedia(media) {
         const parentDiv = media.closest("div");
@@ -505,6 +506,9 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.classList.add("dimmed");
             parentDiv.classList.add("expanded");
             currentExpandedIndex = mediaElements.indexOf(media);
+            // Save previous background color and set to lightgray
+            previousBgColor = document.body.style.backgroundColor;
+            document.body.style.backgroundColor = "lightgray";
         }
     }
 
@@ -514,6 +518,8 @@ document.addEventListener("DOMContentLoaded", () => {
             div.classList.remove("expanded");
         });
         currentExpandedIndex = -1;
+        // Restore previous background color
+        document.body.style.backgroundColor = previousBgColor || "rgb(255, 0, 200)";
     }
 
     mediaElements.forEach(media => {
@@ -550,6 +556,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-    </script>
+</script>
 </body>
 </html>
