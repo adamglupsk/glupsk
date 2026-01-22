@@ -54,8 +54,7 @@
         img, video{
             width: 10dvw;
             height: auto;
-            filter: saturate(10);
-            /* margin-bottom: -1vw; */
+            /* filter: saturate(0); */
         }
         
         .expanded{
@@ -96,6 +95,17 @@
             position: relative;
             z-index: 1001;
         }
+        .saturate{
+            position: fixed;
+            z-index: 980;
+            top: 0;
+            left: 0;
+            width: 100dvw;
+            height: 100dvh;
+            pointer-events: none;
+            background-color: red;
+            mix-blend-mode: saturation;
+        }
         @media screen and (max-width: 768px) {
             :root{
                 --column-height: 2.5vw;
@@ -127,6 +137,7 @@
 
 </head>
 <body>
+    <div class="saturate"></div>
     <div class="top">
         <div><a href="index.html">index</a>
         </div>
