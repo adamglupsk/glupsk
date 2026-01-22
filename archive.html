@@ -100,14 +100,27 @@
             :root{
                 --column-height: 2.5vw;
             }
+            body{
+                margin: auto;
+            }
             .top{
-                margin-bottom: calc(var(--column-height) * 1.5);
+                /* margin-bottom: calc(var(--column-height) * 1.5);
                 margin-top: calc(var(--column-height) * 1.5);
                 margin-left: calc(var(--column-height) * 1.25);
-                margin-right: calc(var(--column-height) * 1.25);
+                margin-right: calc(var(--column-height) * 1.25); */
+                display: none;
+                margin: 0;
+                padding: 0;
             }
             .wrap{
-                gap: calc(var(--column-height) * 2);
+                gap: calc(var(--column-height) * 1);
+                /* margin: calc(var(--column-height) * 2); */
+                /* padding-right: calc(var(--column-height) * 1);
+                /* padding-top: calc(var(--column-height) * 1); */
+                padding-top: calc(var(--column-height) * 1.5); 
+
+                min-width: 100%;
+                max-width: 100%;
             }
         }
     </style>
