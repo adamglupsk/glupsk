@@ -208,6 +208,21 @@
         .back{
             position: sticky;
         }
+
+        .archive{
+            animation: blink 4s 2s step-end infinite;
+        }
+
+        @keyframes blink {
+            0% { color: magenta; 
+                text-decoration: underline magenta 2px;
+                }
+            50% { color: var(--rgb); 
+                text-decoration: underline var(--rgb) 2px;
+            }   
+            100% { color: magenta;
+                text-decoration: underline magenta 2px;
+            }
         
           @media (max-width: 900px){
             body{
@@ -273,7 +288,7 @@
 
             <p><a href="https://www.instagram.com/babyglupsk">@babyglupsk</a></p>
             <p><a href="#about">#about</a></p>
-            <p><a href="archive.html">/archive.html</a></p>
+            <p><a class="archive" href="archive.html">/archive.html</a></p>
         </div>
     </div>
 
@@ -611,8 +626,9 @@
         <p>Fellow designer Peter Ström has intitiated an award(!) as part of a resarch project on preservation and archival of digital design. In this project I contributed with research on Swedish web design projects and was part of the jury selecting nominees and recipients:</p>
             <p class="dent">Svensk Webbkonst 2021-2024 <br> <a href="https://w3.svenskwebbkonst.se/">w3.svenskwebbkonst.se</a> </p>
 
-        <p>In addition to this website, I regularly update this instagram account (with references, attempts and errors):</p>
+        <p>In addition to this website, I regularly update other channels and platforms:</p>
         <p class="dent"> <a href="https://www.instagram.com/babyglupsk">@babyglupsk</a>
+            <br><a href="archive.html" class="archive">/archive.html</a>
             </p>
 
         <p>For collaborations and commissions, contact:</p>
