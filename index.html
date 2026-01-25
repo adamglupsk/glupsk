@@ -28,7 +28,7 @@
             /* font-family: Arial Black, Arial, Helvetica, sans-serif; */
             /* font-family: 'Director', Arial, Helvetica, sans-serif; */
             font-family: Helvetica, sans-serif;
-            -webkit-text-stroke: 0.025em var(--rgb);
+            -webkit-text-stroke: 0.015em var(--rgb);
             color: var(--rgb);
             font-size: 0.75rem;
             line-height: 1.375;
@@ -38,7 +38,7 @@
         body{
             margin: auto;
             max-width: 123dvh;
-            background-color: rgb(239, 239, 239);
+            background-color: lightgrey;
             /* max-height: 100dvh; */
             /* padding: var(--column-height); */
             overflow: hidden;
@@ -124,7 +124,8 @@
         }
   
         h1{
-            /* font-size: inherit; */
+            /* border-left: 2px solid var(--rgb); */
+            /* border-right: 2px solid var(--rgb); */
             /* text-transform: uppercase; */
             font-weight: inherit;
             max-width: 100%;
@@ -134,8 +135,6 @@
             text-align: center;
             margin-top: 0;
             margin-bottom: calc(var(--column-height) * 1);
-            border-left: 2px solid var(--rgb);
-            border-right: 2px solid var(--rgb);
 
             /* font-family: 'Times New Roman', Times, serif; */
             padding: 0;
@@ -260,18 +259,18 @@
             }
 
             img, video{
-            filter: saturate(0) brightness(1) contrast(1);
+            filter: saturate(0);
             /* opacity: 0.8; */
             /* mix-blend-mode: multiply; */
             
 
             }
             img:hover, video:hover{
-            filter: saturate(0) brightness(1) contrast(1);
+            filter: saturate(0);
             /* opacity: 0.8; */
             /* mix-blend-mode: multiply; */
             }
-
+        }
         
 
     </style>
@@ -346,7 +345,7 @@
 <div class="block">
     <div class="text">
         <h1>Bookland</h1>
-        <p>Mini identity, illustration, web page and concept development of a pop-up book shop, taking place at Beckmans' yearly graduation exhibition. 'Bookland' is a play on the history of the international ISBN barcode system. Read about it on <a href="https://en.wikipedia.org/wiki/Bookland">Wikipedia</a>, it's very cute. Designed by Adam Arinbjarnarson. Produced and realised in collaboration with <a href="https:/www.majaringsater.se/">Maja Ringsäter</a>, Tiffany Louise Hoff and Visual communication class of 2025 at Beckmans.</p>
+        <p>Mini identity, illustration, web page and concept development of a pop-up book shop, taking place at Beckmans' yearly graduation exhibition. 'Bookland' is a play on the history of the international ISBN barcode system. Read about it on <a href="https://en.wikipedia.org/wiki/Bookland">Wikipedia</a>, it's very cute. Produced and realised in collaboration with <a href="https:/www.majaringsater.se/">Maja Ringsäter</a>, Tiffany Louise Hoff and Visual communication class of 2025 at Beckmans.</p>
     </div>
     <div class="media">
         <video autoplay playsinline loop muted src="bookland-3.mp4"></video>
@@ -355,7 +354,7 @@
 <div class="plus">
     <div class="alt">
             <div>
-                <video autoplay playsinline loop muted src="bookland-1.mp4"></video>
+                <video autoplay playsinline loop muted src="bookland-1.mp4" style="mix-blend-mode: multiply;"></video>
                 Cell animation and logo design.
             </div>
 
@@ -546,7 +545,7 @@
 
         <div class="alt">
             <div>
-                <video src="collecting-1.mp4" autoplay muted loop playsinline></video>
+                <video src="collecting-1.mp4" autoplay muted loop playsinline style="mix-blend-mode: multiply;"></video>
                 <!-- <p>Website showcasing links mentioned in the physical magazine.</p> -->
             </div>
         </div>
