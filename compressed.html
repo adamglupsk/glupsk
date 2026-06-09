@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Arinbjarnarson</title>
+    <style>
+        :root{
+            --column-height: 1.5vw;
+            --rgb: rgb(47, 47, 47);
+        }
+
+        body{
+            min-width: 100dvw;
+            max-width: 100dvw;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
+            background-color: lightgray;
+            font-family: 'Helvetica Neue';
+            font-width: 0;
+            -webkit-text-stroke: 0.025em var(--rgb);
+            color: var(--rgb);
+            font-size: 2.65rem;
+            line-height: 1.375;
+            /* letter-spacing: 0.06em; */
+            box-sizing: border-box;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        .wrap{
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1vw;
+            padding: 1vw;
+        }
+
+        .item{
+            display: flex;
+            flex-direction: column;
+            gap: 0.3vw;
+            width: 32vw;
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+
+        .item img, .item video{
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .item p{
+            margin: 0;
+            padding: 0;
+            font-size: 1.3rem;
+            line-height: 1.3;
+            letter-spacing: 0.05em;
+            -webkit-text-stroke: 0;
+        }
+
+        .item a{
+            color: inherit;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+        }
+
+        .expanded{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            cursor: zoom-out;
+            width: auto !important;
+        }
+
+        .expanded img, .expanded video{
+            width: auto;
+            height: auto;
+            max-width: 90dvw;
+            max-height: 85dvh;
+        }
+
+        .flaws{
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            width: 100dvw;
+            height: 100dvh;
+            display: flex;
+            pointer-events: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 10vw;
+            text-align: center;
+            line-height: 1.0;
+            animation: fadeOut 1s 5s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .dimmed::before{
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100dvw;
+            height: 100dvh;
+            background-color: rgb(229, 229, 229);
+            z-index: 999;
+        }
+
+        @media screen and (max-width: 768px) {
+            .item{
+                width: calc((100% - 3vw) / 2);
+            }
+            .wrap{
+                gap: 1.5vw;
+                padding: 1.5vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flaws">adam<br>arinbjarnarson</div>
+    <div class="wrap">
+
+        <div class="item">
+            <video src="bookland-3.mp4" autoplay muted loop playsinline></video>
+            <p>Bookland<br>Mini identity, illustration, web and concept for a pop-up book shop at Beckmans' graduation exhibition</p>
+        </div>
+
+        <div class="item">
+            <video src="bookland-1.mp4" autoplay muted loop playsinline style="mix-blend-mode: multiply;"></video>
+            <p>Bookland<br>Cell animation and logo design</p>
+        </div>
+
+        <div class="item">
+            <video src="bookland-web.mp4" autoplay muted loop playsinline></video>
+            <p>Bookland<br>Website. <a href="https://bookland.beckmans.se">bookland.beckmans.se</a></p>
+        </div>
+
+        <div class="item">
+            <img src="bl-2.png" alt="">
+            <p>Bookland<br>Sketch of laser cut street sign</p>
+        </div>
+
+        <div class="item">
+            <video src="tyda-motion-2.mp4" autoplay loop muted playsinline></video>
+            <p>Tyda<br>Hand assembled poster and cell animation. Research on 'Folkhemmet' and Swedish identity</p>
+        </div>
+
+        <div class="item">
+            <img src="tyda-2.png" alt="">
+            <p>Tyda</p>
+        </div>
+
+        <div class="item">
+            <img src="tyda-process-2.jpg" alt="">
+            <p>Tyda<br>70×100 cm poster assembled with laserjet print on post-it notes</p>
+        </div>
+
+        <div class="item">
+            <video src="julia.mp4" autoplay muted loop playsinline></video>
+            <p>Web design for Julia Åberg. <a href="https://juliaaberg.com">juliaaberg.com</a></p>
+        </div>
+
+        <div class="item">
+            <video src="tinstam-red.mp4" autoplay loop muted playsinline></video>
+            <p>There is no such thing as magic<br>Visual identity for a collaborative project on AI and its societal and environmental impact. Exhibited at Svenskt Tenn, 2024</p>
+        </div>
+
+        <div class="item">
+            <img src="tinstam-process-3.jpg" alt="">
+            <p>There is no such thing as magic<br>Printed booklet/poster</p>
+        </div>
+
+        <div class="item">
+            <img src="tinstam-process-2.jpg" alt="">
+            <p>There is no such thing as magic<br>Sketching implementations of the visual identity</p>
+        </div>
+
+        <div class="item">
+            <video src="emilia-2.mp4" autoplay muted loop playsinline></video>
+            <p>Illustration and animated event flyer for a knitting night</p>
+        </div>
+
+        <div class="item">
+            <video src="sdv-1.mp4" autoplay muted loop playsinline></video>
+            <p>Design and Figma prototyping for Sdvvvorks, blockchain for artists. Made during internship at <a href="https://www.researchanddevelopment.se/">Research and Development</a></p>
+        </div>
+
+        <div class="item">
+            <img src="luft.jpg" alt="">
+            <p>Luftslott is Under Construction<br>Open call poster for Luftslott's third issue</p>
+        </div>
+
+        <div class="item">
+            <video src="luft-1.mp4" autoplay muted loop playsinline></video>
+            <p>Luftslott is Under Construction<br>Motion poster</p>
+        </div>
+
+        <div class="item">
+            <img src="luft-2.jpg" alt="">
+            <p>Luftslott is Under Construction<br>Graphic (re)design around the idea of indecisiveness</p>
+        </div>
+
+        <div class="item">
+            <video src="valand-1.mp4" autoplay muted loop playsinline></video>
+            <p>Exhibition poster design for Valand photography</p>
+        </div>
+
+        <div class="item">
+            <img src="posters/13-a.jpg" alt="">
+            <p>Illustrated poster for student union breakfast club. Organised with Måns Horning</p>
+        </div>
+
+        <div class="item">
+            <img src="pride-garden-1.jpg" alt="">
+            <p>Trädgården Pride Garden<br>Art direction and concept development for Trädgården's 2024 annual Pride clubs. Designed around the concept of disgust</p>
+        </div>
+
+        <div class="item">
+            <img src="pride-garden-2.jpg" alt="">
+            <p>Trädgården Pride Garden<br>Image treatment and collage</p>
+        </div>
+
+        <div class="item">
+            <img src="pride-garden-3.jpg" alt="">
+            <p>Trädgården Pride Garden</p>
+        </div>
+
+        <div class="item">
+            <video src="orionteatern-motion-1.mp4" autoplay playsinline muted loop></video>
+            <p>Orionteatern<br>3d animated anniversary poster. 40th anniversary of a small scale theatre in Stockholm. Designed and animated in Blender and Photoshop</p>
+        </div>
+
+        <div class="item">
+            <img src="orionteatern-1.jpg" alt="">
+            <p>Orionteatern<br>50×70 cm poster print, displayed at Orionteatern</p>
+        </div>
+
+        <div class="item">
+            <img src="collecting-1.jpg" alt="">
+            <p>Collecting<br>Editorial design and art direction. 6 page tabloid magazine about collecting and listening habits in the streaming era</p>
+        </div>
+
+        <div class="item">
+            <video src="collecting-1.mp4" autoplay muted loop playsinline style="mix-blend-mode: multiply;"></video>
+            <p>Collecting<br>Website showcasing links from the physical magazine</p>
+        </div>
+
+        <div class="item">
+            <img src="collecting-2.jpg" alt="">
+            <p>Collecting</p>
+        </div>
+
+        <div class="item">
+            <img src="collecting-3.jpg" alt="">
+            <p>Collecting</p>
+        </div>
+
+        <div class="item">
+            <img src="collecting-4.jpg" alt="">
+            <p>Collecting</p>
+        </div>
+
+        <div class="item">
+            <img src="collecting-5.jpg" alt="">
+            <p>Collecting</p>
+        </div>
+
+        <div class="item">
+            <img src="collecting-6.jpg" alt="">
+            <p>Collecting</p>
+        </div>
+
+        <div class="item">
+            <img src="collecting-7.jpg" alt="">
+            <p>Collecting</p>
+        </div>
+
+        <div class="item">
+            <img src="naomi-1.jpg" alt="">
+            <p>Type treatment and event flyer design. Photography by Agnes Nebrelius</p>
+        </div>
+
+        <div class="item">
+            <video src="examen-2.mp4" autoplay muted loop playsinline></video>
+            <p>'This is difficult to read because it was difficult to make'<br>Excerpt from graduation project</p>
+        </div>
+
+    </div>
+
+    <!-- <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const wrap = document.querySelector('.wrap');
+        if (!wrap) return;
+        const children = Array.from(wrap.children);
+        for (let i = children.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            wrap.appendChild(children[j]);
+            children.splice(j, 1);
+        }
+    });
+    </script> -->
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const items = Array.from(document.querySelectorAll('.item'));
+        let currentExpandedIndex = -1;
+
+        function expandItem(item) {
+            document.body.classList.add("dimmed");
+            item.classList.add("expanded");
+            currentExpandedIndex = items.indexOf(item);
+        }
+
+        function collapseAll() {
+            document.body.classList.remove("dimmed");
+            document.querySelectorAll(".expanded").forEach(el => el.classList.remove("expanded"));
+            currentExpandedIndex = -1;
+        }
+
+        items.forEach(item => {
+            const media = item.querySelector('img, video');
+            if (!media) return;
+            media.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (item.classList.contains("expanded")) {
+                    collapseAll();
+                } else {
+                    collapseAll();
+                    expandItem(item);
+                }
+            });
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!event.target.closest('.item')) collapseAll();
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (currentExpandedIndex === -1) return;
+            if (event.key === "ArrowRight") {
+                event.preventDefault();
+                const next = (currentExpandedIndex + 1) % items.length;
+                collapseAll();
+                expandItem(items[next]);
+            } else if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                const prev = (currentExpandedIndex - 1 + items.length) % items.length;
+                collapseAll();
+                expandItem(items[prev]);
+            } else if (event.key === "Escape") {
+                collapseAll();
+            }
+        });
+    });
+    </script>
+</body>
+</html>
