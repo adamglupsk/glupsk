@@ -7,9 +7,9 @@
 
     <style>
         :root{
-            --column-height: 1.5vw;
-            --rgb: rgb(50, 50, 50);
-            --rgb-2: rgb(50, 50, 50);
+            --column-height: 2vw;
+            --rgb: rgb(0, 0, 0);
+            --rgb-2: var(--rgb);
         }
 
 
@@ -33,16 +33,16 @@
 
             /* font-family: 'Director', Arial, Helvetica, sans-serif; */
             /* font-family: Helvetica, sans-serif; */
-            -webkit-text-stroke: 0.025em var(--rgb);
+            -webkit-text-stroke: 0.055em var(--rgb);
             color: var(--rgb);
-            font-size: 1.1rem;
-            line-height: 1.375;
-            letter-spacing: 0.05em;
+            font-size: 1rem;
+            line-height: 1.385em;
+            letter-spacing: 0.075em;
         }
 
         body{
             margin: auto;
-            max-width: 123dvh;
+            /* max-width: 125dvh; */
             /* background-color: rgb(255, 0, 200); */
             /* max-height: 100dvh; */
             /* padding: var(--column-height); */
@@ -74,7 +74,7 @@
             color: var(--rgb);;
         }
         .text{
-            flex: 2;
+            flex: 3;
             text-align: left;
             margin-right: calc(var(--column-height) * 2);
 
@@ -126,6 +126,7 @@
 
         .cv{
             min-height: 100dvh;
+            flex:4;
         }
 
         h1{
@@ -138,9 +139,13 @@
             color: var(--rgb);
             max-width: 100%;
             margin: auto;
-            text-align: center;
+            text-decoration: underline var(--rgb);
+            text-decoration-thickness: 1.75px;
+            text-underline-offset: 0.3em;
+            text-align: left;
             margin-top: 0;
-            margin-bottom: calc(var(--column-height) * 1);
+            margin-bottom:1.385em;
+            /* margin-bottom: calc(var(--column-height) * 1); */
             padding: 0;
         }
         p{
@@ -167,8 +172,8 @@
 
         a{
             color: inherit;
-            text-underline-offset: 2.25px;
-            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.25em;
+            text-decoration-thickness: 1.75px;
           }
 
           .portrait{
@@ -299,13 +304,13 @@
         </div>
         <div class="second center">
 
-             <p>arinbjarnarson.se</p>
-            <p><a href="#about">#about</a></p>
+          
+            <p><a href="#about">CV (#about)</a></p>
             <p><a class="archive" href="archive.html">/archive.html</a></p>
         </div>
     </div>
 
-<script>
+<!-- <script>
     const aa = document.getElementById('aa');
     const text = aa.textContent;
     aa.innerHTML = '';
@@ -353,7 +358,7 @@
         mouseMoving = false;
         clearTimeout(timeoutId);
     });
-</script>
+</script> -->
 
 <div class="block">
     <div class="text">
