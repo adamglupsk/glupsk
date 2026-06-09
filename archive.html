@@ -42,7 +42,7 @@
 
         body{
             margin: auto;
-            /* max-width: 125dvh; */
+            max-width: 125dvh;
             /* background-color: rgb(255, 0, 200); */
             /* max-height: 100dvh; */
             /* padding: var(--column-height); */
@@ -126,10 +126,9 @@
 
         .cv{
             min-height: 100dvh;
-            flex:4;
         }
 
-        h1{
+        h1, h2{
             /* border-left: 2px solid var(--rgb); */
             /* border-right: 2px solid var(--rgb); */
             /* text-transform: uppercase; */
@@ -163,7 +162,7 @@
             margin-bottom: calc(var(--column-height) * 0.75);
         }
         .text p + p{
-            text-indent: calc(var(--column-height) * 2);
+            text-indent: calc(var(--column-height) * 1.5);
         }
 
         .clear > p{
@@ -217,7 +216,8 @@
         }
 
         .archive{
-            animation: blink 4s 2s step-end infinite;
+            /* animation: blink 4s 2s step-end infinite; */
+            animation: none;
         }
 
         @keyframes blink {
@@ -299,19 +299,43 @@
 
     
     <div class="block" style="min-height: 50vh;">
-        <div class="text" style="background-color: transparent; overflow: visible;" >
-            <h1 id="aa">Adam&nbsp;Arinbjarnarson</h1>
+        <div class="text">
+            <h1 style="text-decoration: none;" id="aa">Adam Arinbjarnarson</h1>
+            <p>
+                Graphic designer + Art director
+                <br>
+                Stockholm, Oslo, Malmö
+                <br>
+                <br>
+                +46 (0) 707871567
+                <br>
+                adaari@icloud.com
+                
+            </p>
+            
         </div>
         <div class="second center">
 
           
-            <p><a href="#about">CV (#about)</a></p>
-            <p><a class="archive" href="archive.html">/archive.html</a></p>
+            <p><a href="#about">CV</a></p>
+            <p><a class="archive" href="index.html">Index (2)</a></p>
+            
+            <p><a  href="https://instagram.com/adamglupsk">Instagram (a)</a></p>
+            <p><a  href="https://instagram.com/babyglupsk">Instagram (b)</a></p>
+              <p> <br> Page contents</p>
+              <p><a href="#bookland">1. Bookland</a></p>
+              <p><a href="#tyda">2. Tyda</a></p>
+            <p><a href="#luftslott-is-under-construction">3. Luftslott</a></p>
+            <p><a href="#tradgarden-pride-garden">4. Trädgården Pride</a></p>
+            <p><a href="#there-is-no-such-thing-as-magic">5. …no such thing as magic</a></p>
+            <p><a href="#orionteatern">6. Orionteatern 1983–2023</a></p>
+            <p><a href="#collecting">7. Collecting</a></p>
+            
         </div>
     </div>
 
 <!-- <script>
-    const aa = document.getElementById('aa');
+    const aa = document.getElementById('aa');33
     const text = aa.textContent;
     aa.innerHTML = '';
     text.split('').forEach((char, i) => {
@@ -362,7 +386,7 @@
 
 <div class="block">
     <div class="text">
-        <h1>Bookland</h1>
+        <h1 id="bookland">Bookland</h1>
         <p>Mini identity, illustration, web page and concept development of a pop-up book shop, taking place at Beckmans' yearly graduation exhibition. 'Bookland' is a play on the history of the international ISBN barcode system. Read about it on <a href="https://en.wikipedia.org/wiki/Bookland">Wikipedia</a>, it's very cute. Produced and realised in collaboration with <a href="https:/www.majaringsater.se/">Maja Ringsäter</a>, Tiffany Louise Hoff and Visual communication class of 2025 at Beckmans.</p>
     </div>
     <div class="media">
@@ -396,7 +420,7 @@
 
 <div class="block">
     <div class="text">
-        <h1>Tyda</h1>
+        <h1 id="tyda">Tyda</h1>
         <p>Hand assembled poster and cell animation. The project and its process was created through research on the concept of 'Folkhemmet'. On the topic of Swedish identity, there are countless parallell interpretations and connotations. <i>Tyda</i> aims to visualise this process, being redefined, again and again by different actors and authors. </p>
         <p>The project was exhibited at the show <i>Ett hem</i> in Vandalorum art museum. The poster was assembled with laserjet print on post-it notes, overlapping and creating trails and layers of meaning. </p>
         <p>Designed in collaboration with <a href="https:/www.majaringsater.se/">Maja Ringsäter</a> and <a href="https://manshorning.se/">Måns Horning</a>, as an educational exercise in designing visual identity. Supervised by <a href="https://www.studiosophiawood.com/">Sophia Wood</a>.</p>
@@ -437,7 +461,7 @@
 
 <div class="block">
     <div class="text">
-        <h1>There is no such thing as magic</h1>
+        <h1 id="there-is-no-such-thing-as-magic">There is no such thing as magic</h1>
         <p>Narrative and visual identity for a collaborative project about AI and its societal and environmental impact. The visual identity was designed to reflect and communicate the work of scientific researchers at the <a href="https://beijer.kva.se/">Beijer Institute</a> and encourage reflection on the realities of generative AI, for example its environmental and social impact. The project was exhibited at <a href="https://www.svenskttenn.se/">Svenskt Tenn</a> in Stockholm, 2024. It showcased sculptural works on the theme of AI, by students at Beckmans College of Design.</p>
         <p>Conceived, designed and produced in collaboration with <a href="https:/www.majaringsater.se/">Maja Ringsäter</a> and Solvej Jansson.</p>
     </div>
@@ -482,7 +506,7 @@
 
 <div class="block">
     <div class="text">
-        <h1>Luftslott is Under Construction</h1>
+        <h1 id="luftslott-is-under-construction">Luftslott is Under Construction</h1>
         <p>Open call posters for Luftslott's third issue. Graphic (re)design and concept development. Luftslott is a magazine for visual and text based art, led by Agnes Nebrelius. Posters designed and developed around the idea of under construction, showcasing the designer's (my) indecisiveness. </p>
     </div>
     <div class="media">
@@ -516,7 +540,7 @@
 
 <div class="block">
     <div class="text">
-        <h1>Trädgården Pride Garden</h1>
+        <h1 id="tradgarden-pride-garden">Trädgården Pride Garden</h1>
         <p>Art direction and concept development for Trädgården's 2024 iteration of its annual Pride clubs. Image treatment/collage, and graphic design. Designed around the concept of disgust.</p>
     </div>
     <div class="media">
@@ -528,7 +552,7 @@
 
 <div class="block">
     <div class="text">
-        <h1>Orionteatern</h1>
+        <h1 id="orionteatern">Orionteatern</h1>
 
                     <p>3d animated anniversary poster for Orionteatern, a small scale theatre in Stockholm, Sweden. The theatre has a long history of hosting performances with soil, animals and dirty stage design. On one occasion, there were live horses and puddles of water on stage. My poster was designed to reflect this in honour of the theater's 40th anniversary. In the design, I combine images and handwriting sampled from the theatre's archive and the general composition samples the dark (and somewhat rough) physical space.</p>
                     <p>
@@ -547,7 +571,7 @@
         </div>
     </div>
 <div class="block">
-    <div class="text"><h1>Collecting</h1>
+    <div class="text"><h1 id="collecting">Collecting</h1>
     An educational exercise in editorial design and art direction, resulting in a concept for a magazine about collecting. The project consists of a 6 page tabloid magazine, an essay, four interviews, one playlist and small website.</p>
     <p>
         Collecting uses 300 found images and a handful of minimal quotes from conducted interviews to tell stories about what making playlists means for different people and how the streaming era affects listening habits. Made in collaboration with Solvej Jansson and <a href="https://elvinodelholm.com/">Elvin Odelholm</a>. Supervised by <a href="https://malmstenhellberg.com/">Malmsten Hellberg</a>.
@@ -606,7 +630,7 @@
 
 
  <div class="block cv" id="about">
-    <div class="text" style="flex-basis: 3;">
+    <div class="text">
         <div>        <div class="back"><a href="#aa">back</a> ↑</div> <br>
 </div>
         <div>
@@ -619,7 +643,7 @@
         </div>
     </div>
 
-    <div class="text second clear">
+    <div class="text second clear" >
         <p>I (Adam Arinbjarnarson) am a designer of graphic identity applied to print, digital and motion. I utilise typography, animation, image editing and programming. I define and develop concepts with and for collaborators, to create meaningful and wise design. Tools I rely on and use include:</p>
             <p class="dent">
                 Listening, speaking, writing<br>
@@ -657,6 +681,7 @@
 
 
 </div>
+
 </div>
 
 </div>
