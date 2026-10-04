@@ -25,8 +25,16 @@
         }
 
         body {
-            margin: 2vw 10vw 1vw 1vw;
+            margin: 1.5vw 10vw 1vw 2vw;
             padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                margin: 4vw 5vw;
+                font-size: 1.8rem;
+
+            }
         }
 
         p {
@@ -40,12 +48,13 @@
             word-break: keep-all;
         }
 
+
     </style>
 </head>
 <body>
-<p>graphic designer at atonemo electronics in stockholm, previously designer at bielke&yang and design intern at snøhetta in oslo, design intern at research and development in stockholm, freelance every now and then, graduate of beckmans college of design in stockholm and östra grevie folkhögskola in skåne.
+<p>graphic designer at atonemo electronics in stockholm, previously designer at bielke&yang and design intern at snøhetta in oslo, design intern at research and development in stockholm, freelance every now and then, graduate of beckmans college of design in stockholm and östra grevie folkhögskola in skåne. reach me at:
     <br>
-     <a href="mailto:adaari@icloud.com">adaari@icloud.com</a> <a href="https://instagram.com/adamglupsk" target="_blank" rel="noopener noreferrer">instagram.com/adamglupsk</a> <a href="https://instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">instagram.com/babyglupsk</a> <a href="https://arinbjarnarson.se" target="_blank" rel="noopener noreferrer">arinbjarnarson.se</a></p>
+     <a href="mailto:adaari@icloud.com">adaari@icloud.com</a> <a href="https://instagram.com/adamglupsk" target="_blank" rel="noopener noreferrer">@adamglupsk</a> <a href="https://instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a> </p>
 
 <script>
     window.addEventListener('load', () => {
@@ -59,7 +68,7 @@
             if (index < text.length) {
                 p.textContent += text.charAt(index);
                 index++;
-                setTimeout(typeText, 50);
+                setTimeout(typeText, 0);
             }
         }
 
