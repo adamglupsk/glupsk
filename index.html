@@ -16,7 +16,7 @@
             font-family: var(--font-sans);
             line-height: 1.2;
             letter-spacing: -0.005em;
-            font-size: 3.5rem;
+            font-size: 3.5em;
             text-rendering: optimizeLegibility;
             overflow-wrap: anywhere;
             word-break: break-word;
@@ -25,14 +25,6 @@
         body {
             margin: 0.5rem 10vw 0.75rem 0.75rem;
             padding: 0;
-        }
-
-        @media (max-width: 768px) {
-            :root {
-                margin: 0.6rem 0.45rem;
-                font-size: 1.8rem;
-
-            }
         }
 
         p {
@@ -51,14 +43,263 @@
             text-decoration:underline;
         }
 
+        .drawer{
+            display: flex;
+            gap: 10px;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            scrollbar-width: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 55vh;
+            padding: 0 0.75rem;
+            box-sizing: border-box;
+            background: black;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 1s linear;
+        }
+        .drawer.open {
+            transform: translateY(0);
+        }
 
+        .drawer-toggle {
+            position: fixed;
+            bottom: 0.75rem;
+            left: 0.75rem;
+            z-index: 2;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: none;
+            font: inherit;
+            letter-spacing: inherit;
+            color: black;
+            cursor: alias;
+        }
+        .drawer-toggle:hover {
+            text-decoration: underline;
+        }
+        .drawer-toggle[aria-expanded="true"] {
+            color: white;
+        }
+        .drawer::-webkit-scrollbar {
+            display: none;
+        }
+        .drawer a {
+            color: white;
+        }
+        .project {
+            margin-top: 0.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .project img,
+        .project video {
+            width: 100%;
+            min-width: 5rem;
+            height: auto;
+        }
+
+        .project p {
+        width: 98%;
+        font-size: 0.25rem;
+        letter-spacing: 0em;
+        }
+
+        @media (hover: hover) {
+            .project p {
+                opacity: 0;
+            }
+            .project:hover p {
+                opacity: 1;
+            }
+        }
+
+        .drawer img,
+        .drawer video {
+            cursor: zoom-in;
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            display: none;
+            padding: 0.5rem 0.75rem 0.75rem 0.75rem;
+            box-sizing: border-box;
+            background: black;
+        }
+        .lightbox.open {
+            display: block;
+        }
+        .lightbox img,
+        .lightbox video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: zoom-out;
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                margin: 0.6rem 0.45rem;
+                font-size: 1.8rem;
+            }
+            .drawer {
+                height: 70vh;
+            }
+            .drawer-toggle {
+                left: 1.2rem;
+            }
+            .project{
+                flex-direction: column;
+            }
+
+            .project img,
+            .project video {
+                width: 100%;
+                min-width: 33vh;
+            }
+            .project p {
+                font-size: 0.42rem;
+                letter-spacing: 0.02em;
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
 <p>graphic designer at atonemo in stockholm, previously designer at bielke&yang in oslo, design intern at snøhetta in oslo, design intern at research and development in stockholm, freelance designer anywhere every now and then and also graduate of beckmans college of design in stockholm and östra grevie folkhögskola in skåne. reach me at:
      <a href="mailto:adaari@icloud.com">adaari@icloud.com</a> <a href="https://instagram.com/adamglupsk" target="_blank" rel="noopener noreferrer">@adamglupsk</a> <a href="https://instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a> </p>
+<button class="drawer-toggle" aria-expanded="false" aria-controls="drawer">open</button>
+<div class="lightbox"></div>
+<div class="drawer" id="drawer">
 
-<!-- <script>
+<div class="project">
+    <video src="julia.mp4" autoplay muted loop playsinline></video>
+    <p>julia åberg – web design for julia åberg. <a href="https://juliaaberg.com" target="_blank" rel="noopener noreferrer">juliaaberg.com</a></p>
+</div>
+
+<div class="project">
+    <video src="horse.mp4" autoplay muted loop playsinline></video>
+</div>
+
+<div class="project">
+    <video src="bookland-web.mp4" autoplay muted loop playsinline></video>
+    <p>bookland – identity, illustration and website for a pop-up book shop at the beckmans graduation exhibition, with maja ringsäter and tiffany louise hoff. <a href="https://bookland.beckmans.se" target="_blank" rel="noopener noreferrer">bookland.beckmans.se</a></p>
+</div>
+
+<div class="project">
+    <video src="luft-1.mp4" autoplay muted loop playsinline></video>
+    <p>luftslott is under construction – open call posters for the third issue of luftslott magazine.</p>
+</div>
+
+<div class="project">
+    <img src="luft-2.jpg" alt="Luftslott posters">
+    <p>luftslott – posters</p>
+</div>
+
+<div class="project">
+    <video src="brottare.mp4" autoplay muted loop playsinline></video>
+</div>
+
+<div class="project">
+    <video src="tyda-motion-2.mp4" autoplay muted loop playsinline></video>
+    <p>tyda – hand assembled poster and cell animation based on fleeting definitions, exhibited at vandalorum. with maja ringsäter and måns horning.</p>
+</div>
+
+<div class="project">
+    <img src="pride-garden-1.jpg" alt="Trädgården Pride Garden poster">
+    <p>trädgården pride garden – art direction and graphic design for the 2024 pride clubs.</p>
+</div>
+
+<div class="project">
+    <video src="tinstam.mp4" autoplay muted loop playsinline></video>
+    <p>there is no such thing as magic – exhibition identity and communication. with maja ringsäter and solvej jansson.</p>
+</div>
+
+<div class="project">
+    <video src="valand-1.mp4" autoplay muted loop playsinline></video>
+    <p>hdk valand – exhibition poster.</p>
+</div>
+
+<div class="project">
+    <img src="madonna-1.jpg" alt="Event poster">
+</div>
+
+<div class="project">
+    <img src="naomi-3.jpg" alt="Shitshow, Naomi Burton book release">
+    <p>shitshow – naomi burton book release.</p>
+</div>
+
+<div class="project">
+    <video src="2025/video-3.mp4" autoplay muted loop playsinline></video>
+</div>
+
+<div class="project">
+    <img src="2025/7.jpg" alt="">
+</div>
+
+</div>
+
+<script>
+    (() => {
+        const toggle = document.querySelector('.drawer-toggle');
+        const drawer = document.getElementById('drawer');
+        const lightbox = document.querySelector('.lightbox');
+
+        drawer.addEventListener('click', e => {
+            const media = e.target.closest('img, video');
+            if (!media) return;
+            lightbox.replaceChildren(media.cloneNode());
+            lightbox.classList.add('open');
+        });
+
+        drawer.addEventListener('wheel', e => {
+            if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+            e.preventDefault();
+            drawer.scrollLeft += e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+        }, { passive: false });
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('open');
+            lightbox.replaceChildren();
+        };
+
+        lightbox.addEventListener('click', e => {
+            if (e.target.closest('img, video')) closeLightbox();
+        });
+
+        const setDrawer = open => {
+            drawer.classList.toggle('open', open);
+            toggle.setAttribute('aria-expanded', open);
+            toggle.textContent = open ? 'close' : 'open';
+        };
+
+        toggle.addEventListener('click', () => {
+            if (lightbox.classList.contains('open')) {
+                closeLightbox();
+                return;
+            }
+            setDrawer(!drawer.classList.contains('open'));
+        });
+
+        document.addEventListener('click', e => {
+            if (!drawer.classList.contains('open')) return;
+            const path = e.composedPath();
+            if ([drawer, toggle, lightbox].some(el => path.includes(el))) return;
+            setDrawer(false);
+        });
+    })();
+</script>
+
+<script>
     (() => {
         const p = document.querySelector('p');
         const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
@@ -147,8 +388,7 @@
 
         // animate();
     })();
-</script> -->
-
+</script>
 
 </body>
 </html>
