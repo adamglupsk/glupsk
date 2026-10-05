@@ -16,7 +16,7 @@
             font-family: var(--font-sans);
             line-height: 1.2;
             letter-spacing: -0.005em;
-            font-size: 3rem;
+            font-size: 3.5rem;
             text-rendering: optimizeLegibility;
             overflow-wrap: anywhere;
             word-break: break-word;
@@ -45,33 +45,50 @@
             cursor:alias;
             word-break: keep-all;
         }
+        a:hover {
+            text-decoration: underline;
+        }
 
 
     </style>
 </head>
 <body>
-<p>graphic designer at atonemo electronics in stockholm, previously designer at bielke&yang, design intern at snøhetta in oslo, design intern at research and development in stockholm, freelance designer every now and then and graduate of beckmans college of design in stockholm and östra grevie folkhögskola in skåne. reach me at:
+<p>graphic designer at atonemo™ in stockholm, previously designer at bielke&yang, design intern at snøhetta in oslo, design intern at research and development in stockholm, freelance designer every now and then and graduate of beckmans college of design in stockholm and östra grevie folkhögskola in skåne. reach me at:
     <br>
      <a href="mailto:adaari@icloud.com">adaari@icloud.com</a> <a href="https://instagram.com/adamglupsk" target="_blank" rel="noopener noreferrer">@adamglupsk</a> <a href="https://instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a> </p>
 
 <script>
-    window.addEventListener('load', () => {
+    (() => {
         const p = document.querySelector('p');
-        const text = p.textContent;
-        p.textContent = '';
+        const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+        const textNodes = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+        const chars = [];
+        textNodes.forEach(node => {
+            const frag = document.createDocumentFragment();
+            for (const ch of node.textContent) {
+                const span = document.createElement('span');
+                span.textContent = ch;
+                span.style.visibility = 'hidden';
+                frag.appendChild(span);
+                if (ch.trim()) chars.push(span);
+            }
+            node.replaceWith(frag);
+        });
 
         let index = 0;
 
         function typeText() {
-            if (index < text.length) {
-                p.textContent += text.charAt(index);
+            if (index < chars.length) {
+                chars[index].style.visibility = 'visible';
                 index++;
                 setTimeout(typeText, 50);
             }
         }
 
         typeText();
-    });
+    })();
 </script>
 
 </body>
