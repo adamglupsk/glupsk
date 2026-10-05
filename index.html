@@ -44,9 +44,11 @@
             color: black;
             cursor:alias;
             word-break: keep-all;
+            text-decoration:none;
+
         }
         a:hover {
-            text-decoration: underline;
+            text-decoration:underline;
         }
 
 
@@ -83,13 +85,71 @@
             if (index < chars.length) {
                 chars[index].style.visibility = 'visible';
                 index++;
-                setTimeout(typeText, 50);
+                setTimeout(typeText, 1);
             }
         }
 
         typeText();
+
+        // attract characters towards the cursor
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const STRENGTH = 0.25;
+        const RANGE = 100;
+
+        const items = chars.map(span => {
+            span.style.position = 'relative';
+            return { span, x: 0, y: 0, cx: 0, cy: 0 };
+        });
+
+        function measure() {
+            items.forEach(item => {
+                item.span.style.left = '0px';
+                item.span.style.top = '0px';
+                const r = item.span.getBoundingClientRect();
+                item.cx = r.left + window.scrollX + r.width / 2;
+                item.cy = r.top + window.scrollY + r.height / 2;
+                item.x = item.y = 0;
+            });
+        }
+
+        let mouseX = null;
+        let mouseY = null;
+
+        window.addEventListener('mousemove', e => {
+            mouseX = e.pageX;
+            mouseY = e.pageY;
+        });
+        document.addEventListener('mouseleave', () => {
+            mouseX = mouseY = null;
+        });
+        window.addEventListener('resize', measure);
+        document.fonts.ready.then(measure);
+        measure();
+
+        function animate() {
+            items.forEach(item => {
+                let tx = 0;
+                let ty = 0;
+                if (mouseX !== null) {
+                    const dx = mouseX - item.cx;
+                    const dy = mouseY - item.cy;
+                    const falloff = STRENGTH * Math.exp(-Math.hypot(dx, dy) / RANGE);
+                    tx = dx * falloff;
+                    ty = dy * falloff;
+                }
+                item.x += (tx - item.x) * 1;
+                item.y += (ty - item.y) * 1;
+                item.span.style.left = item.x.toFixed(2) + 'px';
+                item.span.style.top = item.y.toFixed(2) + 'px';
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
     })();
 </script>
+
 
 </body>
 </html>
