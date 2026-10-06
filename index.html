@@ -4,23 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adam Arinbjarnarson</title>
+
     <style>
+        /* ---------- font ---------- */
+
         @font-face {
             font-family: "NeueHaasGroteskTextPro55Roman";
             src: url("./NeueHaasGroteskTextPro55Roman.woff2") format("woff2");
             font-display: swap;
         }
 
+
+        /* ---------- base ---------- */
+
         :root {
             --font-sans: "NeueHaasGroteskTextPro55Roman", "Helvetica Neue", Arial, sans-serif;
             font-family: var(--font-sans);
+            font-size: 3.5em;
             line-height: 1.2;
             letter-spacing: -0.005em;
-            font-size: 3.5em;
             text-rendering: optimizeLegibility;
             overflow-wrap: anywhere;
             word-break: break-word;
-                    }
+        }
 
         body {
             margin: 0.5rem 10vw 0.75rem 0.75rem;
@@ -32,38 +38,19 @@
             padding: 0;
         }
 
-        a{
+        a {
             color: black;
-            cursor:alias;
+            text-decoration: none;
             word-break: keep-all;
-            text-decoration:none;
-
+            cursor: alias;
         }
+
         a:hover {
-            text-decoration:underline;
+            text-decoration: underline;
         }
 
-        .drawer{
-            display: flex;
-            gap: 10px;
-            overflow-x: scroll;
-            overflow-y: hidden;
-            scrollbar-width: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100vw;
-            height: 55vh;
-            padding: 0 0.75rem;
-            box-sizing: border-box;
-            background: black;
-            color: white;
-            transform: translateY(100%);
-            transition: transform 1s linear;
-        }
-        .drawer.open {
-            transform: translateY(0);
-        }
+
+        /* ---------- open / close button ---------- */
 
         .drawer-toggle {
             position: fixed;
@@ -79,23 +66,63 @@
             color: black;
             cursor: alias;
         }
+
         .drawer-toggle:hover {
             text-decoration: underline;
         }
+
         .drawer-toggle[aria-expanded="true"] {
             color: white;
         }
+
+
+        /* ---------- drawer ---------- */
+
+        .drawer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            gap: 10px;
+            width: 100vw;
+            height: 55vh;
+            padding: 0 0.75rem;
+            box-sizing: border-box;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            scrollbar-width: none;
+            background: black;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.75s cubic-bezier(0.32, 0.72, 0, 1);
+            will-change: transform;
+        }
+
+        .drawer.open {
+            transform: translateY(0);
+        }
+
         .drawer::-webkit-scrollbar {
             display: none;
         }
+
         .drawer a {
             color: white;
         }
+
+        .drawer img,
+        .drawer video {
+            cursor: zoom-in;
+        }
+
+
+        /* ---------- projects ---------- */
+
         .project {
-            margin-top: 0.25rem;
             display: flex;
             flex-direction: column;
             gap: 0.25rem;
+            margin-top: 0.25rem;
         }
 
         .project img,
@@ -106,24 +133,24 @@
         }
 
         .project p {
-        width: 98%;
-        font-size: 0.25rem;
-        letter-spacing: 0em;
+            width: 98%;
+            font-size: 0.25rem;
+            letter-spacing: 0em;
         }
 
+        /* captions only show on hover when there is a mouse */
         @media (hover: hover) {
             .project p {
                 opacity: 0;
             }
+
             .project:hover p {
                 opacity: 1;
             }
         }
 
-        .drawer img,
-        .drawer video {
-            cursor: zoom-in;
-        }
+
+        /* ---------- lightbox ---------- */
 
         .lightbox {
             position: fixed;
@@ -134,9 +161,11 @@
             box-sizing: border-box;
             background: black;
         }
+
         .lightbox.open {
             display: block;
         }
+
         .lightbox img,
         .lightbox video {
             display: block;
@@ -145,6 +174,9 @@
             object-fit: contain;
             cursor: zoom-out;
         }
+
+
+        /* ---------- smaller screens ---------- */
 
         @media (max-width: 1440px), (max-height: 1050px) {
             :root {
@@ -158,29 +190,30 @@
             }
         }
 
+        /* phones */
         @media (max-width: 768px) {
             :root {
                 margin: 0.6rem 0.45rem;
                 font-size: 1.8rem;
             }
+
             .drawer {
                 height: 70vh;
             }
+
             .drawer-toggle {
                 left: 1.2rem;
             }
+
             .lightbox {
                 padding: 0.5rem 0.75rem 0.75rem 0.75rem;
-            }
-            .project{
-                flex-direction: column;
             }
 
             .project img,
             .project video {
-                width: 100%;
                 min-width: 28vh;
             }
+
             .project p {
                 font-size: 0.42rem;
                 letter-spacing: 0.02em;
@@ -189,265 +222,321 @@
         }
     </style>
 </head>
+
 <body>
-<p>graphic designer at atonemo in stockholm, previously designer at bielke&yang in oslo, design intern at snøhetta in oslo, design intern at research and development in stockholm, freelance designer anywhere every now and then and also graduate of beckmans college of design in stockholm and östra grevie folkhögskola in skåne. reach me at:
-     <a href="mailto:adaari@icloud.com">adaari@icloud.com</a> <a href="https://instagram.com/adamglupsk" target="_blank" rel="noopener noreferrer">@adamglupsk</a> <a href="https://instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a> </p>
-<button class="drawer-toggle" aria-expanded="false" aria-controls="drawer">open</button>
-<div class="lightbox"></div>
-<div class="drawer" id="drawer">
 
-<div class="project">
-    <video src="julia.mp4" autoplay muted loop playsinline></video>
-    <p>julia åberg – web design for julia åberg. <a href="https://juliaaberg.com" target="_blank" rel="noopener noreferrer">juliaaberg.com</a></p>
-</div>
+    <!-- bio -->
+    <p>
+        graphic designer at atonemo in stockholm, previously designer at bielke&yang in oslo,
+        design intern at snøhetta in oslo, design intern at research and development in stockholm,
+        freelance designer anywhere every now and then and also graduate of beckmans college of
+        design in stockholm and östra grevie folkhögskola in skåne. reach me at:
+        <a href="mailto:adaari@icloud.com">adaari@icloud.com</a>
+        <a href="https://instagram.com/adamglupsk" target="_blank" rel="noopener noreferrer">@adamglupsk</a>
+        <a href="https://instagram.com/babyglupsk" target="_blank" rel="noopener noreferrer">@babyglupsk</a>
+    </p>
 
-<div class="project">
-    <video src="horse.mp4" autoplay muted loop playsinline></video>
-</div>
+    <button class="drawer-toggle" aria-expanded="false" aria-controls="drawer">open</button>
 
-<div class="project">
-    <video src="bookland-web.mp4" autoplay muted loop playsinline></video>
-    <p>bookland – identity, illustration and website for a pop-up book shop at the beckmans graduation exhibition, with maja ringsäter and tiffany louise hoff. <a href="https://bookland.beckmans.se" target="_blank" rel="noopener noreferrer">bookland.beckmans.se</a></p>
-</div>
+    <div class="lightbox"></div>
 
-<div class="project">
-    <video src="luft-1.mp4" autoplay muted loop playsinline></video>
-    <p>luftslott is under construction – open call posters for the third issue of luftslott magazine.</p>
-</div>
+    <!-- drawer with projects -->
+    <div class="drawer" id="drawer">
 
-<div class="project">
-    <img src="luft-2.jpg" alt="Luftslott posters">
-    <p>luftslott – posters</p>
-</div>
+        <div class="project">
+            <video src="julia.mp4" autoplay muted loop playsinline></video>
+            <p>
+                julia åberg – web design for julia åberg.
+                <a href="https://juliaaberg.com" target="_blank" rel="noopener noreferrer">juliaaberg.com</a>
+            </p>
+        </div>
 
-<div class="project">
-    <video src="brottare.mp4" autoplay muted loop playsinline></video>
-</div>
+        <div class="project">
+            <video src="horse.mp4" autoplay muted loop playsinline></video>
+        </div>
 
-<div class="project">
-    <video src="tyda-motion-2.mp4" autoplay muted loop playsinline></video>
-    <p>tyda – hand assembled poster and cell animation based on fleeting definitions, exhibited at vandalorum. with maja ringsäter and måns horning.</p>
-</div>
+        <div class="project">
+            <video src="bookland-web.mp4" autoplay muted loop playsinline></video>
+            <p>
+                bookland – identity, illustration and website for a pop-up book shop at the beckmans
+                graduation exhibition, with maja ringsäter and tiffany louise hoff.
+                <a href="https://bookland.beckmans.se" target="_blank" rel="noopener noreferrer">bookland.beckmans.se</a>
+            </p>
+        </div>
 
-<div class="project">
-    <img src="pride-garden-1.jpg" alt="Trädgården Pride Garden poster">
-    <p>trädgården pride garden – art direction and graphic design for the 2024 pride clubs.</p>
-</div>
+        <div class="project">
+            <video src="luft-1.mp4" autoplay muted loop playsinline></video>
+            <p>luftslott is under construction – open call posters for the third issue of luftslott magazine.</p>
+        </div>
 
-<div class="project">
-    <video src="tinstam.mp4" autoplay muted loop playsinline></video>
-    <p>there is no such thing as magic – exhibition identity and communication. with maja ringsäter and solvej jansson.</p>
-</div>
+        <div class="project">
+            <img src="luft-2.jpg" alt="Luftslott posters">
+            <p>luftslott – posters</p>
+        </div>
 
-<div class="project">
-    <video src="valand-1.mp4" autoplay muted loop playsinline></video>
-    <p>hdk valand – exhibition poster.</p>
-</div>
+        <div class="project">
+            <video src="brottare.mp4" autoplay muted loop playsinline></video>
+        </div>
 
-<div class="project">
-    <img src="madonna-1.jpg" alt="Event poster">
-</div>
+        <div class="project">
+            <video src="tyda-motion-2.mp4" autoplay muted loop playsinline></video>
+            <p>
+                tyda – hand assembled poster and cell animation based on fleeting definitions,
+                exhibited at vandalorum. with maja ringsäter and måns horning.
+            </p>
+        </div>
 
-<div class="project">
-    <img src="naomi-3.jpg" alt="Shitshow, Naomi Burton book release">
-    <p>shitshow – naomi burton book release.</p>
-</div>
+        <div class="project">
+            <img src="pride-garden-1.jpg" alt="Trädgården Pride Garden poster">
+            <p>trädgården pride garden – art direction and graphic design for the 2024 pride clubs.</p>
+        </div>
 
-<div class="project">
-    <video src="2025/video-3.mp4" autoplay muted loop playsinline></video>
-</div>
+        <div class="project">
+            <video src="tinstam.mp4" autoplay muted loop playsinline></video>
+            <p>
+                there is no such thing as magic – exhibition identity and communication.
+                with maja ringsäter and solvej jansson.
+            </p>
+        </div>
 
-<div class="project">
-    <img src="2025/7.jpg" alt="">
-</div>
+        <div class="project">
+            <video src="valand-1.mp4" autoplay muted loop playsinline></video>
+            <p>hdk valand – exhibition poster.</p>
+        </div>
 
-</div>
+        <div class="project">
+            <img src="madonna-1.jpg" alt="Event poster">
+        </div>
 
-<script>
-    (() => {
-        const toggle = document.querySelector('.drawer-toggle');
-        const drawer = document.getElementById('drawer');
-        const lightbox = document.querySelector('.lightbox');
+        <div class="project">
+            <img src="naomi-3.jpg" alt="Shitshow, Naomi Burton book release">
+            <p>shitshow – naomi burton book release.</p>
+        </div>
 
-        drawer.addEventListener('click', e => {
-            const media = e.target.closest('img, video');
-            if (!media) return;
-            lightbox.replaceChildren(media.cloneNode());
-            lightbox.classList.add('open');
-        });
+        <div class="project">
+            <video src="2025/video-3.mp4" autoplay muted loop playsinline></video>
+        </div>
 
-        drawer.addEventListener('wheel', e => {
-            if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
-            e.preventDefault();
-            drawer.scrollLeft += e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
-        }, { passive: false });
+        <div class="project">
+            <img src="2025/7.jpg" alt="">
+        </div>
 
-        const closeLightbox = () => {
-            lightbox.classList.remove('open');
-            lightbox.replaceChildren();
-        };
+    </div>
 
-        lightbox.addEventListener('click', e => {
-            if (e.target.closest('img, video')) closeLightbox();
-        });
 
-        const setDrawer = open => {
-            drawer.classList.toggle('open', open);
-            toggle.setAttribute('aria-expanded', open);
-            toggle.textContent = open ? 'close' : 'open';
-        };
+    <!-- drawer, lightbox and open / close button -->
+    <script>
+        (() => {
+            const toggle = document.querySelector('.drawer-toggle');
+            const drawer = document.getElementById('drawer');
+            const lightbox = document.querySelector('.lightbox');
 
-        toggle.addEventListener('click', () => {
-            if (lightbox.classList.contains('open')) {
-                closeLightbox();
-                return;
-            }
-            setDrawer(!drawer.classList.contains('open'));
-        });
+            // open / close the drawer
+            const setDrawer = open => {
+                drawer.classList.toggle('open', open);
+                toggle.setAttribute('aria-expanded', open);
+                toggle.textContent = open ? 'close' : 'open';
+            };
 
-        document.addEventListener('click', e => {
-            if (!drawer.classList.contains('open')) return;
-            const path = e.composedPath();
-            if ([drawer, toggle, lightbox].some(el => path.includes(el))) return;
-            setDrawer(false);
-        });
-    })();
-</script>
+            const closeLightbox = () => {
+                lightbox.classList.remove('open');
+                lightbox.replaceChildren();
+            };
 
-<script>
-    // shrink the bio text until it ends above the open button
-    (() => {
-        const p = document.querySelector('p');
-        const toggle = document.querySelector('.drawer-toggle');
-        const GAP = 8;
-
-        const fits = () =>
-            p.getBoundingClientRect().bottom + window.scrollY + GAP <= toggle.getBoundingClientRect().top;
-
-        // the toggle always matches the bio's size
-        const setSize = size => {
-            p.style.fontSize = size;
-            toggle.style.fontSize = size;
-        };
-
-        function fit() {
-            setSize('');
-            if (fits()) return;
-
-            let lo = 8;
-            let hi = parseFloat(getComputedStyle(p).fontSize);
-            while (hi - lo > 0.25) {
-                const mid = (lo + hi) / 2;
-                setSize(mid + 'px');
-                if (fits()) lo = mid;
-                else hi = mid;
-            }
-            setSize(lo + 'px');
-        }
-
-        // only refit when the width changes, so safari's toolbar
-        // collapsing on scroll doesn't make the text jump
-        let lastWidth = window.innerWidth;
-        window.addEventListener('resize', () => {
-            if (window.innerWidth === lastWidth) return;
-            lastWidth = window.innerWidth;
-            fit();
-        });
-        document.fonts.ready.then(fit);
-        fit();
-    })();
-</script>
-
-<script>
-    (() => {
-        const p = document.querySelector('p');
-        const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
-        const textNodes = [];
-        while (walker.nextNode()) textNodes.push(walker.currentNode);
-
-        const chars = [];
-        textNodes.forEach(node => {
-            const frag = document.createDocumentFragment();
-            for (const ch of node.textContent) {
-                const span = document.createElement('span');
-                span.textContent = ch;
-                span.style.visibility = 'hidden';
-                frag.appendChild(span);
-                if (ch.trim()) chars.push(span);
-            }
-            node.replaceWith(frag);
-        });
-
-        let index = 0;
-
-        function typeText() {
-            if (index < chars.length) {
-                chars[index].style.visibility = 'visible';
-                index++;
-                setTimeout(typeText, 50);
-            }
-        }
-
-        typeText();
-
-        // attract characters towards the cursor
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-        const STRENGTH = 0.25;
-        const RANGE = 100;
-
-        const items = chars.map(span => {
-            span.style.position = 'relative';
-            return { span, x: 0, y: 0, cx: 0, cy: 0 };
-        });
-
-        function measure() {
-            items.forEach(item => {
-                item.span.style.left = '0px';
-                item.span.style.top = '0px';
-                const r = item.span.getBoundingClientRect();
-                item.cx = r.left + window.scrollX + r.width / 2;
-                item.cy = r.top + window.scrollY + r.height / 2;
-                item.x = item.y = 0;
-            });
-        }
-
-        let mouseX = null;
-        let mouseY = null;
-
-        window.addEventListener('mousemove', e => {
-            mouseX = e.pageX;
-            mouseY = e.pageY;
-        });
-        document.addEventListener('mouseleave', () => {
-            mouseX = mouseY = null;
-        });
-        window.addEventListener('resize', measure);
-        document.fonts.ready.then(measure);
-        measure();
-
-        function animate() {
-            items.forEach(item => {
-                let tx = 0;
-                let ty = 0;
-                if (mouseX !== null) {
-                    const dx = mouseX - item.cx;
-                    const dy = mouseY - item.cy;
-                    const falloff = STRENGTH * Math.exp(-Math.hypot(dx, dy) / RANGE);
-                    tx = dx * falloff;
-                    ty = dy * falloff;
+            // the button closes the lightbox first, then the drawer
+            toggle.addEventListener('click', () => {
+                if (lightbox.classList.contains('open')) {
+                    closeLightbox();
+                    return;
                 }
-                item.x += (tx - item.x) * 1;
-                item.y += (ty - item.y) * 1;
-                item.span.style.left = item.x.toFixed(2) + 'px';
-                item.span.style.top = item.y.toFixed(2) + 'px';
+                setDrawer(!drawer.classList.contains('open'));
             });
-            requestAnimationFrame(animate);
-        }
 
-        // animate();
-    })();
-</script>
+            // clicking outside the drawer closes it
+            document.addEventListener('click', e => {
+                if (!drawer.classList.contains('open')) return;
+                const path = e.composedPath();
+                if ([drawer, toggle, lightbox].some(el => path.includes(el))) return;
+                setDrawer(false);
+            });
+
+            // clicking an image or video opens it in the lightbox
+            drawer.addEventListener('click', e => {
+                const media = e.target.closest('img, video');
+                if (!media) return;
+                lightbox.replaceChildren(media.cloneNode());
+                lightbox.classList.add('open');
+            });
+
+            lightbox.addEventListener('click', e => {
+                if (e.target.closest('img, video')) closeLightbox();
+            });
+
+            // scrolling up / down moves the drawer sideways
+            drawer.addEventListener('wheel', e => {
+                if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+                e.preventDefault();
+                drawer.scrollLeft += e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+            }, { passive: false });
+        })();
+    </script>
+
+
+    <!-- shrink the bio until it ends above the open button -->
+    <script>
+        (() => {
+            const p = document.querySelector('p');
+            const toggle = document.querySelector('.drawer-toggle');
+            const GAP = 8; // px between the bio and the button
+
+            const fits = () =>
+                p.getBoundingClientRect().bottom + window.scrollY + GAP <= toggle.getBoundingClientRect().top;
+
+            // the button always matches the bio's size
+            const setSize = size => {
+                p.style.fontSize = size;
+                toggle.style.fontSize = size;
+            };
+
+            // find the largest size that fits
+            function fit() {
+                setSize('');
+                if (fits()) return;
+
+                let lo = 8;
+                let hi = parseFloat(getComputedStyle(p).fontSize);
+
+                while (hi - lo > 0.25) {
+                    const mid = (lo + hi) / 2;
+                    setSize(mid + 'px');
+                    if (fits()) lo = mid;
+                    else hi = mid;
+                }
+
+                setSize(lo + 'px');
+            }
+
+            // only refit when the width changes, so safari's toolbar
+            // collapsing on scroll doesn't make the text jump
+            let lastWidth = window.innerWidth;
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth === lastWidth) return;
+                lastWidth = window.innerWidth;
+                fit();
+            });
+
+            document.fonts.ready.then(fit);
+            fit();
+        })();
+    </script>
+
+
+    <!-- typing effect and cursor attraction for the bio -->
+    <script>
+        (() => {
+            const p = document.querySelector('p');
+
+            // wrap every character in a hidden span, keeping the links intact
+            const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+            const textNodes = [];
+            while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+            const chars = [];
+
+            textNodes.forEach(node => {
+                const frag = document.createDocumentFragment();
+
+                for (const ch of node.textContent) {
+                    const span = document.createElement('span');
+                    span.textContent = ch;
+                    span.style.visibility = 'hidden';
+                    frag.appendChild(span);
+                    if (ch.trim()) chars.push(span);
+                }
+
+                node.replaceWith(frag);
+            });
+
+
+            // typing effect: reveal one character at a time
+            let index = 0;
+
+            function typeText() {
+                if (index < chars.length) {
+                    chars[index].style.visibility = 'visible';
+                    index++;
+                    setTimeout(typeText, 50);
+                }
+            }
+
+            typeText();
+
+
+            // cursor attraction (turned off: uncomment animate() at the bottom)
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const STRENGTH = 0.25; // how far characters move
+            const RANGE = 100;     // how far away the cursor has an effect, in px
+
+            const items = chars.map(span => {
+                span.style.position = 'relative';
+                return { span, x: 0, y: 0, cx: 0, cy: 0 };
+            });
+
+            // store each character's resting centre
+            function measure() {
+                items.forEach(item => {
+                    item.span.style.left = '0px';
+                    item.span.style.top = '0px';
+                    const r = item.span.getBoundingClientRect();
+                    item.cx = r.left + window.scrollX + r.width / 2;
+                    item.cy = r.top + window.scrollY + r.height / 2;
+                    item.x = item.y = 0;
+                });
+            }
+
+            let mouseX = null;
+            let mouseY = null;
+
+            window.addEventListener('mousemove', e => {
+                mouseX = e.pageX;
+                mouseY = e.pageY;
+            });
+
+            document.addEventListener('mouseleave', () => {
+                mouseX = mouseY = null;
+            });
+
+            window.addEventListener('resize', measure);
+            document.fonts.ready.then(measure);
+            measure();
+
+            function animate() {
+                items.forEach(item => {
+                    let tx = 0;
+                    let ty = 0;
+
+                    if (mouseX !== null) {
+                        const dx = mouseX - item.cx;
+                        const dy = mouseY - item.cy;
+                        const falloff = STRENGTH * Math.exp(-Math.hypot(dx, dy) / RANGE);
+                        tx = dx * falloff;
+                        ty = dy * falloff;
+                    }
+
+                    item.x += (tx - item.x) * 1;
+                    item.y += (ty - item.y) * 1;
+                    item.span.style.left = item.x.toFixed(2) + 'px';
+                    item.span.style.top = item.y.toFixed(2) + 'px';
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            // animate();
+        })();
+    </script>
 
 </body>
 </html>
