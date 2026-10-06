@@ -315,6 +315,50 @@
 </script>
 
 <script>
+    // shrink the bio text until it ends above the open button
+    (() => {
+        const p = document.querySelector('p');
+        const toggle = document.querySelector('.drawer-toggle');
+        const GAP = 8;
+
+        const fits = () =>
+            p.getBoundingClientRect().bottom + window.scrollY + GAP <= toggle.getBoundingClientRect().top;
+
+        // the toggle always matches the bio's size
+        const setSize = size => {
+            p.style.fontSize = size;
+            toggle.style.fontSize = size;
+        };
+
+        function fit() {
+            setSize('');
+            if (fits()) return;
+
+            let lo = 8;
+            let hi = parseFloat(getComputedStyle(p).fontSize);
+            while (hi - lo > 0.25) {
+                const mid = (lo + hi) / 2;
+                setSize(mid + 'px');
+                if (fits()) lo = mid;
+                else hi = mid;
+            }
+            setSize(lo + 'px');
+        }
+
+        // only refit when the width changes, so safari's toolbar
+        // collapsing on scroll doesn't make the text jump
+        let lastWidth = window.innerWidth;
+        window.addEventListener('resize', () => {
+            if (window.innerWidth === lastWidth) return;
+            lastWidth = window.innerWidth;
+            fit();
+        });
+        document.fonts.ready.then(fit);
+        fit();
+    })();
+</script>
+
+<script>
     (() => {
         const p = document.querySelector('p');
         const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
