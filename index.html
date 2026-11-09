@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adam Arinbjarnarson</title>
+    <link rel="icon" type="image/x-icon" href="favime.jpg">
+
+    <!-- pick one of three looks at random; a reload never repeats the previous one -->
+    <script>
+        (() => {
+            const LOOKS = [1, 2, 3, 4];
+            let last = null;
+            try { last = parseInt(localStorage.getItem('look'), 10); } catch (e) {}
+
+            const pool = LOOKS.filter(n => n !== last);
+            const look = pool[Math.floor(Math.random() * pool.length)];
+
+            document.documentElement.dataset.look = look;
+            try { localStorage.setItem('look', look); } catch (e) {}
+        })();
+    </script>
 
     <style>
         /* ---------- font ---------- */
@@ -28,6 +44,105 @@
             word-break: break-word;
         }
 
+        /* ---------- looks ---------- */
+
+        /* 1: yellow on electric blue */
+        :root,
+        html[data-look="1"] {
+            --bg: #1a1aff;
+            --fg: #ffee00;
+            --drawer-bg: #ffee00;
+            --drawer-fg: #1a1aff;
+        }
+
+        /* 2: magenta on green */
+        html[data-look="2"] {
+            --bg: #00d93a;
+            --fg: #ff00c8;
+            --drawer-bg: #ff00c8;
+            --drawer-fg: #00d93a;
+        }
+
+        /* 3: light brown on orange */
+        html[data-look="3"] {
+            --bg: #ff6a00;
+            --fg: #8f4a1a;
+            --drawer-bg: #8f4a1a;
+            --drawer-fg: #ff6a00;
+        }
+
+        /* 4: cyan on purple */
+        html[data-look="4"] {
+            --bg: #b100ff;
+            --fg: #00f0ff;
+            --drawer-bg: #00f0ff;
+            --drawer-fg: #b100ff;
+        }
+
+        /* ---------- cursors: a plus or minus in the colour of the button's own text ---------- */
+
+        :root,
+        html[data-look="1"] {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23ffee00'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23ffee00'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        html[data-look="2"] {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23ff00c8'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23ff00c8'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        html[data-look="3"] {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%238f4a1a'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%238f4a1a'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        html[data-look="4"] {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%2300f0ff'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%2300f0ff'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        /* white text on the video */
+        html.headshot-on {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='white'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='white'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        /* buttons on the open drawer */
+        html[data-look="1"].drawer-open {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%231a1aff'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%231a1aff'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        /* buttons on the open drawer */
+        html[data-look="2"].drawer-open {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%2300d93a'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%2300d93a'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        /* buttons on the open drawer */
+        html[data-look="3"].drawer-open {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23ff6a00'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23ff6a00'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        /* buttons on the open drawer */
+        html[data-look="4"].drawer-open {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23b100ff'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23b100ff'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        /* buttons on the black lightbox */
+        html.lightbox-open:root {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='white'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='white'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        html {
+            background: var(--bg);
+            color: var(--fg);
+        }
+
         body {
             margin: 0.5rem 10vw 0.75rem 0.75rem;
             padding: 0;
@@ -38,8 +153,32 @@
             padding: 0;
         }
 
-        a {
+
+        /* ---------- text selection: inverted colours, fully opaque ---------- */
+
+        ::selection {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        html.headshot-on body > p::selection,
+        html.headshot-on body > p *::selection {
+            background: white;
             color: black;
+        }
+
+        .drawer ::selection {
+            background: var(--drawer-fg);
+            color: var(--drawer-bg);
+        }
+
+        .lightbox ::selection {
+            background: white;
+            color: black;
+        }
+
+        a {
+            color: var(--fg);
             text-decoration: none;
             word-break: keep-all;
             cursor: alias;
@@ -55,6 +194,61 @@
         .drawer-toggle {
             position: fixed;
             bottom: 0.75rem;
+            right: 0.75rem;
+            z-index: 2;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: none;
+            font: inherit;
+            letter-spacing: inherit;
+            color: var(--fg);
+        }
+
+        .drawer-toggle:hover {
+            text-decoration: underline;
+        }
+
+        .drawer-toggle[aria-expanded="true"] {
+            color: var(--drawer-fg);
+        }
+
+        /* the button turns white on top of the black lightbox */
+        html.lightbox-open .drawer-toggle,
+        html.lightbox-open.headshot-on .drawer-toggle[aria-expanded="true"] {
+            color: white;
+        }
+
+        /* "text" / "image" button in the left corner, only while the lightbox is open */
+        .text-toggle {
+            position: fixed;
+            bottom: 0.75rem;
+            left: 0.75rem;
+            z-index: 2;
+            display: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: none;
+            font: inherit;
+            letter-spacing: inherit;
+            color: white;
+        }
+
+        .text-toggle:hover {
+            text-decoration: underline;
+        }
+
+        html.lightbox-open .text-toggle:not([hidden]) {
+            display: block;
+        }
+
+
+        /* ---------- headshot button and background video ---------- */
+
+        .headshot-toggle {
+            position: fixed;
+            bottom: 0.75rem;
             left: 0.75rem;
             z-index: 2;
             margin: 0;
@@ -63,16 +257,63 @@
             background: none;
             font: inherit;
             letter-spacing: inherit;
-            color: black;
-            cursor: alias;
+            color: var(--fg);
         }
 
-        .drawer-toggle:hover {
+        .headshot-toggle:hover {
             text-decoration: underline;
         }
 
-        .drawer-toggle[aria-expanded="true"] {
+        /* hidden while the lightbox ("text" takes this corner) or the drawer is open */
+        html.lightbox-open .headshot-toggle,
+        html.drawer-open .headshot-toggle {
+            display: none;
+        }
+
+        /* plus when a click opens or shows something, minus when it closes or hides it */
+        .drawer-toggle,
+        .text-toggle,
+        .headshot-toggle {
+            cursor: var(--cursor-plus);
+        }
+
+        .drawer-toggle[aria-expanded="true"],
+        .text-toggle[aria-pressed="true"],
+        .headshot-toggle[aria-pressed="true"] {
+            cursor: var(--cursor-minus);
+        }
+
+        .bg-video {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        html.headshot-on .bg-video {
+            opacity: 1;
+        }
+
+        /* white type on top of the video */
+        html.headshot-on body > p,
+        html.headshot-on body > p a,
+        html.headshot-on .drawer-toggle,
+        html.headshot-on .headshot-toggle {
             color: white;
+        }
+
+        /* ...but the buttons sitting on the open drawer keep the drawer's colours */
+        html.headshot-on .drawer-toggle[aria-expanded="true"],
+        html.headshot-on.drawer-open .headshot-toggle {
+            color: var(--drawer-fg);
+        }
+
+        html.drawer-open .headshot-toggle {
+            color: var(--drawer-fg);
         }
 
 
@@ -91,11 +332,16 @@
             overflow-x: scroll;
             overflow-y: hidden;
             scrollbar-width: none;
-            background: black;
-            color: white;
+            background: var(--drawer-bg);
+            color: var(--drawer-fg);
             transform: translateY(100%);
             transition: transform 0.75s cubic-bezier(0.32, 0.72, 0, 1);
             will-change: transform;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: pan-x;
+            overscroll-behavior-x: contain;
+            -webkit-overflow-scrolling: touch;
         }
 
         .drawer.open {
@@ -107,12 +353,18 @@
         }
 
         .drawer a {
-            color: white;
+            color: var(--drawer-fg);
         }
 
         .drawer img,
         .drawer video {
-            cursor: zoom-in;
+            cursor: grab;
+            -webkit-user-drag: none;
+        }
+
+        .drawer.dragging,
+        .drawer.dragging * {
+            cursor: grabbing;
         }
 
 
@@ -130,6 +382,12 @@
             width: 100%;
             min-width: 5rem;
             height: auto;
+        }
+
+        /* black and white in the drawer, colour only in the lightbox */
+        .project img,
+        .project video {
+            filter: grayscale(1);
         }
 
         .project p {
@@ -172,7 +430,52 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            cursor: zoom-out;
+            cursor: none;
+        }
+
+        .lightbox {
+            cursor: none;
+        }
+
+        /* the caption, set like the bio on the start page but in white */
+        .lightbox.text {
+            padding: 0.5rem 10vw 0.75rem 0.75rem;
+            overflow-y: auto;
+        }
+
+        .lightbox-text {
+            margin: 0;
+            padding: 0;
+            color: white;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .lightbox-text a {
+            color: white;
+            text-decoration: none;
+            word-break: keep-all;
+            cursor: alias;
+        }
+
+        .lightbox-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* "previous" / "next" follows the cursor over the lightbox, same type as the button */
+        .cursor-label {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            display: none;
+            margin: 0;
+            font: inherit;
+            letter-spacing: inherit;
+            color: white;
+            white-space: nowrap;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
         }
 
 
@@ -202,6 +505,11 @@
             }
 
             .drawer-toggle {
+                right: 1.2rem;
+            }
+
+            .text-toggle,
+            .headshot-toggle {
                 left: 1.2rem;
             }
 
@@ -225,6 +533,9 @@
 
 <body>
 
+    <!-- background video, shown by the headshot button -->
+    <video class="bg-video" src="princess.mp4" muted loop playsinline preload="auto"></video>
+
     <!-- bio -->
     <p>
         graphic designer at atonemo in stockholm, previously designer at bielke&yang in oslo,
@@ -237,8 +548,11 @@
     </p>
 
     <button class="drawer-toggle" aria-expanded="false" aria-controls="drawer">open</button>
+    <button class="text-toggle" hidden>text</button>
+    <button class="headshot-toggle" aria-pressed="false" hidden>face</button>
 
     <div class="lightbox"></div>
+    <div class="cursor-label"></div>
 
     <!-- drawer with projects -->
     <div class="drawer" id="drawer">
@@ -246,8 +560,8 @@
         <div class="project">
             <video src="julia.mp4" autoplay muted loop playsinline></video>
             <p>
-                julia åberg – web design for julia åberg.
                 <a href="https://juliaaberg.com" target="_blank" rel="noopener noreferrer">juliaaberg.com</a>
+                – a website for the artist julia åberg. look closely at the wonderful works.
             </p>
         </div>
 
@@ -306,11 +620,12 @@
 
         <div class="project">
             <img src="madonna-1.jpg" alt="Event poster">
+            <p>madonnas begravning – photoshop collage and poster for artist collective madonna.</p>
         </div>
 
         <div class="project">
             <img src="naomi-3.jpg" alt="Shitshow, Naomi Burton book release">
-            <p>shitshow – naomi burton book release.</p>
+            <p>shitshow – naomi burton book release. photography by agnes nebrelius.</p>
         </div>
 
         <div class="project">
@@ -328,19 +643,266 @@
     <script>
         (() => {
             const toggle = document.querySelector('.drawer-toggle');
+            const textToggle = document.querySelector('.text-toggle');
+            const headshotToggle = document.querySelector('.headshot-toggle');
+            const bio = document.querySelector('p');
             const drawer = document.getElementById('drawer');
             const lightbox = document.querySelector('.lightbox');
+
+            // loop: duplicate the projects so the drawer scrolls endlessly
+            const originals = [...drawer.querySelectorAll('.project')];
+
+            originals.forEach(el => {
+                const clone = el.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                clone.querySelectorAll('video').forEach(v => {
+                    v.muted = true;
+                    v.play().catch(() => {});
+                });
+                drawer.appendChild(clone);
+            });
+
+            const firstClone = drawer.children[originals.length];
+            const projects = [...drawer.children];
+            const count = originals.length;
+            let index = 0; // which project the lightbox shows
+            const setWidth = () => firstClone.offsetLeft - originals[0].offsetLeft;
+            const EDGE = 20; // px from either end where the drawer jumps between the two copies
+
+            let width = setWidth();
+            drawer.scrollLeft = width; // start on the second copy so there is room to go left
+
+            // jumping by exactly one copy looks identical, so it is done
+            // - at once when the very end is reached
+            // - when scrolling has stopped, to get back to the middle (so a swipe's momentum is never cut)
+            let settle;
+            drawer.addEventListener('scroll', () => {
+                if (!width) return;
+
+                const max = 2 * width - drawer.clientWidth;
+                if (drawer.scrollLeft < EDGE) drawer.scrollLeft += width;
+                else if (drawer.scrollLeft > max - EDGE) drawer.scrollLeft -= width;
+
+                clearTimeout(settle);
+                settle = setTimeout(() => {
+                    if (drawer.scrollLeft > width * 1.5) drawer.scrollLeft -= width;
+                    else if (drawer.scrollLeft < width * 0.5) drawer.scrollLeft += width;
+                }, 150);
+            });
+
+            // grab and drag with the mouse (touch screens scroll by swiping on their own)
+            let drag = null;
+            let moved = false;
+            let velocity = 0;
+            let lastMove = 0;
+            let glide = 0;
+
+            drawer.addEventListener('pointerdown', e => {
+                if (e.pointerType !== 'mouse' || e.button !== 0) return;
+                cancelAnimationFrame(glide);
+                drag = { x: e.clientX, start: e.clientX };
+                moved = false;
+                velocity = 0;
+            });
+
+            window.addEventListener('pointermove', e => {
+                if (!drag) return;
+                const dx = e.clientX - drag.x;
+                drag.x = e.clientX;
+
+                if (Math.abs(e.clientX - drag.start) > 5) {
+                    moved = true;
+                    drawer.classList.add('dragging');
+                }
+
+                drawer.scrollLeft -= dx;
+                velocity = dx;
+                lastMove = performance.now();
+            });
+
+            const release = () => {
+                if (!drag) return;
+                drag = null;
+                drawer.classList.remove('dragging');
+                if (!moved || performance.now() - lastMove > 80) return;
+
+                // keep gliding for a moment after letting go
+                const step = () => {
+                    if (Math.abs(velocity) < 0.3) return;
+                    drawer.scrollLeft -= velocity;
+                    velocity *= 0.95;
+                    glide = requestAnimationFrame(step);
+                };
+                step();
+            };
+
+            window.addEventListener('pointerup', release);
+            window.addEventListener('pointercancel', release);
+
+            // a drag must not count as a click on the picture (or link) it ended on
+            drawer.addEventListener('click', e => {
+                if (!moved) return;
+                e.stopPropagation();
+                e.preventDefault();
+                moved = false;
+            }, true);
+
+            drawer.addEventListener('dragstart', e => e.preventDefault());
+
+            // media loads and the window resizes change the width of one copy
+            const resizeObserver = new ResizeObserver(() => {
+                const next = setWidth();
+                if (!next || next === width) return;
+                drawer.scrollLeft = width ? drawer.scrollLeft * next / width : next;
+                width = next;
+            });
+            drawer.querySelectorAll('.project').forEach(el => resizeObserver.observe(el));
 
             // open / close the drawer
             const setDrawer = open => {
                 drawer.classList.toggle('open', open);
+                document.documentElement.classList.toggle('drawer-open', open);
                 toggle.setAttribute('aria-expanded', open);
                 toggle.textContent = open ? 'close' : 'open';
             };
 
+            // the lightbox picture grows out of (and shrinks back into) the small one
+            const label = document.querySelector('.cursor-label');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const EASE = { duration: 600, easing: 'cubic-bezier(0.32, 0.72, 0, 1)', fill: 'forwards' };
+            let source = null;
+            let closing = false;
+            let textMode = false; // showing the caption instead of the picture
+
+            // transform that puts the lightbox picture exactly on top of the small one
+            const overlay = (clone, from) => {
+                const box = clone.getBoundingClientRect();
+                const ratio = from.width / from.height;
+                let w = box.width;
+                let h = box.height;
+                if (w / h > ratio) w = h * ratio;
+                else h = w / ratio;
+
+                const dx = from.left + from.width / 2 - (box.left + box.width / 2);
+                const dy = from.top + from.height / 2 - (box.top + box.height / 2);
+                return `translate(${dx}px, ${dy}px) scale(${from.width / w})`;
+            };
+
+            // each project exists twice (see the loop above); use the copy closest to the middle of the screen
+            const nearest = i => {
+                const dist = m => {
+                    const r = m.getBoundingClientRect();
+                    return Math.abs(r.left + r.width / 2 - window.innerWidth / 2);
+                };
+                return [projects[i], projects[i + count]]
+                    .map(el => el.querySelector('img, video'))
+                    .reduce((a, b) => (dist(a) <= dist(b) ? a : b));
+            };
+
+            // the caption sits in the same div as the picture
+            const captionOf = media => media.closest('.project').querySelector('p');
+
+            const syncTextToggle = () => {
+                textToggle.hidden = !captionOf(source);
+                textToggle.textContent = textMode ? 'image' : 'text';
+                textToggle.setAttribute('aria-pressed', textMode);
+            };
+
+            // fill the lightbox with the current project's picture, or with its caption in text mode
+            const show = () => {
+                const caption = captionOf(source);
+                if (!caption) textMode = false;
+
+                let el;
+                if (textMode) {
+                    el = document.createElement('p');
+                    el.className = 'lightbox-text';
+                    el.innerHTML = caption.innerHTML;
+                    el.style.fontSize = getComputedStyle(bio).fontSize;
+                } else {
+                    el = source.cloneNode();
+                    if (source.tagName === 'VIDEO') {
+                        el.muted = true;
+                        el.play().catch(() => {});
+                    }
+                }
+
+                lightbox.classList.toggle('text', textMode);
+                lightbox.replaceChildren(el);
+                syncTextToggle();
+
+                if (!reduceMotion) {
+                    el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 250, easing: 'ease-out' });
+                }
+            };
+
+            const openLightbox = media => {
+                source = media;
+                index = projects.indexOf(media.closest('.project')) % count;
+                const from = media.getBoundingClientRect();
+                const clone = media.cloneNode();
+
+                lightbox.replaceChildren(clone);
+                lightbox.classList.add('open');
+                lightbox.classList.remove('text');
+                textMode = false;
+                syncTextToggle();
+                document.documentElement.classList.add('lightbox-open');
+
+                if (media.tagName === 'VIDEO') {
+                    try { clone.currentTime = media.currentTime; } catch (e) {}
+                }
+                if (reduceMotion) return;
+
+                const bg = getComputedStyle(lightbox).backgroundColor;
+                lightbox.animate([{ backgroundColor: 'transparent' }, { backgroundColor: bg }], EASE);
+                clone.animate([
+                    { transform: overlay(clone, from) },
+                    { transform: 'none' }
+                ], EASE);
+            };
+
             const closeLightbox = () => {
-                lightbox.classList.remove('open');
-                lightbox.replaceChildren();
+                if (closing || !lightbox.classList.contains('open')) return;
+                document.documentElement.classList.remove('lightbox-open');
+                label.style.display = 'none';
+                source = nearest(index);
+
+                const clone = lightbox.firstElementChild;
+
+                const finish = () => {
+                    lightbox.getAnimations().forEach(a => a.cancel());
+                    lightbox.classList.remove('open', 'text');
+                    lightbox.replaceChildren();
+                    label.style.display = 'none';
+                    textMode = false;
+                    closing = false;
+                };
+
+                // the caption has nothing to shrink back into, so it just fades
+                if (textMode && !reduceMotion) {
+                    closing = true;
+                    lightbox.animate([{ opacity: 1 }, { opacity: 0 }], EASE).finished.then(finish, finish);
+                    return;
+                }
+
+                if (reduceMotion || !clone || !source || !source.isConnected) {
+                    finish();
+                    return;
+                }
+
+                closing = true;
+                clone.getAnimations().forEach(a => a.cancel());
+                lightbox.getAnimations().forEach(a => a.cancel());
+
+                const bg = getComputedStyle(lightbox).backgroundColor;
+                const back = overlay(clone, source.getBoundingClientRect());
+
+                lightbox.animate([{ backgroundColor: bg }, { backgroundColor: 'transparent' }], EASE);
+                clone.animate([
+                    { transform: 'none' },
+                    { transform: back }
+                ], EASE).finished.then(finish, finish);
             };
 
             // the button closes the lightbox first, then the drawer
@@ -356,20 +918,69 @@
             document.addEventListener('click', e => {
                 if (!drawer.classList.contains('open')) return;
                 const path = e.composedPath();
-                if ([drawer, toggle, lightbox].some(el => path.includes(el))) return;
+                if ([drawer, toggle, textToggle, headshotToggle, lightbox].some(el => path.includes(el))) return;
                 setDrawer(false);
             });
 
             // clicking an image or video opens it in the lightbox
             drawer.addEventListener('click', e => {
                 const media = e.target.closest('img, video');
-                if (!media) return;
-                lightbox.replaceChildren(media.cloneNode());
-                lightbox.classList.add('open');
+                if (!media || closing) return;
+                openLightbox(media);
             });
 
+            // previous / next project in the lightbox
+            const go = step => {
+                if (closing || !lightbox.classList.contains('open')) return;
+
+                index = (index + step + count) % count;
+
+                // bring that project to the middle of the drawer behind the lightbox
+                const r = nearest(index).getBoundingClientRect();
+                drawer.scrollLeft += r.left + r.width / 2 - window.innerWidth / 2;
+
+                source = nearest(index);
+                show();
+            };
+
+            // swap between the picture and its caption
+            textToggle.addEventListener('click', () => {
+                if (closing) return;
+                textMode = !textMode;
+                show();
+            });
+
+            // left half of the screen goes back, right half goes forward
             lightbox.addEventListener('click', e => {
-                if (e.target.closest('img, video')) closeLightbox();
+                if (e.target.closest('a')) return;
+                go(e.clientX < window.innerWidth / 2 ? -1 : 1);
+            });
+
+            // the label follows the cursor and says where a click leads
+            lightbox.addEventListener('mousemove', e => {
+                if (closing) return;
+                if (e.target.closest('a')) {
+                    label.style.display = 'none';
+                    return;
+                }
+                if (label.style.display !== 'block') {
+                    label.style.fontSize = getComputedStyle(toggle).fontSize;
+                    label.style.display = 'block';
+                }
+                label.textContent = e.clientX < window.innerWidth / 2 ? 'previous' : 'next';
+                label.style.left = e.clientX + 'px';
+                label.style.top = e.clientY + 'px';
+            });
+
+            lightbox.addEventListener('mouseleave', () => {
+                label.style.display = 'none';
+            });
+
+            document.addEventListener('keydown', e => {
+                if (!lightbox.classList.contains('open')) return;
+                if (e.key === 'Escape') closeLightbox();
+                else if (e.key === 'ArrowRight') go(1);
+                else if (e.key === 'ArrowLeft') go(-1);
             });
 
             // scrolling up / down moves the drawer sideways
@@ -382,11 +993,49 @@
     </script>
 
 
+    <!-- headshot button: shows princess.mp4 behind the bio -->
+    <script>
+        (() => {
+            const button = document.querySelector('.headshot-toggle');
+            const video = document.querySelector('.bg-video');
+            let on = false;
+
+            // the button appears once the video is ready to play
+            const ready = () => { button.hidden = false; };
+
+            if (video.readyState >= 3) ready();
+            else video.addEventListener('canplay', ready, { once: true });
+
+            video.load();
+
+            // some phones ignore preload; a muted play and pause gets the video loading anyway
+            video.play().then(() => {
+                if (!on) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            }).catch(() => {});
+
+            button.addEventListener('click', () => {
+                on = !on;
+                document.documentElement.classList.toggle('headshot-on', on);
+                button.setAttribute('aria-pressed', on);
+                button.textContent = on ? 'no face' : 'face';
+
+                if (on) video.play().catch(() => {});
+                else video.pause();
+            });
+        })();
+    </script>
+
+
     <!-- shrink the bio until it ends above the open button -->
     <script>
         (() => {
             const p = document.querySelector('p');
             const toggle = document.querySelector('.drawer-toggle');
+            const textToggle = document.querySelector('.text-toggle');
+            const headshotToggle = document.querySelector('.headshot-toggle');
             const GAP = 8; // px between the bio and the button
 
             const fits = () =>
@@ -396,6 +1045,8 @@
             const setSize = size => {
                 p.style.fontSize = size;
                 toggle.style.fontSize = size;
+                textToggle.style.fontSize = size;
+                headshotToggle.style.fontSize = size;
             };
 
             // find the largest size that fits
