@@ -6,18 +6,41 @@
     <title>Adam Arinbjarnarson</title>
     <link rel="icon" type="image/x-icon" href="favime.jpg">
 
-    <!-- pick one of three looks at random; a reload never repeats the previous one -->
+    <!-- pick one of the looks at random; a reload never repeats the previous one -->
     <script>
         (() => {
-            const LOOKS = [1, 2, 3, 4];
-            let last = null;
-            try { last = parseInt(localStorage.getItem('look'), 10); } catch (e) {}
+            const LOOKS = [1, 2, 3, 4, 5, 7];
 
-            const pool = LOOKS.filter(n => n !== last);
-            const look = pool[Math.floor(Math.random() * pool.length)];
+            const read = key => {
+                try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; }
+            };
+            const write = (key, value) => {
+                try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
+            };
+
+            const shuffle = list => {
+                const a = [...list];
+                for (let i = a.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [a[i], a[j]] = [a[j], a[i]];
+                }
+                return a;
+            };
+
+            // every look is shown once, in random order, before any of them comes back
+            let bag = read('lookBag');
+            bag = Array.isArray(bag) ? bag.filter(n => LOOKS.includes(n)) : [];
+
+            if (!bag.length) {
+                const last = read('lookLast') ?? read('look');
+                do { bag = shuffle(LOOKS); } while (bag.length > 1 && bag[0] === last);
+            }
+
+            const look = bag.shift();
+            write('lookBag', bag);
+            write('lookLast', look);
 
             document.documentElement.dataset.look = look;
-            try { localStorage.setItem('look', look); } catch (e) {}
         })();
     </script>
 
@@ -66,8 +89,8 @@
         /* 3: light brown on orange */
         html[data-look="3"] {
             --bg: #ff6a00;
-            --fg: #8f4a1a;
-            --drawer-bg: #8f4a1a;
+            --fg: #969696;
+            --drawer-bg: #969696;
             --drawer-fg: #ff6a00;
         }
 
@@ -77,6 +100,22 @@
             --fg: #00f0ff;
             --drawer-bg: #00f0ff;
             --drawer-fg: #b100ff;
+        }
+
+        /* 7: 50% grey on red */
+        html[data-look="7"] {
+            --bg: #ff0000;
+            --fg: #707070;
+            --drawer-bg: #707070;
+            --drawer-fg: #ff0000;
+        }
+
+        /* 5: brown on grey */
+        html[data-look="5"] {
+            --bg: #b5b5b5;
+            --fg: #92501f;
+            --drawer-bg: #92501f;
+            --drawer-fg: #b5b5b5;
         }
 
         /* ---------- cursors: a plus or minus in the colour of the button's own text ---------- */
@@ -93,13 +132,23 @@
         }
 
         html[data-look="3"] {
-            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%238f4a1a'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
-            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%238f4a1a'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23969696'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23969696'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
         }
 
         html[data-look="4"] {
             --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%2300f0ff'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
             --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%2300f0ff'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        html[data-look="5"] {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%2392501f'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%2392501f'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        html[data-look="7"] {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23707070'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23707070'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
         }
 
         /* white text on the video */
@@ -132,6 +181,16 @@
             --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23b100ff'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
         }
 
+        html[data-look="5"].drawer-open {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23b5b5b5'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23b5b5b5'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
+        html[data-look="7"].drawer-open {
+            --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23ff0000'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
+            --cursor-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='%23ff0000'%3E%E2%88%92%3C/text%3E%3C/svg%3E") 16 16, zoom-out;
+        }
+
         /* buttons on the black lightbox */
         html.lightbox-open:root {
             --cursor-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='16' y='27' text-anchor='middle' font-family='Helvetica Neue%2CHelvetica%2CArial%2Csans-serif' font-size='40' font-weight='bold' fill='white'%3E%2B%3C/text%3E%3C/svg%3E") 16 16, zoom-in;
@@ -157,23 +216,17 @@
         /* ---------- text selection: inverted colours, fully opaque ---------- */
 
         ::selection {
-            background: var(--fg);
+            background-color: var(--fg);
             color: var(--bg);
         }
 
-        html.headshot-on body > p::selection,
-        html.headshot-on body > p *::selection {
-            background: white;
-            color: black;
-        }
-
         .drawer ::selection {
-            background: var(--drawer-fg);
+            background-color: var(--drawer-fg);
             color: var(--drawer-bg);
         }
 
         .lightbox ::selection {
-            background: white;
+            background-color: white;
             color: black;
         }
 
@@ -193,7 +246,7 @@
 
         .drawer-toggle {
             position: fixed;
-            bottom: 0.75rem;
+            bottom: 0.6rem;
             right: 0.75rem;
             z-index: 2;
             margin: 0;
@@ -222,7 +275,7 @@
         /* "text" / "image" button in the left corner, only while the lightbox is open */
         .text-toggle {
             position: fixed;
-            bottom: 0.75rem;
+            bottom: 0.6rem;
             left: 0.75rem;
             z-index: 2;
             display: none;
@@ -248,7 +301,7 @@
 
         .headshot-toggle {
             position: fixed;
-            bottom: 0.75rem;
+            bottom: 0.6rem;
             left: 0.75rem;
             z-index: 2;
             margin: 0;
@@ -296,6 +349,12 @@
 
         html.headshot-on .bg-video {
             opacity: 1;
+        }
+
+        /* with the video on, the text is white, and the drawer (same colour as the text) follows */
+        html.headshot-on {
+            --fg: white;
+            --drawer-bg: white;
         }
 
         /* white type on top of the video */
@@ -506,11 +565,13 @@
 
             .drawer-toggle {
                 right: 1.2rem;
+                bottom: 0.75rem;
             }
 
             .text-toggle,
             .headshot-toggle {
                 left: 1.2rem;
+                bottom: 0.75rem;
             }
 
             .lightbox {
