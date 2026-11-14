@@ -207,6 +207,11 @@
             padding: 0;
         }
 
+        /* the "fun" sizes prank gets a narrower right margin */
+        html.fun-sizes body {
+            margin-right: 4vw;
+        }
+
         p {
             margin: 0;
             padding: 0;
@@ -299,11 +304,17 @@
 
         /* ---------- headshot button and background video ---------- */
 
-        .headshot-toggle {
+        .corner {
             position: fixed;
             bottom: 0.6rem;
             left: 0.75rem;
             z-index: 2;
+            display: flex;
+            gap: 1em;
+        }
+
+        .headshot-toggle,
+        .fun-toggle {
             margin: 0;
             padding: 0;
             border: 0;
@@ -313,20 +324,32 @@
             color: var(--fg);
         }
 
-        .headshot-toggle:hover {
+        .headshot-toggle:hover,
+        .fun-toggle:hover {
             text-decoration: underline;
         }
 
+        /* invisible, but still there to click */
+        .fun-toggle {
+            opacity: 0;
+        }
+
         /* hidden while the lightbox ("text" takes this corner) or the drawer is open */
-        html.lightbox-open .headshot-toggle,
-        html.drawer-open .headshot-toggle {
+        html.lightbox-open .corner,
+        html.drawer-open .corner {
             display: none;
+        }
+
+        /* the letters the "fun" button plays with, kept together so a word never breaks apart */
+        .word {
+            white-space: nowrap;
         }
 
         /* plus when a click opens or shows something, minus when it closes or hides it */
         .drawer-toggle,
         .text-toggle,
-        .headshot-toggle {
+        .headshot-toggle,
+        .fun-toggle {
             cursor: var(--cursor-plus);
         }
 
@@ -361,7 +384,8 @@
         html.headshot-on body > p,
         html.headshot-on body > p a,
         html.headshot-on .drawer-toggle,
-        html.headshot-on .headshot-toggle {
+        html.headshot-on .headshot-toggle,
+        html.headshot-on .fun-toggle {
             color: white;
         }
 
@@ -569,7 +593,7 @@
             }
 
             .text-toggle,
-            .headshot-toggle {
+            .corner {
                 left: 1.2rem;
                 bottom: 0.75rem;
             }
@@ -610,7 +634,10 @@
 
     <button class="drawer-toggle" aria-expanded="false" aria-controls="drawer">open</button>
     <button class="text-toggle" hidden>text</button>
-    <button class="headshot-toggle" aria-pressed="false" hidden>face</button>
+    <div class="corner">
+        <button class="headshot-toggle" aria-pressed="false" hidden>face</button>
+        <button class="fun-toggle">fun</button>
+    </div>
 
     <div class="lightbox"></div>
     <div class="cursor-label"></div>
@@ -1097,6 +1124,7 @@
             const toggle = document.querySelector('.drawer-toggle');
             const textToggle = document.querySelector('.text-toggle');
             const headshotToggle = document.querySelector('.headshot-toggle');
+            const corner = document.querySelector('.corner');
             const GAP = 8; // px between the bio and the button
 
             const fits = () =>
@@ -1105,9 +1133,14 @@
             // the button always matches the bio's size
             const setSize = size => {
                 p.style.fontSize = size;
+
+                // while the "fun" sizes prank shrinks the bio, the buttons keep their size
+                if (document.documentElement.classList.contains('fun-sizes')) return;
+
                 toggle.style.fontSize = size;
                 textToggle.style.fontSize = size;
                 headshotToggle.style.fontSize = size;
+                corner.style.fontSize = size;
             };
 
             // find the largest size that fits
@@ -1140,113 +1173,133 @@
 
             document.fonts.ready.then(fit);
             fit();
+
+            // the "fun" button asks for a refit after it has changed the letter sizes
+            window.addEventListener('refit', fit);
         })();
     </script>
 
 
-    <!-- typing effect and cursor attraction for the bio -->
+    <!-- fun: letters of the bio get mirrored, more and more of them over time; the invisible "fun" button rolls new sizes -->
     <script>
         (() => {
-            const p = document.querySelector('p');
+            const button = document.querySelector('.fun-toggle');
+            const bio = document.querySelector('body > p');
+            const FIRST = /[smn]/i; // mirrored from the moment the page loads
+            const EVERY = 1200;     // ms between each newly mirrored letter
 
-            // wrap every character in a hidden span, keeping the links intact
-            const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
-            const textNodes = [];
-            while (walker.nextNode()) textNodes.push(walker.currentNode);
+            // wrap every letter in a span and every word in a nowrap span (links stay intact),
+            // so mirrored letters can never make a word break apart
+            const walker = document.createTreeWalker(bio, NodeFilter.SHOW_TEXT);
+            const nodes = [];
+            while (walker.nextNode()) nodes.push(walker.currentNode);
 
-            const chars = [];
-
-            textNodes.forEach(node => {
+            nodes.forEach(node => {
                 const frag = document.createDocumentFragment();
 
-                for (const ch of node.textContent) {
-                    const span = document.createElement('span');
-                    span.textContent = ch;
-                    span.style.visibility = 'hidden';
-                    frag.appendChild(span);
-                    if (ch.trim()) chars.push(span);
-                }
+                node.textContent.split(/(\s+)/).forEach(part => {
+                    if (!part) return;
+
+                    if (/^\s+$/.test(part)) {
+                        frag.appendChild(document.createTextNode(part));
+                        return;
+                    }
+
+                    const word = document.createElement('span');
+                    word.className = 'word';
+
+                    for (const ch of part) {
+                        const span = document.createElement('span');
+                        span.textContent = ch;
+                        word.appendChild(span);
+                    }
+
+                    frag.appendChild(word);
+                });
 
                 node.replaceWith(frag);
             });
 
+            const chars = [...bio.querySelectorAll('.word > span')];
 
-            // typing effect: reveal one character at a time
-            let index = 0;
 
-            function typeText() {
-                if (index < chars.length) {
-                    chars[index].style.visibility = 'visible';
-                    index++;
-                    setTimeout(typeText, 50);
+            // ---------- mirrored letters, more and more over time ----------
+
+            const flipped = new Set();
+
+            // mirror a letter horizontally, around its middle and in place
+            const paint = span => {
+                span.style.display = 'inline-block';
+                span.style.transform = 'scaleX(-1)';
+            };
+
+            const flip = span => {
+                flipped.add(span);
+                paint(span);
+            };
+
+            chars.filter(span => FIRST.test(span.textContent)).forEach(flip);
+
+            const pool = chars.filter(span => /\p{L}/u.test(span.textContent) && !flipped.has(span));
+
+            const spread = setInterval(() => {
+                if (!pool.length) {
+                    clearInterval(spread);
+                    return;
                 }
-            }
+                flip(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+            }, EVERY);
 
-            typeText();
 
+            // ---------- the invisible fun button: random letter sizes ----------
 
-            // cursor attraction (turned off: uncomment animate() at the bottom)
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            // height of a capital letter, as a share of the font size (measured on the real font)
+            const capRatio = () => {
+                try {
+                    const ctx = document.createElement('canvas').getContext('2d');
+                    ctx.font = '100px ' + getComputedStyle(bio).fontFamily;
+                    const ascent = ctx.measureText('H').actualBoundingBoxAscent;
+                    if (ascent) return ascent / 100;
+                } catch (e) {}
+                return 0.72;
+            };
 
-            const STRENGTH = 0.25; // how far characters move
-            const RANGE = 100;     // how far away the cursor has an effect, in px
+            // random letter sizes, most close to normal and a few a lot bigger.
+            // Half of the letters that stay small are lifted so their capital height matches
+            // the nearest big letter's. Half the line spacing, a narrower right margin, and the
+            // bio shrinks (the buttons don't) so it still ends above them.
+            const resize = () => {
+                const scales = chars.map(() =>
+                    Math.random() < 0.7 ? 0.85 + Math.random() * 0.5 : 1.8 + Math.random() * 1.2
+                );
 
-            const items = chars.map(span => {
-                span.style.position = 'relative';
-                return { span, x: 0, y: 0, cx: 0, cy: 0 };
-            });
-
-            // store each character's resting centre
-            function measure() {
-                items.forEach(item => {
-                    item.span.style.left = '0px';
-                    item.span.style.top = '0px';
-                    const r = item.span.getBoundingClientRect();
-                    item.cx = r.left + window.scrollX + r.width / 2;
-                    item.cy = r.top + window.scrollY + r.height / 2;
-                    item.x = item.y = 0;
-                });
-            }
-
-            let mouseX = null;
-            let mouseY = null;
-
-            window.addEventListener('mousemove', e => {
-                mouseX = e.pageX;
-                mouseY = e.pageY;
-            });
-
-            document.addEventListener('mouseleave', () => {
-                mouseX = mouseY = null;
-            });
-
-            window.addEventListener('resize', measure);
-            document.fonts.ready.then(measure);
-            measure();
-
-            function animate() {
-                items.forEach(item => {
-                    let tx = 0;
-                    let ty = 0;
-
-                    if (mouseX !== null) {
-                        const dx = mouseX - item.cx;
-                        const dy = mouseY - item.cy;
-                        const falloff = STRENGTH * Math.exp(-Math.hypot(dx, dy) / RANGE);
-                        tx = dx * falloff;
-                        ty = dy * falloff;
-                    }
-
-                    item.x += (tx - item.x) * 1;
-                    item.y += (ty - item.y) * 1;
-                    item.span.style.left = item.x.toFixed(2) + 'px';
-                    item.span.style.top = item.y.toFixed(2) + 'px';
+                chars.forEach((span, i) => {
+                    span.style.fontSize = scales[i].toFixed(2) + 'em';
+                    span.style.verticalAlign = '';
                 });
 
-                requestAnimationFrame(animate);
-            }
+                const big = scales.map((s, i) => (s > 1.7 ? i : -1)).filter(i => i >= 0);
+                const cap = capRatio();
 
-            // animate();
+                if (big.length) {
+                    chars.forEach((span, i) => {
+                        if (scales[i] > 1.7 || Math.random() < 0.5) return;
+
+                        const ref = big.reduce((a, b) => (Math.abs(b - i) < Math.abs(a - i) ? b : a));
+
+                        // vertical-align in em is relative to the letter's own size
+                        const lift = cap * (scales[ref] - scales[i]) / scales[i];
+                        span.style.verticalAlign = lift.toFixed(3) + 'em';
+                    });
+                }
+
+                bio.style.lineHeight = '0.6';
+                document.documentElement.classList.add('fun-sizes');
+                window.dispatchEvent(new Event('refit'));
+            };
+
+            // every click rolls the sizes again (a reload brings back normal text)
+            button.addEventListener('click', resize);
         })();
     </script>
 
