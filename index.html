@@ -1125,10 +1125,14 @@
             const textToggle = document.querySelector('.text-toggle');
             const headshotToggle = document.querySelector('.headshot-toggle');
             const corner = document.querySelector('.corner');
-            const GAP = 8; // px between the bio and the button
+            const phone = window.matchMedia('(max-width: 768px)');
+
+            // room between the bio and the button: a little on a computer, but a whole extra line
+            // on a phone, where the browser's toolbars take height after the page has loaded
+            const gap = () => (phone.matches ? parseFloat(getComputedStyle(p).lineHeight) + 8 : 8);
 
             const fits = () =>
-                p.getBoundingClientRect().bottom + window.scrollY + GAP <= toggle.getBoundingClientRect().top;
+                p.getBoundingClientRect().bottom + window.scrollY + gap() <= toggle.getBoundingClientRect().top;
 
             // the button always matches the bio's size
             const setSize = size => {
@@ -1239,6 +1243,7 @@
             };
 
             chars.filter(span => FIRST.test(span.textContent)).forEach(flip);
+            window.dispatchEvent(new Event('refit'));
 
             const pool = chars.filter(span => /\p{L}/u.test(span.textContent) && !flipped.has(span));
 
@@ -1248,6 +1253,7 @@
                     return;
                 }
                 flip(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+                window.dispatchEvent(new Event('refit'));
             }, EVERY);
 
 
